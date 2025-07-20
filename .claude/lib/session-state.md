@@ -13,7 +13,15 @@ Session state allows BACO to:
 
 ## State Storage Location
 
-Session state is stored in `.claude/memory/session-state.json`
+- **Active session**: `.claude/memory/session-state.json`
+- **Project-specific state**: `.claude/memory/projects/{project-name}-state.json`
+- **Completed sessions**: `.claude/memory/session-history.json`
+
+Project state files track:
+- Project location
+- All created files
+- Session history for that project
+- Project-specific settings
 
 ## Session State Structure
 
@@ -22,6 +30,8 @@ Session state is stored in `.claude/memory/session-state.json`
   "active_session": {
     "id": "baco-20250120-143052",
     "command": "/baco execute",
+    "project_name": "ai-image-gen",
+    "project_directory": "./ai-image-gen",
     "started_at": "2025-01-20T14:30:52Z",
     "last_updated": "2025-01-20T14:45:23Z",
     "status": "in_progress",
@@ -42,13 +52,13 @@ Session state is stored in `.claude/memory/session-state.json`
       }
     },
     "artifacts": {
-      "baco_md": "baco.md",
-      "prp_file": "baco-prp-20250120.md",
+      "baco_md": "ai-image-gen/baco.md",
+      "prp_file": "ai-image-gen/baco-prp-20250120.md",
       "created_files": [
-        "package.json",
-        "tsconfig.json",
-        "src/app/layout.tsx",
-        "src/components/PromptInput.tsx"
+        "ai-image-gen/package.json",
+        "ai-image-gen/tsconfig.json",
+        "ai-image-gen/src/app/layout.tsx",
+        "ai-image-gen/src/components/PromptInput.tsx"
       ],
       "modified_files": []
     },
@@ -81,6 +91,9 @@ When starting an interactive workflow:
 - Initialize session structure
 - Set status to "in_progress"
 - Store initial context
+- Record project_name and project_directory
+- Create project-specific state file
+- Initialize artifacts tracking
 ```
 
 ### 2. Updating Progress
@@ -148,6 +161,7 @@ Claude:
 User: /baco resume
 Claude: 
   Found paused session: Mobile AI Image Generator
+  Project: ai-image-gen/
   Started: 1 hour ago
   Progress: Phase 2 of 4 (60% complete)
   
@@ -155,11 +169,14 @@ Claude:
   ✓ Project setup
   ✓ Layout components
   
+  Files created: 12
+  Location: ./ai-image-gen/
+  
   Ready to continue with: Implementing prompt enhancement API
   
   Resume? (y/n): y
   
-  Resuming implementation...
+  Resuming implementation in ai-image-gen/...
   [Continues from exact pause point]
 ```
 

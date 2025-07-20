@@ -108,6 +108,12 @@ Generates a comprehensive Product Requirements Prompt (PRP) to guide implementat
 
 BACO now features a **fully interactive experience** that guides you seamlessly from project definition to **actual working code**:
 
+### Clean Project Organization (NEW!)
+- Each project gets its own directory
+- No BACO files mixed with your code  
+- Manage multiple projects easily
+- See [Project Directory Guide](docs/project-directory-guide.md)
+
 ```
 /baco init → Interactive setup → Auto-plan → Auto-execute → Real code generation
 ```

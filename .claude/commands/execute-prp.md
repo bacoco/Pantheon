@@ -6,6 +6,8 @@ ACTIVATION: When user types `/execute-prp <prp-file>`, implement the feature usi
 
 This command executes a Product Requirements Prompt (PRP) file to implement features with comprehensive context and validation loops, following Context Engineering principles.
 
+**Project Directory Awareness**: When called from `/baco execute`, this command automatically works within the project directory created during `/baco init`. All file paths and commands are relative to the project directory.
+
 ## Execution Process
 
 ### 1. Load PRP

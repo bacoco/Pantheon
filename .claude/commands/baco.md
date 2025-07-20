@@ -30,15 +30,27 @@ Start an interactive project definition session. When invoked:
 
 #### Interactive Session Flow:
 
-**Step 1: Welcome & Context**
+**Step 1: Welcome & Project Setup**
 ```
 🎯 Welcome to BACO Interactive Project Setup!
 
 I'll help you create a comprehensive project definition through conversation.
 This will help me understand your needs and generate a customized baco.md file.
 
-Let's start with the basics...
+First, let's set up your project:
+
+📁 What would you like to name your project?
+   (This will create a directory with this name)
+   
+Project name:
 ```
+
+After user provides project name:
+- Validate name (alphanumeric, hyphens, underscores only)
+- Check if directory already exists
+- If exists: "Directory 'project-name' already exists. Use it anyway? (y/n)"
+- Create directory: `mkdir -p project-name`
+- Show: "✅ Created project directory: ./project-name/"
 
 **Step 2: Project Discovery**
 Ask these questions in sequence, adapting based on responses:
@@ -124,7 +136,9 @@ Shall I generate your customized baco.md file? (yes/no/refine)
 ```
 
 If "refine", ask what needs adjustment.
-If "yes", generate customized baco.md with all gathered information.
+If "yes", generate customized baco.md with all gathered information in the project directory:
+- Save as `{project-name}/baco.md`
+- Show: "✅ Created {project-name}/baco.md"
 
 #### Template Mode (--template flag):
 If user specifically requests template mode with `/baco init --template`:
@@ -323,7 +337,9 @@ When invoked:
    - How the implementation would proceed
    - What validation would occur
 
-4. Save the generated PRP with timestamp (tell user to save it as `baco-prp-[timestamp].md`)
+4. Save the generated PRP with timestamp in project directory:
+   - Save as `{project-name}/baco-prp-[timestamp].md`
+   - Track project location in session state
 
 5. **Interactive Continuation** (NEW):
    After PRP generation, present options:
@@ -416,13 +432,18 @@ When implementing (Choice 1), follow this exact process:
    ```
 
 3. **Execute Each Task**:
+   - All commands run in project directory:
    - For project setup:
      ```
-     Bash("npx create-next-app@latest project-name --typescript --tailwind --app")
+     Bash("cd {project-name} && npx create-next-app@latest . --typescript --tailwind --app")
      ```
-   - For file creation:
+   - For file creation (paths relative to project directory):
      ```
-     Write("src/components/PromptInput.tsx", <component code from PRP>)
+     Write("{project-name}/src/components/PromptInput.tsx", <component code from PRP>)
+     ```
+   - For dependency installation:
+     ```
+     Bash("cd {project-name} && npm install replicate react-zoom-pan-pinch")
      ```
    - Show real-time progress after each action
 
@@ -442,8 +463,8 @@ When implementing (Choice 1), follow this exact process:
    ```
 
 5. **Validation After Each Phase**:
-   - Run build commands: `npm run build`
-   - Run type checking: `npm run typecheck`
+   - Run build commands in project directory: `cd {project-name} && npm run build`
+   - Run type checking: `cd {project-name} && npm run typecheck`
    - Show any errors and offer to fix them
    - Only proceed to next phase after validation passes
 
@@ -484,6 +505,38 @@ When analyzing examples in baco.md:
 - Be helpful and suggest improvements to their baco.md structure
 - The goal is to make project planning and implementation more structured and successful
 
+## PROJECT DIRECTORY STRUCTURE
+
+When using BACO, all project files are organized in a dedicated directory:
+
+```
+./                          # Current directory (where BACO is run)
+├── project-name/           # Created by /baco init
+│   ├── baco.md            # Project definition
+│   ├── baco-prp-*.md      # Generated PRPs with timestamps
+│   ├── package.json       # Created during implementation
+│   ├── src/               # Source code directory
+│   │   ├── components/    # React components
+│   │   ├── app/          # Next.js app directory
+│   │   └── ...           # Other source files
+│   └── ...               # Other project files
+
+.claude/                    # BACO system files (not in project)
+├── commands/              # Command definitions
+├── agents/               # Agent personas
+├── lib/                  # Shared libraries
+└── memory/               # Session states and project tracking
+    └── projects/         # Project-specific state files
+        └── project-name-state.json
+```
+
+**Key Points**:
+- Each project gets its own directory
+- No .claude files are created in user projects
+- Projects remain clean and standard
+- BACO tracks project state separately
+- Multiple projects can be managed from one BACO installation
+
 ## COMPLETE INTERACTIVE FLOW EXAMPLE
 
 Here's how the entire BACO workflow should feel from the user's perspective:
@@ -492,6 +545,16 @@ Here's how the entire BACO workflow should feel from the user's perspective:
 User: /baco init
 
 Claude: 🎯 Welcome to BACO Interactive Project Setup!
+
+First, let's set up your project:
+
+📁 What would you like to name your project?
+   (This will create a directory with this name)
+   
+Project name: ai-image-gen
+
+✅ Created project directory: ./ai-image-gen/
+
 [... interactive questions ...]
 
 Great! Based on our conversation, here's what I understand:
@@ -499,7 +562,7 @@ Great! Based on our conversation, here's what I understand:
 
 Shall I generate your customized baco.md file? (yes/no/refine): yes
 
-✅ Created baco.md!
+✅ Created ai-image-gen/baco.md!
 
 Would you like me to create a development plan now? (y/n): y
 
@@ -521,7 +584,7 @@ Your choice (1-4): 1
 
 Generating comprehensive implementation blueprint...
 
-✅ PRP Generated: baco-prp-20250120.md
+✅ PRP Generated: ai-image-gen/baco-prp-20250120.md
 
 I've created a comprehensive implementation blueprint for your Mobile AI Image Generator.
 
@@ -543,17 +606,25 @@ Great! Let's start implementing your mobile AI image generator.
 
 Starting with Phase 1: Foundation Setup...
 
-Creating Next.js project structure...
+Creating Next.js project structure in ai-image-gen/...
+[Running: cd ai-image-gen && npx create-next-app@latest . --typescript --tailwind --app]
 ✅ Project initialized with TypeScript and Tailwind
-✅ Created mobile-optimized layout
-✅ Set up responsive viewport configuration
+
+Creating project files...
+✅ Created ai-image-gen/src/app/layout.tsx
+✅ Created ai-image-gen/src/app/globals.css
+✅ Created ai-image-gen/src/types/index.ts
+
+Installing dependencies...
+[Running: cd ai-image-gen && npm install replicate react-zoom-pan-pinch]
+✅ Dependencies installed
 
 Phase 1 Progress: 40% complete
 
 Now creating the prompt input component...
-✅ Created PromptInput component with word counter
-✅ Added mobile keyboard handling
-✅ Implemented character limit validation
+✅ Created ai-image-gen/src/components/PromptInput.tsx (52 lines)
+✅ Created ai-image-gen/src/hooks/useWordCount.ts (18 lines)
+✅ Created ai-image-gen/src/lib/constants.ts (5 lines)
 
 Phase 1 Complete! 
 
