@@ -104,6 +104,41 @@ BACO analyzes your requirements and provides:
 
 Generates a comprehensive Product Requirements Prompt (PRP) to guide implementation.
 
+## 🆕 Interactive Workflow with Code Generation (NEW!)
+
+BACO now features a **fully interactive experience** that guides you seamlessly from project definition to **actual working code**:
+
+```
+/baco init → Interactive setup → Auto-plan → Auto-execute → Real code generation
+```
+
+**BACO now generates actual code files, not just documentation!**
+- Creates real project structures
+- Writes complete TypeScript/JavaScript files  
+- Runs npm commands automatically
+- Validates code and fixes errors
+
+**No more manual command chaining!** After defining your project, BACO asks:
+- "Would you like me to create a development plan now?"
+- "Ready to generate the implementation blueprint?"  
+- "Start implementing immediately?" → **Actually creates files!**
+
+Real-time progress with file creation:
+```
+Creating Next.js project structure...
+✅ Project initialized with TypeScript and Tailwind
+
+Creating components...
+✅ Created src/components/PromptInput.tsx (52 lines)
+✅ Created src/components/ImageGrid.tsx (87 lines)
+✅ Created src/app/api/enhance-prompt/route.ts (45 lines)
+
+Phase 1 Complete! (Created 12 files, 1,245 lines of code)
+Ready to proceed with Phase 2: Core Logic? (y/n): 
+```
+
+See the [Interactive BACO Guide](docs/interactive-baco-guide.md) and [Code Generation Guide](docs/code-generation-guide.md) for details.
+
 ## Real-World Examples
 
 BACO includes 14 examples covering common project types:

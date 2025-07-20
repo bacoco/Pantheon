@@ -15,6 +15,8 @@ This is a prompt-based system. When invoked, you should:
 
 ## COMMAND HANDLERS
 
+> **Note**: All command handlers should follow the interactive flow patterns defined in `.claude/lib/interactive-flow.md` for consistent user experience.
+
 ### `/baco` (no subcommand)
 Show available subcommands and check for baco.md file:
 - If baco.md exists: "📄 Found baco.md file. Run `/baco plan` to generate a development plan."
@@ -291,6 +293,19 @@ Duration: [estimate]
    3. Or use '/generate-prp' to create a detailed PRP
 ```
 
+After displaying the plan, offer interactive continuation:
+```
+What would you like to do with this plan?
+1. 🚀 Generate implementation blueprint (PRP)
+2. 📝 Modify the plan
+3. 💾 Save plan for later
+4. ❌ Start over with different requirements
+
+Your choice (1-4):
+```
+
+If user chooses option 1, seamlessly transition to `/baco execute` functionality without requiring them to type a new command.
+
 ### `/baco execute`
 When invoked:
 1. Ensure a baco.md file has been shared/validated
@@ -309,6 +324,128 @@ When invoked:
    - What validation would occur
 
 4. Save the generated PRP with timestamp (tell user to save it as `baco-prp-[timestamp].md`)
+
+5. **Interactive Continuation** (NEW):
+   After PRP generation, present options:
+   ```
+   ✅ PRP Generated: baco-prp-[timestamp].md
+
+   I've created a comprehensive implementation blueprint for your [project type].
+
+   What would you like to do next?
+   1. 🚀 Start implementing immediately
+   2. 📄 Review the PRP first  
+   3. ✏️ Modify the plan
+   4. ⏸️ Pause for now
+
+   Your choice (1-4):
+   ```
+
+   Based on user choice:
+   - **Choice 1**: Seamlessly transition to `/execute-prp` functionality
+     - Show implementation phases from the PRP
+     - Ask for confirmation to proceed
+     - **CRITICAL: Actually implement the code**:
+       1. Read the full PRP content
+       2. Use TodoWrite to create tasks for each phase
+       3. For each task:
+          - Create actual files using Write tool
+          - Run commands using Bash tool (npm install, etc.)
+          - Show real progress: "✅ Created src/app/page.tsx"
+       4. Track all created files in session state
+       5. Run validation commands if specified in PRP
+     - After each major milestone, ask "Continue? (y/n)"
+     - Example implementation flow:
+       ```
+       Creating Next.js project structure...
+       [Use Bash: npx create-next-app@latest ...]
+       ✅ Project initialized
+       
+       Installing dependencies...
+       [Use Bash: npm install replicate ...]
+       ✅ Dependencies installed
+       
+       Creating components...
+       [Use Write: Create actual component files]
+       ✅ Created src/components/PromptInput.tsx
+       ✅ Created src/components/ImageGrid.tsx
+       ```
+   - **Choice 2**: Display key sections of the PRP for review
+   - **Choice 3**: Ask what modifications are needed
+   - **Choice 4**: Save state and provide resume instructions
+
+6. **Continuous Implementation Flow**:
+   When user chooses to implement:
+   ```
+   📋 Implementation Plan:
+   - Phase 1: [Description] (Duration)
+   - Phase 2: [Description] (Duration)
+   [etc...]
+
+   Starting with Phase 1...
+   ```
+   
+   Then proceed with implementation, providing updates:
+   - "✅ Created project structure. Setting up [next item]..."
+   - "✅ Phase 1 complete! Ready for Phase 2? (y/n)"
+   - Handle errors gracefully with options to fix and retry
+
+7. **Session State Management**:
+   - Track current phase/step in memory
+   - Allow resuming if interrupted
+   - Provide progress indicators throughout
+
+### PRP EXECUTION DETAILS
+
+When implementing (Choice 1), follow this exact process:
+
+1. **Parse PRP Structure**:
+   - Extract phases from "Implementation Phases" section
+   - Identify code blocks marked with ```typescript, ```jsx, etc.
+   - Find file paths mentioned (e.g., "src/components/PromptInput.tsx")
+   - Extract dependencies and commands to run
+
+2. **Create Implementation Tasks**:
+   ```
+   TodoWrite([
+     { id: "setup_project", content: "Initialize Next.js project", status: "pending", priority: "high" },
+     { id: "install_deps", content: "Install dependencies", status: "pending", priority: "high" },
+     { id: "create_layout", content: "Create app layout", status: "pending", priority: "high" },
+     // ... more tasks based on PRP phases
+   ])
+   ```
+
+3. **Execute Each Task**:
+   - For project setup:
+     ```
+     Bash("npx create-next-app@latest project-name --typescript --tailwind --app")
+     ```
+   - For file creation:
+     ```
+     Write("src/components/PromptInput.tsx", <component code from PRP>)
+     ```
+   - Show real-time progress after each action
+
+4. **Example Implementation Sequence**:
+   ```
+   Task: Initialize project
+   Running: npx create-next-app...
+   ✅ Project created successfully
+   
+   Task: Create PromptInput component
+   Writing: src/components/PromptInput.tsx
+   ✅ Component created (45 lines)
+   
+   Task: Set up API routes
+   Writing: src/app/api/enhance-prompt/route.ts
+   ✅ API route created (120 lines)
+   ```
+
+5. **Validation After Each Phase**:
+   - Run build commands: `npm run build`
+   - Run type checking: `npm run typecheck`
+   - Show any errors and offer to fix them
+   - Only proceed to next phase after validation passes
 
 ## INTEGRATION WITH OTHER BACO COMMANDS
 
@@ -346,3 +483,98 @@ When analyzing examples in baco.md:
 - Maintain consistency with the user's style and preferences
 - Be helpful and suggest improvements to their baco.md structure
 - The goal is to make project planning and implementation more structured and successful
+
+## COMPLETE INTERACTIVE FLOW EXAMPLE
+
+Here's how the entire BACO workflow should feel from the user's perspective:
+
+```
+User: /baco init
+
+Claude: 🎯 Welcome to BACO Interactive Project Setup!
+[... interactive questions ...]
+
+Great! Based on our conversation, here's what I understand:
+[... summary ...]
+
+Shall I generate your customized baco.md file? (yes/no/refine): yes
+
+✅ Created baco.md!
+
+Would you like me to create a development plan now? (y/n): y
+
+[Seamlessly transitions to planning...]
+
+🎯 BACO DEVELOPMENT PLAN
+========================
+[... shows plan ...]
+
+What would you like to do with this plan?
+1. 🚀 Generate implementation blueprint (PRP)
+2. 📝 Modify the plan
+3. 💾 Save plan for later
+4. ❌ Start over with different requirements
+
+Your choice (1-4): 1
+
+[Seamlessly transitions to PRP generation...]
+
+Generating comprehensive implementation blueprint...
+
+✅ PRP Generated: baco-prp-20250120.md
+
+I've created a comprehensive implementation blueprint for your Mobile AI Image Generator.
+
+What would you like to do next?
+1. 🚀 Start implementing immediately
+2. 📄 Review the PRP first
+3. ✏️ Modify the plan
+4. ⏸️ Pause for now
+
+Your choice (1-4): 1
+
+Great! Let's start implementing your mobile AI image generator.
+
+📋 Implementation Plan:
+- Phase 1: Foundation Setup (Days 1-2)
+- Phase 2: Core Logic (Days 2-3)
+- Phase 3: User Interface (Days 4-5)
+- Phase 4: Testing & Polish (Days 6-7)
+
+Starting with Phase 1: Foundation Setup...
+
+Creating Next.js project structure...
+✅ Project initialized with TypeScript and Tailwind
+✅ Created mobile-optimized layout
+✅ Set up responsive viewport configuration
+
+Phase 1 Progress: 40% complete
+
+Now creating the prompt input component...
+✅ Created PromptInput component with word counter
+✅ Added mobile keyboard handling
+✅ Implemented character limit validation
+
+Phase 1 Complete! 
+
+Summary:
+- Created 5 files
+- Set up project foundation
+- Mobile-optimized from the start
+
+Ready to proceed with Phase 2: Core Logic? (y/n): y
+
+Starting Phase 2...
+[... continues with implementation ...]
+```
+
+## KEY INTERACTIVE PRINCIPLES
+
+1. **Seamless Transitions**: Users shouldn't need to run multiple commands
+2. **Continuous Context**: Each step builds on the previous conversation
+3. **Progress Visibility**: Always show what's happening and what's next
+4. **User Control**: Offer choices at major decision points
+5. **Graceful Interruption**: Can pause and resume without losing progress
+6. **Success Celebration**: Acknowledge completed milestones
+
+The goal is to make BACO feel like an intelligent assistant guiding users through the entire development process, not a series of disconnected commands.

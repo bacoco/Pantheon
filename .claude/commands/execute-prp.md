@@ -24,10 +24,38 @@ This command executes a Product Requirements Prompt (PRP) file to implement feat
 
 ### 3. Execute Implementation
 Follow the PRP blueprint:
-- Create/modify files as specified
+- Create/modify files as specified using actual tools:
+  - Use `Write` tool to create new files
+  - Use `Edit` or `MultiEdit` to modify existing files
+  - Use `Bash` tool to run commands (npm install, etc.)
 - Follow existing patterns identified
 - Implement validation as you go
 - Handle errors gracefully
+
+**CRITICAL: Generate actual code and create real files**
+Example execution:
+```
+# Create project structure
+Bash("mkdir -p src/components src/app/api")
+
+# Create component file with actual code
+Write("src/components/PromptInput.tsx", `
+import React, { useState } from 'react';
+
+interface PromptInputProps {
+  onSubmit: (prompt: string) => void;
+  maxWords: number;
+}
+
+export function PromptInput({ onSubmit, maxWords }: PromptInputProps) {
+  const [prompt, setPrompt] = useState('');
+  // ... actual component implementation
+}
+`)
+
+# Show progress
+"✅ Created src/components/PromptInput.tsx (52 lines)"
+```
 
 ### 4. Validation Loop
 Run validation gates at each level:
@@ -89,6 +117,61 @@ You would:
 3. Execute each task with validation
 4. Fix any issues found during validation
 5. Report successful completion
+```
+
+## Detailed Implementation Example
+
+When executing a PRP, here's the actual flow:
+
+```
+1. Parse PRP and create tasks:
+TodoWrite([
+  { id: "setup", content: "Set up project structure", status: "pending", priority: "high" },
+  { id: "auth_model", content: "Create user authentication model", status: "pending", priority: "high" },
+  { id: "auth_api", content: "Implement authentication API", status: "pending", priority: "high" }
+])
+
+2. Execute each task with real file creation:
+
+# Task: Set up project structure
+Bash("npm init -y")
+Bash("npm install express bcrypt jsonwebtoken")
+Write("package.json", <updated package.json with scripts>)
+✅ Project initialized with dependencies
+
+# Task: Create user model
+Write("src/models/User.js", `
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
+const UserSchema = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+UserSchema.methods.comparePassword = async function(candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
+};
+
+module.exports = mongoose.model('User', UserSchema);
+`)
+✅ Created src/models/User.js (18 lines)
+
+# Task: Create auth routes
+Write("src/routes/auth.js", <actual route implementation>)
+✅ Created src/routes/auth.js (45 lines)
+
+3. Run validation:
+Bash("npm test")
+Bash("npm run lint")
+
+4. Update task status:
+TodoWrite([
+  { id: "setup", status: "completed" },
+  { id: "auth_model", status: "completed" },
+  { id: "auth_api", status: "completed" }
+])
 ```
 
 ## PRP File Structure Expected
