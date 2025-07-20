@@ -33,10 +33,13 @@
   - [x] Adjust code style for framework
   - [x] Use framework-specific best practices
   - [x] Project scaffolding templates (Express, Next.js)
-- [ ] **Dependency Management**
-  - [ ] Parse imports to find required packages
-  - [ ] Auto-install missing dependencies
-  - [ ] Version compatibility checking
+- [x] **Dependency Management** ✅
+  - [x] Parse imports to find required packages
+  - [x] Auto-install missing dependencies
+  - [x] Version compatibility checking
+  - [x] Package manager detection (npm/yarn/pnpm/bun)
+  - [x] Conflict resolution
+  - [x] Dev vs production dependency separation
 
 ## Phase 4: Agent Integration
 - [ ] **Agent Code Generation**
@@ -222,6 +225,14 @@
   - [x] Mongoose/Prisma schema generation
   - [x] CRUD template customization for specific models
   - [x] Relationship handling between models
+- [x] Dependency management system with:
+  - [x] Dependency manager library (`.claude/lib/dependency-manager.md`)
+  - [x] Import parsing from generated code
+  - [x] Template dependency collection
+  - [x] Version conflict resolution
+  - [x] Package manager detection
+  - [x] Auto-installation with fallback
+  - [x] package.json generation
 
 ## Quick Wins (Can do anytime)
 - [ ] Add more project examples

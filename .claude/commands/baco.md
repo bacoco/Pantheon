@@ -530,9 +530,20 @@ When implementing (Choice 1), follow this exact process:
      ```
    - For dependency installation:
      ```
-     # Collect dependencies from used templates
-     # Merge with PRP dependencies
-     Bash("cd {project-name} && npm install [all-dependencies]")
+     # Dependency management process:
+     1. Collect dependencies from all used templates
+     2. Parse imports from generated code files
+     3. Detect any additional packages needed
+     4. Check existing package.json for conflicts
+     5. Resolve version conflicts automatically
+     6. Generate or update package.json
+     7. Run appropriate package manager:
+        - Detect npm/yarn/pnpm/bun from lock files
+        - Install missing dependencies
+        - Show progress: "📦 Installing 12 dependencies..."
+     8. Handle failures gracefully:
+        - If auto-install fails, provide manual commands
+        - Log which packages failed
      ```
    - Show real-time progress after each action
 
@@ -542,34 +553,45 @@ When implementing (Choice 1), follow this exact process:
    Running: npx create-next-app...
    ✅ Project created successfully
    
-   Task: Create PromptInput component
-   Writing: src/components/PromptInput.tsx
-   ✅ Component created (45 lines)
+   Task: Generate models
+   Creating: src/types/task.ts
+   ✅ Task interface created
+   Creating: src/models/Task.ts
+   ✅ Mongoose schema created
+   
+   Task: Create task controller
+   Using template: rest-api-crud
+   Customizing for Task model...
+   Writing: src/controllers/taskController.ts
+   ✅ Controller created (245 lines)
    
    Generating tests...
-   Writing: src/components/__tests__/PromptInput.test.tsx
-   ✅ Test file created (62 lines)
-   ✅ Added 6 test cases:
-      - renders input field correctly
-      - handles text input changes
-      - validates character limit
-      - calls onSubmit with input value
-      - disables submit when empty
-      - has no accessibility violations
+   Writing: src/controllers/__tests__/taskController.test.ts
+   ✅ Test file created (185 lines)
+   ✅ Added 12 test cases for CRUD operations
    
-   Task: Set up API routes
-   Writing: src/app/api/enhance-prompt/route.ts
-   ✅ API route created (120 lines)
+   Task: Install dependencies
+   📦 Detected package manager: npm
+   📦 Analyzing imports and templates...
+   📦 Found 18 dependencies to install:
+      - express@^4.18.2
+      - mongoose@^7.6.0
+      - jsonwebtoken@^9.0.0
+      - bcryptjs@^2.4.3
+      - express-validator@^7.0.0
+      - cors@^2.8.5
+      - helmet@^7.1.0
+      - winston@^3.11.0
+      - dotenv@^16.3.1
+      + 9 dev dependencies
    
-   Generating tests...
-   Writing: src/app/api/__tests__/enhance-prompt.test.ts
-   ✅ Test file created (85 lines)
-   ✅ Added 5 test cases:
-      - returns 200 for valid prompt
-      - returns enhanced prompts array
-      - handles empty prompt with 400
-      - validates prompt length
-      - handles API errors gracefully
+   Running: npm install express mongoose jsonwebtoken...
+   ✅ Dependencies installed successfully
+   
+   Running: npm install -D @types/express jest supertest...
+   ✅ Dev dependencies installed successfully
+   
+   📦 Updated package.json with all dependencies
    ```
 
 5. **Validation After Each Phase**:
