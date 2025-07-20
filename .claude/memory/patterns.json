@@ -1,0 +1,129 @@
+{
+  "patterns": [
+    {
+      "id": "20240120-websocket-realtime",
+      "name": "WebSocket Real-time Communication Pattern",
+      "category": "implementation",
+      "complexity_level": "complex",
+      "description": "Scalable WebSocket implementation for real-time features",
+      "context": {
+        "task": "Implement real-time chat with presence indicators",
+        "complexity_profile": {
+          "technical": 8.5,
+          "domain": 6.0,
+          "scale": 8.0,
+          "team": 5.0,
+          "timeline": 7.0
+        }
+      },
+      "approach": {
+        "summary": "Use Socket.io with Redis adapter for horizontal scaling",
+        "key_decisions": [
+          "Socket.io for broader browser compatibility",
+          "Redis pub/sub for multi-server coordination",
+          "JWT tokens for authentication",
+          "Heartbeat mechanism for presence"
+        ],
+        "technologies": ["Node.js", "Socket.io", "Redis", "JWT"],
+        "architecture_pattern": "Event-driven with message broker"
+      },
+      "outcomes": {
+        "success_metrics": {
+          "implementation_time": "5 days",
+          "quality_score": 0.95,
+          "complexity_handled": "Excellent - scaled to 10k concurrent users"
+        },
+        "lessons_learned": [
+          "Redis adapter crucial for multi-server deployments",
+          "Client-side reconnection logic prevents user frustration",
+          "Presence requires careful timeout tuning"
+        ]
+      },
+      "applicability": {
+        "when_to_use": [
+          "Real-time features needed",
+          "Horizontal scaling required",
+          "Browser compatibility important"
+        ],
+        "when_not_to_use": [
+          "Simple request-response sufficient",
+          "Extremely low latency required (use raw WebSockets)",
+          "IoT or embedded devices"
+        ],
+        "prerequisites": [
+          "Redis infrastructure available",
+          "Team familiar with event-driven patterns"
+        ]
+      },
+      "usage_count": 3,
+      "success_rate": 0.93,
+      "last_used": "2024-01-15T10:30:00Z",
+      "tags": ["websocket", "real-time", "chat", "scaling", "redis"]
+    },
+    {
+      "id": "20240115-api-versioning",
+      "name": "REST API Versioning Strategy",
+      "category": "architecture",
+      "complexity_level": "moderate",
+      "description": "Backward-compatible API versioning approach",
+      "context": {
+        "task": "Design versioning strategy for public REST API",
+        "complexity_profile": {
+          "technical": 6.0,
+          "domain": 5.0,
+          "scale": 7.0,
+          "team": 6.5,
+          "timeline": 5.0
+        }
+      },
+      "approach": {
+        "summary": "URL-based versioning with deprecation strategy",
+        "key_decisions": [
+          "Version in URL path (v1, v2) for clarity",
+          "Sunset headers for deprecation notices",
+          "Feature flags for gradual rollout",
+          "Automated migration guides"
+        ],
+        "technologies": ["OpenAPI", "Express.js", "Feature Flags"],
+        "architecture_pattern": "API Gateway with version routing"
+      },
+      "outcomes": {
+        "success_metrics": {
+          "implementation_time": "3 days",
+          "quality_score": 0.88,
+          "complexity_handled": "Good - smooth migration for 200+ clients"
+        },
+        "lessons_learned": [
+          "Clear deprecation timeline essential",
+          "Automated testing across versions saves time",
+          "Client libraries need version compatibility matrix"
+        ]
+      },
+      "applicability": {
+        "when_to_use": [
+          "Public API with external consumers",
+          "Breaking changes unavoidable",
+          "Long-term API evolution expected"
+        ],
+        "when_not_to_use": [
+          "Internal microservices only",
+          "GraphQL APIs (built-in deprecation)",
+          "Prototype/MVP phase"
+        ],
+        "prerequisites": [
+          "API documentation infrastructure",
+          "Version control strategy defined"
+        ]
+      },
+      "usage_count": 5,
+      "success_rate": 0.85,
+      "last_used": "2024-01-18T14:45:00Z",
+      "tags": ["api", "versioning", "rest", "backwards-compatibility"]
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-01-20T09:00:00Z",
+    "total_patterns": 2
+  }
+}
