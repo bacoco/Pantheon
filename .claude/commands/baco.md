@@ -260,8 +260,17 @@ When invoked:
    - All features with their priorities and dependencies
    - Examples provided
    - Constraints and considerations
-3. Generate a comprehensive development plan including:
+3. **Analyze available templates**:
+   - Scan `.claude/templates/` for applicable patterns
+   - Match templates to features based on:
+     - Framework compatibility
+     - Feature requirements
+     - Technology stack
+   - Identify template combinations needed
+   - Note any features requiring custom implementation
+4. Generate a comprehensive development plan including:
    - Detected coding conventions (based on described examples)
+   - **Template utilization strategy**
    - Recommended team composition based on requirements
    - Implementation phases respecting dependencies
    - Specific steps for each feature
@@ -279,6 +288,12 @@ Display the plan in this format:
 📐 Detected Patterns:
    • [Inferred patterns from examples]
 
+🧩 Available Templates:
+   • Authentication: jwt-auth-express (matches User Login feature)
+   • CRUD Operations: rest-api-crud (matches Product Management)
+   • Form Handling: dynamic-form-app-router (matches Contact Form)
+   • [Other matching templates...]
+
 👥 Recommended Team:
    • Winston (Architect): System design and architecture
      Reason: Required for all projects
@@ -288,6 +303,7 @@ Display the plan in this format:
 
 1. [Feature Name] [PRIORITY]
    Dependencies: [if any]
+   Template: [matching template name or "Custom implementation"]
    Relevant Examples: [matching examples]
    Steps:
       1. [Specific implementation step]
@@ -297,6 +313,7 @@ Display the plan in this format:
 
 Phase 1: Foundation
 Features: [features with no dependencies]
+Templates Used: [list of templates]
 Duration: [estimate]
 
 [Additional phases...]
@@ -431,23 +448,51 @@ When implementing (Choice 1), follow this exact process:
    ])
    ```
 
-3. **Execute Each Task**:
+3. **Execute Each Task with Template Integration**:
    - All commands run in project directory:
+   - **Check for applicable templates**:
+     ```
+     For each feature in PRP:
+       1. Search .claude/templates/ for matching patterns
+       2. Select templates based on:
+          - Framework match (Next.js, Express, etc.)
+          - Feature tags (auth, crud, api, etc.)
+          - Dependencies available
+       3. Customize template variables:
+          - {{projectName}} → actual project name
+          - {{modelName}} → entity names from PRP
+          - Adapt to detected conventions
+     ```
    - For project setup:
      ```
      Bash("cd {project-name} && npx create-next-app@latest . --typescript --tailwind --app")
      ```
-   - For file creation (paths relative to project directory):
+   - For file creation with templates and tests:
      ```
-     Write("{project-name}/src/components/PromptInput.tsx", <component code from PRP>)
+     # If matching template found:
+     1. Load template content
+     2. Customize for project
+     3. Write("{project-name}/path/to/file", customized_template_content)
+     4. Generate corresponding test file:
+        - Analyze component/function structure
+        - Select appropriate test template
+        - Generate test cases
+        - Write("{project-name}/path/to/__tests__/file.test.tsx", test_content)
+     
+     # If no template:
+     1. Write("{project-name}/src/components/PromptInput.tsx", <component code from PRP>)
+     2. Generate test based on code analysis
+     3. Write("{project-name}/src/components/__tests__/PromptInput.test.tsx", test_content)
      ```
    - For dependency installation:
      ```
-     Bash("cd {project-name} && npm install replicate react-zoom-pan-pinch")
+     # Collect dependencies from used templates
+     # Merge with PRP dependencies
+     Bash("cd {project-name} && npm install [all-dependencies]")
      ```
    - Show real-time progress after each action
 
-4. **Example Implementation Sequence**:
+4. **Example Implementation Sequence with Test Generation**:
    ```
    Task: Initialize project
    Running: npx create-next-app...
@@ -457,14 +502,42 @@ When implementing (Choice 1), follow this exact process:
    Writing: src/components/PromptInput.tsx
    ✅ Component created (45 lines)
    
+   Generating tests...
+   Writing: src/components/__tests__/PromptInput.test.tsx
+   ✅ Test file created (62 lines)
+   ✅ Added 6 test cases:
+      - renders input field correctly
+      - handles text input changes
+      - validates character limit
+      - calls onSubmit with input value
+      - disables submit when empty
+      - has no accessibility violations
+   
    Task: Set up API routes
    Writing: src/app/api/enhance-prompt/route.ts
    ✅ API route created (120 lines)
+   
+   Generating tests...
+   Writing: src/app/api/__tests__/enhance-prompt.test.ts
+   ✅ Test file created (85 lines)
+   ✅ Added 5 test cases:
+      - returns 200 for valid prompt
+      - returns enhanced prompts array
+      - handles empty prompt with 400
+      - validates prompt length
+      - handles API errors gracefully
    ```
 
 5. **Validation After Each Phase**:
    - Run build commands in project directory: `cd {project-name} && npm run build`
    - Run type checking: `cd {project-name} && npm run typecheck`
+   - **Run generated tests**: `cd {project-name} && npm test`
+   - Show test results and coverage:
+     ```
+     Test Suites: 4 passed, 4 total
+     Tests:       22 passed, 22 total
+     Coverage:    85% statements, 78% branches
+     ```
    - Show any errors and offer to fix them
    - Only proceed to next phase after validation passes
 
