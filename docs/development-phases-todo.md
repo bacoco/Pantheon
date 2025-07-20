@@ -214,6 +214,14 @@
   - [x] Express TypeScript scaffold
   - [x] Next.js App Router scaffold
   - [x] Complete project structure with configs
+- [x] Model generation system with:
+  - [x] Model generator library (`.claude/lib/model-generator.md`)
+  - [x] String utilities library (`.claude/lib/string-utils.md`)
+  - [x] Entity extraction from feature descriptions
+  - [x] TypeScript interface generation
+  - [x] Mongoose/Prisma schema generation
+  - [x] CRUD template customization for specific models
+  - [x] Relationship handling between models
 
 ## Quick Wins (Can do anytime)
 - [ ] Add more project examples

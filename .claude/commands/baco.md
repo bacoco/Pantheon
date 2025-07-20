@@ -263,7 +263,12 @@ When invoked:
    - All features with their priorities and dependencies
    - Examples provided
    - Constraints and considerations
-3. **Analyze available templates**:
+3. **Extract models and entities**:
+   - Parse feature descriptions for entities and fields
+   - Detect relationships between models
+   - Identify validation rules and constraints
+   - Generate model specifications
+4. **Analyze available templates**:
    - Scan `.claude/templates/` for applicable patterns
    - Match templates to features based on:
      - Framework compatibility
@@ -271,7 +276,8 @@ When invoked:
      - Technology stack
    - Identify template combinations needed
    - Note any features requiring custom implementation
-4. Generate a comprehensive development plan including:
+5. Generate a comprehensive development plan including:
+   - **Detected models and their relationships**
    - Detected coding conventions (based on described examples)
    - **Template utilization strategy**
    - Recommended team composition based on requirements
@@ -287,6 +293,15 @@ Display the plan in this format:
 👤 Author: [author]
 🔢 Total Features: [count]
 📊 Complexity: [Simple/Moderate/Complex]
+
+🗂️ Detected Models:
+   • User
+     - Fields: email, password, name
+     - Relations: has many Tasks
+   • Task
+     - Fields: title, description, status, priority, dueDate
+     - Relations: belongs to User (assignee)
+   • [Other models...]
 
 📐 Detected Patterns:
    • [Inferred patterns from examples]
@@ -306,6 +321,7 @@ Display the plan in this format:
 
 1. [Feature Name] [PRIORITY]
    Dependencies: [if any]
+   Models: [User, Task]
    Template: [matching template name or "Custom implementation"]
    Relevant Examples: [matching examples]
    Steps:
@@ -316,6 +332,7 @@ Display the plan in this format:
 
 Phase 1: Foundation
 Features: [features with no dependencies]
+Models Generated: [User, Task]
 Templates Used: [list of templates]
 Duration: [estimate]
 
@@ -487,9 +504,18 @@ When implementing (Choice 1), follow this exact process:
      ```
    - For file creation with templates and tests:
      ```
+     # Generate models first:
+     1. For each detected entity:
+        - Generate TypeScript interface
+        - Generate database schema (Mongoose/Prisma)
+        - Write model files to project
+     
      # If matching template found:
      1. Load template content
-     2. Customize for project
+     2. Customize for project and specific models:
+        - Replace generic "Item" with actual model names
+        - Inject model-specific fields and validations
+        - Add relationship handling
      3. Write("{project-name}/path/to/file", customized_template_content)
      4. Generate corresponding test file:
         - Analyze component/function structure
