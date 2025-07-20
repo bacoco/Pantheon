@@ -28,11 +28,41 @@ cd BACO
 /baco init
 ```
 
-This starts an interactive conversation where BACO helps you define your project through intelligent questions. BACO will:
-- Ask about your project type and goals
-- Help identify and prioritize features
-- Analyze any documentation or examples you provide
-- Generate a customized `baco.md` file based on your needs
+This starts an interactive conversation where BACO helps you define your project:
+
+**Example conversation:**
+```
+BACO: What type of application are you building?
+You: A REST API with FastAPI
+
+BACO: Great choice! Loading FastAPI best practices...
+      What's the main purpose of your API?
+You: Task management for teams
+
+BACO: Perfect! Who are your target users?
+You: Small businesses, 5-50 people per team
+
+BACO: Let's explore features. What are the core features?
+You: User auth, create/edit tasks, assign to team members
+
+BACO: I'll organize these as:
+      ✅ User Authentication (JWT-based)
+      ✅ Task Management (CRUD operations)
+      ✅ Team Collaboration
+      
+      Would you like me to suggest related features?
+You: Yes
+
+BACO: Based on task management apps, consider:
+      - Real-time updates
+      - Search and filters
+      - Analytics dashboard
+      - Notifications
+      
+[... continues gathering requirements ...]
+
+BACO: Generating your customized baco.md file...
+```
 
 For a quick template instead, use: `/baco init --template`
 
@@ -97,7 +127,8 @@ View all examples in the `examples/` directory.
 
 ## Core Commands
 
-- `/baco init` - Create a project definition template
+- `/baco init` - Start interactive project setup conversation
+- `/baco init --template` - Create a basic template for manual editing
 - `/baco validate` - Check your baco.md syntax
 - `/baco plan` - Generate a development plan
 - `/baco execute` - Create implementation guide
