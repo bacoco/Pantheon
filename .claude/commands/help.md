@@ -122,9 +122,16 @@ Additional context...
 ```
 
 See the `examples/` directory for complete examples:
-- `fastapi-task-manager.baco.md` - Web API with authentication
-- `react-dashboard.baco.md` - Frontend dashboard  
-- `cli-tool.baco.md` - Command-line tool
+- `baco-orchestrator.baco.md` - BACO itself (meta-example)
+- `ecommerce-platform.baco.md` - E-commerce platform
+- `saas-dashboard.baco.md` - Multi-tenant SaaS
+- `chat-messaging.baco.md` - Real-time chat
+- `video-streaming.baco.md` - Video platform
+- `cms-platform.baco.md` - Content management
+- `analytics-platform.baco.md` - Data analytics
+- `ml-api-service.baco.md` - Machine learning API
+- `developer-tools.baco.md` - Developer tools
+- And more...
 
 ## Tips for Effective Use
 

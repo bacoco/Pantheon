@@ -18,10 +18,15 @@ BACO now supports a simplified workflow using `baco.md` files for project config
 /baco execute
 ```
 
-See the `examples/` directory for complete examples:
-- `fastapi-task-manager.baco.md` - Full-featured web API
-- `react-dashboard.baco.md` - Interactive frontend dashboard
-- `cli-tool.baco.md` - Command-line automation tool
+See the `examples/` directory for complete examples across various domains:
+- **E-commerce**: `ecommerce-platform.baco.md`
+- **SaaS**: `saas-dashboard.baco.md`
+- **Mobile**: `mobile-backend.baco.md`
+- **Real-time**: `chat-messaging.baco.md`, `video-streaming.baco.md`
+- **Developer Tools**: `developer-tools.baco.md`, `api-gateway.baco.md`
+- **Data/ML**: `analytics-platform.baco.md`, `ml-api-service.baco.md`
+- **Content**: `cms-platform.baco.md`
+- And more...
 
 ## Usage
 
