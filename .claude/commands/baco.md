@@ -21,7 +21,108 @@ Show available subcommands and check for baco.md file:
 - If no baco.md: "No baco.md file found. Run `/baco init` to create one."
 
 ### `/baco init`
-Create a template baco.md file by outputting the following content:
+Start an interactive project definition session. When invoked:
+
+1. **Check for --template flag**: If user types `/baco init --template`, provide the basic template (see below)
+2. **Otherwise, start interactive session**:
+
+#### Interactive Session Flow:
+
+**Step 1: Welcome & Context**
+```
+🎯 Welcome to BACO Interactive Project Setup!
+
+I'll help you create a comprehensive project definition through conversation.
+This will help me understand your needs and generate a customized baco.md file.
+
+Let's start with the basics...
+```
+
+**Step 2: Project Discovery**
+Ask these questions in sequence, adapting based on responses:
+
+```
+1️⃣ What type of application are you building?
+   (e.g., Web App, REST API, CLI Tool, Mobile Backend, Desktop App, etc.)
+
+[Wait for response, then ask follow-up based on type]
+
+2️⃣ What's the main purpose or problem it solves?
+   
+3️⃣ Who are your target users?
+   (e.g., developers, businesses, consumers, internal team)
+
+4️⃣ What's the expected scale?
+   (e.g., prototype, small team use, enterprise, global service)
+
+5️⃣ Do you have a timeline or deadline?
+```
+
+**Step 3: Feature Exploration**
+```
+Now let's explore your features. I'll help you organize them by priority.
+
+What are the core features your application must have?
+(List them one by one, and I'll help structure them)
+```
+
+For each feature mentioned:
+- Ask for more details if vague
+- Identify dependencies between features
+- Suggest related features based on project type
+- Classify priority (HIGH/MEDIUM/LOW)
+
+**Step 4: Technical Deep Dive**
+```
+Let's talk about technical requirements...
+
+🛠️ What technologies/frameworks are you planning to use?
+   (or would you like suggestions based on your requirements?)
+
+📚 Do you have any documentation or examples to share?
+   (URLs, file paths, or paste code examples)
+
+🔧 Any specific technical constraints?
+   (database, performance, security, compliance)
+```
+
+When user provides documentation/examples:
+- Use WebFetch to analyze documentation
+- Extract patterns from code examples
+- Build domain expertise
+- Note conventions and best practices
+
+**Step 5: Constraints & Considerations**
+```
+Almost done! Let's capture any constraints or special considerations...
+
+- Performance requirements?
+- Security/compliance needs?
+- Integration requirements?
+- Budget or resource limitations?
+- Other important factors?
+```
+
+**Step 6: Review & Generate**
+```
+Great! Based on our conversation, here's what I understand:
+
+📋 Project Type: [summarize]
+🎯 Main Purpose: [summarize]
+👥 Target Users: [summarize]
+📏 Scale: [summarize]
+⚡ Key Features: [list with priorities]
+🛠️ Tech Stack: [summarize]
+⚠️ Constraints: [summarize]
+
+Shall I generate your customized baco.md file? (yes/no/refine)
+```
+
+If "refine", ask what needs adjustment.
+If "yes", generate customized baco.md with all gathered information.
+
+#### Template Mode (--template flag):
+If user specifically requests template mode with `/baco init --template`:
 
 ```yaml
 ---
@@ -67,6 +168,39 @@ fit in the other sections.
 ```
 
 Tell the user: "✅ Created baco.md template. Copy this to a file named `baco.md` and edit it with your project requirements."
+
+#### Smart Feature Suggestions:
+Based on project type, proactively suggest common features:
+- **E-commerce**: payment processing, shopping cart, inventory, user accounts
+- **SaaS**: multi-tenancy, billing, analytics, team management
+- **Chat/Social**: real-time messaging, presence, notifications, media sharing
+- **API Service**: authentication, rate limiting, documentation, monitoring
+- **Enterprise**: SSO, audit logs, compliance, role-based access
+
+#### Pattern Detection from Examples:
+When analyzing provided code:
+- Naming conventions (camelCase, snake_case, etc.)
+- File organization patterns
+- Testing approaches
+- Error handling patterns
+- Documentation style
+- Framework-specific patterns
+
+#### Documentation Analysis:
+When user provides documentation URLs:
+- Extract key concepts and terminology
+- Identify required vs optional features
+- Note performance/security guidelines
+- Capture best practices
+- Reference in generated baco.md
+
+### Interactive Init Memory:
+Throughout the conversation:
+- Track all discovered information in structured format
+- Allow user to correct/refine any aspect
+- Build comprehensive context
+- Use for intelligent suggestions
+- Summarize before final generation
 
 ### `/baco validate`
 When invoked:

@@ -28,7 +28,13 @@ cd BACO
 /baco init
 ```
 
-This generates a template `baco.md` file. Edit it to describe your project:
+This starts an interactive conversation where BACO helps you define your project through intelligent questions. BACO will:
+- Ask about your project type and goals
+- Help identify and prioritize features
+- Analyze any documentation or examples you provide
+- Generate a customized `baco.md` file based on your needs
+
+For a quick template instead, use: `/baco init --template`
 
 ```yaml
 ---

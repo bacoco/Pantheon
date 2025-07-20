@@ -8,8 +8,11 @@ BACO now supports a simplified workflow using `baco.md` files for project config
 
 ### Quick Start with baco.md
 ```
-# 1. Create a baco.md file with your project requirements
+# 1. Create a baco.md file through interactive conversation
 /baco init
+
+# Or use the template for manual editing
+/baco init --template
 
 # 2. Generate a development plan
 /baco plan
@@ -54,8 +57,11 @@ Simply type any of the following commands in Claude:
 
 ### New BACO Commands
 ```
-# Initialize a new baco.md file
+# Start interactive project setup (recommended)
 /baco init
+
+# Create a basic template for manual editing
+/baco init --template
 
 # Validate your baco.md file
 /baco validate
@@ -66,6 +72,13 @@ Simply type any of the following commands in Claude:
 # Execute the development plan
 /baco execute
 ```
+
+The interactive `/baco init` will:
+- Guide you through project requirements with intelligent questions
+- Analyze documentation and code examples you provide
+- Detect patterns and conventions from your examples
+- Generate a customized baco.md file based on the conversation
+- Suggest features and best practices for your project type
 
 ## The baco.md File Format
 

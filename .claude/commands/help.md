@@ -20,7 +20,8 @@ BACO now supports a simplified workflow using `baco.md` files:
 Main command for simplified workflow using baco.md files.
 
 **Subcommands**:
-- `/baco init` - Create a template baco.md file
+- `/baco init` - Start interactive project setup conversation
+- `/baco init --template` - Create a basic template baco.md file
 - `/baco plan` - Generate development plan from baco.md
 - `/baco validate` - Validate baco.md syntax and structure
 - `/baco execute` - Execute the development plan
@@ -152,10 +153,19 @@ See the `examples/` directory for complete examples:
 /generate-prp Add a search function to the user list
 ```
 
-**New baco.md Approach:**
+**Template baco.md Approach:**
+```
+/baco init --template
+# Edit baco.md with search feature requirements
+/baco plan
+/baco execute
+```
+
+**Interactive baco.md Approach (Recommended):**
 ```
 /baco init
-# Edit baco.md with search feature requirements
+# Answer questions about your project
+# BACO analyzes your needs and generates customized baco.md
 /baco plan
 /baco execute
 ```
@@ -169,12 +179,17 @@ See the `examples/` directory for complete examples:
 /generate-prp Implement operational transformation for collaborative editing
 ```
 
-**New baco.md Approach:**
+**Interactive baco.md Approach (Recommended):**
 ```
 /baco init
-# Add multiple features, examples, and constraints to baco.md
-/baco validate  # Check for errors
-/baco plan      # Review comprehensive plan
+# BACO guides you through:
+#   - Project type and architecture questions
+#   - Feature discovery and prioritization
+#   - Technical requirements gathering
+#   - Documentation and example analysis
+# Generates comprehensive baco.md automatically
+
+/baco plan      # Review AI-generated plan
 /baco execute   # Implement with full context
 ```
 
