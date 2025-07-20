@@ -28,10 +28,11 @@
   - [x] Extract and use inline code examples
   - [x] Generate tests alongside implementation
   - [x] Add proper error handling patterns
-- [ ] **Framework Detection**
-  - [ ] Auto-detect from package.json
-  - [ ] Adjust code style for framework
-  - [ ] Use framework-specific best practices
+- [x] **Framework Detection** ✅
+  - [x] Auto-detect from package.json
+  - [x] Adjust code style for framework
+  - [x] Use framework-specific best practices
+  - [x] Project scaffolding templates (Express, Next.js)
 - [ ] **Dependency Management**
   - [ ] Parse imports to find required packages
   - [ ] Auto-install missing dependencies
@@ -200,6 +201,19 @@
   - [x] Validation error handling patterns
   - [x] Async error handling patterns
   - [x] Integration with code generation workflow
+- [x] System testing and issue identification:
+  - [x] Created test project (Task Management API)
+  - [x] Documented 8 critical issues
+  - [x] Prioritized fixes based on impact
+- [x] Framework detection system with:
+  - [x] Framework detector library (`.claude/lib/framework-detector.md`)
+  - [x] Package.json analysis
+  - [x] Code style adjustment
+  - [x] Build tool detection
+- [x] Project scaffolding templates:
+  - [x] Express TypeScript scaffold
+  - [x] Next.js App Router scaffold
+  - [x] Complete project structure with configs
 
 ## Quick Wins (Can do anytime)
 - [ ] Add more project examples

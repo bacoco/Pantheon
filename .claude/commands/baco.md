@@ -51,6 +51,9 @@ After user provides project name:
 - If exists: "Directory 'project-name' already exists. Use it anyway? (y/n)"
 - Create directory: `mkdir -p project-name`
 - Show: "✅ Created project directory: ./project-name/"
+- **Framework Detection**: Check for existing package.json or config files
+  - If framework detected: "🔍 Detected: [Framework]. Use this configuration? (y/n)"
+  - If no framework: Continue to Step 2
 
 **Step 2: Project Discovery**
 Ask these questions in sequence, adapting based on responses:
@@ -450,12 +453,22 @@ When implementing (Choice 1), follow this exact process:
 
 3. **Execute Each Task with Template Integration**:
    - All commands run in project directory:
+   - **Framework Detection and Setup**:
+     ```
+     1. Detect framework from package.json or baco.md
+     2. If no framework detected, infer from project type
+     3. Scaffold project structure based on framework:
+        - Create directories (src, tests, etc.)
+        - Generate tsconfig.json if TypeScript
+        - Create .env.example with required variables
+        - Set up .gitignore for framework
+     ```
    - **Check for applicable templates**:
      ```
      For each feature in PRP:
        1. Search .claude/templates/ for matching patterns
        2. Select templates based on:
-          - Framework match (Next.js, Express, etc.)
+          - Detected framework (Next.js, Express, etc.)
           - Feature tags (auth, crud, api, etc.)
           - Dependencies available
        3. Customize template variables:
