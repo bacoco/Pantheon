@@ -146,6 +146,7 @@ Thumbs.db
 # Project specific
 *.yaml
 !examples/*.yaml
+!.claude/data/*.yaml
 .baco/
 logs/
 

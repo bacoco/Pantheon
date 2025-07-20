@@ -6,11 +6,42 @@ Instructions for analyzing documentation and examples during BACO init to build 
 
 Extract actionable insights from documentation URLs, code examples, and other resources provided during the interactive init process. Build deep understanding of the technologies and patterns the user wants to follow.
 
+## Integration with Cache System
+
+This analyzer works with the documentation cache (`documentation-cache.md`) to provide instant insights and avoid redundant analysis. It also leverages the framework knowledge base for immediate value.
+
 ## Analysis Workflow
+
+### 0. Cache-First Approach
+
+Before analyzing any documentation:
+
+```yaml
+cache_check_workflow:
+  1_session_cache:
+    - Check if URL was analyzed in current session
+    - Return immediately if found
+    - Show user: "Using cached analysis from earlier"
+    
+  2_daily_cache:
+    - Check if URL analyzed within 24 hours
+    - Validate cache isn't expired
+    - Show user: "Using cached documentation insights"
+    
+  3_knowledge_base:
+    - Detect framework from URL pattern
+    - Load pre-populated knowledge if available
+    - Show user: "Loading FastAPI knowledge base..."
+    
+  4_fresh_fetch:
+    - Only fetch if no cache hit
+    - Store results in all cache levels
+    - Update knowledge base with new patterns
+```
 
 ### 1. Documentation URL Analysis
 
-When user provides documentation URLs, use WebFetch with targeted prompts:
+When user provides documentation URLs (and no cache hit), use WebFetch with targeted prompts:
 
 ```yaml
 analysis_targets:
@@ -299,11 +330,64 @@ analysis_results:
       - "API versioning support"
 ```
 
+## Knowledge Base Integration
+
+### Instant Framework Insights
+
+When user mentions a framework, immediately access knowledge base:
+
+```yaml
+framework_detection:
+  triggers:
+    - "I'm using React" → Load React knowledge
+    - "FastAPI backend" → Load FastAPI patterns
+    - "PostgreSQL database" → Load PostgreSQL best practices
+    
+  instant_response:
+    "I see you're using {framework}. Based on my knowledge base:
+    - Common structure: {structure_pattern}
+    - Best practices: {top_practices}
+    - Popular libraries: {ecosystem}
+    
+    Would you like me to analyze the official docs for the latest patterns?"
+    
+  benefits:
+    - Immediate value without waiting
+    - Shows expertise from the start
+    - Guides toward best practices
+    - Reduces documentation fetching
+```
+
+### Pre-Populated Suggestions
+
+Based on framework combination:
+
+```yaml
+stack_suggestions:
+  react_express:
+    automatic_includes:
+      - "CORS setup will be needed"
+      - "JWT authentication pattern"
+      - "Proxy configuration for development"
+      
+  fastapi_postgres:
+    automatic_includes:
+      - "SQLAlchemy + Alembic for ORM/migrations"
+      - "Connection pooling configuration"
+      - "Async database drivers (asyncpg)"
+      
+  django_react:
+    automatic_includes:
+      - "Django REST Framework for API"
+      - "django-cors-headers for CORS"
+      - "Token authentication setup"
+```
+
 ## Integration with Conversation
 
 ### Contextual Questions
 
-Based on analysis, ask informed questions:
+Based on analysis AND knowledge base, ask informed questions:
 
 ```
 "I see the FastAPI docs emphasize async handlers. 

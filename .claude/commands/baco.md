@@ -87,10 +87,13 @@ Let's talk about technical requirements...
 ```
 
 When user provides documentation/examples:
-- Use WebFetch to analyze documentation
+- Check documentation cache first for instant insights
+- If framework detected, load knowledge base immediately
+- Use WebFetch to analyze new documentation (if not cached)
 - Extract patterns from code examples
 - Build domain expertise
 - Note conventions and best practices
+- Cache results for future use
 
 **Step 5: Constraints & Considerations**
 ```
@@ -176,6 +179,26 @@ Based on project type, proactively suggest common features:
 - **Chat/Social**: real-time messaging, presence, notifications, media sharing
 - **API Service**: authentication, rate limiting, documentation, monitoring
 - **Enterprise**: SSO, audit logs, compliance, role-based access
+
+#### Knowledge Base Integration:
+When user mentions specific technologies:
+- **Instant Loading**: "I see you're using React. Loading React best practices..."
+- **Framework Insights**: Show common patterns, project structure, ecosystem
+- **Stack Suggestions**: Recommend complementary technologies
+- **Common Pitfalls**: Warn about framework-specific gotchas
+- **No Wait Time**: Knowledge base provides immediate value
+
+Example:
+```
+User: "I'm building with FastAPI"
+BACO: "Great choice! FastAPI is excellent for modern Python APIs. From my knowledge base:
+       • Project structure: app/ with api/, models/, schemas/ subdirectories
+       • Common libraries: SQLAlchemy, Pydantic, python-jose for auth
+       • Best practices: Use async handlers, dependency injection, type hints
+       • Testing: pytest with httpx for async tests
+       
+       Would you like me to analyze the latest FastAPI docs for updates?"
+```
 
 #### Pattern Detection from Examples:
 When analyzing provided code:
