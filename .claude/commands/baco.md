@@ -462,6 +462,11 @@ When implementing (Choice 1), follow this exact process:
           - {{projectName}} → actual project name
           - {{modelName}} → entity names from PRP
           - Adapt to detected conventions
+       4. ALWAYS include error handling:
+          - For Express APIs: Use global-error-handler template
+          - For React apps: Include react-error-boundary template
+          - For forms: Apply validation-error-handling patterns
+          - For async operations: Use async-error-patterns
      ```
    - For project setup:
      ```
