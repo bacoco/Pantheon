@@ -1,15 +1,15 @@
 # BACO Input Parser Instructions
 
-This document provides instructions for parsing and validating `baco.in` files when BACO commands need them.
+This document provides instructions for parsing and validating `baco.md` files when BACO commands need them.
 
 ## ACTIVATION
-When any BACO command needs to parse a `baco.in` file, follow these instructions.
+When any BACO command needs to parse a `baco.md` file, follow these instructions.
 
 ## PARSING INSTRUCTIONS
 
-### 1. Understanding the baco.in Structure
+### 1. Understanding the baco.md Structure
 
-A valid `baco.in` file has:
+A valid `baco.md` file has:
 - **YAML frontmatter** (optional) between `---` markers at the start
 - **Markdown sections** with specific headers
 - **Structured content** under each section
@@ -139,9 +139,9 @@ When examples section is empty or sparse:
 
 ## USAGE IN COMMANDS
 
-When a command needs to parse baco.in:
+When a command needs to parse baco.md:
 1. First check if the content has already been shared
-2. If not, ask: "Please share your baco.in file content so I can analyze it"
+2. If not, ask: "Please share your baco.md file content so I can analyze it"
 3. Parse according to these instructions
 4. Report any validation issues with helpful suggestions
 5. If valid, proceed with the command's purpose

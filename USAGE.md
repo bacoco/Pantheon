@@ -2,13 +2,13 @@
 
 This file demonstrates how to use BACO commands in Claude Code.
 
-## New: Simplified Workflow with baco.in
+## New: Simplified Workflow with baco.md
 
-BACO now supports a simplified workflow using `baco.in` files for project configuration:
+BACO now supports a simplified workflow using `baco.md` files for project configuration:
 
-### Quick Start with baco.in
+### Quick Start with baco.md
 ```
-# 1. Create a baco.in file with your project requirements
+# 1. Create a baco.md file with your project requirements
 /baco init
 
 # 2. Generate a development plan
@@ -18,7 +18,10 @@ BACO now supports a simplified workflow using `baco.in` files for project config
 /baco execute
 ```
 
-See `examples/baco.in.example` for a complete example.
+See the `examples/` directory for complete examples:
+- `fastapi-task-manager.baco.md` - Full-featured web API
+- `react-dashboard.baco.md` - Interactive frontend dashboard
+- `cli-tool.baco.md` - Command-line automation tool
 
 ## Usage
 
@@ -46,22 +49,22 @@ Simply type any of the following commands in Claude:
 
 ### New BACO Commands
 ```
-# Initialize a new baco.in file
+# Initialize a new baco.md file
 /baco init
 
-# Validate your baco.in file
+# Validate your baco.md file
 /baco validate
 
-# Generate a plan from baco.in
+# Generate a plan from baco.md
 /baco plan
 
 # Execute the development plan
 /baco execute
 ```
 
-## The baco.in File Format
+## The baco.md File Format
 
-The `baco.in` file is a structured way to define your project requirements:
+The `baco.md` file is a structured way to define your project requirements:
 
 ```yaml
 ---
@@ -125,13 +128,13 @@ Try this sequence:
 - **Customizable**: Modify prompts and agents as needed
 - **Comprehensive**: From analysis to implementation guide
 
-## Integration: baco.in with Existing Commands
+## Integration: baco.md with Existing Commands
 
-When a `baco.in` file is present, existing commands can leverage it:
+When a `baco.md` file is present, existing commands can leverage it:
 
-- **`/analyze`** - Considers all features and constraints from baco.in
-- **`/orchestrate`** - Uses recommended team composition from baco.in analysis
-- **`/generate-prp`** - Incorporates all baco.in content into the PRP
+- **`/analyze`** - Considers all features and constraints from baco.md
+- **`/orchestrate`** - Uses recommended team composition from baco.md analysis
+- **`/generate-prp`** - Incorporates all baco.md content into the PRP
 
 ### Workflow Comparison
 
@@ -142,10 +145,10 @@ When a `baco.in` file is present, existing commands can leverage it:
 /generate-prp "Build a task management API with auth"
 ```
 
-**New baco.in Workflow:**
+**New baco.md Workflow:**
 ```
 /baco init          # Create template
-# Edit baco.in with your requirements
+# Edit baco.md with your requirements
 /baco plan          # Analyze and plan
 /baco execute       # Run orchestration and generation
 ```

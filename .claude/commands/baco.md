@@ -1,6 +1,6 @@
 # /baco - Simplified BACO Workflow Command
 
-The primary command for the simplified BACO workflow using `baco.in` files.
+The primary command for the simplified BACO workflow using `baco.md` files.
 
 ## ACTIVATION
 When the user runs `/baco` or any `/baco [subcommand]`, activate this simplified workflow.
@@ -16,12 +16,12 @@ This is a prompt-based system. When invoked, you should:
 ## COMMAND HANDLERS
 
 ### `/baco` (no subcommand)
-Show available subcommands and check for baco.in file:
-- If baco.in exists: "📄 Found baco.in file. Run `/baco plan` to generate a development plan."
-- If no baco.in: "No baco.in file found. Run `/baco init` to create one."
+Show available subcommands and check for baco.md file:
+- If baco.md exists: "📄 Found baco.md file. Run `/baco plan` to generate a development plan."
+- If no baco.md: "No baco.md file found. Run `/baco init` to create one."
 
 ### `/baco init`
-Create a template baco.in file by outputting the following content:
+Create a template baco.md file by outputting the following content:
 
 ```yaml
 ---
@@ -66,11 +66,11 @@ Any additional notes, gotchas, or important context that doesn't
 fit in the other sections.
 ```
 
-Tell the user: "✅ Created baco.in template. Copy this to a file named `baco.in` and edit it with your project requirements."
+Tell the user: "✅ Created baco.md template. Copy this to a file named `baco.md` and edit it with your project requirements."
 
 ### `/baco validate`
 When invoked:
-1. Ask the user to share their baco.in file content
+1. Ask the user to share their baco.md file content
 2. Check for:
    - Valid YAML frontmatter between --- markers
    - At least one ## FEATURE: section
@@ -81,7 +81,7 @@ When invoked:
 
 ### `/baco plan`
 When invoked:
-1. Ask the user to share their baco.in file content (if not already shared)
+1. Ask the user to share their baco.md file content (if not already shared)
 2. Parse the content to understand:
    - Project type and metadata
    - All features with their priorities and dependencies
@@ -136,7 +136,7 @@ Duration: [estimate]
 
 ### `/baco execute`
 When invoked:
-1. Ensure a baco.in file has been shared/validated
+1. Ensure a baco.md file has been shared/validated
 2. Generate a comprehensive Product Requirements Prompt (PRP) that includes:
    - All features as goals
    - Detected coding conventions
@@ -155,10 +155,10 @@ When invoked:
 
 ## INTEGRATION WITH OTHER BACO COMMANDS
 
-When a baco.in file has been processed:
-- `/analyze` should consider all features and constraints from baco.in
+When a baco.md file has been processed:
+- `/analyze` should consider all features and constraints from baco.md
 - `/orchestrate` should use the recommended team composition
-- `/generate-prp` should incorporate all baco.in content
+- `/generate-prp` should incorporate all baco.md content
 - Store the parsed information in "memory" for the session
 
 ## ERROR HANDLING
@@ -171,7 +171,7 @@ Always provide helpful, specific error messages:
 
 ## EXAMPLE ANALYSIS
 
-When analyzing examples in baco.in:
+When analyzing examples in baco.md:
 1. Look for patterns in the described examples:
    - Technology stack mentioned
    - Architectural patterns described
@@ -187,5 +187,5 @@ When analyzing examples in baco.in:
 - This is a prompt-based system running in Claude Code
 - All "parsing" is done through your understanding of the content
 - Maintain consistency with the user's style and preferences
-- Be helpful and suggest improvements to their baco.in structure
+- Be helpful and suggest improvements to their baco.md structure
 - The goal is to make project planning and implementation more structured and successful

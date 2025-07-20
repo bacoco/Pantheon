@@ -2,14 +2,14 @@
 
 ACTIVATION: When user types `/help`, display available commands and usage.
 
-## 🆕 New: Simplified Workflow with baco.in
+## 🆕 New: Simplified Workflow with baco.md
 
-BACO now supports a simplified workflow using `baco.in` files:
+BACO now supports a simplified workflow using `baco.md` files:
 
 ### Quick Start
 ```bash
-/baco init     # Create a template baco.in file
-/baco plan     # Generate development plan from baco.in
+/baco init     # Create a template baco.md file
+/baco plan     # Generate development plan from baco.md
 /baco execute  # Execute the plan
 ```
 
@@ -17,18 +17,18 @@ BACO now supports a simplified workflow using `baco.in` files:
 
 ### 📄 BACO Commands (NEW)
 #### `/baco`
-Main command for simplified workflow using baco.in files.
+Main command for simplified workflow using baco.md files.
 
 **Subcommands**:
-- `/baco init` - Create a template baco.in file
-- `/baco plan` - Generate development plan from baco.in
-- `/baco validate` - Validate baco.in syntax and structure
+- `/baco init` - Create a template baco.md file
+- `/baco plan` - Generate development plan from baco.md
+- `/baco validate` - Validate baco.md syntax and structure
 - `/baco execute` - Execute the development plan
 
 **Usage**: 
 ```
 /baco init
-# Edit baco.in with your requirements
+# Edit baco.md with your requirements
 /baco plan
 ```
 
@@ -94,7 +94,7 @@ When using `/orchestrate`, these specialists may be activated:
 - **✅ Elena (QA)**: Testing strategy, user experience, quality assurance
 - **🔒 Marcus (Security)**: Threat modeling, security controls, compliance
 
-## The baco.in File Format
+## The baco.md File Format
 
 Create structured project requirements with YAML frontmatter and markdown sections:
 
@@ -121,11 +121,14 @@ Description of the feature...
 Additional context...
 ```
 
-See `examples/baco.in.example` for a complete example.
+See the `examples/` directory for complete examples:
+- `fastapi-task-manager.baco.md` - Web API with authentication
+- `react-dashboard.baco.md` - Frontend dashboard  
+- `cli-tool.baco.md` - Command-line tool
 
 ## Tips for Effective Use
 
-1. **Use baco.in for Complex Projects**: Structured requirements lead to better results
+1. **Use baco.md for Complex Projects**: Structured requirements lead to better results
 2. **Provide Examples**: BACO learns from your coding patterns
 3. **Be Specific**: The more context you provide, the better the analysis
 4. **Iterate**: Use analysis results to refine your orchestration requests
@@ -142,10 +145,10 @@ See `examples/baco.in.example` for a complete example.
 /generate-prp Add a search function to the user list
 ```
 
-**New baco.in Approach:**
+**New baco.md Approach:**
 ```
 /baco init
-# Edit baco.in with search feature requirements
+# Edit baco.md with search feature requirements
 /baco plan
 /baco execute
 ```
@@ -159,10 +162,10 @@ See `examples/baco.in.example` for a complete example.
 /generate-prp Implement operational transformation for collaborative editing
 ```
 
-**New baco.in Approach:**
+**New baco.md Approach:**
 ```
 /baco init
-# Add multiple features, examples, and constraints to baco.in
+# Add multiple features, examples, and constraints to baco.md
 /baco validate  # Check for errors
 /baco plan      # Review comprehensive plan
 /baco execute   # Implement with full context

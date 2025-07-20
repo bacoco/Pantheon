@@ -20,8 +20,8 @@ All without any external APIs - everything runs within Claude Code!
 
 ## ✨ New Features (v3.0)
 
-### 🆕 Simplified Workflow with baco.in
-- **Structured Project Definition**: Define all requirements in a single `baco.in` file
+### 🆕 Simplified Workflow with baco.md
+- **Structured Project Definition**: Define all requirements in a single `baco.md` file
 - **Automatic Convention Detection**: BACO learns from your examples
 - **Smart Team Composition**: Dynamic agent selection based on requirements
 - **Comprehensive Planning**: Multi-phase implementation plans with dependencies
@@ -47,7 +47,7 @@ All without any external APIs - everything runs within Claude Code!
    ```
    /baco init
    ```
-   Copy the template to a file named `baco.in` and customize it.
+   Copy the template to a file named `baco.md` and customize it.
 
 3. **Generate your development plan:**
    ```
@@ -96,9 +96,9 @@ BACO uses a **prompt-based architecture** inspired by BMAD-METHOD where Claude i
 └─────────────────────────────────────────┘
 ```
 
-## 📄 The baco.in File Format
+## 📄 The baco.md File Format
 
-The `baco.in` file provides a structured way to define your project requirements:
+The `baco.md` file provides a structured way to define your project requirements:
 
 ```yaml
 ---
@@ -130,14 +130,17 @@ Dependencies: User Authentication
 Additional context and requirements...
 ```
 
-See `examples/baco.in.example` for a complete example.
+See examples in the `examples/` directory:
+- `fastapi-task-manager.baco.md` - Web API with authentication
+- `react-dashboard.baco.md` - Frontend dashboard application
+- `cli-tool.baco.md` - Command-line tool
 
 ## 🛠️ Available Commands
 
 ### 📄 `/baco` - Simplified Workflow (NEW)
-Manage projects using structured `baco.in` files:
-- `/baco init` - Create a template baco.in file
-- `/baco validate` - Validate your baco.in syntax
+Manage projects using structured `baco.md` files:
+- `/baco init` - Create a template baco.md file
+- `/baco validate` - Validate your baco.md syntax
 - `/baco plan` - Generate a comprehensive development plan
 - `/baco execute` - Execute the plan and generate PRP
 
@@ -284,10 +287,10 @@ BACO/
 │   │   ├── generate-prp.md
 │   │   └── help.md
 │   ├── utils/                 # NEW: Utility instructions
-│   │   ├── baco-parser.md     # baco.in parsing logic
+│   │   ├── baco-parser.md     # baco.md parsing logic
 │   │   └── example-analyzer.md # Convention detection
 │   ├── schemas/               # NEW: File format schemas
-│   │   └── baco-in-schema.yaml
+│   │   └── baco-md-schema.yaml
 │   ├── agents/                # Enhanced agent definitions
 │   │   ├── baco-orchestrator.md
 │   │   ├── architect.md
@@ -310,9 +313,11 @@ BACO/
 │   │   └── README.md
 │   └── memory/               # Pattern storage
 │       └── patterns.json
-├── examples/
-│   └── baco.in.example       # NEW: Example project definition
-├── baco.md                   # Usage guide
+├── examples/                 # Example baco.md files
+│   ├── fastapi-task-manager.baco.md
+│   ├── react-dashboard.baco.md
+│   └── cli-tool.baco.md
+├── USAGE.md                  # Command reference and examples
 ├── implementation-summary.md # NEW: Implementation details
 └── README.md                 # This file
 ```
@@ -354,7 +359,7 @@ Edit `.claude/memory/patterns.json` to add or modify stored patterns
 
 ## 🚦 Best Practices
 
-1. **Use baco.in for Complex Projects** - Structure beats memory
+1. **Use baco.md for Complex Projects** - Structure beats memory
 2. **Start with Analysis** - Always understand complexity first
 3. **Use Orchestration for Complex Tasks** - Multiple perspectives prevent blind spots
 4. **Generate PRPs for Implementation** - Clear guides reduce ambiguity
@@ -373,7 +378,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📈 Roadmap
 
-- [x] Simplified workflow with baco.in files
+- [x] Simplified workflow with baco.md files
 - [ ] Visual complexity analysis
 - [ ] Team collaboration features
 - [ ] Pattern recommendation engine
@@ -383,7 +388,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ## 📋 Changelog
 
 ### v3.0 (Latest)
-- **NEW**: Simplified workflow with `baco.in` files
+- **NEW**: Simplified workflow with `baco.md` files
 - **NEW**: `/baco` command suite (init, validate, plan, execute)
 - **NEW**: Automatic convention detection from examples
 - **NEW**: Smart team composition based on requirements
@@ -413,7 +418,7 @@ Inspired by:
 - Gemini's technical analysis for the "simpler steering wheel" concept
 - The Claude Code community for feedback and ideas
 
-Special thanks to the v3.0 enhancement based on `gemini-technical-analysis.md` which introduced the structured `baco.in` workflow.
+Special thanks to the v3.0 enhancement based on `gemini-technical-analysis.md` which introduced the structured `baco.md` workflow.
 
 ---
 

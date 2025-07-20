@@ -3,7 +3,7 @@
 This document provides instructions for analyzing code examples to infer conventions, patterns, and best practices.
 
 ## ACTIVATION
-When BACO needs to analyze examples from baco.in or discover patterns in provided code.
+When BACO needs to analyze examples from baco.md or discover patterns in provided code.
 
 ## ANALYSIS INSTRUCTIONS
 
