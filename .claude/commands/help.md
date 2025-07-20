@@ -2,7 +2,35 @@
 
 ACTIVATION: When user types `/help`, display available commands and usage.
 
+## 🆕 New: Simplified Workflow with baco.in
+
+BACO now supports a simplified workflow using `baco.in` files:
+
+### Quick Start
+```bash
+/baco init     # Create a template baco.in file
+/baco plan     # Generate development plan from baco.in
+/baco execute  # Execute the plan
+```
+
 ## Available Commands
+
+### 📄 BACO Commands (NEW)
+#### `/baco`
+Main command for simplified workflow using baco.in files.
+
+**Subcommands**:
+- `/baco init` - Create a template baco.in file
+- `/baco plan` - Generate development plan from baco.in
+- `/baco validate` - Validate baco.in syntax and structure
+- `/baco execute` - Execute the development plan
+
+**Usage**: 
+```
+/baco init
+# Edit baco.in with your requirements
+/baco plan
+```
 
 ### 📊 `/analyze <task>`
 Perform multi-dimensional complexity analysis of a software development task.
@@ -66,26 +94,78 @@ When using `/orchestrate`, these specialists may be activated:
 - **✅ Elena (QA)**: Testing strategy, user experience, quality assurance
 - **🔒 Marcus (Security)**: Threat modeling, security controls, compliance
 
+## The baco.in File Format
+
+Create structured project requirements with YAML frontmatter and markdown sections:
+
+```yaml
+---
+version: 1.0
+project_type: "FastAPI Web Service"
+author: "Your Name"
+---
+
+## FEATURE: Feature Name
+Description of the feature...
+
+## EXAMPLES:
+- `./examples/pattern.py`: Description of example
+
+## DOCUMENTATION:
+- `https://docs.example.com`: Framework documentation
+
+## CONSTRAINTS:
+- Technical requirements and constraints
+
+## OTHER CONSIDERATIONS:
+Additional context...
+```
+
+See `examples/baco.in.example` for a complete example.
+
 ## Tips for Effective Use
 
-1. **Be Specific**: The more context you provide, the better the analysis
-2. **Iterate**: Use analysis results to refine your orchestration requests
-3. **Learn Continuously**: Record successful patterns to build institutional knowledge
-4. **Combine Commands**: Use analysis → orchestration → PRP generation for complex projects
+1. **Use baco.in for Complex Projects**: Structured requirements lead to better results
+2. **Provide Examples**: BACO learns from your coding patterns
+3. **Be Specific**: The more context you provide, the better the analysis
+4. **Iterate**: Use analysis results to refine your orchestration requests
+5. **Learn Continuously**: Record successful patterns to build institutional knowledge
+6. **Combine Commands**: Use analysis → orchestration → PRP generation for complex projects
 
 ## Examples by Scenario
 
 ### Simple Feature
+
+**Traditional Approach:**
 ```
 /analyze Add a search function to the user list
 /generate-prp Add a search function to the user list
 ```
 
+**New baco.in Approach:**
+```
+/baco init
+# Edit baco.in with search feature requirements
+/baco plan
+/baco execute
+```
+
 ### Complex System
+
+**Traditional Approach:**
 ```
 /analyze Build a real-time collaborative editing platform
 /orchestrate Build a real-time collaborative editing platform
 /generate-prp Implement operational transformation for collaborative editing
+```
+
+**New baco.in Approach:**
+```
+/baco init
+# Add multiple features, examples, and constraints to baco.in
+/baco validate  # Check for errors
+/baco plan      # Review comprehensive plan
+/baco execute   # Implement with full context
 ```
 
 ### Security-Critical

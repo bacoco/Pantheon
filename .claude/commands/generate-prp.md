@@ -125,12 +125,70 @@ Generate a complete Product Requirements Prompt following Context Engineering be
 
 ## PRP Generation Process
 
-1. **Understand the task**: Use complexity analysis if needed
-2. **Gather insights**: Use orchestration to get multiple perspectives
-3. **Structure comprehensively**: Include all sections with relevant detail
-4. **Be specific**: Avoid vague instructions
-5. **Include validation**: Every task should be verifiable
-6. **Consider failure**: Include error handling and rollback
+### 1. Research Phase (CRITICAL)
+
+**Codebase Analysis**:
+- Search for similar features/patterns in the codebase
+- Identify existing conventions and patterns to follow
+- Find relevant files to reference in the PRP
+- Check test patterns for validation approach
+
+**External Research**:
+- Search for library documentation (include specific URLs)
+- Find implementation examples (GitHub/StackOverflow/blogs)
+- Identify best practices and common pitfalls
+- Note version-specific requirements or gotchas
+
+**Example Mining**:
+- Check `.claude/examples/` for relevant patterns
+- Identify which examples to reference
+- Note adaptations needed for current task
+
+### 2. Context Gathering
+
+**Documentation Collection**:
+- Gather all relevant API documentation URLs
+- Include specific sections that will be needed
+- Note any quirks or special considerations
+- Add links to official guides
+
+**User Clarification** (if needed):
+- Which patterns should be followed?
+- Any specific integration requirements?
+- Performance or security constraints?
+- Preferred libraries or approaches?
+
+### 3. PRP Structure
+
+**ULTRATHINK before writing**:
+- Plan the complete approach
+- Identify all components needed
+- Consider error scenarios
+- Plan validation strategy
+
+**Include ALL Context**:
+```yaml
+# Documentation section must include:
+- url: [Official docs with specific section]
+  why: [What specific info is needed]
+- file: [Path to example or existing code]
+  why: [Pattern to follow or adapt]
+- example: examples/[relevant-pattern].md
+  why: [How this example helps]
+```
+
+### 4. Validation Design
+
+**Progressive Validation**:
+1. Syntax/lint checks (quick feedback)
+2. Unit tests (component validation)
+3. Integration tests (system validation)
+4. End-to-end validation (user perspective)
+
+**Make it Executable**:
+- Include exact commands to run
+- Specify expected outputs
+- Provide error diagnosis hints
 
 ## Quality Criteria
 
@@ -162,3 +220,22 @@ You would generate a complete PRP including:
 - Deployment steps
 
 The output should be immediately usable by a developer to implement the feature with confidence.
+
+## Quality Assessment
+
+After generating the PRP, score it on a scale of 1-10 for confidence in one-pass implementation:
+
+**Scoring Criteria**:
+- **9-10**: All context included, clear validation, existing patterns referenced
+- **7-8**: Good context, some assumptions but manageable
+- **5-6**: Missing some context, may need clarification during implementation
+- **Below 5**: Insufficient context, needs more research
+
+**Include at end of PRP**:
+```
+---
+Confidence Score: 8/10
+Reasoning: Strong context and examples provided, validation comprehensive, minor uncertainty on performance requirements
+```
+
+Remember: The goal is one-pass implementation success through comprehensive context.

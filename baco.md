@@ -2,6 +2,24 @@
 
 This file demonstrates how to use BACO commands in Claude Code.
 
+## New: Simplified Workflow with baco.in
+
+BACO now supports a simplified workflow using `baco.in` files for project configuration:
+
+### Quick Start with baco.in
+```
+# 1. Create a baco.in file with your project requirements
+/baco init
+
+# 2. Generate a development plan
+/baco plan
+
+# 3. Execute the plan
+/baco execute
+```
+
+See `examples/baco.in.example` for a complete example.
+
 ## Usage
 
 Simply type any of the following commands in Claude:
@@ -21,22 +39,65 @@ Simply type any of the following commands in Claude:
 /generate-prp Create a REST API for user authentication with JWT
 ```
 
-### Learn from Successful Patterns
-```
-/learn-pattern "Implemented caching layer with Redis" "Reduced response time by 80%"
-```
-
 ### Get Help
 ```
 /help
+```
+
+### New BACO Commands
+```
+# Initialize a new baco.in file
+/baco init
+
+# Validate your baco.in file
+/baco validate
+
+# Generate a plan from baco.in
+/baco plan
+
+# Execute the development plan
+/baco execute
+```
+
+## The baco.in File Format
+
+The `baco.in` file is a structured way to define your project requirements:
+
+```yaml
+---
+version: 1.0
+project_type: "FastAPI Web Service"
+author: "Your Name"
+---
+
+## FEATURE: User Authentication
+Description of the authentication feature...
+
+## FEATURE: Task Management
+Description of task management feature...
+Dependencies: User Authentication
+
+## EXAMPLES:
+- `./examples/auth_pattern.py`: Authentication example
+- `./examples/crud_pattern.py`: CRUD operations example
+
+## DOCUMENTATION:
+- `https://fastapi.tiangolo.com/`: FastAPI documentation
+
+## CONSTRAINTS:
+- Must use PostgreSQL
+- JWT tokens required
+- Response time < 200ms
+
+## OTHER CONSIDERATIONS:
+Additional context and requirements...
 ```
 
 ## How It Works
 
 1. When you type a command, Claude reads the corresponding file in `.claude/commands/`
 2. For orchestration, Claude embodies the agent personas in `.claude/agents/`
-3. Patterns are stored in `.claude/memory/patterns.json`
-4. All processing happens within Claude - no external APIs needed
+3. All processing happens within Claude - no external APIs needed
 
 ## Quick Start Example
 
@@ -62,8 +123,32 @@ Try this sequence:
 - **No API Costs**: Everything runs in Claude Code
 - **Transparent**: See all reasoning and analysis
 - **Customizable**: Modify prompts and agents as needed
-- **Learning**: System improves through pattern recognition
 - **Comprehensive**: From analysis to implementation guide
+
+## Integration: baco.in with Existing Commands
+
+When a `baco.in` file is present, existing commands can leverage it:
+
+- **`/analyze`** - Considers all features and constraints from baco.in
+- **`/orchestrate`** - Uses recommended team composition from baco.in analysis
+- **`/generate-prp`** - Incorporates all baco.in content into the PRP
+
+### Workflow Comparison
+
+**Traditional CLI Workflow:**
+```
+/analyze "Build a task management API"
+/orchestrate "Build a task management API"
+/generate-prp "Build a task management API with auth"
+```
+
+**New baco.in Workflow:**
+```
+/baco init          # Create template
+# Edit baco.in with your requirements
+/baco plan          # Analyze and plan
+/baco execute       # Run orchestration and generation
+```
 
 ## Extending BACO
 

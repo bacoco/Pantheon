@@ -10,13 +10,32 @@
 
 BACO transforms Claude Code into an intelligent development assistant that can:
 - 📊 **Analyze** task complexity across multiple dimensions
-- 🎭 **Orchestrate** specialist agents for comprehensive insights
-- 📝 **Generate** detailed implementation guides (PRPs)
+- 🎭 **Transform** into specialist agents with unique capabilities
+- 🔄 **Orchestrate** multi-agent workflows for complex tasks
+- 📝 **Generate** structured documents using templates
+- ✅ **Validate** work with comprehensive checklists
 - 🧠 **Learn** from successful patterns for future use
 
 All without any external APIs - everything runs within Claude Code!
 
+## ✨ New Features (v3.0)
+
+### 🆕 Simplified Workflow with baco.in
+- **Structured Project Definition**: Define all requirements in a single `baco.in` file
+- **Automatic Convention Detection**: BACO learns from your examples
+- **Smart Team Composition**: Dynamic agent selection based on requirements
+- **Comprehensive Planning**: Multi-phase implementation plans with dependencies
+
+### v2.0 Features
+- **Dynamic Agent System**: Agents can transform on-demand with `*agent` commands
+- **Task Automation**: Executable workflows in `.claude/tasks/`
+- **Template Engine**: Structured document generation with validation
+- **Command System**: All agent commands use `*` prefix for clarity
+- **Resource Loading**: Efficient on-demand loading of tasks, templates, and data
+
 ## 🚀 Quick Start
+
+### Option 1: New Simplified Workflow (Recommended)
 
 1. **Clone the repository**
    ```bash
@@ -24,14 +43,32 @@ All without any external APIs - everything runs within Claude Code!
    cd BACO
    ```
 
-2. **In Claude Code, try these commands:**
+2. **Create your project definition:**
    ```
-   /analyze Build a real-time chat application
-   
-   /orchestrate Design a payment processing system
-   
-   /generate-prp Create user authentication with JWT
+   /baco init
    ```
+   Copy the template to a file named `baco.in` and customize it.
+
+3. **Generate your development plan:**
+   ```
+   /baco plan
+   ```
+
+4. **Execute the plan:**
+   ```
+   /baco execute
+   ```
+
+### Option 2: Direct Commands
+
+Use BACO commands directly for quick tasks:
+```
+/analyze Build a real-time chat application
+
+/orchestrate Design a payment processing system
+
+/generate-prp Create user authentication with JWT
+```
 
 That's it! No API keys, no setup, just intelligent assistance.
 
@@ -59,7 +96,91 @@ BACO uses a **prompt-based architecture** inspired by BMAD-METHOD where Claude i
 └─────────────────────────────────────────┘
 ```
 
+## 📄 The baco.in File Format
+
+The `baco.in` file provides a structured way to define your project requirements:
+
+```yaml
+---
+version: 1.0
+project_type: "FastAPI Web Service"
+author: "Your Name"
+---
+
+## FEATURE: User Authentication
+Comprehensive authentication system with JWT tokens...
+
+## FEATURE: Task Management
+CRUD operations for user tasks...
+Dependencies: User Authentication
+
+## EXAMPLES:
+- `./examples/auth_pattern.py`: Authentication example
+- `./examples/crud_pattern.py`: CRUD operations example
+
+## DOCUMENTATION:
+- `https://fastapi.tiangolo.com/`: FastAPI documentation
+
+## CONSTRAINTS:
+- Must use PostgreSQL
+- JWT tokens required
+- Response time < 200ms
+
+## OTHER CONSIDERATIONS:
+Additional context and requirements...
+```
+
+See `examples/baco.in.example` for a complete example.
+
 ## 🛠️ Available Commands
+
+### 📄 `/baco` - Simplified Workflow (NEW)
+Manage projects using structured `baco.in` files:
+- `/baco init` - Create a template baco.in file
+- `/baco validate` - Validate your baco.in syntax
+- `/baco plan` - Generate a comprehensive development plan
+- `/baco execute` - Execute the plan and generate PRP
+
+**Example:**
+```
+/baco plan
+
+🎯 BACO DEVELOPMENT PLAN
+========================
+📋 Project Type: FastAPI Web Service
+👥 Recommended Team: Winston, James, Marcus
+🚀 Implementation Phases: 3 phases identified
+```
+
+### `/orchestrate [task]`
+Activates the BACO Orchestrator for intelligent coordination:
+- Dynamic agent transformation capabilities
+- Multi-agent workflow management
+- Pattern-based recommendations
+- Interactive command system
+
+**Example:**
+```
+/orchestrate Build a payment processing system
+
+BACO Orchestrator: Welcome! I can help coordinate this complex task.
+Use *help to see all my capabilities, or *analyze to assess complexity.
+```
+
+### `/agent [name]`
+Transform directly into a specialist agent:
+- `architect` or `winston` - System architecture specialist
+- `developer` or `james` - Implementation expert
+- `qa` or `elena` - Quality assurance specialist
+- `security` or `marcus` - Security expert
+
+**Example:**
+```
+/agent architect
+
+Winston: Hello! I'm Winston, your Master System Architect.
+Type *help to see my commands or describe your architectural challenge.
+```
 
 ### `/analyze <task>`
 Performs multi-dimensional complexity analysis:
@@ -77,25 +198,6 @@ Output:
 - Overall Complexity: Complex (8.5/10)
 - Key Drivers: Distributed architecture, event ordering, fault tolerance
 - Recommended Agents: Architect, Developer, QA
-```
-
-### `/orchestrate <task>`
-Coordinates multiple specialist agents based on task complexity:
-- Simple tasks → Developer only
-- Moderate tasks → Developer + QA
-- Complex tasks → Architect + Developer + QA
-- Extreme tasks → All specialists including Security
-
-**Example:**
-```
-/orchestrate Design a multi-tenant SaaS platform
-
-Output:
-- Architectural perspective from Winston
-- Implementation approach from James
-- Quality strategy from Elena
-- Security considerations from Marcus
-- Synthesized recommendations
 ```
 
 ### `/generate-prp <task>`
@@ -116,22 +218,6 @@ Output:
 - Security considerations
 - Testing strategy
 - Deployment checklist
-```
-
-### `/learn-pattern <task> <outcome>`
-Records successful implementation patterns:
-- Evaluates generalizability
-- Stores reusable approaches
-- Builds institutional knowledge
-
-**Example:**
-```
-/learn-pattern "Redis caching implementation" "Reduced latency by 80%"
-
-Output:
-- Pattern evaluation: STORE
-- Applicability conditions defined
-- Added to pattern memory
 ```
 
 ## 🎭 Meet the Specialists
@@ -160,25 +246,74 @@ Output:
 - Security controls
 - Compliance guidance
 
+## 🎮 Enhanced Agent System
+
+### Agent Commands
+Once transformed into an agent, use `*` prefix for commands:
+- `*help` - Show agent-specific commands
+- `*analyze` - Perform specialized analysis
+- `*create-architecture` - Generate architecture doc (Architect)
+- `*implement` - Create implementation plan (Developer)
+- `*test-strategy` - Design test approach (QA)
+- `*threat-model` - Security assessment (Security)
+- `*exit` - Return to base Claude
+
+### Workflow Example
+```
+1. /orchestrate                    # Start orchestrator
+2. *analyze payment processing     # Analyze complexity
+3. *agent architect               # Transform to architect
+4. *create-architecture           # Generate architecture doc
+5. *exit                         # Return to base
+6. /agent developer              # Transform to developer
+7. *implement                    # Create implementation plan
+```
+
 ## 📁 Directory Structure
 
 ```
 BACO/
 ├── .claude/
+│   ├── config.yaml            # Core configuration
 │   ├── CLAUDE.md              # Main instructions
 │   ├── commands/              # Command definitions
 │   │   ├── analyze.md
+│   │   ├── baco.md            # NEW: Simplified workflow
 │   │   ├── orchestrate.md
+│   │   ├── agent.md
 │   │   ├── generate-prp.md
-│   │   └── learn-pattern.md
-│   ├── agents/                # Specialist personas
+│   │   └── help.md
+│   ├── utils/                 # NEW: Utility instructions
+│   │   ├── baco-parser.md     # baco.in parsing logic
+│   │   └── example-analyzer.md # Convention detection
+│   ├── schemas/               # NEW: File format schemas
+│   │   └── baco-in-schema.yaml
+│   ├── agents/                # Enhanced agent definitions
+│   │   ├── baco-orchestrator.md
 │   │   ├── architect.md
 │   │   ├── developer.md
 │   │   ├── qa.md
 │   │   └── security.md
+│   ├── tasks/                 # Executable workflows
+│   │   ├── analyze-complexity.md
+│   │   ├── create-doc.md
+│   │   └── README.md
+│   ├── templates/             # Document templates
+│   │   ├── architecture-doc.yaml
+│   │   └── README.md
+│   ├── checklists/           # Validation checklists
+│   │   ├── architecture-review.md
+│   │   └── README.md
+│   ├── workflows/            # Multi-agent workflows
+│   │   └── README.md
+│   ├── data/                 # Knowledge base
+│   │   └── README.md
 │   └── memory/               # Pattern storage
 │       └── patterns.json
+├── examples/
+│   └── baco.in.example       # NEW: Example project definition
 ├── baco.md                   # Usage guide
+├── implementation-summary.md # NEW: Implementation details
 └── README.md                 # This file
 ```
 
@@ -219,10 +354,12 @@ Edit `.claude/memory/patterns.json` to add or modify stored patterns
 
 ## 🚦 Best Practices
 
-1. **Start with Analysis** - Always understand complexity first
-2. **Use Orchestration for Complex Tasks** - Multiple perspectives prevent blind spots
-3. **Generate PRPs for Implementation** - Clear guides reduce ambiguity
-4. **Record Successful Patterns** - Build institutional knowledge
+1. **Use baco.in for Complex Projects** - Structure beats memory
+2. **Start with Analysis** - Always understand complexity first
+3. **Use Orchestration for Complex Tasks** - Multiple perspectives prevent blind spots
+4. **Generate PRPs for Implementation** - Clear guides reduce ambiguity
+5. **Record Successful Patterns** - Build institutional knowledge
+6. **Provide Examples** - Help BACO match your coding style
 
 ## 🤝 Contributing
 
@@ -236,11 +373,33 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📈 Roadmap
 
+- [x] Simplified workflow with baco.in files
 - [ ] Visual complexity analysis
 - [ ] Team collaboration features
 - [ ] Pattern recommendation engine
 - [ ] Integration with development tools
 - [ ] Custom agent creation wizard
+
+## 📋 Changelog
+
+### v3.0 (Latest)
+- **NEW**: Simplified workflow with `baco.in` files
+- **NEW**: `/baco` command suite (init, validate, plan, execute)
+- **NEW**: Automatic convention detection from examples
+- **NEW**: Smart team composition based on requirements
+- **NEW**: Multi-feature support with dependencies
+- **ENHANCED**: Better error messages and validation
+
+### v2.0
+- Dynamic agent system with `*` commands
+- Task automation and workflows
+- Template engine for document generation
+- Enhanced resource loading
+
+### v1.0
+- Initial release with core commands
+- Basic agent orchestration
+- Pattern memory system
 
 ## 📄 License
 
@@ -251,7 +410,10 @@ MIT License - see [LICENSE](LICENSE) for details
 Inspired by:
 - [BMAD-METHOD](https://github.com/bmadcode/BMAD-METHOD) for agent orchestration patterns
 - [Context Engineering](https://github.com/coleam00/context-engineering-intro) for PRP structure
+- Gemini's technical analysis for the "simpler steering wheel" concept
 - The Claude Code community for feedback and ideas
+
+Special thanks to the v3.0 enhancement based on `gemini-technical-analysis.md` which introduced the structured `baco.in` workflow.
 
 ---
 
