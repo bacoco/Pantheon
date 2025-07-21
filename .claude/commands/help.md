@@ -61,6 +61,25 @@ Evaluate and store successful implementation patterns for future use.
 
 **Output**: Pattern evaluation and storage decision with applicability conditions.
 
+### 📦 `/workspace [subcommand]`
+Manage monorepo packages and dependencies.
+
+**Subcommands**:
+- `/workspace list` - List all packages in the workspace
+- `/workspace add` - Add a new package to the workspace
+- `/workspace link` - Link packages together
+- `/workspace run` - Run commands across packages
+- `/workspace graph` - Show dependency graph
+- `/workspace info <package>` - Show package details
+
+**Usage**: 
+```
+/workspace list
+/workspace add
+/workspace link @myapp/web @myapp/ui
+/workspace run build --filter=changed
+```
+
 ### ❓ `/help`
 Display this help message with command descriptions and usage examples.
 
@@ -94,6 +113,11 @@ When using `/orchestrate`, these specialists may be activated:
 - **💻 James (Developer)**: Implementation approach, code quality, best practices
 - **✅ Elena (QA)**: Testing strategy, user experience, quality assurance
 - **🔒 Marcus (Security)**: Threat modeling, security controls, compliance
+- **📊 John (PM)**: Product strategy, requirements, roadmap
+- **🎯 Sarah (PO)**: Story validation, acceptance criteria
+- **🏃️ Bob (SM)**: Sprint planning, AI-ready stories
+- **🎨 Sally (UX)**: User experience, design systems
+- **🤖 BMad Master**: Meta-orchestration, workflow optimization
 
 ## The baco.md File Format
 
@@ -198,6 +222,19 @@ See the `examples/` directory for complete examples:
 /analyze Implement payment processing with PCI compliance
 /orchestrate Implement payment processing with PCI compliance
 /learn-pattern "PCI-compliant payment flow" "Passed security audit"
+```
+
+### Monorepo Development
+```
+# Working in a monorepo
+/workspace list                    # See all packages
+/workspace add                     # Create new package
+/workspace link @app/web @app/ui   # Link packages
+/workspace run build               # Build everything
+/workspace graph                   # Visualize dependencies
+
+# BACO detects monorepo context automatically
+/baco init                         # Offers to create package or work at root
 ```
 
 ## Need More Help?

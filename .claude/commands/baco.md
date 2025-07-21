@@ -706,7 +706,17 @@ When a baco.md file has been processed:
 - `/analyze` should consider all features and constraints from baco.md
 - `/orchestrate` should use the recommended team composition
 - `/generate-prp` should incorporate all baco.md content
+- `/workspace` commands for monorepo management (list, add, link, run)
 - Store the parsed information in "memory" for the session
+
+### Monorepo Context Awareness
+
+When any BACO command is run:
+1. Detect monorepo context using monorepo-detector library
+2. Adjust paths and operations accordingly
+3. Respect workspace boundaries and conventions
+4. Use workspace protocols for dependencies
+5. Integrate with monorepo build tools
 
 ## ERROR HANDLING
 
