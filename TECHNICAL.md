@@ -15,8 +15,31 @@ BACO is a **prompt-based system** that runs entirely within Claude Code. It does
 │   ├── orchestrate.md # Agent coordination
 │   ├── generate-prp.md # PRP generation
 │   ├── baco.md       # baco.md workflow commands
+│   ├── workflow.md   # Multi-agent workflow orchestration
+│   ├── git.md        # Git integration commands
+│   ├── preview.md    # Live preview server
+│   ├── add-feature.md # Incremental feature addition
+│   ├── update-deps.md # Dependency management
 │   └── help.md       # Command reference
 ├── agents/           # Agent personas and expertise
+│   ├── winston.md    # System Architect
+│   ├── james.md      # Senior Developer
+│   ├── elena.md      # QA Engineer
+│   ├── marcus.md     # Security Expert
+│   ├── john.md       # Product Manager
+│   ├── sarah.md      # Product Owner
+│   ├── bob.md        # Scrum Master
+│   ├── sally.md      # UX Designer
+│   ├── bmad-master.md # Meta-orchestrator
+│   └── baco-orchestrator.md # Complexity analyzer
+├── lib/              # Core libraries and engines
+│   ├── workflow-engine.md # Multi-agent workflow execution
+│   ├── workflow-visualizer.md # Workflow progress display
+│   ├── git-integration.md # Git operations library
+│   ├── live-preview.md # Development server management
+│   ├── incremental-updates.md # Safe project modifications
+│   ├── cross-domain-bridge.md # Cross-domain execution
+│   └── workflow-optimization-engine.md # Workflow optimization
 ├── utils/            # Parsing and analysis utilities
 │   ├── baco-parser.md
 │   └── example-analyzer.md
@@ -252,12 +275,17 @@ APPROACH:
 2. Define ACTIVATION trigger
 3. Provide clear INSTRUCTIONS
 4. Update help.md
+5. Add library support in `.claude/lib/` if needed
+6. Integrate with workflow engine if applicable
 
 ### Adding Agents
 
 1. Create `.claude/agents/new-agent.md`
 2. Define persona and expertise
 3. Update orchestration logic in `orchestrate.md`
+4. Add to workflow definitions
+5. Create agent-specific templates
+6. Define handoff protocols
 
 ### Custom Workflows
 
@@ -284,15 +312,165 @@ Update parser to recognize new sections.
 3. **Context Window**: Large projects may exceed limits
 4. **Determinism**: Results may vary between runs
 
+## Multi-Agent Workflow Architecture
+
+### Workflow Engine
+
+The workflow engine (`.claude/lib/workflow-engine.md`) orchestrates multi-agent collaborations:
+
+```typescript
+interface Workflow {
+  id: string;
+  name: string;
+  description: string;
+  agents: string[];
+  steps: WorkflowStep[];
+}
+
+interface WorkflowStep {
+  agent: string;
+  action: string;
+  input: string;
+  outputVariable?: string;
+  parallel?: boolean;
+}
+```
+
+Key features:
+1. **Sequential & Parallel Execution**: Steps can run in sequence or parallel
+2. **Context Preservation**: Output from one agent becomes input for next
+3. **State Management**: Track workflow progress and artifacts
+4. **Error Handling**: Graceful failure recovery
+
+### Pre-defined Workflows
+
+1. **Product Planning**: PM → PO → SM
+2. **Implementation**: Architect → Developer → QA
+3. **UI Feature**: UX → Developer → QA
+4. **Security-First**: Security → Developer
+
+## Git Integration Architecture
+
+### Git Operations Library
+
+The git integration (`.claude/lib/git-integration.md`) provides:
+
+```typescript
+interface GitOperations {
+  initializeRepo(options: GitInitOptions): Promise<GitResult>;
+  createBranch(name: string, options?: BranchOptions): Promise<GitResult>;
+  commitPhase(options: PhaseCommitOptions): Promise<GitResult>;
+  createPullRequest(projectPath: string, options: PROptions): Promise<GitResult>;
+}
+```
+
+Features:
+1. **Auto-initialization**: Set up git repo during project creation
+2. **Phase Commits**: Commit after each development phase
+3. **Branch Management**: Feature branch workflow
+4. **PR Generation**: Create PRs with descriptions
+5. **Gitignore Templates**: Framework-specific ignore files
+
+## Live Preview Architecture
+
+### Development Server Management
+
+The live preview system (`.claude/lib/live-preview.md`) handles:
+
+```typescript
+interface PreviewServer {
+  start(projectPath: string, options?: PreviewOptions): Promise<PreviewResult>;
+  detectFramework(projectPath: string): Promise<FrameworkInfo>;
+  generateQRCode(url: string): string;
+  stop(): Promise<void>;
+}
+```
+
+Capabilities:
+1. **Framework Detection**: Auto-detect Next.js, React, Vue, etc.
+2. **Port Management**: Find available ports automatically
+3. **Mobile Preview**: QR codes for device testing
+4. **Hot Reload**: Integration with framework dev servers
+5. **Network Access**: LAN URLs for mobile testing
+
+## Incremental Updates Architecture
+
+### Safe Modification System
+
+The incremental updates (`.claude/lib/incremental-updates.md`) enable:
+
+```typescript
+interface IncrementalUpdater {
+  analyzeProject(projectPath: string): Promise<ProjectAnalysis>;
+  addFeature(projectPath: string, feature: FeatureDefinition): Promise<UpdateResult>;
+  updateDependencies(projectPath: string, options: UpdateOptions): Promise<UpdateResult>;
+  createBackup(projectPath: string): Promise<BackupInfo>;
+}
+```
+
+Safety features:
+1. **Project Analysis**: Understand existing code before changes
+2. **Backup Creation**: Automatic backups before modifications
+3. **Conflict Detection**: Identify potential conflicts
+4. **Merge Strategies**: Intelligent code merging
+5. **Rollback Support**: Undo changes if needed
+
+## BMad Master Meta-Orchestration
+
+### Dynamic Workflow Generation
+
+BMad Master can:
+1. **Analyze Tasks**: Determine optimal agent composition
+2. **Generate Workflows**: Create custom workflows dynamically
+3. **Cross-Domain Bridge**: Connect technical and business domains
+4. **Optimize Execution**: Improve workflow efficiency
+
+### Cross-Domain Execution
+
+```yaml
+Domain Bridges:
+  Technical ↔ Business:
+    - Requirements to Architecture
+    - Code to User Stories
+    - Tests to Acceptance Criteria
+  
+  Design ↔ Development:
+    - Mockups to Components
+    - UX Patterns to Code
+    - Accessibility to Implementation
+```
+
+## Performance Optimizations
+
+### Parallel Execution
+
+1. **Agent Parallelization**: Run independent agents concurrently
+2. **File Operations**: Batch file reads/writes
+3. **Tool Batching**: Multiple tool calls in single response
+4. **Lazy Loading**: Load only required libraries
+
+### Context Management
+
+1. **Smart Pruning**: Remove unnecessary context
+2. **Context Handoff**: Efficient agent-to-agent transfer
+3. **Memory Patterns**: Reuse successful patterns
+4. **Token Optimization**: Minimize token usage
+
 ## Future Enhancements
 
-Potential improvements being considered:
+Completed enhancements from previous roadmap:
+- ✅ Version Control Integration (Git-aware patterns)
+- ✅ Multi-Agent Workflows
+- ✅ Live Preview System
+- ✅ Incremental Updates
 
+New potential improvements:
 1. **Graph-based Dependencies**: Visual feature relationships
 2. **Multi-Project Patterns**: Cross-project learning
-3. **Version Control Integration**: Git-aware patterns
-4. **Performance Metrics**: Track command effectiveness
-5. **Custom Schema Extensions**: Domain-specific baco.md sections
+3. **Performance Metrics**: Track command effectiveness
+4. **Custom Schema Extensions**: Domain-specific baco.md sections
+5. **Cloud Integration**: Deploy to cloud providers
+6. **CI/CD Pipelines**: Automated testing and deployment
 
 ## Development Philosophy
 

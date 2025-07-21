@@ -73,6 +73,55 @@ Simply type any of the following commands in Claude:
 /baco execute
 ```
 
+### Multi-Agent Workflow Commands
+```
+# Execute pre-defined workflows
+/workflow product-planning    # PM → PO → SM workflow
+/workflow implementation     # Architect → Developer → QA workflow  
+/workflow ui-feature        # UX → Developer → QA workflow
+/workflow security-first    # Marcus → Developer workflow
+
+# View available workflows
+/workflow list
+
+# Create custom workflow
+/workflow custom
+```
+
+### Git Integration Commands
+```
+# Git helper commands
+/git init                   # Initialize repository
+/git commit <message>       # Commit changes
+/git branch <name>          # Create/switch branch
+/git pr                     # Create pull request
+/git status                 # Check git status
+```
+
+### Live Preview Commands
+```
+# Start development server with live preview
+/preview                    # Auto-detect and start server
+/preview --port 3000       # Specify port
+/preview --mobile          # Show QR code for mobile
+/preview stop              # Stop preview server
+```
+
+### Incremental Update Commands
+```
+# Add features to existing projects
+/add-feature auth-jwt      # Add JWT authentication
+/add-feature api-graphql   # Add GraphQL endpoint
+/add-feature ui-dashboard  # Add admin dashboard
+/add-feature test-e2e      # Add E2E testing
+
+# Update dependencies safely
+/update-deps               # Interactive update process
+/update-deps check        # Check for updates only
+/update-deps security     # Security updates only
+/update-deps [package]    # Update specific package
+```
+
 The interactive `/baco init` will:
 - Guide you through project requirements with intelligent questions
 - Analyze documentation and code examples you provide
@@ -118,7 +167,10 @@ Additional context and requirements...
 
 1. When you type a command, Claude reads the corresponding file in `.claude/commands/`
 2. For orchestration, Claude embodies the agent personas in `.claude/agents/`
-3. All processing happens within Claude - no external APIs needed
+3. Multi-agent workflows coordinate specialist agents with context preservation
+4. Git integration manages version control throughout development
+5. Live preview provides instant feedback with hot reload
+6. All processing happens within Claude - no external APIs needed
 
 ## Quick Start Example
 
@@ -177,11 +229,19 @@ To add new commands:
 1. Create a new file in `.claude/commands/`
 2. Follow the existing command structure
 3. Document the command in `/help`
+4. Add to workflow integration if applicable
 
 To add new agents:
 1. Create a new file in `.claude/agents/`
 2. Define the persona and expertise
 3. Update orchestration logic to include the agent
+4. Create agent-specific templates in `.claude/templates/`
+5. Add to workflow definitions
+
+To add new workflows:
+1. Define workflow in `.claude/lib/workflow-engine.md`
+2. Add workflow command option
+3. Test agent handoffs and context preservation
 
 ## Tips
 
@@ -189,3 +249,7 @@ To add new agents:
 - Use orchestration for complex, multi-faceted tasks
 - Record successful patterns to build knowledge
 - Review existing patterns before starting new tasks
+- Use workflows for structured multi-agent collaboration
+- Enable git integration for version control
+- Use live preview for instant feedback during development
+- Leverage incremental updates for safe project modifications
