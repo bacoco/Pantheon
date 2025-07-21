@@ -88,14 +88,17 @@
     - [ ] Multi-agent coordination
     - [ ] Cross-domain execution
     - [ ] Workflow optimization
-- [ ] **Multi-Agent Workflows**
-  - [ ] PM → PO → SM flow (product planning)
-  - [ ] Architect → Developer → QA flow (implementation)
-  - [ ] UX → Developer → QA flow (UI features)
+- [x] **Multi-Agent Workflows**
+  - [x] PM → PO → SM flow (product planning)
+  - [x] Architect → Developer → QA flow (implementation)
+  - [x] UX → Developer → QA flow (UI features)
   - [ ] Security → Developer flow (secure coding)
-  - [ ] Parallel agent execution
-  - [ ] Agent handoff with context preservation
-  - [ ] Workflow state management
+  - [x] Parallel agent execution
+  - [x] Agent handoff with context preservation
+  - [x] Workflow state management
+  - [x] Workflow engine library (`.claude/lib/workflow-engine.md`)
+  - [x] Workflow visualizer library (`.claude/lib/workflow-visualizer.md`)
+  - [x] Workflow command (`.claude/commands/workflow.md`)
 - [ ] **Agent Memory**
   - [ ] Store agent decisions and rationale
   - [ ] Learn from patterns across projects
