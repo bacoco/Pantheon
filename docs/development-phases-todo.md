@@ -111,22 +111,29 @@
   - [x] Agent-aware template composition
   - [x] Agent integration library (`.claude/lib/agent-integration.md`)
 
-## Phase 5: Advanced Features
-- [ ] **Git Integration**
-  - [ ] Initialize git repo automatically
-  - [ ] Commit after each phase
-  - [ ] Branch management
-  - [ ] PR creation support
-- [ ] **Live Preview**
-  - [ ] Auto-start dev server
-  - [ ] Open browser preview
-  - [ ] Hot reload integration
-  - [ ] Mobile preview via QR code
-- [ ] **Incremental Updates**
-  - [ ] Add features to existing projects
-  - [ ] Modify without breaking
-  - [ ] Dependency updates
-  - [ ] Migration support
+## Phase 5: Advanced Features ✅
+- [x] **Git Integration**
+  - [x] Initialize git repo automatically
+  - [x] Commit after each phase
+  - [x] Branch management
+  - [x] PR creation support
+  - [x] Git integration library (`.claude/lib/git-integration.md`)
+  - [x] `/git` helper command
+- [x] **Live Preview**
+  - [x] Auto-start dev server
+  - [x] Open browser preview
+  - [x] Hot reload integration
+  - [x] Mobile preview via QR code
+  - [x] Live preview library (`.claude/lib/live-preview.md`)
+  - [x] `/preview` command
+- [x] **Incremental Updates**
+  - [x] Add features to existing projects
+  - [x] Modify without breaking
+  - [x] Dependency updates
+  - [x] Migration support
+  - [x] Incremental updates library (`.claude/lib/incremental-updates.md`)
+  - [x] `/add-feature` command
+  - [x] `/update-deps` command
 - [ ] **Custom Templates**
   - [ ] User template creation
   - [ ] Template marketplace
