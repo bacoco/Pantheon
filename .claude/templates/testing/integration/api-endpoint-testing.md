@@ -1,16 +1,33 @@
 ---
+id: "api-endpoint-testing"
 name: "API Endpoint Integration Testing"
 description: "Comprehensive testing patterns for REST API endpoints"
-category: "testing"
+category: "test"
 frameworks: ["express", "nodejs", "fastapi"]
 dependencies: 
   - package: "supertest"
     version: "^6.3.0"
+    dev: true
   - package: "jest"
     version: "^29.0.0"
+    dev: true
   - package: "@types/supertest"
     version: "^2.0.0"
-tags: ["testing", "api", "integration", "rest", "supertest"]
+    dev: true
+  - package: "mongodb-memory-server"
+    version: "^9.0.0"
+    dev: true
+tags: ["test", "api-test", "integration-test", "rest", "supertest", "express"]
+testTemplate: null
+conflicts: []
+mergeStrategy: "append"
+targetFiles:
+  - path: "src/__tests__/{{modelName}}.test.ts"
+    type: "new"
+  - path: "src/__tests__/setup.ts"
+    type: "new"
+  - path: "src/__tests__/helpers/testUtils.ts"
+    type: "new"
 ---
 
 ## Overview

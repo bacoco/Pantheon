@@ -1,4 +1,5 @@
 ---
+id: "rest-api-crud"
 name: "REST API CRUD Operations"
 description: "Complete CRUD implementation with validation, error handling, and pagination"
 category: "crud"
@@ -11,6 +12,21 @@ dependencies:
   - package: "mongoose"
     version: "^7.0.0"
 tags: ["crud", "rest", "api", "mongoose", "validation", "pagination"]
+testTemplate: "api-endpoint-testing"
+conflicts: []
+mergeStrategy: "merge"
+targetFiles:
+  - path: "src/models/{{modelName}}.js"
+    type: "new"
+  - path: "src/controllers/{{modelName}}Controller.js"
+    type: "new"
+  - path: "src/routes/{{modelName}}s.js"
+    type: "new"
+  - path: "src/app.js"
+    type: "modify"
+    section: "routes"
+  - path: "src/middleware/errorHandler.js"
+    type: "new"
 ---
 
 ## Overview

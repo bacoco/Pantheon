@@ -1,4 +1,5 @@
 ---
+id: "jwt-auth-express"
 name: "JWT Authentication for Express"
 description: "Complete JWT authentication implementation with refresh tokens"
 category: "auth"
@@ -12,7 +13,23 @@ dependencies:
     version: "^7.0.0"
   - package: "dotenv"
     version: "^16.0.0"
-tags: ["jwt", "authentication", "security", "express", "refresh-token"]
+tags: ["jwt", "authentication", "security", "express", "refresh-token", "middleware"]
+testTemplate: "jwt-auth-testing"
+conflicts: ["basic-auth-express", "oauth-express"]
+mergeStrategy: "merge"
+targetFiles:
+  - path: "src/middleware/auth.js"
+    type: "new"
+  - path: "src/controllers/authController.js"
+    type: "new"
+  - path: "src/routes/auth.js"
+    type: "new"
+  - path: "src/app.js"
+    type: "modify"
+    section: "middleware"
+  - path: ".env"
+    type: "modify"
+    section: "auth"
 ---
 
 ## Overview

@@ -1,7 +1,8 @@
 ---
+id: "global-error-handler"
 name: "Global Error Handler"
 description: "Comprehensive error handling system for Express/Node.js applications"
-category: "error-handling"
+category: "error"
 frameworks: ["express", "nodejs"]
 dependencies: 
   - package: "express"
@@ -11,6 +12,19 @@ dependencies:
   - package: "express-async-errors"
     version: "^3.1.1"
 tags: ["error-handling", "logging", "express", "middleware", "production-ready"]
+testTemplate: "error-handler-testing"
+conflicts: []
+mergeStrategy: "merge"
+targetFiles:
+  - path: "src/errors/CustomErrors.ts"
+    type: "new"
+  - path: "src/middleware/errorHandler.ts"
+    type: "new"
+  - path: "src/utils/logger.ts"
+    type: "new"
+  - path: "src/app.ts"
+    type: "modify"
+    section: "error-handling"
 ---
 
 ## Overview
