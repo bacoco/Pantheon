@@ -25,7 +25,12 @@ The `/workflow` command enables coordinated multi-agent execution where agents w
 **Flow**: UX (Sally) → Developer (James) → QA (Elena)
 **Purpose**: Design to implemented UI component with testing
 
-### 4. Custom Workflow
+### 4. Security-First Development
+**Command**: `/workflow security-development`
+**Flow**: Security (Marcus) → Developer (James) → Security (Marcus)
+**Purpose**: Build features with security designed in from the start
+
+### 5. Custom Workflow
 **Command**: `/workflow custom`
 **Purpose**: Build a custom workflow interactively
 
@@ -79,6 +84,11 @@ When this command is invoked:
       Flow: UX → Developer → QA
       Creates: Component Specs, Implementation, Tests
       Duration: 30-45 minutes
+   
+   4️⃣ Security-First Development (security-development)
+      Flow: Security → Developer → Security
+      Creates: Threat Model, Secure Implementation, Validation
+      Duration: 45-60 minutes
    
    Usage: /workflow <name> to start
    ```
