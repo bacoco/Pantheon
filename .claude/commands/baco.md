@@ -138,9 +138,16 @@ Let's set up your development workflow preferences...
 ☑ Push to GitHub after completion
 ☑ Generate README.md file
 
+🐳 Docker & Deployment Options:
+☑ Generate Dockerfile for deployment
+☑ Create docker-compose.yml for production
+☑ Create docker-compose.dev.yml for development
+☐ Generate Kubernetes manifests
+☐ Include CI/CD workflows (GitHub Actions)
+
 Would you like to change any of these? (y/N): 
 
-If yes, which numbers to toggle? (1-9):
+If yes, which numbers to toggle? (1-14):
 ```
 
 Based on response, update preferences and add to baco.md configuration.
@@ -156,13 +163,31 @@ Great! Based on our conversation, here's what I understand:
 ⚡ Key Features: [list with priorities]
 🛠️ Tech Stack: [summarize]
 ⚠️ Constraints: [summarize]
-🔧 Workflow: Git enabled, auto-commit, test-driven
+🔧 Workflow: Git enabled, auto-commit, test-driven, Docker ready
 
 Shall I generate your customized baco.md file? (yes/no/refine)
 ```
 
 If "refine", ask what needs adjustment.
 If "yes", generate customized baco.md with all gathered information in the project directory:
+- Include workflow settings based on user preferences:
+  ```yaml
+  workflow:
+    git_enabled: [based on option 1]
+    auto_commit: [based on option 2]
+    test_before_commit: [based on option 3]
+    generate_tests: [based on option 4]
+    feature_branch: [based on option 5]
+    create_github_immediately: [based on option 6]
+    continuous_push: [based on option 7]
+    auto_push_github: [based on option 8]
+    generate_readme: [based on option 9]
+    docker_enabled: [based on option 10]
+    docker_compose: [based on option 11]
+    docker_dev_config: [based on option 12]
+    kubernetes_manifests: [based on option 13]
+    cicd_workflows: [based on option 14]
+  ```
 - Save as `{project-name}/baco.md`
 - Show: "✅ Created {project-name}/baco.md"
 
@@ -220,6 +245,9 @@ workflow:
   continuous_push: true
   auto_push_github: true
   generate_readme: true
+  docker_enabled: true
+  docker_compose: true
+  docker_dev_config: true
 ---
 
 ## FEATURE: Primary Feature Name
@@ -1039,7 +1067,52 @@ ${author}
      ✅ Pushed to existing repository
      ```
 
-7. **Live Preview Option** (after completion):
+7. **Docker Generation** (if docker_enabled in workflow):
+   ```
+   # Check if docker_enabled is true in baco.md workflow
+   if (workflow.docker_enabled) {
+     🐳 Generating Docker configuration...
+     
+     # Detect project framework
+     const framework = detectFramework();
+     
+     # Generate Dockerfile
+     [Run /docker generate --optimize automatically]
+     ✅ Created optimized Dockerfile
+     
+     # Generate docker-compose if requested
+     if (workflow.docker_compose) {
+       [Run /docker compose --prod automatically]
+       ✅ Created docker-compose.yml
+     }
+     
+     # Generate development compose if requested
+     if (workflow.docker_dev_config) {
+       [Run /docker compose --dev automatically]
+       ✅ Created docker-compose.dev.yml
+     }
+     
+     # Show Docker summary
+     📦 Docker files generated:
+     - Dockerfile (multi-stage, optimized)
+     - docker-compose.yml (production)
+     - docker-compose.dev.yml (development with hot reload)
+     - .dockerignore
+     
+     🚀 Quick Docker commands:
+     # Build and run locally:
+     docker build -t [project-name] .
+     docker run -p 3000:3000 [project-name]
+     
+     # Or use docker-compose:
+     docker-compose up -d
+     
+     # Development with hot reload:
+     docker-compose -f docker-compose.dev.yml up
+   }
+   ```
+
+8. **Live Preview Option** (after completion):
    ```
    🎉 All phases completed successfully!
    
