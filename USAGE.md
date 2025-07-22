@@ -253,3 +253,7 @@ To add new workflows:
 - Enable git integration for version control
 - Use live preview for instant feedback during development
 - Leverage incremental updates for safe project modifications
+- Use `/agent` to get specialized expertise for specific tasks
+- Use `/team` for coordinated multi-agent collaboration
+- Create personas early to ensure user-centric development
+- Agents now have real tool access through MCP integration
