@@ -108,6 +108,24 @@ Manage monorepo packages and dependencies.
 /workspace run build --filter=changed
 ```
 
+### 🐳 `/docker [subcommand]`
+Generate and manage Docker configurations for your projects.
+
+**Subcommands**:
+- `/docker generate` - Generate optimized Dockerfile
+- `/docker compose` - Generate docker-compose.yml
+- `/docker optimize` - Optimize existing Docker setup
+- `/docker security` - Add security best practices
+- `/docker validate` - Validate Docker configuration
+
+**Usage**: 
+```
+/docker generate --optimize
+/docker compose --services frontend,backend,db
+```
+
+**Output**: Docker configuration files with best practices, multi-stage builds, and security features.
+
 ### ❓ `/help`
 Display this help message with command descriptions and usage examples.
 
