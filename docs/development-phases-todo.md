@@ -140,7 +140,58 @@
   - [ ] Organization templates
   - [ ] Template versioning
 
-## Phase 6: Production Readiness
+## Phase 6: AI-Driven UX (Next Priority)
+- [ ] **Pillar 1: Dynamic Personas & User Journeys**
+  - [ ] Create Persona template (`persona.md`)
+  - [ ] Update Product Manager agent (`john.md`) to generate personas
+  - [ ] Enable agent referencing of `persona.md`
+  - [ ] Create `/persona` command for viewing/modifying the persona
+- [ ] **Pillar 2: The Visionary UX Agent**
+  - [ ] Update UX agent (`sally.md`) to prompt for visual inspiration
+  - [ ] Implement multi-mockup generation using browsermcp for preview
+  - [ ] Integrate shadcn-ui MCP for component generation
+  - [ ] Create Code Transformer library (`.claude/lib/code-transformer.md`)
+  - [ ] Add animation support to the transformer
+- [ ] **Pillar 3: UI Self-Healing**
+  - [ ] Create the "Pixel" UI Healer agent (`.claude/agents/ui-healer.md`)
+  - [ ] Define `style-guide.md` and `ux-rules.md` templates
+  - [ ] Implement playwright MCP for real screenshot capture
+  - [ ] Add visual regression testing with playwright
+  - [ ] Build the developer feedback loop with the "Pixel" agent
+  - [ ] Integrate Pixel into the core QA workflow
+
+## Phase 7: MCP Integration (Agent Tooling)
+- [ ] **Core Infrastructure**
+  - [ ] Create MCP Integration Library (`.claude/lib/mcp-integration.md`)
+  - [ ] Create MCP permissions matrix (`.claude/lib/mcp-permissions.md`)
+  - [ ] Add MCP coordination patterns to workflow engine
+  - [ ] Create MCP-aware commands (`.claude/commands/mcp.md`)
+  - [ ] Add MCP server configuration support
+- [ ] **Tool Configurations** (`.claude/tools/`)
+  - [ ] screenshot.md (playwright integration)
+  - [ ] component-library.md (shadcn-ui integration)
+  - [ ] browser-preview.md (browsermcp integration)
+  - [ ] context-retrieval.md (Context7 integration)
+  - [ ] github-operations.md (GitHub MCP integration)
+  - [ ] task-orchestration.md (claude-task-master integration)
+- [ ] **Agent MCP Assignments**
+  - [ ] **Winston (Architect)**: Context7, GitHub MCP, browsermcp
+  - [ ] **James (Developer)**: Context7, GitHub MCP, shadcn-ui, browsermcp
+  - [ ] **Elena (QA)**: playwright, browsermcp, GitHub MCP, Context7
+  - [ ] **Marcus (Security)**: GitHub MCP, Context7, browsermcp
+  - [ ] **John (PM)**: GitHub MCP, claude-task-master, browsermcp
+  - [ ] **Sarah (PO)**: GitHub MCP, browsermcp, claude-task-master
+  - [ ] **Bob (SM)**: claude-task-master, GitHub MCP, Context7
+  - [ ] **Sally (UX)**: browsermcp, shadcn-ui, playwright
+  - [ ] **BMad Master**: All MCP tools (meta-orchestration)
+  - [ ] **Pixel (UI Healer)**: playwright, browsermcp, Context7
+- [ ] **Documentation & Examples**
+  - [ ] MCP usage guide (`docs/mcp-usage-guide.md`)
+  - [ ] Tool usage examples for each agent
+  - [ ] MCP integration patterns
+  - [ ] Troubleshooting guide
+
+## Phase 8: Production Readiness
 - [ ] **Error Recovery**
   - [ ] Rollback capabilities
   - [ ] Checkpoint system
@@ -163,7 +214,7 @@
   - [ ] Environment management
   - [ ] Docker support
 
-## Phase 7: Enterprise Features
+## Phase 9: Enterprise Features
 - [ ] **Team Collaboration**
   - [ ] Shared project state
   - [ ] Role-based access
@@ -185,7 +236,7 @@
   - [ ] Error reporting
   - [ ] Feature adoption
 
-## Phase 8: Ecosystem Development
+## Phase 10: Ecosystem Development
 - [ ] **Plugin System**
   - [ ] Plugin API
   - [ ] Community plugins
@@ -207,7 +258,7 @@
   - [ ] Best practices guide
   - [ ] Architecture decisions
 
-## Phase 9: AI Enhancement
+## Phase 11: AI Enhancement
 - [ ] **Learning System**
   - [ ] Learn from user corrections
   - [ ] Pattern recognition
@@ -224,7 +275,7 @@
   - [ ] Memory management
   - [ ] Token optimization
 
-## Phase 10: Community & Open Source
+## Phase 12: Community & Open Source
 - [ ] **Open Source Release**
   - [ ] License selection
   - [ ] Contribution guidelines
@@ -317,9 +368,10 @@
 - [ ] Performance benchmarks
 
 ## Current Status
-- **Completed**: Phases 1-4 including Testing, Project Management, Enhanced Code Generation, and Agent Integration
-- **Next Up**: Phase 5 - Advanced Features (Git Integration, Live Preview, etc.)
-- **Recently Completed**: Full Agent Integration with workflows, BMad Master, and optimization
+- **Completed**: Phases 1-5
+- **Next Up**: Phase 7 - MCP Integration (needed for Phase 6)
+- **Then**: Phase 6 - AI-Driven UX (using MCP tools)
+- **Recently Completed**: Advanced Features (Git Integration, Live Preview, Incremental Updates)
 
 ## Priority Order
 1. ~~Project Directory Management~~ ✅ (Complete)
@@ -327,9 +379,10 @@
 3. ~~Test Generation~~ ✅ (Complete)
 4. ~~Enhanced Code Generation~~ ✅ (Complete)
 5. ~~Agent Integration~~ ✅ (Complete)
-6. Git Integration (Next priority)
-7. Live Preview
-8. Incremental Updates
+6. ~~Advanced Features (Git, Preview, Updates)~~ ✅ (Complete)
+7. **MCP Integration (Next Priority - enables Phase 6)**
+8. **AI-Driven UX (Depends on MCP tools)**
+9. Production Readiness
 
 ## Success Metrics
 - [ ] Can create full project in < 5 minutes
