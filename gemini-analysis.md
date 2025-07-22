@@ -40,7 +40,7 @@ The project's directory structure strongly reinforces its architectural principl
 
 *   **Examples and Documentation (`examples/`, `docs/`, `README.md` files):** The comprehensive `examples` directories (both at the root and within `.claude/`) and the dedicated `docs` folder, alongside numerous `README.md` files, underscore a strong commitment to user onboarding, clarity, and maintainability. This is vital for a complex system like BACO.
 
-*   **Sub-Projects/Components (`aurus/`, `vlad/`, `test-projects/`):** The top-level `aurus/` and `vlad/` directories, along with `test-projects/`, suggest that BACO is either a monorepo containing related sub-projects or a system composed of distinct, larger components. This structure allows for independent development and deployment of these parts while still being managed under the overarching BACO umbrella. The `test-projects` directory further indicates a strong emphasis on internal testing and validation of the system's capabilities.
+*   **Sub-Projects/Components (`test-projects/`):** The `test-projects/` directory indicates a strong emphasis on internal testing and validation of the system's capabilities, potentially serving as a dedicated space for testing distinct components or sub-projects within the BACO ecosystem.
 
 ### 3. Final Analysis & Overall Score
 
