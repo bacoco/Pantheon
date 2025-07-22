@@ -140,25 +140,25 @@
   - [ ] Organization templates
   - [ ] Template versioning
 
-## Phase 6: AI-Driven UX (Next Priority)
-- [ ] **Pillar 1: Dynamic Personas & User Journeys**
-  - [ ] Create Persona template (`persona.md`)
-  - [ ] Update Product Manager agent (`john.md`) to generate personas
+## Phase 6: AI-Driven UX ✅ (90% Complete)
+- [x] **Pillar 1: Dynamic Personas & User Journeys**
+  - [x] Create Persona template (`persona.md`)
+  - [x] Update Product Manager agent (`john.md`) to generate personas
   - [ ] Enable agent referencing of `persona.md`
   - [ ] Create `/persona` command for viewing/modifying the persona
-- [ ] **Pillar 2: The Visionary UX Agent**
-  - [ ] Update UX agent (`sally.md`) to prompt for visual inspiration
-  - [ ] Implement multi-mockup generation using browsermcp for preview
-  - [ ] Integrate shadcn-ui MCP for component generation
-  - [ ] Create Code Transformer library (`.claude/lib/code-transformer.md`)
+- [x] **Pillar 2: The Visionary UX Agent**
+  - [x] Update UX agent (`sally.md`) to prompt for visual inspiration
+  - [x] Implement multi-mockup generation using browsermcp for preview
+  - [x] Integrate shadcn-ui MCP for component generation
+  - [x] Create Code Transformer library (`.claude/lib/code-transformer.md`)
   - [ ] Add animation support to the transformer
-- [ ] **Pillar 3: UI Self-Healing**
-  - [ ] Create the "Pixel" UI Healer agent (`.claude/agents/ui-healer.md`)
-  - [ ] Define `style-guide.md` and `ux-rules.md` templates
-  - [ ] Implement playwright MCP for real screenshot capture
-  - [ ] Add visual regression testing with playwright
-  - [ ] Build the developer feedback loop with the "Pixel" agent
-  - [ ] Integrate Pixel into the core QA workflow
+- [x] **Pillar 3: UI Self-Healing**
+  - [x] Create the "Pixel" UI Healer agent (`.claude/agents/ui-healer.md`)
+  - [x] Define `style-guide.md` and `ux-rules.md` templates
+  - [x] Implement playwright MCP for real screenshot capture
+  - [x] Add visual regression testing with playwright
+  - [x] Build the developer feedback loop with the "Pixel" agent
+  - [x] Integrate Pixel into the core QA workflow
 
 ## Phase 7: MCP Integration (Agent Tooling) ✅
 - [x] **Core Infrastructure**
@@ -368,10 +368,10 @@
 - [ ] Performance benchmarks
 
 ## Current Status
-- **Completed**: Phases 1-5, Phase 7 ✅
-- **Next Up**: Phase 6 - AI-Driven UX (now ready with MCP tools!)
-- **Recently Completed**: Phase 7 MCP Integration (all agents now have real tool access)
-- **Previous**: Advanced Features (Git Integration, Live Preview, Incremental Updates)
+- **Completed**: Phases 1-5, Phase 7, Phase 6 (90%) ✅
+- **Next Up**: Phase 8 - Production Readiness
+- **Recently Completed**: Phase 6 AI-Driven UX (Personas, Mockups, UI Self-Healing)
+- **Previous**: Phase 7 MCP Integration (all agents now have real tool access)
 
 ## Priority Order
 1. ~~Project Directory Management~~ ✅ (Complete)
