@@ -6,9 +6,52 @@ When the user types `/git [subcommand]`, provide git integration assistance.
 
 ## Overview
 
-The `/git` command helps with git operations during BACO development workflows.
+The `/git` command helps with git operations during BACO development workflows. By default, BACO automatically commits after each successful phase to preserve your work.
+
+## AUTO-COMMIT BEHAVIOR (DEFAULT: ON)
+
+BACO automatically commits your work:
+- ✅ After each successful phase completion
+- ✅ When tests pass (automatic test runs)
+- ✅ With intelligent commit messages
+- ❌ NOT when tests fail (unless forced)
+
+To change this behavior:
+- `/git auto-commit off` - Disable automatic commits
+- `/git auto-commit on` - Re-enable automatic commits
+- `/git auto-commit status` - Check current setting
 
 ## Subcommands
+
+### `/git auto-commit [on|off|status]`
+Control automatic commit behavior:
+
+#### `/git auto-commit on` (Default)
+Enable automatic commits after each phase:
+```
+✅ Auto-commit enabled
+BACO will automatically commit after:
+- Each successful phase
+- Passing tests
+- Successful operations
+```
+
+#### `/git auto-commit off`
+Disable automatic commits:
+```
+⚠️ Auto-commit disabled
+You'll need to manually commit using:
+- /git commit
+- git commit
+```
+
+#### `/git auto-commit status`
+Check current auto-commit setting:
+```
+Auto-commit: [ON/OFF]
+Last auto-commit: [timestamp]
+Commits this session: [count]
+```
 
 ### `/git init`
 Initialize a git repository with appropriate settings:
@@ -91,6 +134,8 @@ Commits since main: 5
 BACO phases completed: 3/5
 Files created by BACO: 12
 Test coverage: 85%
+Auto-commit: ON
+Test mode: strict
 ```
 
 ### `/git create-repo`
@@ -105,15 +150,6 @@ See `/gh push` for full functionality.
 **Alias for `/gh status`** - Show comprehensive GitHub repository status.
 See `/gh status` for full functionality.
 
-### `/git auto-commit [on/off]`
-Toggle automatic commits during BACO execution:
-- `/git auto-commit off` - Disable automatic commits for this session
-- `/git auto-commit on` - Re-enable automatic commits (default)
-- `/git auto-commit` - Show current status
-
-Shows: "✅ Auto-commits: [ENABLED/DISABLED] for this session"
-
-Note: This is a session-level override. Default behavior is set in project preferences.
 
 ### `/git test-mode [strict/relaxed/skip]`
 Configure test requirements before commits:

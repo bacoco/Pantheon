@@ -353,6 +353,338 @@ Preserve and enhance CSS animations:
 }
 ```
 
+## Advanced Animation Support
+
+Transform complex animations and interactions across frameworks:
+
+### 1. Hover & Interactive States
+
+```javascript
+// Input: CSS hover effect
+<div class="card hover-grow">Hover me</div>
+
+// React with state
+const InteractiveCard = () => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <div 
+      className="card"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        transform: isHovered ? 'scale(1.05)' : 'scale(1)',
+        transition: 'transform 0.2s ease',
+        cursor: 'pointer'
+      }}
+    >
+      Hover me
+    </div>
+  );
+};
+
+// React with Framer Motion
+<motion.div 
+  className="card"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  transition={{ type: "spring", stiffness: 300 }}
+>
+  Hover me
+</motion.div>
+
+// Vue equivalent
+<template>
+  <div 
+    class="card"
+    @mouseenter="isHovered = true"
+    @mouseleave="isHovered = false"
+    :style="{ transform: isHovered ? 'scale(1.05)' : 'scale(1)' }"
+  >
+    Hover me
+  </div>
+</template>
+```
+
+### 2. Scroll-Triggered Animations
+
+```javascript
+// Input: Fade in on scroll
+<div class="fade-in-scroll">Content appears on scroll</div>
+
+// React with Intersection Observer
+const ScrollReveal = ({ children, className }) => {
+  const [isVisible, setVisible] = useState(false);
+  const domRef = useRef();
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    if (domRef.current) observer.observe(domRef.current);
+    
+    return () => {
+      if (domRef.current) observer.unobserve(domRef.current);
+    };
+  }, []);
+  
+  return (
+    <div
+      ref={domRef}
+      className={`${className} ${isVisible ? 'visible' : ''}`}
+      style={{
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'opacity 0.6s ease-out, transform 0.6s ease-out'
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+```
+
+### 3. Staggered List Animations
+
+```javascript
+// Input: List with stagger effect
+<ul class="stagger-list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+// React with CSS delays
+const StaggerList = ({ items }) => (
+  <ul className="stagger-list">
+    {items.map((item, index) => (
+      <li 
+        key={index}
+        style={{
+          animation: 'fadeInUp 0.5s ease-out forwards',
+          animationDelay: `${index * 0.1}s`,
+          opacity: 0
+        }}
+      >
+        {item}
+      </li>
+    ))}
+  </ul>
+);
+
+// Framer Motion version
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  show: { y: 0, opacity: 1 }
+};
+
+<motion.ul variants={container} initial="hidden" animate="show">
+  {items.map((text, i) => (
+    <motion.li key={i} variants={item}>{text}</motion.li>
+  ))}
+</motion.ul>
+```
+
+### 4. Loading & Progress Animations
+
+```javascript
+// Input: Loading spinner
+<div class="loading-spinner"></div>
+
+// React component with keyframes
+const Spinner = ({ size = 40, color = '#3498db' }) => (
+  <div 
+    className="spinner"
+    style={{
+      width: size,
+      height: size,
+      border: `3px solid #f3f3f3`,
+      borderTop: `3px solid ${color}`,
+      borderRadius: '50%',
+      animation: 'spin 1s linear infinite'
+    }}
+  />
+);
+
+// CSS keyframes
+const spinnerStyles = `
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+`;
+
+// Progress bar with animation
+const ProgressBar = ({ progress }) => (
+  <div className="progress-container">
+    <div 
+      className="progress-bar"
+      style={{
+        width: `${progress}%`,
+        transition: 'width 0.3s ease-out'
+      }}
+    />
+  </div>
+);
+```
+
+### 5. Page & Route Transitions
+
+```javascript
+// Input: Page with transition
+<div class="page-content fade-page">Content</div>
+
+// React Router with transitions
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  
+  return (
+    <TransitionGroup>
+      <CSSTransition
+        key={location.key}
+        timeout={300}
+        classNames="page"
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </CSSTransition>
+    </TransitionGroup>
+  );
+};
+
+// CSS for transitions
+.page-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 300ms ease-out;
+}
+.page-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+.page-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: all 300ms ease-out;
+}
+```
+
+### 6. Gesture-Based Animations
+
+```javascript
+// Input: Swipeable card
+<div class="swipe-card">Swipe me</div>
+
+// React with touch handling
+const SwipeCard = ({ onSwipe }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [startPos, setStartPos] = useState(null);
+  
+  const handleTouchStart = (e) => {
+    setStartPos({
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY
+    });
+  };
+  
+  const handleTouchMove = (e) => {
+    if (!startPos) return;
+    
+    const deltaX = e.touches[0].clientX - startPos.x;
+    const deltaY = e.touches[0].clientY - startPos.y;
+    
+    setPosition({ x: deltaX, y: deltaY });
+  };
+  
+  const handleTouchEnd = () => {
+    if (Math.abs(position.x) > 100) {
+      onSwipe(position.x > 0 ? 'right' : 'left');
+    }
+    setPosition({ x: 0, y: 0 });
+    setStartPos(null);
+  };
+  
+  return (
+    <div
+      className="swipe-card"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px) rotate(${position.x * 0.1}deg)`,
+        transition: startPos ? 'none' : 'transform 0.3s ease-out'
+      }}
+    >
+      Swipe me
+    </div>
+  );
+};
+```
+
+### 7. SVG Animations
+
+```javascript
+// Input: Animated SVG icon
+<svg class="animated-icon">
+  <path d="M10 20 L30 5 L50 20" />
+</svg>
+
+// React with animated SVG
+const AnimatedIcon = ({ isActive }) => (
+  <svg className="animated-icon" viewBox="0 0 60 40">
+    <motion.path
+      d={isActive ? "M10 20 L30 20 L50 20" : "M10 20 L30 5 L50 20"}
+      stroke="currentColor"
+      strokeWidth="3"
+      fill="none"
+      transition={{ duration: 0.3 }}
+    />
+  </svg>
+);
+```
+
+### Animation Performance Tips
+
+1. **Use CSS transforms** instead of position properties
+2. **Leverage GPU acceleration** with `will-change` or `transform: translateZ(0)`
+3. **Debounce scroll events** for scroll-triggered animations
+4. **Use `requestAnimationFrame`** for smooth JS animations
+5. **Lazy load** heavy animation libraries
+6. **Reduce paint areas** by animating composite layers
+
+### Animation Library Support
+
+The transformer supports integration with:
+- **Framer Motion** - Declarative React animations
+- **React Spring** - Physics-based animations
+- **GSAP** - Complex timeline animations
+- **Lottie** - After Effects animations
+- **AOS** - Animate on scroll
+- **Anime.js** - Lightweight animation library
+- **CSS Transitions** - Native browser animations
+
 ## Framework Detection
 
 Automatically detect target framework from context:

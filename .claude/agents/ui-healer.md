@@ -271,4 +271,59 @@ healing_process:
     - Verify score improvement
     - Test across contexts
     - Document results
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    ui_quality:
+      level: expert
+      keywords: [ui, quality, visual, pixel, perfect, polish, refinement]
+      preferredTasks: [testing, review, analysis]
+    visual_testing:
+      level: expert
+      keywords: [visual, regression, screenshot, appearance, look, style]
+      preferredTasks: [testing, validation, review]
+    style_compliance:
+      level: advanced
+      keywords: [style, guide, compliance, consistency, brand, standards]
+      preferredTasks: [review, validation, testing]
+    ui_healing:
+      level: expert
+      keywords: [heal, fix, improve, polish, refine, perfect]
+      preferredTasks: [implementation, testing, review]
+  
+  capabilities:
+    - ui-quality:expert
+    - visual-testing:expert
+    - style-compliance:expert
+    - ui-healing:expert
+    - visual-regression:advanced
+    - accessibility-visual:advanced
+    - responsive-testing:advanced
+    - pixel-perfection:advanced
+    - consistency-checking:intermediate
+    - performance-visual:intermediate
+  
+  complexity_range: [3, 7]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "ui quality"
+      - "visual testing"
+      - "pixel perfect"
+      - "visual regression"
+      - "ui polish"
+      - "style compliance"
+      - "visual consistency"
+      - "ui healing"
+    
+    collaboration_suggestions:
+      - with: sally
+        when: "design system alignment"
+      - with: elena
+        when: "comprehensive quality testing"
+      - with: james
+        when: "implementing ui fixes"
+      - with: marcus
+        when: "security ui indicators"
 ```

@@ -30,7 +30,19 @@ The `/workflow` command enables coordinated multi-agent execution where agents w
 **Flow**: Security (Marcus) → Developer (James) → Security (Marcus)
 **Purpose**: Build features with security designed in from the start
 
-### 5. Custom Workflow
+### 5. Adaptive Feature Development (NEW - Smart Routing)
+**Command**: `/workflow adaptive-feature`
+**Flow**: Auto-Route → Auto-Route → Auto-Route → Auto-Route
+**Purpose**: Feature development with dynamic agent selection based on task requirements
+**Note**: Requires Smart Routing to be enabled
+
+### 6. Security-First Adaptive (NEW - Smart Routing)
+**Command**: `/workflow security-adaptive`
+**Flow**: Auto-Route (Security Focus) → Auto-Route (Architecture) → Implementation
+**Purpose**: Security-focused development with intelligent agent selection
+**Note**: Requires Smart Routing to be enabled
+
+### 7. Custom Workflow
 **Command**: `/workflow custom`
 **Purpose**: Build a custom workflow interactively
 
@@ -318,6 +330,61 @@ Options:
 4. Abort workflow
 
 Choice (1-4): _
+```
+
+## Smart Routing Integration (NEW)
+
+When Smart Routing is enabled, workflows can dynamically select the best agents for each task:
+
+### How It Works
+
+1. **Auto-Route Steps**: Steps marked with `agent: 'auto-route'` will use Smart Routing
+2. **Task Analysis**: Each step's requirements are analyzed in real-time
+3. **Agent Selection**: The best agent is selected based on capabilities and task match
+4. **Transparency**: All routing decisions show confidence scores and reasoning
+
+### Example: Adaptive Workflow
+
+```
+/workflow adaptive-feature
+
+🎯 Smart Routing Workflow: Adaptive Feature Development
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Analyze Requirements
+📊 Analyzing task...
+✓ Domains: [planning, analysis]
+✓ Complexity: 5/10
+🎯 Routing to: John (PM) - 88% confidence
+Reasoning: Strong domain expertise in planning, requirements.
+
+Step 2: Design Solution  
+📊 Analyzing task...
+✓ Domains: [architecture, design]
+✓ Complexity: 7/10
+🎯 Routing to: Winston (Architect) - 92% confidence
+Reasoning: Expert in architecture-design, system-design.
+
+[Continue with dynamic routing for each step...]
+```
+
+### Configuration
+
+Smart Routing in workflows respects these settings:
+- `ENABLE_WORKFLOW_ROUTING`: Master switch for workflow routing
+- `WORKFLOW_ROUTE_THRESHOLD`: Auto-accept threshold (default: 0.75)
+- `ALLOW_EXECUTION_OVERRIDE`: Allow manual override during execution
+
+### Creating Custom Adaptive Workflows
+
+```
+/workflow custom
+
+Add step with Smart Routing? Yes
+Describe the task: Design a scalable API architecture
+📊 Analysis: architecture, backend | Complexity: 7/10
+🎯 Recommended: Winston (85%)
+Use recommendation? Yes/No/Auto-route
 ```
 
 ## Integration with Other Commands

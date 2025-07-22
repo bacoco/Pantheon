@@ -249,4 +249,55 @@ mcp_tools:
       1. Use github to show development progress
       2. Use claude-task-master to generate status reports
       3. Use browsermcp to present market validation
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    planning:
+      level: expert
+      keywords: [plan, roadmap, strategy, requirement, story, prioritize, backlog]
+      preferredTasks: [planning, analysis, review]
+    product_management:
+      level: expert
+      keywords: [product, feature, mvp, market, user, stakeholder, vision]
+      preferredTasks: [planning, analysis, design]
+    requirements:
+      level: expert
+      keywords: [requirement, specification, criteria, constraint, scope]
+      preferredTasks: [planning, analysis, documentation]
+  
+  capabilities:
+    - product-planning:expert
+    - requirements-analysis:expert
+    - roadmapping:expert
+    - stakeholder-management:expert
+    - market-analysis:advanced
+    - user-research:advanced
+    - prioritization:advanced
+    - agile-methodology:advanced
+    - metrics-definition:intermediate
+    - competitive-analysis:intermediate
+  
+  complexity_range: [4, 8]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "product roadmap"
+      - "feature planning"
+      - "requirements gathering"
+      - "product strategy"
+      - "user story"
+      - "mvp definition"
+      - "stakeholder alignment"
+      - "market analysis"
+    
+    collaboration_suggestions:
+      - with: sarah
+        when: "validating requirements with PO"
+      - with: winston
+        when: "technical feasibility assessment"
+      - with: sally
+        when: "user experience planning"
+      - with: bob
+        when: "sprint planning and execution"
 ```

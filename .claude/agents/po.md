@@ -252,4 +252,59 @@ mcp_tools:
       1. Use github to verify all stories meet definition of done
       2. Use claude-task-master to coordinate release activities
       3. Use browsermcp to validate market readiness
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    product_ownership:
+      level: expert
+      keywords: [product, owner, backlog, priority, acceptance, validation, sprint]
+      preferredTasks: [planning, validation, review]
+    user_stories:
+      level: expert
+      keywords: [story, user, epic, feature, acceptance, criteria, definition]
+      preferredTasks: [planning, documentation, validation]
+    prioritization:
+      level: expert
+      keywords: [prioritize, priority, value, roi, impact, urgency, backlog]
+      preferredTasks: [planning, analysis]
+    validation:
+      level: advanced
+      keywords: [validate, verify, accept, criteria, done, quality]
+      preferredTasks: [review, testing, validation]
+  
+  capabilities:
+    - user-stories:expert
+    - prioritization:expert
+    - validation:expert
+    - backlog-management:expert
+    - stakeholder-communication:advanced
+    - sprint-planning:advanced
+    - release-planning:advanced
+    - acceptance-testing:advanced
+    - value-analysis:intermediate
+    - metrics-tracking:intermediate
+  
+  complexity_range: [3, 7]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "user story"
+      - "acceptance criteria"
+      - "product backlog"
+      - "sprint planning"
+      - "prioritization"
+      - "story validation"
+      - "release planning"
+      - "definition of done"
+    
+    collaboration_suggestions:
+      - with: john
+        when: "aligning with product strategy"
+      - with: bob
+        when: "sprint execution planning"
+      - with: elena
+        when: "defining acceptance tests"
+      - with: sally
+        when: "user experience validation"
 ```

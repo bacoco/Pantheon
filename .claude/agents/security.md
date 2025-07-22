@@ -273,4 +273,59 @@ mcp_tools:
       1. Use context7 to access relevant compliance standards
       2. Use github to verify implementation of required controls
       3. Use browsermcp to test external-facing security measures
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    security:
+      level: expert
+      keywords: [security, vulnerable, threat, compliance, audit, secure, protect]
+      preferredTasks: [review, analysis, planning, testing]
+    compliance:
+      level: expert
+      keywords: [compliance, gdpr, hipaa, sox, pci, regulation, standard]
+      preferredTasks: [review, analysis, planning]
+    authentication:
+      level: advanced
+      keywords: [auth, authentication, authorization, jwt, oauth, sso, mfa]
+      preferredTasks: [design, review, implementation]
+    encryption:
+      level: advanced
+      keywords: [encrypt, decrypt, crypto, hash, ssl, tls, certificate]
+      preferredTasks: [design, implementation, review]
+  
+  capabilities:
+    - security-audit:expert
+    - compliance:expert
+    - threat-modeling:expert
+    - vulnerability-assessment:expert
+    - security-architecture:advanced
+    - penetration-testing:advanced
+    - authentication-design:advanced
+    - encryption:advanced
+    - incident-response:intermediate
+    - security-monitoring:intermediate
+  
+  complexity_range: [5, 9]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "security audit"
+      - "vulnerability assessment"
+      - "threat model"
+      - "compliance check"
+      - "security review"
+      - "penetration test"
+      - "authentication system"
+      - "encryption strategy"
+    
+    collaboration_suggestions:
+      - with: winston
+        when: "designing secure architectures"
+      - with: james
+        when: "implementing security controls"
+      - with: elena
+        when: "testing security measures"
+      - with: john
+        when: "planning security roadmap"
 ```

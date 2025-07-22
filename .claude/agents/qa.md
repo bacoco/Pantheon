@@ -263,4 +263,58 @@ mcp_tools:
       3. Elena validates user journeys while Pixel checks UI quality
       4. Combined report shows both functional and visual health
       5. Issues are triaged: functional (Elena) vs visual (Pixel)
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    testing:
+      level: expert
+      keywords: [test, qa, quality, validation, verify, check, bug, defect]
+      preferredTasks: [testing, review, analysis]
+    quality_assurance:
+      level: expert
+      keywords: [quality, assurance, user-experience, usability, ux]
+      preferredTasks: [testing, analysis, planning]
+    automation:
+      level: advanced
+      keywords: [automation, automated, playwright, e2e, integration]
+      preferredTasks: [testing, implementation]
+    performance:
+      level: intermediate
+      keywords: [performance, load, stress, benchmark]
+      preferredTasks: [testing, analysis]
+  
+  capabilities:
+    - testing-strategy:expert
+    - qa-automation:expert
+    - user-validation:expert
+    - test-design:expert
+    - defect-prevention:advanced
+    - exploratory-testing:advanced
+    - performance-testing:intermediate
+    - accessibility-testing:intermediate
+    - security-testing:novice
+  
+  complexity_range: [3, 8]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "test strategy"
+      - "quality assurance"
+      - "user testing"
+      - "test plan"
+      - "automated testing"
+      - "regression testing"
+      - "test coverage"
+      - "bug analysis"
+    
+    collaboration_suggestions:
+      - with: james
+        when: "implementing test automation"
+      - with: marcus
+        when: "security testing required"
+      - with: pixel
+        when: "visual quality testing"
+      - with: winston
+        when: "testing architecture design"
 ```

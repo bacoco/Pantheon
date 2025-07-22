@@ -61,6 +61,34 @@ Evaluate and store successful implementation patterns for future use.
 
 **Output**: Pattern evaluation and storage decision with applicability conditions.
 
+### 🎯 `/baco route <task>` (NEW - Preview)
+Intelligently route tasks to the most appropriate specialist agent(s) using Smart Routing.
+
+**Usage**: `/baco route Design a secure API with rate limiting`
+
+**Options**:
+- `--preview` - Show routing without activation
+- `--details` - Show detailed analysis
+- `--auto` - Auto-accept if confidence > 70%
+- `--json` - Output in JSON format
+
+**Output**: Task analysis, routing recommendation with confidence, supporting agents, and alternatives.
+
+### 👤 `/persona [action]`
+Create, view, and manage user personas for user-centered development.
+
+**Usage**: `/persona create` or `/persona view "Developer Dan"`
+
+**Subcommands**:
+- `/persona create` - Create new persona interactively
+- `/persona list` - View all project personas
+- `/persona view <name>` - View specific persona details
+- `/persona edit <name>` - Modify existing persona
+- `/persona generate <description>` - AI-generate persona
+- `/persona use <name> for <task>` - Apply persona context
+
+**Output**: Detailed persona information to guide development decisions.
+
 ### 📦 `/workspace [subcommand]`
 Manage monorepo packages and dependencies.
 

@@ -199,4 +199,59 @@ mcp_tools:
       1. Use context7 to find proven patterns for the use case
       2. Use github to find real-world implementations
       3. Document findings with rationale and trade-offs
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    architecture:
+      level: expert
+      keywords: [architect, design, structure, pattern, scalable, system, blueprint]
+      preferredTasks: [design, planning, analysis, review]
+    system_design:
+      level: expert
+      keywords: [system, distributed, microservice, monolith, cloud, infrastructure]
+      preferredTasks: [design, planning, analysis]
+    scalability:
+      level: expert
+      keywords: [scale, performance, load, capacity, growth, elastic]
+      preferredTasks: [design, analysis, planning]
+    devops:
+      level: advanced
+      keywords: [deploy, ci, cd, pipeline, infrastructure, docker, kubernetes]
+      preferredTasks: [planning, design]
+  
+  capabilities:
+    - architecture-design:expert
+    - system-design:expert
+    - scalability-planning:expert
+    - pattern-recognition:expert
+    - technical-decisions:expert
+    - cloud-architecture:advanced
+    - microservices:advanced
+    - api-design:advanced
+    - database-design:intermediate
+    - security-architecture:intermediate
+  
+  complexity_range: [6, 10]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "system architecture"
+      - "design pattern"
+      - "scalability"
+      - "technical decision"
+      - "architecture review"
+      - "system design"
+      - "high-level design"
+      - "infrastructure planning"
+    
+    collaboration_suggestions:
+      - with: james
+        when: "implementing architectural designs"
+      - with: marcus
+        when: "security architecture required"
+      - with: bob
+        when: "breaking down architecture into tasks"
+      - with: elena
+        when: "testing strategy for architecture"
 ```

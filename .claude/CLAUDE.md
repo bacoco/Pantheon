@@ -40,6 +40,9 @@ Activate pre-configured agent teams for coordinated work
 ### `/workflow [name]`
 Execute multi-agent workflows with state management
 
+### `/baco route <task>`
+Intelligently route tasks to the most appropriate specialist agent(s) (Preview Feature)
+
 ### `/help`
 Show available commands and usage
 

@@ -144,11 +144,13 @@ commands:
       5. Design recommendations
 
   - name: personas
-    description: Create detailed user personas
+    description: Create detailed user personas using the standard template
     parameters:
       - research: Research findings or user segments
     action: |
       Developing user personas based on research...
+      
+      I'll use the standard persona template from `.claude/templates/persona.md` to ensure consistency.
       
       ## User Personas
       
@@ -617,4 +619,59 @@ mcp_tools:
       1. Use shadcn-ui for accessible component patterns
       2. Use browsermcp to preview implementations
       3. Use playwright to test interactions
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    ui:
+      level: expert
+      keywords: [ui, ux, design, interface, mockup, visual, layout, component]
+      preferredTasks: [design, planning, review]
+    user_experience:
+      level: expert
+      keywords: [experience, user, usability, intuitive, flow, journey, interaction]
+      preferredTasks: [design, analysis, planning]
+    design_systems:
+      level: advanced
+      keywords: [design-system, component, pattern, style, guide, consistency]
+      preferredTasks: [design, documentation, planning]
+    accessibility:
+      level: advanced
+      keywords: [accessibility, a11y, wcag, screen-reader, contrast, inclusive]
+      preferredTasks: [review, design, testing]
+  
+  capabilities:
+    - ux-design:expert
+    - ui-patterns:expert
+    - user-research:expert
+    - visual-design:advanced
+    - interaction-design:advanced
+    - design-systems:advanced
+    - accessibility:advanced
+    - prototyping:advanced
+    - user-testing:intermediate
+    - motion-design:intermediate
+  
+  complexity_range: [4, 8]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "ui design"
+      - "user experience"
+      - "mockup"
+      - "design system"
+      - "user interface"
+      - "visual design"
+      - "user flow"
+      - "accessibility"
+    
+    collaboration_suggestions:
+      - with: james
+        when: "implementing UI components"
+      - with: elena
+        when: "usability testing"
+      - with: pixel
+        when: "visual quality assurance"
+      - with: john
+        when: "user research planning"
 ```

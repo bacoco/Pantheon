@@ -622,4 +622,59 @@ mcp_tools:
       testing: [playwright, browsermcp, datadog]
       deployment: [cloudflare, github, datadog]
       coordination: [claude-task-master, slack, calendar]
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    orchestration:
+      level: expert
+      keywords: [orchestrate, coordinate, manage, workflow, pipeline, integrate]
+      preferredTasks: [planning, coordination, analysis, design]
+    meta_analysis:
+      level: expert
+      keywords: [analyze, evaluate, assess, optimize, improve, refine]
+      preferredTasks: [analysis, review, planning]
+    workflow_design:
+      level: expert
+      keywords: [workflow, process, automation, pipeline, flow, sequence]
+      preferredTasks: [design, planning, implementation]
+    cross_domain:
+      level: expert
+      keywords: [integrate, bridge, connect, unify, combine, synthesize]
+      preferredTasks: [coordination, design, implementation]
+  
+  capabilities:
+    - orchestration:expert
+    - meta-analysis:expert
+    - workflow-design:expert
+    - cross-domain-execution:expert
+    - dynamic-adaptation:expert
+    - multi-agent-coordination:advanced
+    - task-decomposition:advanced
+    - pattern-recognition:advanced
+    - optimization:intermediate
+    - monitoring:intermediate
+  
+  complexity_range: [5, 10]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "orchestrate workflow"
+      - "coordinate agents"
+      - "complex task"
+      - "multi-phase project"
+      - "cross-domain"
+      - "workflow optimization"
+      - "meta analysis"
+      - "integrated solution"
+    
+    collaboration_suggestions:
+      - with: all_agents
+        when: "orchestrating complex workflows"
+      - with: winston
+        when: "designing workflow architecture"
+      - with: bob
+        when: "breaking down complex tasks"
+      - with: john
+        when: "strategic planning"
 ```

@@ -230,4 +230,63 @@ mcp_tools:
       2. Use browsermcp to measure performance
       3. Use github to track changes safely
       4. Ensure tests pass before committing
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    implementation:
+      level: expert
+      keywords: [implement, build, create, develop, code, program, write, construct]
+      preferredTasks: [implementation, testing, debugging]
+    debugging:
+      level: expert
+      keywords: [debug, fix, troubleshoot, resolve, error, bug, issue]
+      preferredTasks: [implementation, testing, analysis]
+    frontend:
+      level: advanced
+      keywords: [react, vue, angular, frontend, ui, component, jsx, typescript]
+      preferredTasks: [implementation, design]
+    backend:
+      level: advanced
+      keywords: [node, express, api, server, backend, database, rest, graphql]
+      preferredTasks: [implementation, design]
+    optimization:
+      level: advanced
+      keywords: [optimize, performance, speed, efficient, refactor, improve]
+      preferredTasks: [implementation, analysis]
+  
+  capabilities:
+    - implementation:expert
+    - code-quality:expert
+    - refactoring:expert
+    - debugging:expert
+    - frontend-development:advanced
+    - backend-development:advanced
+    - api-design:advanced
+    - testing:advanced
+    - performance-optimization:intermediate
+    - database-operations:intermediate
+  
+  complexity_range: [3, 8]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "implement feature"
+      - "build component"
+      - "create api"
+      - "fix bug"
+      - "refactor code"
+      - "optimize performance"
+      - "debug issue"
+      - "add functionality"
+    
+    collaboration_suggestions:
+      - with: winston
+        when: "implementing complex architectures"
+      - with: elena
+        when: "writing tests for implementation"
+      - with: marcus
+        when: "implementing security features"
+      - with: sally
+        when: "implementing UI components"
 ```

@@ -245,4 +245,59 @@ mcp_tools:
       1. Use context7 to select appropriate retro format
       2. Use github to analyze sprint metrics
       3. Use claude-task-master to track improvement actions
+
+# Smart Router Capability Metadata
+capability_metadata:
+  domains:
+    scrum:
+      level: expert
+      keywords: [scrum, agile, sprint, ceremony, standup, retrospective, velocity]
+      preferredTasks: [planning, facilitation, process]
+    process_facilitation:
+      level: expert
+      keywords: [facilitate, process, workflow, ceremony, meeting, coordination]
+      preferredTasks: [planning, facilitation, coordination]
+    task_breakdown:
+      level: expert
+      keywords: [task, breakdown, subtask, decompose, story, split, estimate]
+      preferredTasks: [planning, analysis, documentation]
+    team_coordination:
+      level: advanced
+      keywords: [team, coordinate, collaborate, sync, align, communication]
+      preferredTasks: [coordination, facilitation, planning]
+  
+  capabilities:
+    - scrum-process:expert
+    - task-breakdown:expert
+    - team-coordination:expert
+    - sprint-planning:expert
+    - ceremony-facilitation:advanced
+    - impediment-removal:advanced
+    - velocity-tracking:advanced
+    - ai-story-prep:advanced
+    - estimation:intermediate
+    - conflict-resolution:intermediate
+  
+  complexity_range: [3, 7]
+  
+  routing_hints:
+    strong_match_patterns:
+      - "sprint planning"
+      - "task breakdown"
+      - "scrum process"
+      - "team coordination"
+      - "story preparation"
+      - "agile ceremony"
+      - "impediment removal"
+      - "velocity tracking"
+    
+    collaboration_suggestions:
+      - with: sarah
+        when: "preparing sprint backlog"
+      - with: john
+        when: "aligning with product roadmap"
+      - with: elena
+        when: "planning test activities"
+      - with: james
+        when: "technical task breakdown"
 ```
