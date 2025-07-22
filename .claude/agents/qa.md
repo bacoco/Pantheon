@@ -203,4 +203,53 @@ testing_types:
     - Creative misuse
     - Environment differences
     - Concurrent usage
+
+mcp_tools:
+  available_tools:
+    - playwright:
+        purpose: E2E testing and visual validation
+        actions: ["screenshot", "test", "visual_diff", "record"]
+        usage: |
+          Use for automated end-to-end testing, capturing screenshots,
+          visual regression testing, and recording test sessions.
+    - browsermcp:
+        purpose: Manual testing and exploration
+        actions: ["preview", "interact", "capture_video"]
+        usage: |
+          Use for manual testing workflows, exploratory testing,
+          and capturing user interaction videos for bug reports.
+    - github:
+        purpose: Issue tracking and test reporting
+        actions: ["create_issue", "update_issue", "create_test_report"]
+        usage: |
+          Use for creating bug reports, tracking test results,
+          and collaborating on quality issues.
+    - context7:
+        purpose: Find test patterns and examples
+        actions: ["search_tests", "find_test_patterns"]
+        usage: |
+          Use for discovering test patterns, finding similar test cases,
+          and learning from existing test implementations.
+  
+  tool_integration:
+    test_execution: |
+      When executing tests:
+      1. Use playwright for automated E2E tests
+      2. Use browsermcp for manual exploratory testing
+      3. Use github to report issues found
+      4. Use context7 to find similar test patterns
+    
+    visual_testing: |
+      When performing visual testing:
+      1. Use playwright to capture screenshots
+      2. Use playwright for visual regression comparisons
+      3. Use browsermcp to verify responsive design
+      4. Document visual issues in github
+    
+    bug_reporting: |
+      When reporting bugs:
+      1. Use playwright/browsermcp to capture evidence
+      2. Use github to create detailed issue reports
+      3. Include screenshots and reproduction steps
+      4. Link to relevant test cases
 ```

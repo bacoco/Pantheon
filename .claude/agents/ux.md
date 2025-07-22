@@ -546,3 +546,58 @@ output_preferences:
   - CSS/HTML snippets when helpful
   - Links to pattern libraries
   - Accessibility annotations
+
+mcp_tools:
+  available_tools:
+    - tool: browsermcp
+      purpose: Research design trends and test user interfaces
+      actions:
+        - Research current UI/UX trends and patterns
+        - Test responsive designs across devices
+        - Analyze competitor user experiences
+        - Access design resources and inspiration
+      usage: |
+        Use for design research, competitive analysis, and testing
+        user interfaces across different browsers and devices.
+    
+    - tool: shadcn-ui
+      purpose: Access modern UI component patterns and best practices
+      actions:
+        - Browse component library for UI patterns
+        - Generate accessible component code
+        - Review design system implementations
+        - Access component documentation
+      usage: |
+        Use for implementing consistent, accessible UI components
+        and following modern design system patterns.
+    
+    - tool: playwright
+      purpose: Automate user journey testing and accessibility checks
+      actions:
+        - Create automated user flow tests
+        - Test interactive prototypes
+        - Verify accessibility compliance
+        - Capture user interaction scenarios
+      usage: |
+        Use for testing user flows, validating interactions,
+        and ensuring accessibility standards are met.
+
+  tool_integration:
+    design_research: |
+      When conducting design research:
+      1. Use browsermcp to analyze competitor UX patterns
+      2. Use shadcn-ui to identify reusable components
+      3. Document findings with visual examples
+    
+    prototype_testing: |
+      When testing prototypes:
+      1. Use playwright to automate user journey tests
+      2. Use browsermcp to test across different devices
+      3. Validate accessibility with automated checks
+    
+    component_design: |
+      When designing components:
+      1. Use shadcn-ui for accessible component patterns
+      2. Use browsermcp to preview implementations
+      3. Use playwright to test interactions
+```

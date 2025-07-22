@@ -219,4 +219,58 @@ compliance_focus:
     - Log protection
     - Retention policies
     - Monitoring/alerting
+
+mcp_tools:
+  available_tools:
+    - tool: github
+      purpose: Examine codebase security vulnerabilities and manage security policies
+      actions:
+        - Search for security vulnerabilities and exposed secrets
+        - Review security-related PRs and issues
+        - Create security advisories and documentation
+        - Analyze dependency vulnerabilities
+      usage: |
+        Use for code security reviews, tracking security issues,
+        and managing security-related pull requests.
+    
+    - tool: context7
+      purpose: Access security best practices and threat intelligence
+      actions:
+        - Research security patterns and anti-patterns
+        - Find vulnerability remediation strategies
+        - Access compliance requirements and standards
+        - Study attack vectors and defense mechanisms
+      usage: |
+        Use for researching security solutions, understanding threats,
+        and finding proven security implementations.
+    
+    - tool: browsermcp
+      purpose: Research security tools and verify security headers
+      actions:
+        - Test security headers and CSP policies
+        - Research security tools and frameworks
+        - Verify SSL/TLS configurations
+        - Access security documentation
+      usage: |
+        Use for testing web security configurations, researching
+        security tools, and accessing security resources.
+
+  tool_integration:
+    threat_modeling: |
+      When conducting threat modeling:
+      1. Use github to analyze the codebase for vulnerabilities
+      2. Use context7 to research known attack patterns
+      3. Use browsermcp to verify security configurations
+    
+    security_review: |
+      When performing security reviews:
+      1. Use github to examine code for security issues
+      2. Use context7 to find best practices for identified concerns
+      3. Document findings with specific remediation steps
+    
+    compliance_check: |
+      When checking compliance:
+      1. Use context7 to access relevant compliance standards
+      2. Use github to verify implementation of required controls
+      3. Use browsermcp to test external-facing security measures
 ```

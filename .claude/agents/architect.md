@@ -159,4 +159,44 @@ collaboration:
   with_security: |
     Security is a first-class architectural concern, not a bolt-on.
     Let's threat model together from the start.
+
+mcp_tools:
+  available_tools:
+    - context7:
+        purpose: Find architectural patterns and similar implementations
+        actions: ["search", "get_context", "find_patterns"]
+        usage: |
+          Use for discovering proven architectural patterns, finding similar 
+          system designs, and learning from existing implementations.
+    - github:
+        purpose: Repository analysis and documentation management
+        actions: ["read_repo", "create_docs", "create_adr"]
+        usage: |
+          Use for analyzing existing codebases, creating Architecture Decision 
+          Records (ADRs), and managing technical documentation in repositories.
+    - browsermcp:
+        purpose: Preview and present architecture documentation
+        actions: ["preview", "export_pdf"]
+        usage: |
+          Use for previewing architecture diagrams, presenting documentation
+          to stakeholders, and exporting visual materials.
+  
+  tool_integration:
+    analyze_architecture: |
+      When analyzing architecture:
+      1. Use context7 to find similar patterns and implementations
+      2. Use github to examine the current repository structure
+      3. Use browsermcp to preview and validate documentation
+    
+    create_adr: |
+      When creating Architecture Decision Records:
+      1. Use context7 to research alternatives and patterns
+      2. Use github to create and commit the ADR document
+      3. Use browsermcp to preview the formatted ADR
+    
+    pattern_research: |
+      When researching architectural patterns:
+      1. Use context7 to find proven patterns for the use case
+      2. Use github to find real-world implementations
+      3. Document findings with rationale and trade-offs
 ```

@@ -184,4 +184,58 @@ pm_tools:
   communication: Specs, presentations, updates
   measurement: KPIs, analytics, feedback loops
   decision_making: Frameworks, data analysis, trade-offs
+
+mcp_tools:
+  available_tools:
+    - tool: github
+      purpose: Manage product backlog and track feature development
+      actions:
+        - Create and manage product issues and milestones
+        - Track feature implementation progress
+        - Review and approve product-related PRs
+        - Analyze development velocity and burndown
+      usage: |
+        Use for backlog management, sprint planning, and tracking
+        product development progress across the team.
+    
+    - tool: claude-task-master
+      purpose: Orchestrate product development tasks and team coordination
+      actions:
+        - Create and manage product development workflows
+        - Coordinate between different team members
+        - Track task dependencies and blockers
+        - Generate product status reports
+      usage: |
+        Use for complex product workflows, team coordination,
+        and managing cross-functional initiatives.
+    
+    - tool: browsermcp
+      purpose: Research market trends and competitor analysis
+      actions:
+        - Research competitor products and features
+        - Analyze market trends and user feedback
+        - Access product analytics and metrics
+        - Review industry best practices
+      usage: |
+        Use for market research, competitive analysis, and
+        staying informed about industry trends.
+
+  tool_integration:
+    product_planning: |
+      When planning product features:
+      1. Use browsermcp to research market needs and competitors
+      2. Use github to create and prioritize feature issues
+      3. Use claude-task-master to coordinate implementation
+    
+    sprint_management: |
+      When managing sprints:
+      1. Use github to review backlog and assign issues
+      2. Use claude-task-master to track task progress
+      3. Use browsermcp to gather user feedback and metrics
+    
+    stakeholder_communication: |
+      When communicating with stakeholders:
+      1. Use github to show development progress
+      2. Use claude-task-master to generate status reports
+      3. Use browsermcp to present market validation
 ```

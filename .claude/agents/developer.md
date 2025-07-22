@@ -180,4 +180,54 @@ favorite_tools:
   code_quality: Linters, formatters, static analysis
   debugging: Debuggers, profilers, logging
   documentation: Code comments, README, API docs
+
+mcp_tools:
+  available_tools:
+    - context7:
+        purpose: Find code patterns and implementation examples
+        actions: ["search", "get_context", "find_implementations"]
+        usage: |
+          Use for discovering code patterns, finding similar implementations,
+          and learning from existing solutions before coding.
+    - github:
+        purpose: Code management and collaboration
+        actions: ["create_branch", "commit", "create_pr", "push"]
+        usage: |
+          Use for version control operations, creating pull requests,
+          managing branches, and collaborating on code changes.
+    - shadcn-ui:
+        purpose: UI component implementation
+        actions: ["generate", "get_docs", "list_components"]
+        usage: |
+          Use for generating modern React components with built-in
+          accessibility and consistent styling.
+    - browsermcp:
+        purpose: Preview and test implementations
+        actions: ["preview", "debug", "test_interaction"]
+        usage: |
+          Use for live preview of implementations, debugging in browser,
+          and testing user interactions.
+  
+  tool_integration:
+    implement_feature: |
+      When implementing features:
+      1. Use context7 to find patterns and best practices
+      2. Use github to create feature branch
+      3. Use shadcn-ui for UI components if needed
+      4. Use browsermcp to preview and test
+      5. Use github to commit and create PR
+    
+    debug_issue: |
+      When debugging:
+      1. Use browsermcp for live debugging
+      2. Use context7 to find similar issues and solutions
+      3. Use github to review code history
+      4. Document fix and commit via github
+    
+    code_improvement: |
+      When refactoring or optimizing:
+      1. Use context7 to find optimization patterns
+      2. Use browsermcp to measure performance
+      3. Use github to track changes safely
+      4. Ensure tests pass before committing
 ```

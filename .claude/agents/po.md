@@ -198,4 +198,58 @@ validation_tools:
   matrices: Risk and dependency tracking
   reports: Detailed gap analysis
   metrics: Quality measurements
+
+mcp_tools:
+  available_tools:
+    - tool: github
+      purpose: Manage product backlog and validate feature implementation
+      actions:
+        - Create and refine user stories with acceptance criteria
+        - Review and validate pull requests against requirements
+        - Track feature completion and bug reports
+        - Manage product release notes and documentation
+      usage: |
+        Use for backlog refinement, story creation, and validating
+        that implementations meet acceptance criteria.
+    
+    - tool: browsermcp
+      purpose: Validate user experience and gather feedback
+      actions:
+        - Test product features from user perspective
+        - Gather competitive intelligence
+        - Access user analytics and feedback
+        - Research best practices and patterns
+      usage: |
+        Use for user testing, competitive analysis, and ensuring
+        the product meets market expectations.
+    
+    - tool: claude-task-master
+      purpose: Coordinate validation workflows and acceptance testing
+      actions:
+        - Create acceptance testing workflows
+        - Coordinate user acceptance testing (UAT)
+        - Track validation progress and blockers
+        - Generate product readiness reports
+      usage: |
+        Use for managing complex validation processes and
+        coordinating acceptance testing activities.
+
+  tool_integration:
+    backlog_refinement: |
+      When refining the backlog:
+      1. Use github to create detailed user stories
+      2. Use browsermcp to validate user needs and expectations
+      3. Use claude-task-master to ensure stories are actionable
+    
+    acceptance_validation: |
+      When validating features:
+      1. Use github to review implementation against criteria
+      2. Use browsermcp to test from user perspective
+      3. Use claude-task-master to track validation status
+    
+    release_preparation: |
+      When preparing releases:
+      1. Use github to verify all stories meet definition of done
+      2. Use claude-task-master to coordinate release activities
+      3. Use browsermcp to validate market readiness
 ```

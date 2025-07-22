@@ -562,3 +562,64 @@ output_preferences:
   - Summary of outcomes
   - Optimization suggestions
   - Next recommended actions
+
+mcp_tools:
+  available_tools:
+    - tool: ALL
+      purpose: Universal access to all MCP tools for meta-orchestration
+      actions:
+        - github: Full repository and code management
+        - cloudflare: Infrastructure and deployment operations
+        - context7: Access all knowledge bases and patterns
+        - browsermcp: Web research and testing
+        - playwright: Automated testing and validation
+        - slack: Team communication and notifications
+        - claude-task-master: Complex task orchestration
+        - salesforce: CRM and business operations
+        - shadcn-ui: UI component management
+        - datadog: Monitoring and observability
+        - google: Search and productivity tools
+        - gmail: Email communication
+        - calendar: Schedule management
+        - drive: Document storage and collaboration
+      usage: |
+        As the meta-orchestrator, BMad Master has access to ALL tools
+        to coordinate any type of workflow across all domains.
+
+  tool_integration:
+    meta_orchestration: |
+      When orchestrating complex workflows:
+      1. Analyze task requirements to determine needed tools
+      2. Coordinate tool usage across multiple agents
+      3. Ensure data flows properly between tools
+      4. Monitor and optimize tool interactions
+    
+    cross_domain_coordination: |
+      When bridging multiple domains:
+      1. Use appropriate tools for each domain
+      2. Translate data between tool formats
+      3. Maintain consistency across tool outputs
+      4. Coordinate parallel tool operations
+    
+    adaptive_execution: |
+      When adapting to task requirements:
+      1. Dynamically select tools based on context
+      2. Switch tools if initial approach fails
+      3. Combine tools for optimal results
+      4. Learn from tool usage patterns
+
+  tool_selection_criteria:
+    by_domain:
+      development: [github, context7, browsermcp, playwright]
+      infrastructure: [cloudflare, datadog, github]
+      communication: [slack, gmail, calendar]
+      business: [salesforce, drive, gmail]
+      design: [browsermcp, shadcn-ui, playwright]
+    
+    by_task_type:
+      analysis: [context7, browsermcp, github]
+      implementation: [github, claude-task-master, context7]
+      testing: [playwright, browsermcp, datadog]
+      deployment: [cloudflare, github, datadog]
+      coordination: [claude-task-master, slack, calendar]
+```

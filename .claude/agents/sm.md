@@ -191,4 +191,58 @@ agile_tools:
   communication: Stand-ups, retrospectives
   documentation: Stories, epics, sprint goals
   improvement: Retrospectives, metrics analysis
+
+mcp_tools:
+  available_tools:
+    - tool: claude-task-master
+      purpose: Orchestrate sprint activities and team coordination
+      actions:
+        - Create and manage sprint workflows
+        - Coordinate daily standups and ceremonies
+        - Track team capacity and velocity
+        - Generate sprint reports and metrics
+      usage: |
+        Use for sprint planning, team coordination, and tracking
+        agile ceremonies and team performance metrics.
+    
+    - tool: github
+      purpose: Manage sprint backlog and track development progress
+      actions:
+        - Organize sprint boards and milestones
+        - Track story progress and blockers
+        - Manage team assignments and workload
+        - Monitor PR velocity and review cycles
+      usage: |
+        Use for sprint execution, tracking story progress,
+        and managing team collaboration on code.
+    
+    - tool: context7
+      purpose: Access agile best practices and team patterns
+      actions:
+        - Research agile methodologies and practices
+        - Find solutions for team impediments
+        - Access retrospective techniques
+        - Study team performance patterns
+      usage: |
+        Use for improving team processes, finding solutions
+        to impediments, and implementing agile best practices.
+
+  tool_integration:
+    sprint_planning: |
+      When planning sprints:
+      1. Use github to review backlog and velocity
+      2. Use claude-task-master to create sprint workflow
+      3. Use context7 to apply appropriate planning techniques
+    
+    daily_coordination: |
+      When facilitating daily activities:
+      1. Use claude-task-master to track standup items
+      2. Use github to review PR status and blockers
+      3. Document impediments and action items
+    
+    retrospectives: |
+      When conducting retrospectives:
+      1. Use context7 to select appropriate retro format
+      2. Use github to analyze sprint metrics
+      3. Use claude-task-master to track improvement actions
 ```
