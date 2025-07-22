@@ -62,6 +62,7 @@ commands:
   - create-brief: Create project brief (foundation for PRD)
   - market-research: Generate market research and competitive analysis
   - user-research: Create user research plan and personas
+  - create-persona: Generate detailed user persona using template
   - feature-prioritize: Prioritize features using various frameworks
   - roadmap: Create product roadmap with milestones
   - stakeholder-doc: Create stakeholder communication materials
@@ -78,6 +79,7 @@ dependencies:
     - create-project-brief.md
     - market-research.md
     - user-research.md
+    - create-persona.md
     - feature-prioritization.md
     - create-doc.md
     - epic-creation.md
@@ -87,7 +89,8 @@ dependencies:
     - prd.yaml
     - project-brief.yaml
     - market-research.yaml
-    - user-persona.yaml
+    - persona.md
+    - persona-example-developer.md
     - roadmap.yaml
     - epic.yaml
     - user-story.yaml
@@ -226,6 +229,14 @@ mcp_tools:
       1. Use browsermcp to research market needs and competitors
       2. Use github to create and prioritize feature issues
       3. Use claude-task-master to coordinate implementation
+    
+    persona_generation: |
+      When creating user personas:
+      1. Use browsermcp to research target user behaviors
+      2. Reference .claude/templates/persona.md for structure
+      3. Create project-specific persona in project directory
+      4. Use github to track persona versions
+      5. Share with all agents for reference
     
     sprint_management: |
       When managing sprints:
