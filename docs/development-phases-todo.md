@@ -369,9 +369,67 @@
 
 ## Current Status
 - **Completed**: Phases 1-5, Phase 7, Phase 6 (90%) ✅
-- **Next Up**: Phase 8 - Production Readiness
+- **Next Up**: SuperClaude Smart Routing Integration (2 weeks)
 - **Recently Completed**: Phase 6 AI-Driven UX (Personas, Mockups, UI Self-Healing)
 - **Previous**: Phase 7 MCP Integration (all agents now have real tool access)
+
+## Immediate Priority: SuperClaude Smart Routing Integration (2 Weeks)
+
+### Week 1: Core Infrastructure (Next 7 Days)
+- [ ] **Day 1-2: Smart Router Foundation**
+  - [ ] Create `.claude/lib/smart-router.md`
+  - [ ] Define TaskAnalysis interface
+  - [ ] Define RoutingDecision interface
+  - [ ] Create basic routing algorithm
+
+- [ ] **Day 3-4: Agent Capability Metadata**
+  - [ ] Update Winston with capabilities: `architecture-design:expert`, `system-design:expert`
+  - [ ] Update James with capabilities: `implementation:expert`, `refactoring:expert`
+  - [ ] Update Elena with capabilities: `testing:expert`, `qa-automation:expert`
+  - [ ] Update Marcus with capabilities: `security-audit:expert`, `compliance:advanced`
+  - [ ] Update John with capabilities: `requirements:expert`, `planning:expert`
+  - [ ] Update Sarah with capabilities: `user-stories:expert`, `prioritization:expert`
+  - [ ] Update Bob with capabilities: `scrum:expert`, `task-breakdown:expert`
+  - [ ] Update Sally with capabilities: `ux-design:expert`, `ui-patterns:expert`
+  - [ ] Update BMad Master with capabilities: `orchestration:expert`, `meta-analysis:expert`
+
+- [ ] **Day 5: Task Analyzer**
+  - [ ] Create `.claude/lib/task-analyzer.md`
+  - [ ] Implement domain detection patterns
+  - [ ] Create complexity scoring algorithm
+  - [ ] Add capability requirement extraction
+
+### Week 2: Integration & Testing (Days 8-14)
+- [ ] **Day 8-9: Routing Command**
+  - [ ] Create `.claude/commands/route.md`
+  - [ ] Implement `/baco route <task>` command
+  - [ ] Add routing preview display
+  - [ ] Include confidence scoring
+
+- [ ] **Day 10-11: Workflow Integration**
+  - [ ] Update `.claude/lib/workflow-engine.md` with routing hooks
+  - [ ] Add feature flag for smart routing
+  - [ ] Implement fallback mechanisms
+  - [ ] Ensure backward compatibility
+
+- [ ] **Day 12: Analytics & Monitoring**
+  - [ ] Create `.claude/lib/routing-analytics.md`
+  - [ ] Track routing decisions
+  - [ ] Monitor success rates
+  - [ ] Create simple reporting
+
+- [ ] **Day 13-14: Testing & Documentation**
+  - [ ] Test routing scenarios
+  - [ ] Create `docs/smart-routing-guide.md`
+  - [ ] Update main documentation
+  - [ ] Prepare rollout plan
+
+### Success Metrics for Smart Routing
+- [ ] All agents have capability metadata
+- [ ] Task analyzer correctly identifies domains
+- [ ] Routing decisions are transparent
+- [ ] `/baco route` command works
+- [ ] 0% impact on existing functionality
 
 ## Priority Order
 1. ~~Project Directory Management~~ ✅ (Complete)
@@ -380,9 +438,12 @@
 4. ~~Enhanced Code Generation~~ ✅ (Complete)
 5. ~~Agent Integration~~ ✅ (Complete)
 6. ~~Advanced Features (Git, Preview, Updates)~~ ✅ (Complete)
-7. **MCP Integration (Next Priority - enables Phase 6)**
-8. **AI-Driven UX (Depends on MCP tools)**
-9. Production Readiness
+7. ~~MCP Integration~~ ✅ (Complete)
+8. ~~AI-Driven UX~~ ✅ (90% Complete)
+9. **SuperClaude Smart Routing** (Current Priority - 2 weeks)
+10. Production Readiness
+11. Enterprise Features
+12. Ecosystem Development
 
 ## Success Metrics
 - [ ] Can create full project in < 5 minutes
