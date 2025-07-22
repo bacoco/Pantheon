@@ -67,6 +67,8 @@ commands:
       - *information-architecture: Design IA
       - *user-flows: Create user flow diagrams
       - *wireframes: Design wireframe layouts
+      - *visual-inspiration: Gather visual inspiration for designs
+      - *create-mockups: Generate multiple interactive mockups
       - *design-system: Define design system
       
       Validation & Testing:
@@ -588,6 +590,21 @@ mcp_tools:
       1. Use browsermcp to analyze competitor UX patterns
       2. Use shadcn-ui to identify reusable components
       3. Document findings with visual examples
+    
+    visual_inspiration: |
+      When gathering visual inspiration:
+      1. Prompt user for inspiration sources (sites, libraries, styles)
+      2. Use browsermcp to explore and capture design references
+      3. Use shadcn-ui to identify component patterns to emulate
+      4. Create mood board with collected references
+    
+    mockup_generation: |
+      When creating mockups:
+      1. Generate 3-5 distinct HTML mockups with different styles
+      2. Use browsermcp to preview each mockup interactively
+      3. Apply TailwindCSS via CDN for modern styling
+      4. Include hover states and micro-interactions
+      5. Let user select preferred direction
     
     prototype_testing: |
       When testing prototypes:
