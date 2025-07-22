@@ -74,6 +74,7 @@ dependencies:
     - analyze-ui.md
     - heal-ui-issues.md
     - visual-regression.md
+    - visual-regression-workflow.md
     - style-compliance.md
     - responsive-validation.md
     - accessibility-check.md

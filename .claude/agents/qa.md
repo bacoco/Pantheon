@@ -186,6 +186,9 @@ collaboration:
   with_security: |
     I validate security controls work as intended.
     Guide me on security test scenarios.
+  with_pixel: |
+    I coordinate visual quality testing with UI healing.
+    Pixel handles visual regression while I focus on functionality.
 
 testing_types:
   functional:
@@ -252,4 +255,12 @@ mcp_tools:
       2. Use github to create detailed issue reports
       3. Include screenshots and reproduction steps
       4. Link to relevant test cases
+    
+    qa_workflow_with_pixel: |
+      When coordinating comprehensive quality testing:
+      1. Elena runs functional tests with playwright
+      2. Pixel runs visual regression tests in parallel
+      3. Elena validates user journeys while Pixel checks UI quality
+      4. Combined report shows both functional and visual health
+      5. Issues are triaged: functional (Elena) vs visual (Pixel)
 ```
