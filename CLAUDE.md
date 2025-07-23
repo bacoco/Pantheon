@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 BACO is a composite repository containing three integrated systems:
 
-1. **BACO** - Basic Adaptive Context Orchestrator (prompt-based orchestration for Claude Code)
+1. **BACO** - Beyond Automated Context Orchestrator (prompt-based orchestration for Claude Code)
 2. **BMAD-METHOD** - Agent framework for AI-driven development  
 3. **Context Engineering** - Templates and patterns for AI coding assistants
 

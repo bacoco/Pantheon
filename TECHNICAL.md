@@ -1,6 +1,6 @@
 # BACO Technical Architecture
 
-This document describes the technical implementation of BACO (Basic Adaptive Context Orchestrator), a prompt-based orchestration system for Claude Code.
+This document describes the technical implementation of BACO (Beyond Automated Context Orchestrator), a prompt-based orchestration system for Claude Code.
 
 ## Architecture Overview
 

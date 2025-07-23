@@ -1,4 +1,4 @@
-# BACO - Basic Adaptive Context Orchestrator
+# BACO - Beyond Automated Context Orchestrator
 
 A structured approach to defining software projects for AI-assisted development in Claude Code.
 
@@ -115,11 +115,13 @@ BACO now orchestrates teams of specialized AI agents working together:
 /workflow ui-feature      # UX → Developer → QA workflow
 ```
 
-**10 Specialized Agents** with domain expertise:
+**14 Specialized Agents** with domain expertise:
 - **Winston** (Architect), **James** (Developer), **Elena** (QA)
 - **Marcus** (Security), **John** (PM), **Sarah** (PO)
 - **Bob** (SM), **Sally** (UX), **BMad Master** (Meta-orchestrator)
 - **BACO Orchestrator** (Complexity analysis)
+- **Vision** (Style Guide Generator), **Fusion** (Design Optimizer)
+- **Motion** (Interactivity), **Voice** (Microcopy)
 
 ### 🎯 Git Integration
 Seamless version control throughout development:
@@ -166,6 +168,74 @@ Features:
 - Intelligent code merging
 - Conflict resolution
 - Breaking change detection
+
+## 🎨 AI-Driven UI Enhancement System (New!)
+
+BACO now includes a sophisticated UI improvement system inspired by industry best practices:
+
+### Specialized UI Agents
+Four new agents work together to transform your UI:
+
+- **Vision** 👁️ - Extracts design tokens from visual inspiration
+- **Fusion** 🔄 - Optimizes tokens for your target audience using design psychology
+- **Motion** ✨ - Adds purposeful micro-interactions and animations (60fps guaranteed)
+- **Voice** 💬 - Ensures consistent microcopy and brand voice
+
+### UI Quality Commands
+
+#### `/ui-improve` - Comprehensive UI Enhancement
+```
+/ui-improve --screen dashboard --focus visual
+
+📸 Capturing Current UI State...
+👁️ Extracting Design Patterns (Vision)
+🎯 UI Quality Assessment: 6.2/10
+🔄 Optimizing for Target Audience (Fusion)
+✨ Adding Micro-interactions (Motion)
+💬 Improving Microcopy (Voice)
+
+✅ Improvements Ready:
+- Fixed 3 critical accessibility issues
+- Added 12 micro-interactions
+- Standardized 24 UI strings
+- Created design token system
+```
+
+#### `/ui-score` - Detailed Quality Assessment
+```
+/ui-score --detailed
+
+🎯 UI Quality Assessment
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Visual Consistency      8.2/10
+Design System          7.5/10
+Accessibility          6.8/10 ⚠️
+Interactivity          7.0/10
+Microcopy              7.8/10
+Performance            8.5/10
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Overall Score:         7.4/10 (B+)
+```
+
+### Key Features
+- **Token-Based Design Systems** - Automatic extraction from screenshots
+- **Audience-Specific Optimization** - UI tailored to user psychology
+- **Performance-First Animations** - All interactions maintain 60fps
+- **Continuous UI Healing** - Automated quality monitoring and fixes
+- **Voice Consistency** - Brand personality in every word
+
+### Example Workflow
+```bash
+# Start with visual inspiration
+/ui-improve
+> "Analyze my dashboard and make it more professional"
+
+# Get detailed scoring
+/ui-score --compare baseline
+
+# Watch continuous improvement
+UI scores improved from 6.2 → 8.7 (+40%)
+```
 
 ## 🆕 Interactive Workflow with Code Generation
 
@@ -235,13 +305,18 @@ View all examples in the `examples/` directory.
 
 ## Core Commands
 
+### Project Commands
 - `/baco init` - Start interactive project setup conversation
 - `/baco init --template` - Create a basic template for manual editing
 - `/baco validate` - Check your baco.md syntax
 - `/baco plan` - Generate a development plan
 - `/baco execute` - Create implementation guide
 
-For traditional usage:
+### UI Enhancement Commands
+- `/ui-improve` - Run comprehensive UI enhancement pipeline
+- `/ui-score` - Get detailed UI quality assessment
+
+### Traditional Commands
 - `/analyze [task]` - Analyze task complexity
 - `/orchestrate [task]` - Get multi-agent perspectives
 - `/generate-prp [task]` - Generate implementation guide
