@@ -96,7 +96,7 @@ permissions:
       shadcn-ui: ["browse_components", "generate_ui", "customize_theme"]
       playwright: ["capture_design", "visual_test", "accessibility_check"]
 
-  bmad-master: # Meta-orchestrator
+  baco-master: # Meta-orchestrator
     tools:
       - ALL           # Access to all tools
     allowed_actions:
@@ -194,7 +194,7 @@ When an agent needs access beyond their permissions:
 ```yaml
 escalation_rules:
   request_elevated_access:
-    approver: "bmad-master"
+    approver: "baco-master"
     max_duration: "1_session"
     audit_required: true
     

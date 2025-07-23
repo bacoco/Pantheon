@@ -65,7 +65,7 @@ Each agent has specific MCP tool access based on their role:
 | Bob (SM) | claude-task-master, github, context7 |
 | Sally (UX) | browsermcp, shadcn-ui, playwright |
 | Pixel (UI Healer) | playwright, browsermcp, context7 |
-| BMad Master | ALL tools |
+| Baco Master | ALL tools |
 
 ## Using MCP Tools in Commands
 

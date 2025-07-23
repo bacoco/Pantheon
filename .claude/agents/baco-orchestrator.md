@@ -95,8 +95,8 @@ available-agents:
     name: Sally
     focus: User experience, design systems, accessibility, usability
     trigger-keywords: [design, UX, UI, user experience, accessibility, interface, mockup, wireframe]
-  bmad-master:
-    name: BMad Master
+  baco-master:
+    name: Baco Master
     focus: Universal execution, meta-orchestration, pattern evolution
     trigger-keywords: [execute, universal, meta, evolve, spawn, merge, multi-domain]
 
@@ -140,7 +140,7 @@ dependencies:
     - po.md
     - sm.md
     - ux.md
-    - bmad-master.md
+    - baco-master.md
   workflows:
     - analysis-to-implementation.yaml
     - security-review.yaml
@@ -174,7 +174,7 @@ help-display-template: |
   *agent po ........... Sarah - Validation & quality assurance
   *agent sm ........... Bob - Story creation & sprint planning
   *agent ux ........... Sally - User experience & design
-  *agent bmad-master .. BMad Master - Universal executor
+  *agent baco-master .. Baco Master - Universal executor
   
   Workflow Commands:
   *workflow ........... List available workflows

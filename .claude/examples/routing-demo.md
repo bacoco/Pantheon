@@ -362,7 +362,7 @@ Use '/baco route Create a mobile app using React Native' to proceed.
     ],
     "alternatives": [
       {"id": "winston", "confidence": 0.65},
-      {"id": "bmad-master", "confidence": 0.50}
+      {"id": "baco-master", "confidence": 0.50}
     ]
   },
   "flags": {

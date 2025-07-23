@@ -34,8 +34,8 @@ BACO is a **prompt-based system** that runs entirely within Claude Code. It does
 │   ├── fusion.md     # Design Optimizer
 │   ├── motion.md     # Animation Specialist
 │   ├── voice.md      # Microcopy Expert
-│   ├── bmad-master.md # Meta-orchestrator
-│   └── baco-orchestrator.md # (Legacy - superseded by BMad Master)
+│   ├── baco-master.md # Meta-orchestrator
+│   └── baco-orchestrator.md # (Legacy - superseded by Baco Master)
 ├── lib/              # Core libraries and engines
 │   ├── workflow-engine.md # Multi-agent workflow execution
 │   ├── workflow-visualizer.md # Workflow progress display
@@ -99,7 +99,7 @@ BACO employs 13 specialized AI agents organized into functional teams:
 - **Voice**: Ensures consistent brand communication
 
 **Orchestration Layer**:
-- **BMad Master**: Meta-orchestrator with universal tool access
+- **Baco Master**: Meta-orchestrator with universal tool access
 - **Smart Routing Engine**: Analyzes complexity and routes tasks
 
 #### Agent Integration
@@ -122,7 +122,7 @@ Security Review: Marcus reviews all → Recommendations
 ```
 
 #### Legacy Note
-The original BACO Orchestrator has been superseded by BMad Master for meta-orchestration and the Smart Routing Engine for complexity analysis.
+The original BACO Orchestrator has been superseded by Baco Master for meta-orchestration and the Smart Routing Engine for complexity analysis.
 
 ### 3. baco.md Processing
 
@@ -453,11 +453,11 @@ Safety features:
 4. **Merge Strategies**: Intelligent code merging
 5. **Rollback Support**: Undo changes if needed
 
-## BMad Master Meta-Orchestration
+## Baco Master Meta-Orchestration
 
 ### Dynamic Workflow Generation
 
-BMad Master can:
+Baco Master can:
 1. **Analyze Tasks**: Determine optimal agent composition
 2. **Generate Workflows**: Create custom workflows dynamically
 3. **Cross-Domain Bridge**: Connect technical and business domains

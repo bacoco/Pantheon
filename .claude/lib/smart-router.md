@@ -209,7 +209,7 @@ function generateRoutingDecision(
     .sort((a, b) => b[1].score - a[1].score);
   
   // Select primary agent
-  const [primaryId, primaryData] = sortedAgents[0] || ["bmad-master", { score: 0.5, metadata: getAgentMetadata('bmad-master') }];
+  const [primaryId, primaryData] = sortedAgents[0] || ["baco-master", { score: 0.5, metadata: getAgentMetadata('baco-master') }];
   
   // Select supporting agents (score > 0.4 and complementary skills)
   const supporting = [];
@@ -325,7 +325,7 @@ function getCapabilityScore(level: string): number {
 ```javascript
 function canHandleComplexity(agent: string, complexity: number): boolean {
   const complexityThresholds = {
-    "bmad-master": 10,
+    "baco-master": 10,
     winston: 9,
     james: 8,
     elena: 7,
@@ -438,7 +438,7 @@ The router dynamically loads agent capabilities from their metadata:
 function loadAgentCapabilities() {
   const agents = [
     'winston', 'james', 'elena', 'marcus', 'john', 
-    'sarah', 'bob', 'sally', 'pixel', 'bmad-master'
+    'sarah', 'bob', 'sally', 'pixel', 'baco-master'
   ];
   
   const registry = {};
@@ -554,7 +554,7 @@ function getAgentMetadata(agentId) {
       complexityRange: [3, 7],
       strongPatterns: ['ui quality', 'visual testing', 'pixel perfect']
     },
-    'bmad-master': {
+    'baco-master': {
       name: "BMad Master",
       role: "Meta-Orchestrator",
       domains: ['orchestration', 'meta_analysis', 'workflow_design'],

@@ -130,7 +130,7 @@ class SmartRoutingWorkflowEngine extends WorkflowEngine {
     const { isFeatureEnabled, getFeatureConfig } = require('./feature-flags');
     if (!isFeatureEnabled('SMART_ROUTING')) {
       console.warn('Smart Routing disabled, using default agent');
-      return 'bmad-master';
+      return 'baco-master';
     }
     
     const config = getFeatureConfig('SMART_ROUTING');
@@ -178,7 +178,7 @@ class SmartRoutingWorkflowEngine extends WorkflowEngine {
       const accept = await confirm(`Route to ${routingDecision.primaryAgent.name}?`);
       if (!accept) {
         // Allow manual override
-        const agents = ['winston', 'james', 'elena', 'marcus', 'john', 'sarah', 'bob', 'sally', 'bmad-master'];
+        const agents = ['winston', 'james', 'elena', 'marcus', 'john', 'sarah', 'bob', 'sally', 'baco-master'];
         return await select('Select agent manually:', agents);
       }
     }

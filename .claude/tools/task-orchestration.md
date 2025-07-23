@@ -104,7 +104,7 @@ const parallelWorkflow = await mcp.taskmaster.createWorkflow({
     {
       id: "aggregate_results",
       type: "result_aggregation",
-      assignee: "bmad-master",
+      assignee: "baco-master",
       dependencies: ["security_scan", "performance_test", "ux_review"],
       inputs: {
         security: "{{security_scan.output}}",

@@ -234,7 +234,7 @@ describe('Feature Flags', () => {
     
     ROUTING_FLAGS.ENABLE_SMART_ROUTING = false;
     const decision = safeRoute("Build a feature");
-    expect(decision.primaryAgent.name).toBe('bmad-master'); // default
+    expect(decision.primaryAgent.name).toBe('baco-master'); // default
     
     ROUTING_FLAGS.ENABLE_SMART_ROUTING = true;
     const smartDecision = safeRoute("Build a feature");

@@ -1,6 +1,6 @@
-# Dynamic Workflow Generator for BMad Master
+# Dynamic Workflow Generator for Baco Master
 
-This library provides BMad Master with the ability to analyze tasks and dynamically generate optimal workflows.
+This library provides Baco Master with the ability to analyze tasks and dynamically generate optimal workflows.
 
 ## Overview
 
@@ -281,7 +281,7 @@ async function generateWorkflow(task: string): Promise<Workflow> {
     pattern,
     phases: optimized,
     metadata: {
-      generatedBy: 'bmad-master',
+      generatedBy: 'baco-master',
       generatedAt: new Date(),
       complexity: analysis.complexity,
       estimatedDuration: calculateDuration(optimized)
@@ -319,7 +319,7 @@ async function generateConstrainedWorkflow(
 
 ### Command Integration
 ```typescript
-// In BMad Master agent
+// In Baco Master agent
 async function handleGenerateWorkflow(task: string) {
   const generator = new DynamicWorkflowGenerator();
   
@@ -404,4 +404,4 @@ phases:
   - audit: [security, qa]
 ```
 
-The Dynamic Workflow Generator empowers BMad Master to create optimal, task-specific workflows that leverage the full capabilities of the BACO agent ecosystem.
+The Dynamic Workflow Generator empowers Baco Master to create optimal, task-specific workflows that leverage the full capabilities of the BACO agent ecosystem.

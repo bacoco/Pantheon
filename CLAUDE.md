@@ -94,7 +94,7 @@ User Request → BACO analyzes complexity → Selects appropriate approach:
 - **Sarah** (PO) - Product ownership and validation
 - **Bob** (SM) - Scrum mastery and story preparation
 - **Sally** (UX) - User experience and design
-- **BMad Master** - Universal executor and meta-orchestrator
+- **Baco Master** - Universal executor and meta-orchestrator
 
 ## Enhanced Features from BMAD Integration
 

@@ -83,12 +83,12 @@
     - [x] Design system documentation
     - [x] User flow diagrams
     - [x] Accessibility guidelines
-  - [x] BMad Master: Meta-orchestration
+  - [x] Baco Master: Meta-orchestration
     - [x] Dynamic workflow generation
     - [x] Multi-agent coordination
     - [x] Cross-domain execution
     - [x] Workflow optimization
-    - [x] BMad Master agent configuration (`.claude/agents/bmad-master.md`)
+    - [x] Baco Master agent configuration (`.claude/agents/baco-master.md`)
     - [x] Dynamic workflow templates
     - [x] Cross-domain bridge library (`.claude/lib/cross-domain-bridge.md`)
     - [x] Workflow optimization engine (`.claude/lib/workflow-optimization-engine.md`)
@@ -183,7 +183,7 @@
   - [x] **Sarah (PO)**: GitHub MCP, browsermcp, claude-task-master
   - [x] **Bob (SM)**: claude-task-master, GitHub MCP, Context7
   - [x] **Sally (UX)**: browsermcp, shadcn-ui, playwright
-  - [x] **BMad Master**: All MCP tools (meta-orchestration)
+  - [x] **Baco Master**: All MCP tools (meta-orchestration)
   - [x] **Pixel (UI Healer)**: playwright, browsermcp, Context7
 - [x] **Documentation & Examples**
   - [x] MCP usage guide (`docs/mcp-usage-guide.md`)
@@ -415,7 +415,7 @@
   - [x] Update Bob with capabilities: `scrum:expert`, `task-breakdown:expert`
   - [x] Update Sally with capabilities: `ux-design:expert`, `ui-patterns:expert`
   - [x] Update Pixel with capabilities: `ui-quality:expert`, `visual-testing:expert`
-  - [x] Update BMad Master with capabilities: `orchestration:expert`, `meta-analysis:expert`
+  - [x] Update Baco Master with capabilities: `orchestration:expert`, `meta-analysis:expert`
 
 - [x] **Day 5: Task Analyzer**
   - [x] Create `.claude/lib/task-analyzer.md`

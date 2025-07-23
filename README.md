@@ -153,7 +153,7 @@ Secure login system with email/password...
 | | **Fusion** | Design Optimizer | Audience-specific UI, psychology-based design |
 | | **Motion** | Animation Specialist | Micro-interactions, transitions, 60fps performance |
 | | **Voice** | Microcopy Expert | UI text, tone consistency, user communication |
-| **Orchestration** | **BMad Master** | Meta-Orchestrator | Cross-agent coordination, workflow optimization |
+| **Orchestration** | **Baco Master** | Meta-Orchestrator | Cross-agent coordination, workflow optimization |
 
 ### 🎨 AI-Driven UI Enhancement
 Transform your interfaces with intelligent design optimization:
@@ -251,7 +251,7 @@ A specialized team for dramatic UI improvements:
 - **Voice** ensures consistent brand communication
 
 #### Orchestration Layer
-- **BMad Master** coordinates all agents and generates dynamic workflows
+- **Baco Master** coordinates all agents and generates dynamic workflows
 - **Smart Routing Engine** analyzes complexity and routes tasks appropriately
 
 Each agent has dedicated tools (MCPs), templates, and integration points throughout the system.

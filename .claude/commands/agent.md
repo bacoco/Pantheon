@@ -67,7 +67,7 @@ When this command is invoked:
      Focus: User experience, design systems, accessibility, usability
      Use when: UI/UX design, user research, accessibility audits
    
-   bmad-master:
+   baco-master:
      Focus: Universal execution, meta-orchestration, pattern evolution
      Use when: Complex workflows, multi-domain tasks, experimental approaches
    
@@ -95,7 +95,7 @@ Support flexible naming:
 - `po`, `owner`, `sarah` → `.claude/agents/po.md`
 - `sm`, `scrum`, `bob` → `.claude/agents/sm.md`
 - `ux`, `design`, `sally` → `.claude/agents/ux.md`
-- `bmad-master`, `bmad`, `master` → `.claude/agents/bmad-master.md`
+- `baco-master`, `baco`, `master` → `.claude/agents/baco-master.md`
 - `orchestrator`, `baco` → `.claude/agents/baco-orchestrator.md`
 
 ## Example Interaction

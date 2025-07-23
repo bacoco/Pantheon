@@ -140,7 +140,7 @@ This specialized team was introduced to dramatically improve the quality and aes
 
 ### Orchestration & Analysis
 
-#### **BMad Master** - Meta-Orchestrator
+#### **Baco Master** - Meta-Orchestrator
 - **Role**: Cross-agent coordination, workflow optimization
 - **Responsibilities**:
   - Highest-level orchestrator
@@ -214,7 +214,7 @@ Marcus reviews all code → Provides security recommendations
 
 ### BACO Orchestrator (Legacy)
 The original BACO Orchestrator agent has been superseded by:
-- **BMad Master** for meta-orchestration
+- **Baco Master** for meta-orchestration
 - **Smart Routing Engine** for complexity analysis
 - The file remains but is no longer actively used
 

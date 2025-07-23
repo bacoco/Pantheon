@@ -191,7 +191,7 @@ function getAgentTopCapabilities(agentName: string): string[] {
     bob: ["scrum-process", "task-breakdown", "team-coordination"],
     sally: ["ux-design", "ui-patterns", "user-research"],
     pixel: ["ui-quality", "visual-testing", "style-compliance"],
-    "bmad-master": ["orchestration", "meta-analysis", "workflow-design"]
+    "baco-master": ["orchestration", "meta-analysis", "workflow-design"]
   };
   
   return agentCapabilities[agentName] || ["general-support"];
@@ -208,7 +208,7 @@ function determineRole(agentName: string, analysis: TaskAnalysis): string {
     bob: "Process Facilitator",
     sally: "Design Consultant",
     pixel: "UI Quality Checker",
-    "bmad-master": "Workflow Orchestrator"
+    "baco-master": "Workflow Orchestrator"
   };
   
   // Customize role based on task
@@ -286,7 +286,7 @@ function getAgentSpecialty(agentName: string): string {
     bob: "process",
     sally: "design",
     pixel: "visual quality",
-    "bmad-master": "orchestration"
+    "baco-master": "orchestration"
   };
   
   return specialties[agentName] || "general";
@@ -348,7 +348,7 @@ function estimateDuration(complexity: number, taskType: string): Duration {
 function getDefaultRouting(): RoutingDecision {
   return {
     primaryAgent: {
-      name: "bmad-master",
+      name: "baco-master",
       matchScore: 0.5,
       capabilities: ["orchestration", "meta-analysis"]
     },
