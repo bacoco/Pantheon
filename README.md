@@ -137,24 +137,23 @@ Secure login system with email/password...
 ## 📋 Features Overview
 
 ### 🤖 Intelligent Multi-Agent System
-**14 Specialized AI Agents** collaborate on your project:
+**13 Specialized AI Agents** collaborate on your project:
 
-| Agent | Role | Specialization |
-|-------|------|----------------|
-| **Winston** | Lead Architect | System design, scalability, best practices |
-| **James** | Senior Developer | Implementation, code quality, performance |
-| **Elena** | QA Engineer | Testing strategies, quality assurance |
-| **Sally** | UX Designer | User experience, accessibility, design systems |
-| **Marcus** | Security Expert | Security audits, compliance, threat modeling |
-| **John** | Product Manager | Product strategy, roadmap planning, prioritization |
-| **Sarah** | Product Owner | Requirements validation, user stories, acceptance criteria |
-| **Bob** | Scrum Master | Agile processes, sprint planning, team coordination |
-| **BMad Master** | Meta-Orchestrator | Cross-agent coordination, workflow optimization |
-| **BACO Orchestrator** | Complexity Analyst | Task analysis, resource allocation, efficiency |
-| **Vision** | Style Guide Expert | Design tokens, visual consistency, brand identity |
-| **Fusion** | Design Optimizer | Audience-specific UI, psychology-based design |
-| **Motion** | Animation Specialist | Micro-interactions, transitions, 60fps performance |
-| **Voice** | Microcopy Expert | UI text, tone consistency, user communication |
+| Team | Agent | Role | Specialization |
+|------|-------|------|----------------|
+| **Core Development** | **Winston** | Lead Architect | System design, scalability, best practices |
+| | **James** | Senior Developer | Implementation, code quality, performance |
+| | **Elena** | QA Engineer | Testing strategies, quality assurance |
+| | **Marcus** | Security Expert | Security audits, compliance, threat modeling |
+| **Product Management** | **John** | Product Manager | Product strategy, roadmap planning, prioritization |
+| | **Sarah** | Product Owner | Requirements validation, user stories, acceptance criteria |
+| | **Bob** | Scrum Master | Agile processes, sprint planning, team coordination |
+| **UX & Design** | **Sally** | UX Designer | User experience, accessibility, design systems |
+| **UI Enhancement** | **Vision** | Style Guide Expert | Design tokens, visual consistency, brand identity |
+| | **Fusion** | Design Optimizer | Audience-specific UI, psychology-based design |
+| | **Motion** | Animation Specialist | Micro-interactions, transitions, 60fps performance |
+| | **Voice** | Microcopy Expert | UI text, tone consistency, user communication |
+| **Orchestration** | **BMad Master** | Meta-Orchestrator | Cross-agent coordination, workflow optimization |
 
 ### 🎨 AI-Driven UI Enhancement
 Transform your interfaces with intelligent design optimization:
@@ -227,7 +226,35 @@ Track progress through the web UI or CLI, with live previews and instant feedbac
 ### 5. Production-Ready Output
 Get clean, documented, tested code that follows industry standards.
 
+## 🏗️ Architecture Deep Dive
 
+### How Agents Collaborate
+
+BACO's agents work in specialized teams with clear responsibilities:
+
+#### Core Development & Management Team (Phase 4)
+The primary team responsible for the software development lifecycle:
+- **Winston** designs system architecture and creates ADRs
+- **James** implements features and handles code quality
+- **Elena** creates test plans and ensures quality standards
+- **Marcus** performs security audits and creates policies
+- **John** manages product strategy and roadmaps
+- **Sarah** owns the backlog and writes user stories
+- **Bob** facilitates agile processes and prepares work
+- **Sally** defines UX and creates design specifications
+
+#### UI Enhancement Team (Advanced)
+A specialized team for dramatic UI improvements:
+- **Vision** analyzes visual inspiration and extracts design tokens
+- **Fusion** optimizes designs for target audiences
+- **Motion** adds performance-conscious animations
+- **Voice** ensures consistent brand communication
+
+#### Orchestration Layer
+- **BMad Master** coordinates all agents and generates dynamic workflows
+- **Smart Routing Engine** analyzes complexity and routes tasks appropriately
+
+Each agent has dedicated tools (MCPs), templates, and integration points throughout the system.
 
 ## 🆕 Interactive Workflow with Code Generation
 

@@ -30,8 +30,12 @@ BACO is a **prompt-based system** that runs entirely within Claude Code. It does
 │   ├── sarah.md      # Product Owner
 │   ├── bob.md        # Scrum Master
 │   ├── sally.md      # UX Designer
+│   ├── vision.md     # Style Guide Generator
+│   ├── fusion.md     # Design Optimizer
+│   ├── motion.md     # Animation Specialist
+│   ├── voice.md      # Microcopy Expert
 │   ├── bmad-master.md # Meta-orchestrator
-│   └── baco-orchestrator.md # Complexity analyzer
+│   └── baco-orchestrator.md # (Legacy - superseded by BMad Master)
 ├── lib/              # Core libraries and engines
 │   ├── workflow-engine.md # Multi-agent workflow execution
 │   ├── workflow-visualizer.md # Workflow progress display
@@ -74,17 +78,51 @@ INSTRUCTIONS:
 
 ### 2. Agent Orchestration
 
-The `/orchestrate` command activates multiple specialist agents:
+BACO employs 13 specialized AI agents organized into functional teams:
 
-1. **Agent Selection**: Based on task complexity and domain
-2. **Persona Embodiment**: Claude adopts each agent's perspective
-3. **Synthesis**: Combines insights into actionable recommendations
+#### Agent Teams
 
-Agents are defined in `.claude/agents/` with:
-- Personality traits
-- Domain expertise
-- Analysis approaches
-- Communication style
+**Core Development & Management Team** (Phase 4):
+- **Winston** (Architect): System design, ADRs, component diagrams
+- **James** (Developer): Implementation, code quality, performance
+- **Elena** (QA): Test plans, automated testing, quality metrics
+- **Marcus** (Security): Security audits, compliance, threat modeling
+- **John** (PM): Product strategy, PRDs, roadmaps
+- **Sarah** (PO): Backlog management, user stories, acceptance criteria
+- **Bob** (SM): Agile processes, sprint planning, story preparation
+- **Sally** (UX): User experience, UI specs, design systems
+
+**UI Enhancement Team** (Advanced):
+- **Vision**: Extracts design tokens from visual inspiration
+- **Fusion**: Optimizes designs for target audiences
+- **Motion**: Adds performance-conscious animations (60fps)
+- **Voice**: Ensures consistent brand communication
+
+**Orchestration Layer**:
+- **BMad Master**: Meta-orchestrator with universal tool access
+- **Smart Routing Engine**: Analyzes complexity and routes tasks
+
+#### Agent Integration
+
+Agents are integrated throughout the system via:
+
+1. **Commands**: Primary actors in `/agent`, `/workflow`, `/route`, `/team`
+2. **Core Libraries**: Central to `smart-router.md`, `workflow-engine.md`
+3. **Templates**: Agent-specific artifacts in `.claude/templates/agents/`
+4. **MCPs**: Each agent has specific tool permissions
+5. **Testing**: Unit tests ensure proper routing (e.g., "architecture → Winston")
+
+#### Workflow Examples
+
+```
+Product Development: John → Sarah → Bob → Development Team
+UI Enhancement: Vision → Fusion → Motion → Voice
+Implementation: Winston → James → Elena
+Security Review: Marcus reviews all → Recommendations
+```
+
+#### Legacy Note
+The original BACO Orchestrator has been superseded by BMad Master for meta-orchestration and the Smart Routing Engine for complexity analysis.
 
 ### 3. baco.md Processing
 
