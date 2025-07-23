@@ -1,28 +1,78 @@
 # BACO - Beyond Automated Context Orchestrator
 
-A structured approach to defining software projects for AI-assisted development in Claude Code.
+> Transform your ideas into production-ready applications with AI-powered development orchestration.
 
-## What is BACO?
+## 🚀 From Idea to Implementation in Minutes
 
-BACO provides a standardized format (`baco.md`) for describing software projects, enabling Claude Code to better understand your requirements and provide more accurate assistance. It acts as a bridge between your project vision and AI-generated implementation guidance.
+Imagine describing your app idea in plain English and watching as a team of specialized AI agents brings it to life. BACO makes this possible by orchestrating Claude Code's capabilities through an intuitive interface.
 
-## Key Benefits
+### Your Development Journey:
 
-- **Structured Requirements**: Define features, dependencies, and constraints in a consistent format
-- **Context Preservation**: Maintain project context across multiple development sessions
-- **Better AI Assistance**: Help Claude understand your coding conventions and architectural preferences
-- **Reduced Ambiguity**: Clear specifications lead to more accurate code generation
+1. **Describe Your Vision** → "I need a task management app for small teams"
+2. **BACO Understands** → Analyzes complexity, suggests architecture, identifies requirements  
+3. **AI Team Assembles** → Architect, Developer, QA, and UX specialists collaborate
+4. **Watch It Build** → Real-time progress as your app takes shape
+5. **Preview & Iterate** → Instant live preview with hot-reload
 
-## Getting Started
+## 🖥️ Choose Your Interface
 
-### 1. Install BACO
+### Web UI (New!)
+A modern chat interface for visual thinkers:
+
+```bash
+# Start the web interface
+cd baco-ui
+pnpm install
+pnpm dev
+```
+
+**Features:**
+- 💬 Natural conversation flow
+- 📊 Visual project structure
+- 📈 Real-time progress tracking  
+- 🎨 Integrated UI preview
+- 📱 Mobile-responsive design
+
+![BACO UI Preview](docs/images/baco-ui-preview.png)
+
+### CLI Mode
+For terminal enthusiasts and automation:
+
+```bash
+# Use directly in Claude Code
+/baco init
+```
+
+## ✨ What Makes BACO Different?
+
+- **AI Team Collaboration**: 14+ specialized agents work together on your project
+- **Smart Context Management**: Never lose track of requirements across sessions
+- **UI Quality Scoring**: AI-driven design improvements with measurable results
+- **Live Development**: See changes instantly with integrated preview server
+- **Production-Ready Output**: Clean, tested, documented code following best practices
+
+
+## 🎯 Quick Start
+
+### Option 1: Web Interface (Recommended)
+
+```bash
+git clone https://github.com/bacoco/BACO.git
+cd BACO/baco-ui
+pnpm install
+pnpm dev
+```
+
+Open http://localhost:3000 and start chatting!
+
+### Option 2: Claude Code CLI
 
 ```bash
 git clone https://github.com/bacoco/BACO.git
 cd BACO
 ```
 
-### 2. Create Your Project Definition
+### Start Your First Project
 
 ```
 /baco init
@@ -84,6 +134,58 @@ Secure login system with email/password...
 - Response time < 200ms
 ```
 
+## 📋 Features Overview
+
+### 🤖 Intelligent Multi-Agent System
+**14 Specialized AI Agents** collaborate on your project:
+
+| Agent | Role | Specialization |
+|-------|------|----------------|
+| **Winston** | Lead Architect | System design, scalability, best practices |
+| **James** | Senior Developer | Implementation, code quality, performance |
+| **Elena** | QA Engineer | Testing strategies, quality assurance |
+| **Sally** | UX Designer | User experience, accessibility, design systems |
+| **Marcus** | Security Expert | Security audits, compliance, threat modeling |
+| **John** | Product Manager | Product strategy, roadmap planning, prioritization |
+| **Sarah** | Product Owner | Requirements validation, user stories, acceptance criteria |
+| **Bob** | Scrum Master | Agile processes, sprint planning, team coordination |
+| **BMad Master** | Meta-Orchestrator | Cross-agent coordination, workflow optimization |
+| **BACO Orchestrator** | Complexity Analyst | Task analysis, resource allocation, efficiency |
+| **Vision** | Style Guide Expert | Design tokens, visual consistency, brand identity |
+| **Fusion** | Design Optimizer | Audience-specific UI, psychology-based design |
+| **Motion** | Animation Specialist | Micro-interactions, transitions, 60fps performance |
+| **Voice** | Microcopy Expert | UI text, tone consistency, user communication |
+
+### 🎨 AI-Driven UI Enhancement
+Transform your interfaces with intelligent design optimization:
+
+- **UI Quality Scoring**: Get instant feedback on design quality (0-10 scale)
+- **Automatic Improvements**: AI fixes accessibility issues, adds animations, optimizes layouts
+- **Design Token Extraction**: Generate consistent design systems from any screenshot
+- **Performance Optimization**: All animations guaranteed 60fps
+
+### 🚀 Modern Development Features
+
+#### Web UI Dashboard
+- Real-time project visualization
+- Chat-based interaction
+- Live code preview
+- Progress tracking
+- Mobile responsive
+
+#### Smart Code Generation
+- Production-ready code with tests
+- Follows industry best practices
+- Automatic documentation
+- Git integration
+- Live preview server
+
+#### Incremental Development
+- Add features to existing projects
+- Smart dependency management
+- Conflict resolution
+- Breaking change detection
+
 ### 3. Generate Development Plan
 
 ```
@@ -104,138 +206,28 @@ BACO analyzes your requirements and provides:
 
 Generates a comprehensive Product Requirements Prompt (PRP) to guide implementation.
 
-## 🚀 New Features (Phases 4-5 Complete!)
+## 🛠️ How It Works
 
-### 🤖 Multi-Agent Workflows
-BACO now orchestrates teams of specialized AI agents working together:
+### 1. Define Your Project
+Use natural language to describe what you want to build. BACO's AI understands context and asks clarifying questions.
 
-```
-/workflow product-planning  # PM → PO → SM workflow
-/workflow implementation   # Architect → Developer → QA workflow
-/workflow ui-feature      # UX → Developer → QA workflow
-```
+### 2. AI Team Assembly  
+Based on your project's needs, BACO assembles the right team of AI specialists - architects for system design, developers for implementation, QA for testing, and more.
 
-**14 Specialized Agents** with domain expertise:
-- **Winston** (Architect), **James** (Developer), **Elena** (QA)
-- **Marcus** (Security), **John** (PM), **Sarah** (PO)
-- **Bob** (SM), **Sally** (UX), **BMad Master** (Meta-orchestrator)
-- **BACO Orchestrator** (Complexity analysis)
-- **Vision** (Style Guide Generator), **Fusion** (Design Optimizer)
-- **Motion** (Interactivity), **Voice** (Microcopy)
+### 3. Collaborative Development
+Watch as the AI team works together:
+- **Architect** designs the system architecture
+- **Developer** implements features with best practices
+- **QA Engineer** ensures quality with comprehensive tests
+- **UX Designer** optimizes the user experience
 
-### 🎯 Git Integration
-Seamless version control throughout development:
-```
-Options:
-[ ] Initialize Git repository
-[ ] Create feature branch  
-[ ] Commit after each phase
+### 4. Real-Time Progress
+Track progress through the web UI or CLI, with live previews and instant feedback.
 
-Your choice (1-4) [include options like "1 git branch"]: 1 git branch
-```
+### 5. Production-Ready Output
+Get clean, documented, tested code that follows industry standards.
 
-Features:
-- Auto-initialize repositories
-- Commit after each development phase
-- Create feature branches
-- Generate PR descriptions
-- Smart gitignore templates
 
-### 📱 Live Preview
-Instant development server with mobile support:
-```
-🚀 Starting development server...
-✅ Server running at http://localhost:3000
-
-📱 Mobile Preview:
-[QR Code displayed here]
-
-URLs for mobile devices:
-• http://192.168.1.100:3000
-```
-
-### 🔧 Incremental Updates
-Add features to existing projects safely:
-```
-/add-feature auth-jwt      # Add JWT authentication
-/add-feature api-graphql   # Add GraphQL endpoint
-/update-deps              # Smart dependency updates
-```
-
-Features:
-- Analyze existing code before changes
-- Automatic backups
-- Intelligent code merging
-- Conflict resolution
-- Breaking change detection
-
-## 🎨 AI-Driven UI Enhancement System (New!)
-
-BACO now includes a sophisticated UI improvement system inspired by industry best practices:
-
-### Specialized UI Agents
-Four new agents work together to transform your UI:
-
-- **Vision** 👁️ - Extracts design tokens from visual inspiration
-- **Fusion** 🔄 - Optimizes tokens for your target audience using design psychology
-- **Motion** ✨ - Adds purposeful micro-interactions and animations (60fps guaranteed)
-- **Voice** 💬 - Ensures consistent microcopy and brand voice
-
-### UI Quality Commands
-
-#### `/ui-improve` - Comprehensive UI Enhancement
-```
-/ui-improve --screen dashboard --focus visual
-
-📸 Capturing Current UI State...
-👁️ Extracting Design Patterns (Vision)
-🎯 UI Quality Assessment: 6.2/10
-🔄 Optimizing for Target Audience (Fusion)
-✨ Adding Micro-interactions (Motion)
-💬 Improving Microcopy (Voice)
-
-✅ Improvements Ready:
-- Fixed 3 critical accessibility issues
-- Added 12 micro-interactions
-- Standardized 24 UI strings
-- Created design token system
-```
-
-#### `/ui-score` - Detailed Quality Assessment
-```
-/ui-score --detailed
-
-🎯 UI Quality Assessment
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Visual Consistency      8.2/10
-Design System          7.5/10
-Accessibility          6.8/10 ⚠️
-Interactivity          7.0/10
-Microcopy              7.8/10
-Performance            8.5/10
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Overall Score:         7.4/10 (B+)
-```
-
-### Key Features
-- **Token-Based Design Systems** - Automatic extraction from screenshots
-- **Audience-Specific Optimization** - UI tailored to user psychology
-- **Performance-First Animations** - All interactions maintain 60fps
-- **Continuous UI Healing** - Automated quality monitoring and fixes
-- **Voice Consistency** - Brand personality in every word
-
-### Example Workflow
-```bash
-# Start with visual inspiration
-/ui-improve
-> "Analyze my dashboard and make it more professional"
-
-# Get detailed scoring
-/ui-score --compare baseline
-
-# Watch continuous improvement
-UI scores improved from 6.2 → 8.7 (+40%)
-```
 
 ## 🆕 Interactive Workflow with Code Generation
 
@@ -282,26 +274,26 @@ Ready to proceed with Phase 2: Core Logic? (y/n):
 
 See the [Interactive BACO Guide](docs/interactive-baco-guide.md) and [Code Generation Guide](docs/code-generation-guide.md) for details.
 
-## Real-World Examples
+## 📚 Project Templates
 
-BACO includes 14 examples covering common project types:
+BACO includes templates for common project types:
 
 ### Web Applications
-- **E-commerce Platform**: Multi-vendor marketplace with payment processing
-- **SaaS Dashboard**: Multi-tenant B2B application with subscription billing
-- **Content Management System**: Headless CMS with multi-language support
+- **E-commerce**: Shopping cart, payments, inventory
+- **SaaS Dashboard**: Multi-tenant, subscriptions, analytics
+- **CMS**: Content management with API
 
-### Mobile & Real-time
-- **Mobile Backend**: API backend with push notifications and offline sync
-- **Chat Application**: Real-time messaging with WebSocket support
-- **Video Streaming**: Scalable video platform with CDN integration
+### APIs & Backend
+- **REST API**: CRUD operations, authentication, validation
+- **GraphQL**: Schema-first development, resolvers
+- **Microservices**: Service mesh, API gateway
 
-### Developer Tools & Infrastructure
-- **API Gateway**: Microservices gateway with rate limiting
-- **Analytics Platform**: Data pipeline with visualization dashboards
-- **Developer Tools**: Code analysis and collaboration platform
+### Real-time & Mobile
+- **Chat App**: WebSocket, presence, history
+- **Mobile Backend**: Push notifications, offline sync
+- **Live Streaming**: Video delivery, CDN integration
 
-View all examples in the `examples/` directory.
+Browse all templates in the `examples/` directory.
 
 ## Core Commands
 
@@ -348,14 +340,34 @@ Description of what this feature does...
 Additional context...
 ```
 
+## 🎓 Resources & Support
+
+### Documentation
+- [Web UI Guide](baco-ui/README.md) - Using the web interface
+- [CLI Reference](USAGE.md) - Command line documentation  
+- [Technical Architecture](TECHNICAL.md) - How BACO works internally
+- [Examples](examples/) - Real-world project templates
+
+### Community
+- [GitHub Discussions](https://github.com/bacoco/BACO/discussions) - Ask questions, share ideas
+- [Issue Tracker](https://github.com/bacoco/BACO/issues) - Report bugs, request features
+
+### Getting Started
+- [Interactive BACO Guide](docs/interactive-baco-guide.md)
+- [Code Generation Guide](docs/code-generation-guide.md)
+- [Web UI Setup](baco-ui/README.md)
+
 ## When to Use BACO
 
 BACO is most valuable for:
-- New project planning and architecture
-- Complex features requiring multiple components
-- Projects with specific technical constraints
-- Team collaboration on requirements
-- Maintaining consistency across a codebase
+- ✅ New project planning and architecture
+- ✅ Complex features requiring multiple components
+- ✅ Projects with specific technical constraints
+- ✅ Team collaboration on requirements
+- ✅ Maintaining consistency across a codebase
+- ✅ Rapid prototyping and MVPs
+- ✅ Modernizing legacy systems
+- ✅ Creating design systems
 
 ## License
 
@@ -373,4 +385,16 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 
 ---
 
-For issues and discussions: [github.com/bacoco/BACO](https://github.com/bacoco/BACO/issues)
+## 🚀 Get Started Now
+
+Ready to transform how you build software?
+
+1. **Web UI**: `cd baco-ui && pnpm install && pnpm dev`
+2. **CLI**: Use `/baco init` in Claude Code
+3. **Learn More**: Check out our [documentation](docs/)
+
+Join the future of AI-powered development with BACO!
+
+---
+
+For support and discussions: [github.com/bacoco/BACO](https://github.com/bacoco/BACO)
