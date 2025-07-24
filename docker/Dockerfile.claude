@@ -25,24 +25,9 @@ RUN apt-get update && apt-get install -y \
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
 
-# Install Claude CLI (try multiple methods to ensure it's installed)
-# Method 1: Try the official install script
-RUN curl -fsSL https://storage.googleapis.com/claude-cli/install.sh | sh || \
-    echo "Official Claude CLI install script not available"
-
-# Method 2: If the above fails, try npm installation
-RUN npm install -g @anthropic-ai/claude-cli || \
-    npm install -g claude-cli || \
-    echo "npm installation of Claude CLI not available"
-
-# Method 3: Create a notice if Claude CLI needs manual installation
-RUN if ! command -v claude &> /dev/null; then \
-        echo "#!/bin/bash" > /usr/local/bin/claude && \
-        echo "echo 'Claude CLI needs to be manually installed.'" >> /usr/local/bin/claude && \
-        echo "echo 'Please check https://claude.ai/docs/cli for installation instructions.'" >> /usr/local/bin/claude && \
-        echo "exit 1" >> /usr/local/bin/claude && \
-        chmod +x /usr/local/bin/claude; \
-    fi
+# Install Claude CLI via npm
+RUN npm install -g @anthropic-ai/claude-code || \
+    echo "Warning: Claude CLI installation failed, but continuing..."
 
 # Copy the gods bash script
 COPY ./gods /usr/local/bin/gods
@@ -210,9 +195,9 @@ claude chat "Help me create a REST API"
 - `gods execute` - Manifest your vision into code
 
 ### Claude Commands
-- `claude-auth-docker.sh` - Authenticate Claude CLI
-- `claude-auth-status.sh` - Check authentication
-- `claude help` - View all Claude commands
+- `claude` - Use Claude CLI (if installed)
+- `gods init` - Initialize a new project via Claude
+- `gods help` - View all Pantheon commands
 
 ## 🎨 VS Code is Pantheon-Enhanced
 
@@ -292,7 +277,7 @@ Your authentication is persisted in a Docker volume, so it survives container re
 ## 📖 Additional Resources
 
 - [BACO Documentation](https://github.com/your-repo/baco)
-- [Claude CLI Documentation](https://claude.ai/docs/cli)
+- [Claude Documentation](https://claude.ai/)
 - [VS Code Server Documentation](https://github.com/coder/code-server)
 
 ---
@@ -313,7 +298,7 @@ USER coder
 RUN if [ -d "/tmp/baco-vscode-extension" ]; then \
         code-server --install-extension /tmp/baco-vscode-extension; \
     fi && \
-    code-server --install-extension anthropic.claude-code && \
+    code-server --install-extension Anthropic.claude-code || echo "Claude extension may not be available" && \
     code-server --install-extension esbenp.prettier-vscode && \
     code-server --install-extension dbaeumer.vscode-eslint && \
     code-server --install-extension ms-python.python && \
