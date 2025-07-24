@@ -389,10 +389,7 @@ RUN npm config set prefix '/home/coder/.npm-global'
 ENV PATH="/home/coder/.npm-global/bin:${PATH}"
 ENV NPM_CONFIG_PREFIX="/home/coder/.npm-global"
 
-# Copy Pantheon Claude Chat extension with correct ownership
-COPY --chown=coder:coder ./claude-code-chat-extension /tmp/pantheon-claude-chat/
-
-# Install VS Code extensions
+# Install VS Code extensions as coder user
 RUN code-server --install-extension Anthropic.claude-code || echo "Claude extension may not be available" && \
     code-server --install-extension esbenp.prettier-vscode && \
     code-server --install-extension dbaeumer.vscode-eslint && \
@@ -402,21 +399,21 @@ RUN code-server --install-extension Anthropic.claude-code || echo "Claude extens
     code-server --install-extension ritwickdey.liveserver || \
     echo "Some extensions may not be available"
 
-# Build and install the Pantheon Claude Chat extension
-# Switch to coder user temporarily for npm operations
-USER coder
+# Copy Pantheon Claude Chat extension with correct ownership
+COPY --chown=coder:coder ./claude-code-chat-extension /tmp/pantheon-claude-chat/
+
+# Build the Pantheon Claude Chat extension as coder user
 WORKDIR /tmp/pantheon-claude-chat
 RUN npm install && \
     npm install -g @vscode/vsce@2.22.0 && \
     npm run compile && \
-    vsce package --no-dependencies --allow-missing-repository
-    
-# Switch back to root to install extension
-USER root
-WORKDIR /
-RUN code-server --install-extension /tmp/pantheon-claude-chat/*.vsix && \
-    rm -rf /tmp/pantheon-claude-chat && \
+    vsce package --no-dependencies --allow-missing-repository && \
+    code-server --install-extension *.vsix && \
     echo "Pantheon Claude Chat extension installed"
+    
+# Clean up
+WORKDIR /home/coder
+RUN rm -rf /tmp/pantheon-claude-chat
 
 # Expose port for code-server
 EXPOSE 8080
@@ -427,8 +424,10 @@ ENV PASSWORD=${PASSWORD:-pantheon}
 # Add paths including npm global bin
 ENV PATH="/home/coder/.npm-global/bin:/home/coder/.local/bin:/usr/local/bin:${PATH}"
 
-# Copy entrypoint script
+# Copy entrypoint script with proper ownership
+USER root
 COPY --chmod=755 ./scripts/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+USER coder
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
