@@ -2,7 +2,7 @@ import { Server, Socket } from 'socket.io';
 import { ClaudeCodeBridge } from '../claude/bridge.js';
 import { logger } from '../utils/logger.js';
 import { z } from 'zod';
-import type { BacoCommand, StreamHandler } from '@baco-ui/types';
+import type { PantheonCommand, StreamHandler } from '@pantheon-ui/types';
 
 // WebSocket event schemas
 const executeCommandSchema = z.object({
@@ -46,7 +46,7 @@ export function setupWebSocketHandlers(io: Server, bridge: ClaudeCodeBridge) {
         // Build command arguments from parameters
         const args = payload.parameters?.input ? [payload.parameters.input] : [];
         
-        const command: BacoCommand = {
+        const command: PantheonCommand = {
           command: commandName,
           args: args.length > 0 ? args : undefined,
           context: payload.parameters
@@ -113,23 +113,23 @@ export function setupWebSocketHandlers(io: Server, bridge: ClaudeCodeBridge) {
         
         logger.info(`Chat message from ${socket.id}: ${message}`);
         
-        // Check if this is /baco init command
-        if (message.trim() === '/baco init' || message.trim().startsWith('/baco init ')) {
-          // Start interactive session for BACO init
+        // Check if this is /pantheon init command
+        if (message.trim() === '/pantheon init' || message.trim().startsWith('/pantheon init ')) {
+          // Start interactive session for Pantheon init
           try {
             await bridge.startInteractiveSession(socket.id);
-            bridge.setInBacoInit(socket.id, true);
+            bridge.setInPantheonInit(socket.id, true);
             
             // Set up session event handlers
             setupSessionHandlers(socket, bridge);
             
-            // Send the /baco init command to the session
+            // Send the /pantheon init command to the session
             await bridge.sendToSession(socket.id, message);
             
             callback?.({ success: true });
             return;
           } catch (error) {
-            logger.error('Failed to start BACO init session:', error);
+            logger.error('Failed to start Pantheon init session:', error);
             socket.emit('chat-response', {
               message: 'Failed to start interactive session. Please try again.',
               success: false,
@@ -148,20 +148,20 @@ export function setupWebSocketHandlers(io: Server, bridge: ClaudeCodeBridge) {
           return;
         }
         
-        // Check if BACO is initialized for non-session commands
-        const bacoStatus = await bridge.getBacoStatus();
+        // Check if Pantheon is initialized for non-session commands
+        const pantheonStatus = await bridge.getPantheonStatus();
         
-        if (!bacoStatus.initialized) {
+        if (!pantheonStatus.initialized) {
           socket.emit('chat-response', {
-            message: 'BACO is not initialized. Please run `/baco init` first to enable chatbot functionality.',
+            message: 'Pantheon is not initialized. Please run `/pantheon init` first to enable chatbot functionality.',
             success: false
           });
           callback?.({ success: true });
           return;
         }
         
-        // Convert natural language to BACO command or pass through
-        const command = await nlpToBacoCommand(message, context);
+        // Convert natural language to Pantheon command or pass through
+        const command = await nlpToPantheonCommand(message, context);
         
         // Execute the command
         const result = await bridge.executeCommand(command);
@@ -191,7 +191,7 @@ export function setupWebSocketHandlers(io: Server, bridge: ClaudeCodeBridge) {
       try {
         logger.info(`Getting project files for: ${projectId} from ${socket.id}`);
         
-        // Get real project files from BacoService
+        // Get real project files from PantheonService
         const projectFiles = await bridge.getProjectFiles(projectId);
         
         logger.info(`Sending project files to ${socket.id}:`, {
@@ -344,8 +344,8 @@ function setupSessionHandlers(socket: Socket, bridge: ClaudeCodeBridge): void {
   });
 }
 
-// Convert natural language to BACO command
-async function nlpToBacoCommand(message: string, context?: any): Promise<BacoCommand> {
+// Convert natural language to Pantheon command
+async function nlpToPantheonCommand(message: string, context?: any): Promise<PantheonCommand> {
   const lowerMessage = message.toLowerCase();
   
   // Check for specific command patterns
@@ -365,7 +365,7 @@ async function nlpToBacoCommand(message: string, context?: any): Promise<BacoCom
       const match = message.match(pattern);
       if (match) {
         return {
-          command: '/baco',
+          command: '/pantheon',
           args: ['create-app', match[1], match[2]],
           context
         };

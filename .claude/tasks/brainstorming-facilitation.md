@@ -254,7 +254,7 @@ Technique Used: [Technique]
 - [ ] Clear documentation of outcomes
 - [ ] Follow-up actions defined
 
-## Integration with BACO
+## Integration with Pantheon
 
 This task can be triggered:
 - During `/orchestrate` for complex problems

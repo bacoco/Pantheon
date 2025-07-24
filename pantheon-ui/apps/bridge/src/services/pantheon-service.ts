@@ -3,22 +3,22 @@ import path from 'path';
 import { createLogger } from '../utils/logger.js';
 import { fileURLToPath } from 'url';
 import type { 
-  BacoCommand, 
+  PantheonCommand, 
   CommandResult, 
-  BacoStatus, 
-  BacoMemoryPattern 
-} from './baco-types.js';
+  PantheonStatus, 
+  PantheonMemoryPattern 
+} from './pantheon-types.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const logger = createLogger('BacoService');
+const logger = createLogger('PantheonService');
 
-export class BacoService {
+export class PantheonService {
   private workingDirectory: string;
   private claudeDirectory: string;
   private commandsDirectory: string;
-  private commandCache: Map<string, BacoCommand> = new Map();
+  private commandCache: Map<string, PantheonCommand> = new Map();
 
   constructor(workingDirectory: string = process.cwd()) {
     this.workingDirectory = workingDirectory;
@@ -39,16 +39,16 @@ export class BacoService {
   }
 
   /**
-   * Initialize BACO - this is now handled by Claude Code itself
+   * Initialize Pantheon - this is now handled by Claude Code itself
    */
-  async initBaco(projectName?: string): Promise<CommandResult> {
-    // This method is no longer used - /baco init goes directly to Claude Code
+  async initPantheon(projectName?: string): Promise<CommandResult> {
+    // This method is no longer used - /pantheon init goes directly to Claude Code
     return {
       success: true,
-      output: 'Please use /baco init command to start an interactive session with Claude Code.',
+      output: 'Please use /pantheon init command to start an interactive session with Claude Code.',
       artifacts: [{
         type: 'command',
-        name: 'baco',
+        name: 'pantheon',
         args: 'init' + (projectName ? ` ${projectName}` : ''),
         metadata: { requiresClaudeCode: true }
       }]
@@ -58,7 +58,7 @@ export class BacoService {
   /**
    * DEPRECATED - Old initialization code
    */
-  async initBacoOld(projectName?: string): Promise<CommandResult> {
+  async initPantheonOld(projectName?: string): Promise<CommandResult> {
     try {
       let targetDirectory = this.workingDirectory;
       let projectPath = this.workingDirectory;
@@ -88,8 +88,8 @@ export class BacoService {
         return {
           success: false,
           error: projectName 
-            ? `BACO is already initialized in project '${projectName}'`
-            : 'BACO is already initialized in this directory'
+            ? `Pantheon is already initialized in project '${projectName}'`
+            : 'Pantheon is already initialized in this directory'
         };
       } catch {
         // Good, .claude doesn't exist yet
@@ -130,7 +130,7 @@ export class BacoService {
           name: projectName,
           version: "0.1.0",
           private: true,
-          description: `BACO-enabled project: ${projectName}`,
+          description: `Pantheon-enabled project: ${projectName}`,
           scripts: {
             start: "echo 'Configure your start script'",
             build: "echo 'Configure your build script'",
@@ -145,26 +145,26 @@ export class BacoService {
         // Create README
         const readmeContent = `# ${projectName}
 
-This is a BACO-enabled project with AI-powered development capabilities.
+This is a Pantheon-enabled project with AI-powered development capabilities.
 
 ## Getting Started
 
-BACO has been initialized in this project. You can now use natural language commands to:
+Pantheon has been initialized in this project. You can now use natural language commands to:
 
 - Generate code: "create a React component for user authentication"
 - Analyze tasks: "/analyze implement payment processing"
 - Plan projects: "/generate-prp e-commerce platform"
-- Create apps: "/baco create-app web my-app"
+- Create apps: "/pantheon create-app web my-app"
 
 ## Available Commands
 
-Run \`/help\` in the BACO UI to see all available commands.
+Run \`/help\` in the Pantheon UI to see all available commands.
 
 ## Project Structure
 
 \`\`\`
 ${projectName}/
-├── .claude/          # BACO configuration and commands
+├── .claude/          # Pantheon configuration and commands
 │   ├── commands/     # Command definitions
 │   ├── agents/       # AI agent configurations
 │   ├── workflows/    # Multi-step workflows
@@ -176,7 +176,7 @@ ${projectName}/
         await fs.writeFile(path.join(projectPath, 'README.md'), readmeContent);
       }
 
-      logger.info('BACO initialized successfully', { 
+      logger.info('Pantheon initialized successfully', { 
         targetDirectory,
         projectName,
         projectPath
@@ -185,29 +185,29 @@ ${projectName}/
       return {
         success: true,
         output: projectName
-          ? `BACO project '${projectName}' created successfully!\n\nProject location: ${projectPath}\n\nNext steps:\n1. cd ${projectName}\n2. Start coding with natural language or commands\n3. Run /help to see available commands`
-          : 'BACO initialized successfully in current directory.\n\nYou can now use natural language commands to code!'
+          ? `Pantheon project '${projectName}' created successfully!\n\nProject location: ${projectPath}\n\nNext steps:\n1. cd ${projectName}\n2. Start coding with natural language or commands\n3. Run /help to see available commands`
+          : 'Pantheon initialized successfully in current directory.\n\nYou can now use natural language commands to code!'
       };
     } catch (error) {
-      logger.error('Failed to initialize BACO', { error });
+      logger.error('Failed to initialize Pantheon', { error });
       return {
         success: false,
-        error: `Failed to initialize BACO: ${error instanceof Error ? error.message : 'Unknown error'}`
+        error: `Failed to initialize Pantheon: ${error instanceof Error ? error.message : 'Unknown error'}`
       };
     }
   }
 
   /**
-   * Create default BACO files
+   * Create default Pantheon files
    */
   private async createDefaultFiles(): Promise<void> {
     // Create README
-    const readmeContent = `# BACO - Beyond Automated Context Orchestrator
+    const readmeContent = `# Pantheon - Beyond Automated Context Orchestrator
 
-This directory contains BACO configuration and commands for enhanced Claude Code interactions.
+This directory contains Pantheon configuration and commands for enhanced Claude Code interactions.
 
 ## Directory Structure
-- commands/ - BACO command definitions
+- commands/ - Pantheon command definitions
 - agents/ - Specialist agent configurations
 - memory/ - Pattern memory and context storage
 - templates/ - Reusable templates
@@ -222,7 +222,7 @@ Use /help in Claude Code to see available commands.
     const helpCommand = `# /help Command
 
 ## ACTIVATION
-When the user types /help, show available BACO commands.
+When the user types /help, show available Pantheon commands.
 
 ## OUTPUT FORMAT
 \`\`\`yaml
@@ -247,7 +247,7 @@ available_commands:
     await fs.writeFile(path.join(this.commandsDirectory, 'help.md'), helpCommand);
 
     // Create memory patterns file
-    const memoryPatterns: BacoMemoryPattern = {
+    const memoryPatterns: PantheonMemoryPattern = {
       patterns: [],
       version: "1.0.0",
       lastUpdated: new Date().toISOString()
@@ -261,7 +261,7 @@ available_commands:
   /**
    * Load all available commands
    */
-  async loadCommands(): Promise<Map<string, BacoCommand>> {
+  async loadCommands(): Promise<Map<string, PantheonCommand>> {
     try {
       this.commandCache.clear();
 
@@ -273,7 +273,7 @@ available_commands:
         const filePath = path.join(this.commandsDirectory, file);
         const content = await fs.readFile(filePath, 'utf-8');
 
-        const command: BacoCommand = {
+        const command: PantheonCommand = {
           name: commandName,
           description: this.extractDescription(content),
           content,
@@ -283,7 +283,7 @@ available_commands:
         this.commandCache.set(commandName, command);
       }
 
-      logger.info('Loaded BACO commands', { count: this.commandCache.size });
+      logger.info('Loaded Pantheon commands', { count: this.commandCache.size });
       return this.commandCache;
     } catch (error) {
       logger.error('Failed to load commands', { error });
@@ -294,7 +294,7 @@ available_commands:
   /**
    * Get a specific command
    */
-  async getCommand(commandName: string): Promise<BacoCommand | null> {
+  async getCommand(commandName: string): Promise<PantheonCommand | null> {
     // Check cache first
     if (this.commandCache.has(commandName)) {
       return this.commandCache.get(commandName)!;
@@ -321,7 +321,7 @@ available_commands:
   }
 
   /**
-   * Parse and execute a BACO command
+   * Parse and execute a Pantheon command
    */
   async executeCommand(commandLine: string): Promise<CommandResult> {
     try {
@@ -331,7 +331,7 @@ available_commands:
       const args = parts.slice(1).join(' ');
 
       // Remove special handling - let all commands go through Claude Code
-      // The baco.md file will tell Claude Code how to handle /baco init
+      // The pantheon.md file will tell Claude Code how to handle /pantheon init
 
       // Special handling for chat command (natural language)
       if (commandName === 'chat') {
@@ -351,11 +351,11 @@ available_commands:
         }
       }
 
-      // For /baco init, we don't need .claude to exist yet
-      if (commandName !== 'baco' && !await this.checkClaudeDirectory()) {
+      // For /pantheon init, we don't need .claude to exist yet
+      if (commandName !== 'pantheon' && !await this.checkClaudeDirectory()) {
         return {
           success: false,
-          error: 'BACO is not initialized. Run "/baco init" first.'
+          error: 'Pantheon is not initialized. Run "/pantheon init" first.'
         };
       }
 
@@ -434,14 +434,14 @@ available_commands:
   }
 
   /**
-   * Get BACO system status
+   * Get Pantheon system status
    */
-  async getStatus(): Promise<BacoStatus> {
+  async getStatus(): Promise<PantheonStatus> {
     const isInitialized = await this.checkClaudeDirectory();
     if (!isInitialized) {
       return {
         initialized: false,
-        message: 'BACO not initialized'
+        message: 'Pantheon not initialized'
       };
     }
 
@@ -536,4 +536,4 @@ available_commands:
 }
 
 // Export singleton instance for convenience
-export const bacoService = new BacoService();
+export const pantheonService = new PantheonService();

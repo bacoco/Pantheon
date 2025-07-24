@@ -2,7 +2,7 @@ import { Express, Request, Response } from 'express';
 import { ClaudeCodeBridge } from '../claude/bridge.js';
 import { logger } from '../utils/logger.js';
 import { z } from 'zod';
-import type { BacoCommand } from '@baco-ui/types';
+import type { PantheonCommand } from '@pantheon-ui/types';
 
 // Request validation schemas
 const executeCommandSchema = z.object({
@@ -18,14 +18,14 @@ const projectSchema = z.object({
 });
 
 export function setupApiRoutes(app: Express, bridge: ClaudeCodeBridge) {
-  // Execute BACO command
+  // Execute Pantheon command
   app.post('/api/command', async (req: Request, res: Response) => {
     try {
       const body = executeCommandSchema.parse(req.body);
       
       logger.info('Executing command:', body.command);
       
-      const result = await bridge.executeCommand(body as BacoCommand);
+      const result = await bridge.executeCommand(body as PantheonCommand);
       
       res.json({
         success: result.success,
@@ -49,7 +49,7 @@ export function setupApiRoutes(app: Express, bridge: ClaudeCodeBridge) {
     }
   });
 
-  // Get available BACO commands
+  // Get available Pantheon commands
   app.get('/api/commands', async (req: Request, res: Response) => {
     try {
       const result = await bridge.executeCommand({

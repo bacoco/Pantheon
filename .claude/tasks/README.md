@@ -1,4 +1,4 @@
-# BACO Tasks
+# Pantheon Tasks
 
 This directory contains executable task workflows that agents can run.
 

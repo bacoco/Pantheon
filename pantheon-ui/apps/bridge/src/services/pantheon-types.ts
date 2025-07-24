@@ -1,13 +1,13 @@
-// BACO Service Types
+// Pantheon Service Types
 
-export interface BacoCommand {
+export interface PantheonCommand {
   name: string;
   description: string;
   content: string;
-  metadata?: BacoMetadata;
+  metadata?: PantheonMetadata;
 }
 
-export interface BacoMetadata {
+export interface PantheonMetadata {
   category?: string;
   version?: string;
   dependencies?: string[];
@@ -28,7 +28,7 @@ export interface CommandArtifact {
   metadata?: any;
 }
 
-export interface BacoStatus {
+export interface PantheonStatus {
   initialized: boolean;
   workingDirectory?: string;
   message?: string;
@@ -44,7 +44,7 @@ export interface BacoStatus {
   };
 }
 
-export interface BacoMemoryPattern {
+export interface PantheonMemoryPattern {
   patterns: any[];
   version: string;
   lastUpdated: string;

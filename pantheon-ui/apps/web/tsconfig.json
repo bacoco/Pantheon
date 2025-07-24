@@ -28,8 +28,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@baco-ui/ui": ["../../packages/ui/src"],
-      "@baco-ui/types": ["../../packages/types/src"]
+      "@pantheon-ui/ui": ["../../packages/ui/src"],
+      "@pantheon-ui/types": ["../../packages/types/src"]
     }
   },
   "include": ["src"],

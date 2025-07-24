@@ -38,7 +38,7 @@ taskType: design/implementation
 ```
 
 ### Expected Routing
-- Primary: BMad Master or Winston (complexity requires orchestration)
+- Primary: Baco Master or Winston (complexity requires orchestration)
 - Team composition suggested
 - Multiple alternatives provided
 
@@ -116,7 +116,7 @@ Expected: Request for clarification
 /gods route Implement quantum computing algorithm
 ```
 
-Expected: Lower confidence, BMad Master fallback
+Expected: Lower confidence, Baco Master fallback
 
 ### Simple Task
 ```

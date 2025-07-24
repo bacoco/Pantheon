@@ -1,14 +1,14 @@
 import { spawn, ChildProcess } from 'child_process';
 import { EventEmitter } from 'events';
 import { logger } from '../utils/logger.js';
-import { BacoService } from '../services/baco-service.js';
+import { PantheonService } from '../services/pantheon-service.js';
 import { SessionManager } from './session-manager.js';
 import type { 
-  BacoCommand, 
+  PantheonCommand, 
   CommandResult, 
   ClaudeCodeOptions,
   StreamHandler 
-} from '@baco-ui/types';
+} from '@pantheon-ui/types';
 
 export class ClaudeCodeBridge extends EventEmitter {
   private claudeProcess: ChildProcess | null = null;
@@ -20,19 +20,19 @@ export class ClaudeCodeBridge extends EventEmitter {
   }> = [];
   private currentOutput = '';
   private streamHandlers = new Map<string, StreamHandler>();
-  private bacoService: BacoService;
+  private pantheonService: PantheonService;
   private sessionManager: SessionManager;
-  private interactiveSessions = new Map<string, boolean>(); // socketId -> isInBacoInit
+  private interactiveSessions = new Map<string, boolean>(); // socketId -> isInPantheonInit
 
   constructor(private options: ClaudeCodeOptions = {}) {
     super();
     this.options = {
       claudePath: process.env.CLAUDE_CODE_PATH || '/Users/loic/.claude/local/claude',
-      workingDirectory: process.env.BACO_PROJECT_PATH || process.cwd(),
+      workingDirectory: process.env.PANTHEON_PROJECT_PATH || process.cwd(),
       timeout: 300000, // 5 minutes default timeout
       ...options
     };
-    this.bacoService = new BacoService(this.options.workingDirectory);
+    this.pantheonService = new PantheonService(this.options.workingDirectory);
     this.sessionManager = new SessionManager(this.options.claudePath!);
   }
 
@@ -76,25 +76,25 @@ export class ClaudeCodeBridge extends EventEmitter {
   }
 
   /**
-   * Execute a BACO command
+   * Execute a Pantheon command
    */
-  async executeCommand(command: BacoCommand): Promise<CommandResult> {
+  async executeCommand(command: PantheonCommand): Promise<CommandResult> {
     try {
       logger.debug(`Executing command: ${command.command}`);
       
-      // First try to execute through BACO service (for special commands like /baco init)
+      // First try to execute through Pantheon service (for special commands like /pantheon init)
       const commandLine = command.command + (command.args ? ' ' + command.args.join(' ') : '');
-      const bacoResult = await this.bacoService.executeCommand(commandLine);
+      const pantheonResult = await this.pantheonService.executeCommand(commandLine);
       
-      // For BACO commands, always try to execute through Claude Code if available
-      if ((commandLine.startsWith('/baco') || bacoResult.artifacts?.some(a => a.type === 'command')) && this.isReady) {
+      // For Pantheon commands, always try to execute through Claude Code if available
+      if ((commandLine.startsWith('/pantheon') || pantheonResult.artifacts?.some(a => a.type === 'command')) && this.isReady) {
         // Execute through Claude Code
-        return await this.executeCommandThroughClaude(command, bacoResult);
+        return await this.executeCommandThroughClaude(command, pantheonResult);
       }
       
       // For other results, return directly
       return {
-        ...bacoResult,
+        ...pantheonResult,
         timestamp: new Date(),
         command: command.command
       };
@@ -114,8 +114,8 @@ export class ClaudeCodeBridge extends EventEmitter {
    * Execute command through Claude Code CLI
    */
   private async executeCommandThroughClaude(
-    command: BacoCommand, 
-    bacoResult: CommandResult
+    command: PantheonCommand, 
+    pantheonResult: CommandResult
   ): Promise<CommandResult> {
     return new Promise((resolve, reject) => {
       try {
@@ -241,7 +241,7 @@ export class ClaudeCodeBridge extends EventEmitter {
    */
   async getProjectFiles(projectId?: string): Promise<any> {
     try {
-      return await this.bacoService.getProjectFiles(projectId);
+      return await this.pantheonService.getProjectFiles(projectId);
     } catch (error) {
       logger.error('Failed to get project files:', error);
       throw error;
@@ -249,13 +249,13 @@ export class ClaudeCodeBridge extends EventEmitter {
   }
 
   /**
-   * Get BACO status
+   * Get Pantheon status
    */
-  async getBacoStatus(): Promise<any> {
+  async getPantheonStatus(): Promise<any> {
     try {
-      return await this.bacoService.getStatus();
+      return await this.pantheonService.getStatus();
     } catch (error) {
-      logger.error('Failed to get BACO status:', error);
+      logger.error('Failed to get Pantheon status:', error);
       return {
         initialized: false,
         error: error instanceof Error ? error.message : 'Unknown error'
@@ -266,14 +266,14 @@ export class ClaudeCodeBridge extends EventEmitter {
   /**
    * Execute basic shell commands without Claude Code
    */
-  private async executeBasicCommand(command: BacoCommand): Promise<CommandResult> {
+  private async executeBasicCommand(command: PantheonCommand): Promise<CommandResult> {
     const startTime = Date.now();
     
     // Handle /help command
     if (command.command === '/help') {
       try {
-        // Try to get commands from real BACO
-        const commandMap = await this.bacoService.loadCommands();
+        // Try to get commands from real Pantheon
+        const commandMap = await this.pantheonService.loadCommands();
         if (commandMap.size > 0) {
           const commandList = Array.from(commandMap.entries())
             .map(([name, cmd]) => `• **/${name}** - ${cmd.description || 'No description'}`)
@@ -296,7 +296,7 @@ export class ClaudeCodeBridge extends EventEmitter {
         output: `Available commands:
 
 • **/help** - Show this help message
-• **/baco init** - Initialize BACO in current project
+• **/pantheon init** - Initialize Pantheon in current project
 • **/analyze <task>** - Analyze a task
 • **/orchestrate <task>** - Orchestrate specialist agents
 • **/generate-prp <task>** - Generate Product Requirements Prompt
@@ -310,26 +310,26 @@ export class ClaudeCodeBridge extends EventEmitter {
     }
     
     
-    // Try to execute command through BACO service
+    // Try to execute command through Pantheon service
     try {
-      // Build the full command line string for BACO service
+      // Build the full command line string for Pantheon service
       const commandLine = command.command + (command.args ? ' ' + command.args.join(' ') : '');
-      const bacoResult = await this.bacoService.executeCommand(commandLine);
+      const pantheonResult = await this.pantheonService.executeCommand(commandLine);
       
-      if (bacoResult.success) {
+      if (pantheonResult.success) {
         return {
-          ...bacoResult,
+          ...pantheonResult,
           timestamp: new Date(),
           command: command.command
         };
       }
       
-      // If BACO service returned an error, use it
-      if (bacoResult.error) {
-        return bacoResult;
+      // If Pantheon service returned an error, use it
+      if (pantheonResult.error) {
+        return pantheonResult;
       }
     } catch (error) {
-      logger.debug('Failed to execute through BACO:', error);
+      logger.debug('Failed to execute through Pantheon:', error);
     }
     
     // Fallback for unimplemented commands
@@ -337,8 +337,8 @@ export class ClaudeCodeBridge extends EventEmitter {
       success: true,
       output: `Command '${command.command}' is not yet implemented in this UI.
 
-To use real BACO commands:
-1. Run '/baco init' to initialize BACO in your project
+To use real Pantheon commands:
+1. Run '/pantheon init' to initialize Pantheon in your project
 2. Ensure .claude/ directory exists with command files
 3. Commands will be loaded from .claude/commands/`,
       timestamp: new Date(),
@@ -350,7 +350,7 @@ To use real BACO commands:
    * Stream command output in real-time
    */
   streamCommand(
-    command: BacoCommand, 
+    command: PantheonCommand, 
     handler: StreamHandler
   ): string {
     const streamId = Math.random().toString(36).substring(7);
@@ -472,9 +472,9 @@ To use real BACO commands:
   }
 
   /**
-   * Set whether a socket is in BACO init flow
+   * Set whether a socket is in Pantheon init flow
    */
-  setInBacoInit(socketId: string, inInit: boolean): void {
+  setInPantheonInit(socketId: string, inInit: boolean): void {
     if (inInit) {
       this.interactiveSessions.set(socketId, true);
     } else {
@@ -483,9 +483,9 @@ To use real BACO commands:
   }
 
   /**
-   * Check if socket is in BACO init flow
+   * Check if socket is in Pantheon init flow
    */
-  isInBacoInit(socketId: string): boolean {
+  isInPantheonInit(socketId: string): boolean {
     return this.interactiveSessions.get(socketId) || false;
   }
 
@@ -576,7 +576,7 @@ To use real BACO commands:
            output.includes('Claude Code');
   }
 
-  private formatCommand(command: BacoCommand): string {
+  private formatCommand(command: PantheonCommand): string {
     let formattedCommand = command.command;
     
     // Add any arguments

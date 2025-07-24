@@ -10,7 +10,7 @@ Guide an interactive conversation to gather comprehensive project requirements a
 
 #### Opening Sequence
 ```
-🎯 Welcome to BACO Interactive Project Setup!
+🎯 Welcome to Pantheon Interactive Project Setup!
 
 I'll help you create a comprehensive project definition through conversation.
 This will help me understand your needs and generate a customized pantheon.md file.

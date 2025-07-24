@@ -8,7 +8,7 @@ import { ClaudeCodeBridge } from './claude/bridge.js';
 import { setupApiRoutes } from './api/routes.js';
 import { setupWebSocketHandlers } from './websocket/handlers.js';
 import { logger } from './utils/logger.js';
-import bacoRoutes from './api/baco-routes.js';
+import pantheonRoutes from './api/pantheon-routes.js';
 
 // Load environment variables
 dotenv.config();
@@ -36,8 +36,8 @@ const claudeBridge = new ClaudeCodeBridge();
 // Setup routes
 setupApiRoutes(app, claudeBridge);
 
-// Setup BACO routes
-app.use('/api/baco', bacoRoutes);
+// Setup Pantheon routes
+app.use('/api/pantheon', pantheonRoutes);
 
 // Setup WebSocket handlers
 setupWebSocketHandlers(io, claudeBridge);
@@ -60,7 +60,7 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
 // Start server
 const PORT = process.env.PORT || 3001;
 httpServer.listen(PORT, async () => {
-  logger.info(`BACO UI Bridge server running on port ${PORT}`);
+  logger.info(`Pantheon UI Bridge server running on port ${PORT}`);
   logger.info(`Claude Code path: ${process.env.CLAUDE_CODE_PATH || 'claude'}`);
   
   // Initialize Claude Code Bridge

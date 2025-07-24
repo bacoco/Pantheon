@@ -1,30 +1,30 @@
-// Example client code for using BACO service from frontend
+// Example client code for using Pantheon service from frontend
 
 /**
- * BACO API Client Example
+ * Pantheon API Client Example
  * 
- * This shows how to interact with the BACO service from a frontend application
+ * This shows how to interact with the Pantheon service from a frontend application
  */
 
-const API_BASE = 'http://localhost:3001/api/baco';
+const API_BASE = 'http://localhost:3001/api/pantheon';
 
-// Check BACO status
-async function checkBacoStatus() {
+// Check Pantheon status
+async function checkPantheonStatus() {
   const response = await fetch(`${API_BASE}/status`);
   const data = await response.json();
   
   if (data.success && data.data.initialized) {
-    console.log('BACO is initialized');
+    console.log('Pantheon is initialized');
     console.log('Available commands:', data.data.commands.list);
   } else {
-    console.log('BACO is not initialized');
+    console.log('Pantheon is not initialized');
   }
   
   return data;
 }
 
-// Initialize BACO
-async function initializeBaco() {
+// Initialize Pantheon
+async function initializePantheon() {
   const response = await fetch(`${API_BASE}/init`, {
     method: 'POST',
     headers: {
@@ -35,9 +35,9 @@ async function initializeBaco() {
   const data = await response.json();
   
   if (data.success) {
-    console.log('BACO initialized successfully');
+    console.log('Pantheon initialized successfully');
   } else {
-    console.error('Failed to initialize BACO:', data.error);
+    console.error('Failed to initialize Pantheon:', data.error);
   }
   
   return data;
@@ -72,7 +72,7 @@ async function getCommand(commandName: string) {
   return data;
 }
 
-// Execute a BACO command
+// Execute a Pantheon command
 async function executeCommand(command: string) {
   const response = await fetch(`${API_BASE}/execute`, {
     method: 'POST',
@@ -120,16 +120,16 @@ async function changeWorkspace(directory: string) {
 
 // Example usage flow
 async function exampleFlow() {
-  console.log('=== BACO Client Example ===\n');
+  console.log('=== Pantheon Client Example ===\n');
   
   // 1. Check initial status
-  console.log('1. Checking BACO status...');
-  const status = await checkBacoStatus();
+  console.log('1. Checking Pantheon status...');
+  const status = await checkPantheonStatus();
   
   // 2. Initialize if needed
   if (!status.data?.initialized) {
-    console.log('\n2. Initializing BACO...');
-    await initializeBaco();
+    console.log('\n2. Initializing Pantheon...');
+    await initializePantheon();
   }
   
   // 3. List available commands
@@ -146,7 +146,7 @@ async function exampleFlow() {
 }
 
 // React hooks example
-export const useBacoCommands = () => {
+export const usePantheonCommands = () => {
   const [commands, setCommands] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -178,8 +178,8 @@ export const useBacoCommands = () => {
 
 // Export functions for use in frontend
 export {
-  checkBacoStatus,
-  initializeBaco,
+  checkPantheonStatus,
+  initializePantheon,
   listCommands,
   getCommand,
   executeCommand,

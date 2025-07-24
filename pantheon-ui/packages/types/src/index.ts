@@ -1,4 +1,4 @@
-// Core types for BACO UI
+// Core types for Pantheon UI
 export * from './agent';
 export * from './command';
 export * from './memory';

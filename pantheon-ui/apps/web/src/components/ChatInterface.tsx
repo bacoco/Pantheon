@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Loader2, User, Bot, AlertCircle } from 'lucide-react';
-import { Button } from '@baco-ui/ui';
+import { Button } from '@pantheon-ui/ui';
 import { ScrollArea } from './ScrollArea';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { useBacoStore } from '../lib/store';
+import { usePantheonStore } from '../lib/store';
 import { executeCommand, socket } from '../lib/socket';
 
 export function ChatInterface() {
@@ -21,7 +21,7 @@ export function ChatInterface() {
     addMessage,
     setStreaming,
     isConnected 
-  } = useBacoStore();
+  } = usePantheonStore();
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -82,7 +82,7 @@ export function ChatInterface() {
         <div className="p-4 space-y-4">
           {messages.length === 0 && (
             <div className="text-center text-muted-foreground py-8">
-              <p className="text-lg font-medium mb-2">Welcome to BACO Assistant</p>
+              <p className="text-lg font-medium mb-2">Welcome to Pantheon Assistant</p>
               <p className="text-sm">
                 Start by typing a command. Use "/" to see available commands.
               </p>
@@ -152,7 +152,7 @@ export function ChatInterface() {
             type="button"
             onClick={() => {
               console.log('Testing getProjectFiles...');
-              socket.emit('getProjectFiles', '/Users/loic/develop/BACO/baco-ui');
+              socket.emit('getProjectFiles', '/Users/loic/develop/Pantheon/pantheon-ui');
             }}
             variant="outline"
             size="sm"

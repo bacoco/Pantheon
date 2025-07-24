@@ -43,7 +43,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@baco-ui/types": ["../../packages/types/src"]
+      "@pantheon-ui/types": ["../../packages/types/src"]
     }
   },
   "include": ["src/**/*"],

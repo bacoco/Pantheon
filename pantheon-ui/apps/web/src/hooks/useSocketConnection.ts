@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from 'react';
 import { socket, connectSocket, disconnectSocket } from '../lib/socket';
 import { useBacoStore } from '../lib/store';
-import type { CommandExecution, Agent, Workflow, WorkflowTask } from '@baco-ui/types';
+import type { CommandExecution, Agent, Workflow, WorkflowTask } from '@pantheon-ui/types';
 
 export function useSocketConnection() {
   const {

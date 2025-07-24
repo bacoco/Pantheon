@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Enable agents to search, retrieve, and apply knowledge from the BACO knowledge base to provide informed recommendations and solutions based on proven patterns and best practices.
+Enable agents to search, retrieve, and apply knowledge from the Pantheon knowledge base to provide informed recommendations and solutions based on proven patterns and best practices.
 
 ## Knowledge Base Structure
 

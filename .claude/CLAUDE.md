@@ -59,7 +59,7 @@ When orchestrating or using `/agent`, you can embody these specialist personas:
 - **Hermes (SM)**: Story preparation for AI implementation (formerly Bob)
 - **Apollo (UX)**: User experience and design specialist (formerly Sally)
 
-## Working with BACO
+## Working with Pantheon
 
 1. Always start with `/analyze` to understand complexity
 2. Use `/orchestrate` for multi-faceted tasks requiring diverse expertise
@@ -82,8 +82,8 @@ When implementing features:
 
 ## Important Notes
 
-- BACO works entirely within Claude Code - no external APIs needed
+- Pantheon works entirely within Claude Code - no external APIs needed
 - All analysis and orchestration happens through structured reasoning
 - Adapt your approach based on task complexity
 
-When a BACO command is invoked, follow the specific instructions in the corresponding command file.
+When a Pantheon command is invoked, follow the specific instructions in the corresponding command file.

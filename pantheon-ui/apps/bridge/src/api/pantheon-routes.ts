@@ -1,40 +1,40 @@
 import { Router, Request, Response } from 'express';
-import { BacoService } from '../services/baco-service.js';
+import { PantheonService } from '../services/pantheon-service.js';
 import { createLogger } from '../utils/logger.js';
 
-const logger = createLogger('BacoRoutes');
+const logger = createLogger('PantheonRoutes');
 const router = Router();
 
-// Initialize BACO service with current working directory
-const bacoService = new BacoService(process.cwd());
+// Initialize Pantheon service with current working directory
+const pantheonService = new PantheonService(process.cwd());
 
 /**
- * GET /api/baco/status
- * Get BACO system status
+ * GET /api/pantheon/status
+ * Get Pantheon system status
  */
 router.get('/status', async (req: Request, res: Response) => {
   try {
-    const status = await bacoService.getStatus();
+    const status = await pantheonService.getStatus();
     res.json({
       success: true,
       data: status
     });
   } catch (error) {
-    logger.error('Failed to get BACO status', { error });
+    logger.error('Failed to get Pantheon status', { error });
     res.status(500).json({
       success: false,
-      error: 'Failed to get BACO status'
+      error: 'Failed to get Pantheon status'
     });
   }
 });
 
 /**
- * POST /api/baco/init
- * Initialize BACO in the current directory
+ * POST /api/pantheon/init
+ * Initialize Pantheon in the current directory
  */
 router.post('/init', async (req: Request, res: Response) => {
   try {
-    const result = await bacoService.initBaco();
+    const result = await pantheonService.initPantheon();
     
     if (result.success) {
       res.json({
@@ -48,22 +48,22 @@ router.post('/init', async (req: Request, res: Response) => {
       });
     }
   } catch (error) {
-    logger.error('Failed to initialize BACO', { error });
+    logger.error('Failed to initialize Pantheon', { error });
     res.status(500).json({
       success: false,
-      error: 'Failed to initialize BACO'
+      error: 'Failed to initialize Pantheon'
     });
   }
 });
 
 /**
- * GET /api/baco/commands
- * List all available BACO commands
+ * GET /api/pantheon/commands
+ * List all available Pantheon commands
  */
 router.get('/commands', async (req: Request, res: Response) => {
   try {
-    const commands = await bacoService.listCommands();
-    const commandDetails = await bacoService.loadCommands();
+    const commands = await pantheonService.listCommands();
+    const commandDetails = await pantheonService.loadCommands();
     
     const commandList = Array.from(commandDetails.entries()).map(([name, cmd]) => ({
       name,
@@ -88,13 +88,13 @@ router.get('/commands', async (req: Request, res: Response) => {
 });
 
 /**
- * GET /api/baco/commands/:name
+ * GET /api/pantheon/commands/:name
  * Get a specific command
  */
 router.get('/commands/:name', async (req: Request, res: Response) => {
   try {
     const { name } = req.params;
-    const command = await bacoService.getCommand(name);
+    const command = await pantheonService.getCommand(name);
     
     if (command) {
       res.json({
@@ -117,8 +117,8 @@ router.get('/commands/:name', async (req: Request, res: Response) => {
 });
 
 /**
- * POST /api/baco/execute
- * Execute a BACO command
+ * POST /api/pantheon/execute
+ * Execute a Pantheon command
  */
 router.post('/execute', async (req: Request, res: Response) => {
   try {
@@ -131,7 +131,7 @@ router.post('/execute', async (req: Request, res: Response) => {
       });
     }
     
-    const result = await bacoService.executeCommand(command);
+    const result = await pantheonService.executeCommand(command);
     
     if (result.success) {
       res.json({
@@ -157,8 +157,8 @@ router.post('/execute', async (req: Request, res: Response) => {
 });
 
 /**
- * POST /api/baco/workspace
- * Change BACO working directory
+ * POST /api/pantheon/workspace
+ * Change Pantheon working directory
  */
 router.post('/workspace', async (req: Request, res: Response) => {
   try {
@@ -172,8 +172,8 @@ router.post('/workspace', async (req: Request, res: Response) => {
     }
     
     // Create new service instance with different working directory
-    const newBacoService = new BacoService(directory);
-    const status = await newBacoService.getStatus();
+    const newPantheonService = new PantheonService(directory);
+    const status = await newPantheonService.getStatus();
     
     res.json({
       success: true,

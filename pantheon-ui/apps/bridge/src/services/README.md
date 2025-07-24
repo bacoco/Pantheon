@@ -1,21 +1,21 @@
-# BACO Service
+# Pantheon Service
 
-The BACO Service provides backend functionality for managing and executing BACO (Beyond Automated Context Orchestrator) commands.
+The Pantheon Service provides backend functionality for managing and executing Pantheon (Beyond Automated Context Orchestrator) commands.
 
 ## Overview
 
-The BACO service handles:
+The Pantheon service handles:
 - Reading command markdown files from `.claude/commands/`
-- Parsing and executing BACO commands
-- Managing file system operations for `/baco init`
+- Parsing and executing Pantheon commands
+- Managing file system operations for `/pantheon init`
 - Checking if `.claude` directory exists in the working directory
 
 ## API
 
-### Class: `BacoService`
+### Class: `PantheonService`
 
 ```typescript
-const bacoService = new BacoService(workingDirectory?: string);
+const pantheonService = new PantheonService(workingDirectory?: string);
 ```
 
 ### Methods
@@ -23,8 +23,8 @@ const bacoService = new BacoService(workingDirectory?: string);
 #### `checkClaudeDirectory(): Promise<boolean>`
 Check if `.claude` directory exists in the working directory.
 
-#### `initBaco(): Promise<CommandResult>`
-Initialize BACO in the working directory. Creates the `.claude` directory structure with default files.
+#### `initPantheon(): Promise<CommandResult>`
+Initialize Pantheon in the working directory. Creates the `.claude` directory structure with default files.
 
 #### `loadCommands(): Promise<Map<string, BacoCommand>>`
 Load all available commands from the commands directory.
@@ -33,17 +33,17 @@ Load all available commands from the commands directory.
 Get a specific command by name.
 
 #### `executeCommand(commandLine: string): Promise<CommandResult>`
-Parse and execute a BACO command. Handles special commands like `/baco init`.
+Parse and execute a Pantheon command. Handles special commands like `/pantheon init`.
 
 #### `listCommands(): Promise<string[]>`
 List all available command names.
 
 #### `getStatus(): Promise<any>`
-Get comprehensive BACO system status including initialization state and file counts.
+Get comprehensive Pantheon system status including initialization state and file counts.
 
 ## Directory Structure
 
-When initialized, BACO creates the following structure:
+When initialized, Pantheon creates the following structure:
 
 ```
 .claude/
@@ -61,20 +61,20 @@ When initialized, BACO creates the following structure:
 
 The service is exposed through the following REST endpoints:
 
-### `GET /api/baco/status`
-Get BACO system status.
+### `GET /api/pantheon/status`
+Get Pantheon system status.
 
-### `POST /api/baco/init`
-Initialize BACO in the current directory.
+### `POST /api/pantheon/init`
+Initialize Pantheon in the current directory.
 
-### `GET /api/baco/commands`
-List all available BACO commands with descriptions.
+### `GET /api/pantheon/commands`
+List all available Pantheon commands with descriptions.
 
-### `GET /api/baco/commands/:name`
+### `GET /api/pantheon/commands/:name`
 Get a specific command by name.
 
-### `POST /api/baco/execute`
-Execute a BACO command.
+### `POST /api/pantheon/execute`
+Execute a Pantheon command.
 
 **Request Body:**
 ```json
@@ -83,8 +83,8 @@ Execute a BACO command.
 }
 ```
 
-### `POST /api/baco/workspace`
-Change BACO working directory.
+### `POST /api/pantheon/workspace`
+Change Pantheon working directory.
 
 **Request Body:**
 ```json
@@ -96,27 +96,27 @@ Change BACO working directory.
 ## Usage Example
 
 ```typescript
-import { BacoService } from './baco-service.js';
+import { PantheonService } from './pantheon-service.js';
 
 // Initialize service
-const baco = new BacoService('/path/to/project');
+const pantheon = new PantheonService('/path/to/project');
 
-// Check if BACO is initialized
-const isInitialized = await baco.checkClaudeDirectory();
+// Check if Pantheon is initialized
+const isInitialized = await pantheon.checkClaudeDirectory();
 
 // Initialize if needed
 if (!isInitialized) {
-  await baco.initBaco();
+  await pantheon.initPantheon();
 }
 
 // Execute a command
-const result = await baco.executeCommand('/help');
+const result = await pantheon.executeCommand('/help');
 console.log(result.output);
 ```
 
 ## Command Format
 
-BACO commands are markdown files with the following structure:
+Pantheon commands are markdown files with the following structure:
 
 ```markdown
 # /command-name Command

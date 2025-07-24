@@ -1,7 +1,7 @@
 {
-  "name": "baco-ui",
+  "name": "pantheon-ui",
   "version": "0.1.0",
-  "description": "Web-based chat interface for BACO (Beyond Automated Context Orchestrator)",
+  "description": "Web-based chat interface for Pantheon (Beyond Automated Context Orchestrator)",
   "private": true,
   "type": "module",
   "scripts": {

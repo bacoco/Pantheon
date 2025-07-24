@@ -457,4 +457,4 @@ async function robustPreview(url, options = {}) {
 7. **Cache static previews** when possible
 8. **Implement retry logic** for flaky operations
 
-This tool enables real browser-based testing and demonstration capabilities for BACO agents.
+This tool enables real browser-based testing and demonstration capabilities for Pantheon agents.

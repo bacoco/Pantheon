@@ -9,11 +9,11 @@ import {
   Pause,
   RotateCcw
 } from 'lucide-react';
-import { Button } from '@baco-ui/ui';
+import { Button } from '@pantheon-ui/ui';
 import { Progress } from './Progress';
 import { useBacoStore } from '../lib/store';
 import { startWorkflow, pauseWorkflow, resumeWorkflow } from '../lib/socket';
-import type { WorkflowStatus, TaskStatus, PhaseStatus } from '@baco-ui/types';
+import type { WorkflowStatus, TaskStatus, PhaseStatus } from '@pantheon-ui/types';
 
 export function TaskProgress() {
   const { activeWorkflow, workflows } = useBacoStore();

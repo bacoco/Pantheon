@@ -13,7 +13,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'BacoUI',
+      name: 'PantheonUI',
       formats: ['es'],
       fileName: 'index'
     },
@@ -30,7 +30,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@baco-ui/types': path.resolve(__dirname, '../types/src')
+      '@pantheon-ui/types': path.resolve(__dirname, '../types/src')
     }
   }
 });

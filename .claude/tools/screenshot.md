@@ -301,4 +301,4 @@ async function storeScreenshot(screenshot, metadata) {
 7. **Clean up old screenshots** regularly
 8. **Use visual regression** for critical UI paths
 
-This tool enables powerful visual testing and validation capabilities for BACO agents.
+This tool enables powerful visual testing and validation capabilities for Pantheon agents.

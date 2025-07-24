@@ -492,4 +492,4 @@ async function prioritizedRetrieval(queries) {
 7. **Validate retrieved patterns** before use
 8. **Keep context focused** to avoid information overload
 
-This tool provides intelligent context retrieval capabilities that help BACO agents find and apply proven patterns and implementations.
+This tool provides intelligent context retrieval capabilities that help Pantheon agents find and apply proven patterns and implementations.

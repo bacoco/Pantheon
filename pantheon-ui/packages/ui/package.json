@@ -1,5 +1,5 @@
 {
-  "name": "@baco-ui/ui",
+  "name": "@pantheon-ui/ui",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -23,7 +23,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@baco-ui/types": "workspace:*",
+    "@pantheon-ui/types": "workspace:*",
     "clsx": "^2.1.1"
   },
   "peerDependencies": {

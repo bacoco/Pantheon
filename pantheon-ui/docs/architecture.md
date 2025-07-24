@@ -1,8 +1,8 @@
-# BACO UI Architecture
+# Pantheon UI Architecture
 
 ## Overview
 
-BACO UI is a web-based chat interface that bridges user interactions with the Claude Code CLI, providing a modern, intuitive way to use BACO's powerful features.
+Pantheon UI is a web-based chat interface that bridges user interactions with the Claude Code CLI, providing a modern, intuitive way to use Pantheon's powerful features.
 
 ## System Architecture
 
@@ -40,7 +40,7 @@ BACO UI is a web-based chat interface that bridges user interactions with the Cl
              ▼
 ┌─────────────────────────────────────────────────────────────┐
 │                    Claude Code CLI                           │
-│  - BACO commands execution                                  │
+│  - Pantheon commands execution                                  │
 │  - File system operations                                   │
 │  - Git operations                                           │
 │  - Docker management                                        │
@@ -54,7 +54,7 @@ BACO UI is a web-based chat interface that bridges user interactions with the Cl
 #### Core Components
 
 1. **ChatInterface**
-   - Message display (user/BACO/system messages)
+   - Message display (user/Pantheon/system messages)
    - Input handling with command suggestions
    - Natural language processing
    - Progress indicators
@@ -105,7 +105,7 @@ interface AppState {
 #### API Client
 
 ```typescript
-class BacoApiClient {
+class PantheonApiClient {
   // Command execution
   async executeCommand(command: string): Promise<ExecutionResult>;
   
@@ -126,7 +126,7 @@ class BacoApiClient {
 
 ```typescript
 // Command execution
-POST   /api/execute        - Execute BACO command
+POST   /api/execute        - Execute Pantheon command
 GET    /api/execute/:id    - Get execution status
 
 // Project management
@@ -173,8 +173,8 @@ export class ClaudeCodeBridge {
     });
   }
 
-  // Parse BACO-specific output
-  parseBacoOutput(output: string): BacoResponse {
+  // Parse Pantheon-specific output
+  parsePantheonOutput(output: string): PantheonResponse {
     // Extract progress, file changes, phase updates, etc.
   }
 }
@@ -208,7 +208,7 @@ interface ClientEvents {
 ```
 1. User types: "Create a Next.js app with authentication"
    ↓
-2. Frontend parses to BACO command: "/baco init"
+2. Frontend parses to Pantheon command: "/pantheon init"
    ↓
 3. API request: POST /api/execute { command: "/baco init", args: [] }
    ↓

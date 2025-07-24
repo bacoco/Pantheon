@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { ChatInterface, ProjectExplorer, TaskProgress } from './components';
 import { useSocketConnection } from './hooks/useSocketConnection';
-import { useBacoStore } from './lib/store';
+import { usePantheonStore } from './lib/store';
 
 export function App() {
   const { isConnected, error } = useSocketConnection();
-  const currentProject = useBacoStore((state) => state.currentProject);
+  const currentProject = usePantheonStore((state) => state.currentProject);
 
   return (
     <div className="flex h-screen bg-background">
       {/* Sidebar */}
       <aside className="w-80 border-r border-border bg-muted/50 flex flex-col">
         <div className="p-4 border-b border-border">
-          <h1 className="text-xl font-bold">BACO Assistant</h1>
+          <h1 className="text-xl font-bold">Pantheon Assistant</h1>
           <div className="flex items-center gap-2 mt-2">
             <div className={`w-2 h-2 rounded-full ${isConnected ? 'bg-green-500' : 'bg-red-500'}`} />
             <span className="text-sm text-muted-foreground">

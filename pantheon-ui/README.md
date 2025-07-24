@@ -1,6 +1,6 @@
 # Pantheon UI - Chat Interface for Pantheon
 
-A modern web-based chat interface for Pantheon (Beyond Automated Context Orchestrator) that provides an intuitive way to interact with Claude Code Max while maintaining all its powerful capabilities.
+A modern web-based chat interface for Pantheon that provides an intuitive way to interact with Claude Code Max while maintaining all its powerful capabilities.
 
 ## 🎯 Vision
 
@@ -24,7 +24,7 @@ Transform Pantheon from a CLI-based tool to a modern web interface that:
 ## 📁 Project Structure
 
 ```
-baco-ui/
+pantheon-ui/
 ├── apps/
 │   ├── web/                 # React frontend application
 │   │   ├── src/
@@ -103,8 +103,8 @@ git clone https://github.com/bacoco/Pantheon.git
 cd Pantheon
 git checkout baco-ui
 
-# Navigate to baco-ui directory
-cd baco-ui
+# Navigate to pantheon-ui directory
+cd pantheon-ui
 
 # Install dependencies
 pnpm install
