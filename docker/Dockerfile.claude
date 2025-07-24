@@ -1,29 +1,5 @@
 # =================================================================
-# STAGE 1: Build and protect the Pantheon tools
-# =================================================================
-FROM python:3.10-slim as builder
-
-# Install build tools
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-# Install PyInstaller for creating standalone executables
-RUN pip install pyinstaller
-
-# Copy the BACO/Pantheon source code
-COPY ./gods /app/gods.py
-
-# Build the gods executable
-WORKDIR /app
-RUN pyinstaller --onefile --name gods gods.py
-
-# Make the executable secure
-RUN chmod 755 /app/dist/gods && \
-    chown root:root /app/dist/gods
-
-# =================================================================
-# STAGE 2: Create the final user-facing image
+# BACO/Pantheon Docker Environment with VS Code Server
 # =================================================================
 FROM codercom/code-server:latest
 
@@ -68,8 +44,9 @@ RUN if ! command -v claude &> /dev/null; then \
         chmod +x /usr/local/bin/claude; \
     fi
 
-# Copy the compiled BACO executable from the builder stage
-COPY --from=builder /app/dist/gods /usr/local/bin/gods
+# Copy the gods bash script
+COPY ./gods /usr/local/bin/gods
+RUN chmod +x /usr/local/bin/gods
 
 # Copy authentication scripts
 COPY ./scripts/claude-auth-docker.sh /usr/local/bin/claude-auth-docker.sh
