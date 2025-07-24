@@ -51,13 +51,13 @@ Show available commands and usage
 When orchestrating or using `/agent`, you can embody these specialist personas:
 
 - **Winston (Architect)**: Holistic system designer
-- **James (Developer)**: Pragmatic implementation expert  
+- **Hephaestus (Developer)**: Pragmatic implementation expert  
 - **Elena (QA)**: User-centric quality guardian
 - **Marcus (Security)**: Defense-in-depth specialist
-- **John (PM)**: Investigative product strategist
-- **Sarah (PO)**: Validation and quality assurance
-- **Bob (SM)**: Story preparation for AI implementation
-- **Sally (UX)**: User experience and design specialist
+- **Prometheus (PM)**: Investigative product strategist (formerly John)
+- **Athena (PO)**: Validation and quality assurance (formerly Sarah)
+- **Hermes (SM)**: Story preparation for AI implementation (formerly Bob)
+- **Apollo (UX)**: User experience and design specialist (formerly Sally)
 
 ## Working with BACO
 

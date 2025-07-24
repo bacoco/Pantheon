@@ -209,7 +209,7 @@ function generateRoutingDecision(
     .sort((a, b) => b[1].score - a[1].score);
   
   // Select primary agent
-  const [primaryId, primaryData] = sortedAgents[0] || ["baco-master", { score: 0.5, metadata: getAgentMetadata('baco-master') }];
+  const [primaryId, primaryData] = sortedAgents[0] || ["janus", { score: 0.5, metadata: getAgentMetadata('janus') }];
   
   // Select supporting agents (score > 0.4 and complementary skills)
   const supporting = [];
@@ -325,7 +325,7 @@ function getCapabilityScore(level: string): number {
 ```javascript
 function canHandleComplexity(agent: string, complexity: number): boolean {
   const complexityThresholds = {
-    "baco-master": 10,
+    "janus": 10,
     winston: 9,
     james: 8,
     elena: 7,
@@ -438,7 +438,8 @@ The router dynamically loads agent capabilities from their metadata:
 function loadAgentCapabilities() {
   const agents = [
     'winston', 'james', 'elena', 'marcus', 'john', 
-    'sarah', 'bob', 'sally', 'pixel', 'baco-master'
+    'sarah', 'bob', 'sally', 'pixel', 'janus',
+    'oracle', 'harmonia', 'iris', 'calliope'
   ];
   
   const registry = {};
@@ -499,8 +500,8 @@ function getAgentMetadata(agentId) {
       complexityRange: [5, 9],
       strongPatterns: ['security audit', 'vulnerability', 'compliance check']
     },
-    john: {
-      name: "John",
+    prometheus: {
+      name: "Prometheus",
       role: "Product Manager",
       domains: ['planning', 'product_management', 'requirements'],
       capabilities: [
@@ -510,8 +511,8 @@ function getAgentMetadata(agentId) {
       complexityRange: [4, 8],
       strongPatterns: ['product roadmap', 'feature planning', 'requirements']
     },
-    sarah: {
-      name: "Sarah",
+    athena: {
+      name: "Athena",
       role: "Product Owner",
       domains: ['product_ownership', 'user_stories', 'prioritization'],
       capabilities: [
@@ -521,8 +522,8 @@ function getAgentMetadata(agentId) {
       complexityRange: [3, 7],
       strongPatterns: ['user story', 'acceptance criteria', 'sprint planning']
     },
-    bob: {
-      name: "Bob",
+    hermes: {
+      name: "Hermes",
       role: "Scrum Master",
       domains: ['scrum', 'process_facilitation', 'task_breakdown'],
       capabilities: [
@@ -532,8 +533,8 @@ function getAgentMetadata(agentId) {
       complexityRange: [3, 7],
       strongPatterns: ['sprint planning', 'task breakdown', 'scrum process']
     },
-    sally: {
-      name: "Sally",
+    apollo: {
+      name: "Apollo",
       role: "UX Designer",
       domains: ['ui', 'user_experience', 'design_systems'],
       capabilities: [
@@ -554,7 +555,7 @@ function getAgentMetadata(agentId) {
       complexityRange: [3, 7],
       strongPatterns: ['ui quality', 'visual testing', 'pixel perfect']
     },
-    'baco-master': {
+    'janus': {
       name: "BMad Master",
       role: "Meta-Orchestrator",
       domains: ['orchestration', 'meta_analysis', 'workflow_design'],
@@ -564,6 +565,50 @@ function getAgentMetadata(agentId) {
       ],
       complexityRange: [5, 10],
       strongPatterns: ['orchestrate workflow', 'complex task', 'coordinate agents']
+    },
+    'oracle': {
+      name: "Oracle",
+      role: "Style Guide Generator",
+      domains: ['design_tokens', 'style_guide', 'color_systems', 'visual_analysis'],
+      capabilities: [
+        'design-tokens:expert', 'style-guide:expert',
+        'color-extraction:expert', 'typography-analysis:expert'
+      ],
+      complexityRange: [5, 9],
+      strongPatterns: ['design tokens', 'style guide', 'extract colors', 'visual inspiration']
+    },
+    'harmonia': {
+      name: "Harmonia",
+      role: "Design Token Optimizer",
+      domains: ['design_psychology', 'audience_optimization', 'token_fusion', 'cultural_design'],
+      capabilities: [
+        'design-psychology:expert', 'audience-analysis:expert',
+        'token-optimization:expert', 'emotional-design:advanced'
+      ],
+      complexityRange: [6, 9],
+      strongPatterns: ['audience specific', 'design psychology', 'optimize tokens', 'emotional design']
+    },
+    'iris': {
+      name: "Iris",
+      role: "Interactivity Specialist",
+      domains: ['micro_interactions', 'animation_design', 'performance_optimization', 'gesture_design'],
+      capabilities: [
+        'micro-interactions:expert', 'animation-design:expert',
+        'motion-performance:expert', 'interaction-patterns:advanced'
+      ],
+      complexityRange: [4, 8],
+      strongPatterns: ['add animations', 'micro interactions', 'motion design', 'interactivity']
+    },
+    'calliope': {
+      name: "Calliope",
+      role: "Microcopy Specialist",
+      domains: ['microcopy', 'brand_voice', 'ux_writing', 'content_strategy'],
+      capabilities: [
+        'microcopy:expert', 'brand-voice:expert',
+        'ux-writing:expert', 'error-messages:expert'
+      ],
+      complexityRange: [3, 8],
+      strongPatterns: ['microcopy', 'brand voice', 'ui text', 'error messages']
     }
   };
   

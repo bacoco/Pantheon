@@ -183,7 +183,7 @@ function extractRequiredCapabilities(analysis: TaskAnalysis): string[] {
 function getAgentTopCapabilities(agentName: string): string[] {
   const agentCapabilities = {
     winston: ["architecture-design", "system-design", "scalability-planning"],
-    james: ["implementation", "code-quality", "refactoring"],
+    hephaestus: ["implementation", "code-quality", "refactoring"],
     elena: ["testing-strategy", "qa-automation", "user-validation"],
     marcus: ["security-audit", "compliance", "threat-analysis"],
     john: ["product-planning", "requirements", "roadmapping"],
@@ -200,7 +200,7 @@ function getAgentTopCapabilities(agentName: string): string[] {
 function determineRole(agentName: string, analysis: TaskAnalysis): string {
   const roleMap = {
     winston: "Technical Architecture Advisor",
-    james: "Implementation Partner",
+    hephaestus: "Implementation Partner",
     elena: "Quality Assurance Lead",
     marcus: "Security Consultant",
     john: "Product Strategy Advisor",
@@ -255,11 +255,11 @@ function generateTradeoffs(
   analysis: TaskAnalysis
 ): string {
   const tradeoffTemplates = {
-    "winston-vs-james": "More theoretical, less hands-on implementation",
-    "james-vs-winston": "More practical, less architectural overview",
-    "elena-vs-james": "Focus on testing rather than implementation",
+    "winston-vs-hephaestus": "More theoretical, less hands-on implementation",
+    "hephaestus-vs-winston": "More practical, less architectural overview",
+    "elena-vs-hephaestus": "Focus on testing rather than implementation",
     "marcus-vs-winston": "Security-first approach vs. general architecture",
-    "sally-vs-james": "Design-driven vs. code-first approach"
+    "sally-vs-hephaestus": "Design-driven vs. code-first approach"
   };
   
   const key = `${alternativeAgent}-vs-${primaryAgent}`;
@@ -278,7 +278,7 @@ function generateTradeoffs(
 function getAgentSpecialty(agentName: string): string {
   const specialties = {
     winston: "architectural",
-    james: "implementation",
+    hephaestus: "implementation",
     elena: "quality assurance",
     marcus: "security",
     john: "product management",
@@ -366,7 +366,7 @@ function getDefaultRouting(): RoutingDecision {
 function getFallbackRouting(): RoutingDecision {
   return {
     primaryAgent: {
-      name: "james",
+      name: "hephaestus",
       matchScore: 0.6,
       capabilities: ["implementation", "general-development"]
     },
@@ -376,7 +376,7 @@ function getFallbackRouting(): RoutingDecision {
       matchScore: 0.5
     }],
     confidence: 0.6,
-    reasoning: "Falling back to James (Developer) with Winston (Architect) support as a safe default",
+    reasoning: "Falling back to Hephaestus (Developer) with Winston (Architect) support as a safe default",
     alternativeRoutes: [],
     flags: {
       autoRoute: false,

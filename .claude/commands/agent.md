@@ -35,39 +35,55 @@ When this command is invoked:
    ```yaml
    Available BACO Specialist Agents:
    
-   architect (Winston):
+   architect (Daedalus):
      Focus: System design, architecture, technology selection
      Use when: Planning systems, evaluating tech, designing scalability
    
-   developer (James):
+   developer (Hephaestus):
      Focus: Implementation, coding best practices, debugging
      Use when: Writing code, solving bugs, refactoring
    
-   qa (Elena):
+   qa (Themis):
      Focus: Testing, quality assurance, user experience
      Use when: Test planning, quality metrics, UX validation
    
-   security (Marcus):
+   security (Aegis):
      Focus: Security, compliance, threat modeling
      Use when: Security review, auth design, compliance checks
    
-   pm (John):
+   pm (Prometheus):
      Focus: Product strategy, PRDs, user research
      Use when: Requirements gathering, product planning, prioritization
    
-   po (Sarah):
+   po (Athena):
      Focus: Validation, quality assurance, artifact consistency
      Use when: Document validation, story refinement, quality checks
    
-   sm (Bob):
+   sm (Hermes):
      Focus: Story creation, sprint planning, AI-ready specifications
      Use when: Creating stories, planning sprints, agile ceremonies
    
-   ux (Sally):
+   ux (Apollo):
      Focus: User experience, design systems, accessibility, usability
      Use when: UI/UX design, user research, accessibility audits
    
-   baco-master:
+   oracle:
+     Focus: Style guide generation, design tokens, visual patterns
+     Use when: Creating design systems, extracting tokens, style guides
+   
+   harmonia:
+     Focus: Design psychology, audience optimization, token fusion
+     Use when: Optimizing for specific audiences, psychological design
+   
+   iris:
+     Focus: Motion design, micro-interactions, animation performance
+     Use when: Adding animations, interaction design, motion optimization
+   
+   calliope:
+     Focus: Microcopy, brand voice, UX writing, content strategy
+     Use when: Writing UI text, defining voice, optimizing copy
+   
+   janus:
      Focus: Universal execution, meta-orchestration, pattern evolution
      Use when: Complex workflows, multi-domain tasks, experimental approaches
    
@@ -95,7 +111,11 @@ Support flexible naming:
 - `po`, `owner`, `sarah` → `.claude/agents/po.md`
 - `sm`, `scrum`, `bob` → `.claude/agents/sm.md`
 - `ux`, `design`, `sally` → `.claude/agents/ux.md`
-- `baco-master`, `baco`, `master` → `.claude/agents/baco-master.md`
+- `oracle`, `vision`, `style` → `.claude/agents/oracle.md`
+- `harmonia`, `fusion`, `psychology` → `.claude/agents/harmonia.md`
+- `iris`, `motion`, `animation` → `.claude/agents/iris.md`
+- `calliope`, `voice`, `microcopy` → `.claude/agents/calliope.md`
+- `janus`, `master` → `.claude/agents/janus.md`
 - `orchestrator`, `baco` → `.claude/agents/baco-orchestrator.md`
 
 ## Example Interaction
@@ -105,13 +125,13 @@ User: /agent architect
 
 [System loads .claude/agents/architect.md]
 
-Winston: Hello! I'm Winston, your Master System Architect. I'm here to help with system design, architecture decisions, technology selection, and scalability planning.
+Daedalus: Hello! I'm Daedalus, your Master System Architect. I'm here to help with system design, architecture decisions, technology selection, and scalability planning.
 
 Type *help to see my available commands, or describe your architectural challenge and I'll guide you through it.
 
 User: *help
 
-Winston: === Winston's Architecture Commands ===
+Daedalus: === Daedalus's Architecture Commands ===
 All commands require * prefix
 
 *help ............... Show available commands

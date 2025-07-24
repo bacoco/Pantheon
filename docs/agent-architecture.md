@@ -52,7 +52,7 @@ This is the primary team of agents responsible for the core software development
 
 ### Product Management Team
 
-#### **John** - Product Manager
+#### **Prometheus** - Product Manager
 - **Role**: Product strategy, roadmap planning, prioritization
 - **Responsibilities**:
   - Manages product vision
@@ -140,7 +140,7 @@ This specialized team was introduced to dramatically improve the quality and aes
 
 ### Orchestration & Analysis
 
-#### **Baco Master** - Meta-Orchestrator
+#### **Janus** - Meta-Orchestrator
 - **Role**: Cross-agent coordination, workflow optimization
 - **Responsibilities**:
   - Highest-level orchestrator
@@ -178,7 +178,7 @@ Agents are central to system libraries:
 ### Templates
 Many agents have dedicated templates:
 - `.claude/templates/agents/` - Agent-specific artifacts
-- PRD templates for John
+- PRD templates for Prometheus
 - Test plan templates for Elena
 - Architecture templates for Winston
 
@@ -192,7 +192,7 @@ The test file `smart-router.test.md` includes specific unit tests:
 
 ### Product Development Workflow
 ```
-John (PM) → Sarah (PO) → Bob (SM) → Development Team
+Prometheus (PM) → Sarah (PO) → Bob (SM) → Development Team
 ```
 
 ### UI Enhancement Pipeline
@@ -214,7 +214,7 @@ Marcus reviews all code → Provides security recommendations
 
 ### BACO Orchestrator (Legacy)
 The original BACO Orchestrator agent has been superseded by:
-- **Baco Master** for meta-orchestration
+- **Janus** for meta-orchestration
 - **Smart Routing Engine** for complexity analysis
 - The file remains but is no longer actively used
 

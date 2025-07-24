@@ -12,22 +12,22 @@ The `/workflow` command enables coordinated multi-agent execution where agents w
 
 ### 1. Product Planning Workflow
 **Command**: `/workflow product-planning`
-**Flow**: PM (John) → PO (Sarah) → SM (Bob)
+**Flow**: PM (Prometheus) → PO (Athena) → SM (Hermes)
 **Purpose**: Transform product vision into sprint-ready stories
 
 ### 2. Implementation Workflow  
 **Command**: `/workflow implementation`
-**Flow**: Architect (Winston) → Developer (James) → QA (Elena) with Security (Marcus) review
+**Flow**: Architect (Daedalus) → Developer (Hephaestus) → QA (Themis) with Security (Aegis) review
 **Purpose**: From architecture to tested implementation with security
 
 ### 3. UI Feature Workflow
 **Command**: `/workflow ui-feature`
-**Flow**: UX (Sally) → Developer (James) → QA (Elena)
+**Flow**: UX (Apollo) → Developer (Hephaestus) → QA (Themis)
 **Purpose**: Design to implemented UI component with testing
 
 ### 4. Security-First Development
 **Command**: `/workflow security-development`
-**Flow**: Security (Marcus) → Developer (James) → Security (Marcus)
+**Flow**: Security (Aegis) → Developer (Hephaestus) → Security (Aegis)
 **Purpose**: Build features with security designed in from the start
 
 ### 5. Adaptive Feature Development (NEW - Smart Routing)
@@ -155,15 +155,15 @@ Ready to start? (y/n): y
 🚀 Starting Product Planning Workflow
 
 Step 1/6: Create PRD
-✨ John (PM): Starting generatePRD
+✨ Prometheus (PM): Starting generatePRD
    Creating comprehensive product requirements document...
-✅ John (PM): Completed generatePRD
+✅ Prometheus (PM): Completed generatePRD
 📄 Created: docs/product/prd.md
 
 Step 2/6: Create Roadmap
-✨ John (PM): Starting generateRoadmap
+✨ Prometheus (PM): Starting generateRoadmap
    Mapping out product timeline and milestones...
-✅ John (PM): Completed generateRoadmap
+✅ Prometheus (PM): Completed generateRoadmap
 📄 Created: docs/product/roadmap.md
 
 [Workflow continues...]
@@ -198,21 +198,21 @@ Required inputs:
 🚀 Executing workflow...
 
 Step 1/6: Design Architecture
-✨ Winston (Architect): Starting generateSystemDesign
+✨ Daedalus (Architect): Starting generateSystemDesign
 ⚙️ Parallel Step 2/6: Security Review
-✨ Marcus (Security): Starting securityAssessment
+✨ Aegis (Security): Starting securityAssessment
 
 [Progress visualization]
 Architecture: ████████████████░░░░ 80%
 Security:     ██████████░░░░░░░░░░ 50%
 
-✅ Winston: Completed generateSystemDesign
+✅ Daedalus: Completed generateSystemDesign
 📄 Created: docs/architecture/system-design.md
 📄 Created: docs/architecture/decisions/
 
 Step 3/6: Implement Feature
-✨ James (Developer): Starting implementFeature
-   Context received from Winston: System design with microservices approach
+✨ Hephaestus (Developer): Starting implementFeature
+   Context received from Daedalus: System design with microservices approach
 ```
 
 ### UI Feature Workflow
@@ -236,7 +236,7 @@ Accessibility: WCAG 2.1 AA
 
 🚀 Starting workflow...
 
-✨ Sally (UX): Creating component specification
+✨ Apollo (UX): Creating component specification
    - Analyzing user needs
    - Defining interaction patterns
    - Creating design tokens
@@ -292,14 +292,14 @@ Workflow name: Feature Deployment
 Description: Complete feature from dev to production
 
 Step 1:
-• Agent: James (Developer)
+• Agent: Hephaestus (Developer)
 • Action: Complete feature implementation
 • Creates: Source code
 
 Add another step? (y/n): y
 
 Step 2:
-• Agent: Elena (QA)
+• Agent: Themis (QA)
 • Action: Run comprehensive tests
 • Requires: Source code from Step 1
 • Creates: Test results
@@ -324,7 +324,7 @@ Run with: /workflow feature-deployment
 ⚠️ Step failed: Security assessment incomplete
 
 Options:
-1. Retry step with Marcus
+1. Retry step with Aegis
 2. Skip security review (not recommended)
 3. Pause workflow for manual intervention
 4. Abort workflow
@@ -355,14 +355,14 @@ Step 1: Analyze Requirements
 📊 Analyzing task...
 ✓ Domains: [planning, analysis]
 ✓ Complexity: 5/10
-🎯 Routing to: John (PM) - 88% confidence
+🎯 Routing to: Prometheus (PM) - 88% confidence
 Reasoning: Strong domain expertise in planning, requirements.
 
 Step 2: Design Solution  
 📊 Analyzing task...
 ✓ Domains: [architecture, design]
 ✓ Complexity: 7/10
-🎯 Routing to: Winston (Architect) - 92% confidence
+🎯 Routing to: Daedalus (Architect) - 92% confidence
 Reasoning: Expert in architecture-design, system-design.
 
 [Continue with dynamic routing for each step...]
@@ -383,7 +383,7 @@ Smart Routing in workflows respects these settings:
 Add step with Smart Routing? Yes
 Describe the task: Design a scalable API architecture
 📊 Analysis: architecture, backend | Complexity: 7/10
-🎯 Recommended: Winston (85%)
+🎯 Recommended: Daedalus (85%)
 Use recommendation? Yes/No/Auto-route
 ```
 

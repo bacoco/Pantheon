@@ -23,11 +23,11 @@ First, acknowledge the request and explain the process:
 
 ```
 I'll run a comprehensive UI improvement analysis using specialized agents:
-- **Vision**: Extract and analyze design patterns
+- **Oracle**: Extract and analyze design patterns
 - **Pixel**: Assess current UI quality
-- **Fusion**: Optimize for your audience
-- **Motion**: Enhance interactivity
-- **Voice**: Improve microcopy consistency
+- **Harmonia**: Optimize for your audience
+- **Iris**: Enhance interactivity
+- **Calliope**: Improve microcopy consistency
 
 Let me start by analyzing your current UI...
 ```
@@ -49,12 +49,12 @@ Analyzing:
 - Microcopy consistency
 ```
 
-### Step 3: Run Vision Analysis
+### Step 3: Run Oracle Analysis
 
-Activate Vision agent to extract design tokens:
+Activate Oracle agent to extract design tokens:
 
 ```
-## 👁️ Extracting Design Patterns (Vision)
+## 👁️ Extracting Design Patterns (Oracle)
 
 Found:
 - **Primary Colors**: [List extracted colors]
@@ -88,10 +88,10 @@ Key Issues:
 
 ### Step 5: Audience Optimization
 
-Activate Fusion for audience-specific optimization:
+Activate Harmonia for audience-specific optimization:
 
 ```
-## 🔄 Audience Optimization (Fusion)
+## 🔄 Audience Optimization (Harmonia)
 
 Target Audience Analysis:
 - User Type: [Identified type]
@@ -106,10 +106,10 @@ Token Optimizations:
 
 ### Step 6: Interactivity Enhancement
 
-Use Motion agent to identify interaction opportunities:
+Use Iris agent to identify interaction opportunities:
 
 ```
-## ✨ Interactivity Analysis (Motion)
+## ✨ Interactivity Analysis (Iris)
 
 Opportunities Identified:
 1. **[Component]**: Add hover state for better affordance
@@ -121,12 +121,12 @@ Performance Impact: +XKB, maintains 60fps
 
 ### Step 7: Microcopy Audit
 
-Activate Voice agent for content consistency:
+Activate Calliope agent for content consistency:
 
 ```
-## 💬 Microcopy Analysis (Voice)
+## 💬 Microcopy Analysis (Calliope)
 
-Voice Consistency: X/10
+Calliope Consistency: X/10
 
 Issues Found:
 - Inconsistent error messages
@@ -150,35 +150,35 @@ Create comprehensive improvement plan with all agents' input:
 1. **Fix Color Contrast**
    - Current: [color] on [background] = 2.5:1
    - Recommended: [new color] = 4.5:1
-   - Agent: Vision + Pixel
+   - Agent: Oracle + Pixel
 
 2. **Add Missing Focus States**
    - Affected: All interactive elements
    - Solution: Consistent focus ring pattern
-   - Agent: Motion + Pixel
+   - Agent: Iris + Pixel
 
 ### Priority 2: Major Enhancements (Impact: Medium)
 1. **Standardize Button Styles**
    - Create consistent hover/active states
    - Implement proper loading states
-   - Agent: Vision + Motion
+   - Agent: Oracle + Iris
 
 2. **Improve Error Messages**
    - Apply helpful error pattern
    - Add actionable guidance
-   - Agent: Voice
+   - Agent: Calliope
 
 ### Priority 3: Polish (Impact: Low)
 1. **Micro-interactions**
    - Subtle hover animations
    - Smooth transitions
-   - Agent: Motion
+   - Agent: Iris
 
 ### Implementation Order:
-1. Design token updates (Vision)
+1. Design token updates (Oracle)
 2. Component style fixes (Pixel)
-3. Interaction enhancements (Motion)
-4. Microcopy improvements (Voice)
+3. Interaction enhancements (Iris)
+4. Microcopy improvements (Calliope)
 5. Final validation (Pixel)
 ```
 
@@ -258,11 +258,11 @@ What would you like to do?
 ```javascript
 const uiImproveWorkflow = async (options) => {
   const agents = {
-    vision: new VisionAgent(),
+    oracle: new OracleAgent(),
     pixel: new PixelAgent(),
-    fusion: new FusionAgent(),
-    motion: new MotionAgent(),
-    voice: new VoiceAgent()
+    harmonia: new HarmoniaAgent(),
+    iris: new IrisAgent(),
+    calliope: new CalliopeAgent()
   };
   
   // Phase 1: Analysis
@@ -276,7 +276,7 @@ const uiImproveWorkflow = async (options) => {
   
   // Phase 3: Enhancement
   const interactions = await agents.motion.identifyOpportunities(currentState);
-  const microcopy = await agents.voice.audit(currentState);
+  const microcopy = await agents.calliope.audit(currentState);
   
   // Phase 4: Validation
   const improvements = compileImprovements(all);

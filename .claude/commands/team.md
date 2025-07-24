@@ -195,8 +195,8 @@ User: /team product-team
 
 [System loads product team configuration]
 
-PM (John): Welcome! I'm leading the product team. We have:
-- Sally (UX) for design
+PM (Prometheus): Welcome! I'm leading the product team. We have:
+- Apollo (UX) for design
 - Winston (Architect) for system design  
 - James (Developer) for implementation
 - Elena (QA) for quality

@@ -43,52 +43,52 @@
 
 ## Phase 4: Agent Integration ✅
 - [x] **Agent Code Generation**
-  - [x] Winston (Architect): Generate architecture diagrams/docs
+  - [x] Daedalus (Architect): Generate architecture diagrams/docs
     - [x] System design documents
     - [x] Architecture Decision Records (ADRs)
     - [x] Technology selection matrices
     - [x] Component diagrams (Mermaid)
-  - [x] James (Developer): Implement features with best practices
+  - [x] Hephaestus (Developer): Implement features with best practices
     - [x] Feature implementation with templates
     - [x] Code refactoring patterns
     - [x] Performance optimizations
     - [x] Integration with existing code
-  - [x] Elena (QA): Create comprehensive test suites
+  - [x] Themis (QA): Create comprehensive test suites
     - [x] Test plans and strategies
     - [x] Automated test generation
     - [x] Quality metrics dashboards
     - [x] Test coverage reports
-  - [x] Marcus (Security): Add security measures
+  - [x] Aegis (Security): Add security measures
     - [x] Security policies and guidelines
     - [x] Threat modeling documents
     - [x] Compliance checklists (OWASP, GDPR)
     - [x] Security audit reports
-  - [x] John (PM): Product management artifacts
+  - [x] Prometheus (PM): Product management artifacts
     - [x] Product Requirements Documents (PRDs)
     - [x] Feature specifications
     - [x] Roadmap generation
     - [x] Stakeholder communication
-  - [x] Sarah (PO): Product ownership deliverables
+  - [x] Athena (PO): Product ownership deliverables
     - [x] User stories with acceptance criteria
     - [x] Story validation and refinement
     - [x] Sprint planning artifacts
     - [x] Release planning documents
-  - [x] Bob (SM): Scrum master deliverables
+  - [x] Hermes (SM): Scrum master deliverables
     - [x] AI-ready story preparation
     - [x] Sprint planning documents
     - [x] Task breakdowns with context
     - [x] Ceremony facilitation guides
-  - [x] Sally (UX): User experience artifacts
+  - [x] Apollo (UX): User experience artifacts
     - [x] UI component specifications
     - [x] Design system documentation
     - [x] User flow diagrams
     - [x] Accessibility guidelines
-  - [x] Baco Master: Meta-orchestration
+  - [x] Janus: Meta-orchestration
     - [x] Dynamic workflow generation
     - [x] Multi-agent coordination
     - [x] Cross-domain execution
     - [x] Workflow optimization
-    - [x] Baco Master agent configuration (`.claude/agents/baco-master.md`)
+    - [x] Janus agent configuration (`.claude/agents/janus.md`)
     - [x] Dynamic workflow templates
     - [x] Cross-domain bridge library (`.claude/lib/cross-domain-bridge.md`)
     - [x] Workflow optimization engine (`.claude/lib/workflow-optimization-engine.md`)
@@ -143,7 +143,7 @@
 ## Phase 6: AI-Driven UX ✅ (100% Complete)
 - [x] **Pillar 1: Dynamic Personas & User Journeys**
   - [x] Create Persona template (`persona.md`)
-  - [x] Update Product Manager agent (`john.md`) to generate personas
+  - [x] Update Product Manager agent (`prometheus.md`) to generate personas
   - [x] Enable agent referencing of `persona.md`
   - [x] Create `/persona` command for viewing/modifying the persona
 - [x] **Pillar 2: The Visionary UX Agent**
@@ -175,15 +175,15 @@
   - [x] github-operations.md (GitHub MCP integration)
   - [x] task-orchestration.md (claude-task-master integration)
 - [x] **Agent MCP Assignments**
-  - [x] **Winston (Architect)**: Context7, GitHub MCP, browsermcp
-  - [x] **James (Developer)**: Context7, GitHub MCP, shadcn-ui, browsermcp
-  - [x] **Elena (QA)**: playwright, browsermcp, GitHub MCP, Context7
-  - [x] **Marcus (Security)**: GitHub MCP, Context7, browsermcp
-  - [x] **John (PM)**: GitHub MCP, claude-task-master, browsermcp
-  - [x] **Sarah (PO)**: GitHub MCP, browsermcp, claude-task-master
-  - [x] **Bob (SM)**: claude-task-master, GitHub MCP, Context7
-  - [x] **Sally (UX)**: browsermcp, shadcn-ui, playwright
-  - [x] **Baco Master**: All MCP tools (meta-orchestration)
+  - [x] **Daedalus (Architect)**: Context7, GitHub MCP, browsermcp
+  - [x] **Hephaestus (Developer)**: Context7, GitHub MCP, shadcn-ui, browsermcp
+  - [x] **Themis (QA)**: playwright, browsermcp, GitHub MCP, Context7
+  - [x] **Aegis (Security)**: GitHub MCP, Context7, browsermcp
+  - [x] **Prometheus (PM)**: GitHub MCP, claude-task-master, browsermcp
+  - [x] **Athena (PO)**: GitHub MCP, browsermcp, claude-task-master
+  - [x] **Hermes (SM)**: claude-task-master, GitHub MCP, Context7
+  - [x] **Apollo (UX)**: browsermcp, shadcn-ui, playwright
+  - [x] **Janus**: All MCP tools (meta-orchestration)
   - [x] **Pixel (UI Healer)**: playwright, browsermcp, Context7
 - [x] **Documentation & Examples**
   - [x] MCP usage guide (`docs/mcp-usage-guide.md`)
@@ -406,16 +406,16 @@
   - [x] Create unit test specifications
 
 - [x] **Day 3-4: Agent Capability Metadata**
-  - [x] Update Winston with capabilities: `architecture-design:expert`, `system-design:expert`
-  - [x] Update James with capabilities: `implementation:expert`, `refactoring:expert`
-  - [x] Update Elena with capabilities: `testing:expert`, `qa-automation:expert`
-  - [x] Update Marcus with capabilities: `security-audit:expert`, `compliance:advanced`
-  - [x] Update John with capabilities: `requirements:expert`, `planning:expert`
-  - [x] Update Sarah with capabilities: `user-stories:expert`, `prioritization:expert`
-  - [x] Update Bob with capabilities: `scrum:expert`, `task-breakdown:expert`
-  - [x] Update Sally with capabilities: `ux-design:expert`, `ui-patterns:expert`
+  - [x] Update Daedalus with capabilities: `architecture-design:expert`, `system-design:expert`
+  - [x] Update Hephaestus with capabilities: `implementation:expert`, `refactoring:expert`
+  - [x] Update Themis with capabilities: `testing:expert`, `qa-automation:expert`
+  - [x] Update Aegis with capabilities: `security-audit:expert`, `compliance:advanced`
+  - [x] Update Prometheus with capabilities: `requirements:expert`, `planning:expert`
+  - [x] Update Athena with capabilities: `user-stories:expert`, `prioritization:expert`
+  - [x] Update Hermes with capabilities: `scrum:expert`, `task-breakdown:expert`
+  - [x] Update Apollo with capabilities: `ux-design:expert`, `ui-patterns:expert`
   - [x] Update Pixel with capabilities: `ui-quality:expert`, `visual-testing:expert`
-  - [x] Update Baco Master with capabilities: `orchestration:expert`, `meta-analysis:expert`
+  - [x] Update Janus with capabilities: `orchestration:expert`, `meta-analysis:expert`
 
 - [x] **Day 5: Task Analyzer**
   - [x] Create `.claude/lib/task-analyzer.md`

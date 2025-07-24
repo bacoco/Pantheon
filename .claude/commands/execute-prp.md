@@ -104,9 +104,9 @@ Or with a full path:
 ## Integration with Agents
 
 While this command can work standalone, it integrates well with agents:
-- **Developer (James)**: Can execute technical PRPs
-- **Architect (Winston)**: Can execute architecture PRPs
-- **SM (Bob)**: Can execute story-based PRPs
+- **Developer (Hephaestus)**: Can execute technical PRPs
+- **Architect (Daedalus)**: Can execute architecture PRPs
+- **SM (Hermes)**: Can execute story-based PRPs
 
 ## Example Usage
 

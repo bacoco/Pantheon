@@ -155,14 +155,14 @@ Display this help message with command descriptions and usage examples.
 
 When using `/orchestrate`, these specialists may be activated:
 
-- **🏗️ Winston (Architect)**: System design, scalability, technology selection
-- **💻 James (Developer)**: Implementation approach, code quality, best practices
-- **✅ Elena (QA)**: Testing strategy, user experience, quality assurance
-- **🔒 Marcus (Security)**: Threat modeling, security controls, compliance
-- **📊 John (PM)**: Product strategy, requirements, roadmap
-- **🎯 Sarah (PO)**: Story validation, acceptance criteria
-- **🏃️ Bob (SM)**: Sprint planning, AI-ready stories
-- **🎨 Sally (UX)**: User experience, design systems
+- **🏗️ Daedalus (Architect)**: System design, scalability, technology selection
+- **💻 Hephaestus (Developer)**: Implementation approach, code quality, best practices
+- **✅ Themis (QA)**: Testing strategy, user experience, quality assurance
+- **🔒 Aegis (Security)**: Threat modeling, security controls, compliance
+- **📊 Prometheus (PM)**: Product strategy, requirements, roadmap
+- **🎯 Athena (PO)**: Story validation, acceptance criteria
+- **🏃️ Hermes (SM)**: Sprint planning, AI-ready stories
+- **🎨 Apollo (UX)**: User experience, design systems
 - **🤖 BMad Master**: Meta-orchestration, workflow optimization
 
 ## The baco.md File Format

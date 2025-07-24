@@ -60,7 +60,7 @@ This scores 8/10 complexity due to:
 
 I recommend starting with our security-focused workflow. Would you like me to:
 1. Start the security-review workflow
-2. Transform to Winston (Architect) for system design
+2. Transform to Daedalus (Architect) for system design
 3. See all available options with *help
 
 Type your choice or use a command like *agent architect to proceed.

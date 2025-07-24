@@ -322,7 +322,7 @@ capability_metadata:
         when: "design system alignment"
       - with: elena
         when: "comprehensive quality testing"
-      - with: james
+      - with: hephaestus
         when: "implementing ui fixes"
       - with: marcus
         when: "security ui indicators"

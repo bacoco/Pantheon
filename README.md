@@ -141,19 +141,19 @@ Secure login system with email/password...
 
 | Team | Agent | Role | Specialization |
 |------|-------|------|----------------|
-| **Core Development** | **Winston** | Lead Architect | System design, scalability, best practices |
-| | **James** | Senior Developer | Implementation, code quality, performance |
-| | **Elena** | QA Engineer | Testing strategies, quality assurance |
-| | **Marcus** | Security Expert | Security audits, compliance, threat modeling |
-| **Product Management** | **John** | Product Manager | Product strategy, roadmap planning, prioritization |
-| | **Sarah** | Product Owner | Requirements validation, user stories, acceptance criteria |
-| | **Bob** | Scrum Master | Agile processes, sprint planning, team coordination |
-| **UX & Design** | **Sally** | UX Designer | User experience, accessibility, design systems |
-| **UI Enhancement** | **Vision** | Style Guide Expert | Design tokens, visual consistency, brand identity |
-| | **Fusion** | Design Optimizer | Audience-specific UI, psychology-based design |
-| | **Motion** | Animation Specialist | Micro-interactions, transitions, 60fps performance |
-| | **Voice** | Microcopy Expert | UI text, tone consistency, user communication |
-| **Orchestration** | **Baco Master** | Meta-Orchestrator | Cross-agent coordination, workflow optimization |
+| **Core Development** | **Daedalus** | Lead Architect | System design, scalability, best practices |
+| | **Hephaestus** | Senior Developer | Implementation, code quality, performance |
+| | **Themis** | QA Engineer | Testing strategies, quality assurance |
+| | **Aegis** | Security Expert | Security audits, compliance, threat modeling |
+| **Product Management** | **Prometheus** | Product Manager | Product strategy, roadmap planning, prioritization |
+| | **Athena** | Product Owner | Requirements validation, user stories, acceptance criteria |
+| | **Hermes** | Scrum Master | Agile processes, sprint planning, team coordination |
+| **UX & Design** | **Apollo** | UX Designer | User experience, accessibility, design systems |
+| **UI Enhancement** | **Oracle** | Style Guide Expert | Design tokens, visual consistency, brand identity |
+| | **Harmonia** | Design Optimizer | Audience-specific UI, psychology-based design |
+| | **Iris** | Animation Specialist | Micro-interactions, transitions, 60fps performance |
+| | **Calliope** | Microcopy Expert | UI text, tone consistency, user communication |
+| **Orchestration** | **Janus** | Meta-Orchestrator | Cross-agent coordination, workflow optimization |
 
 ### 🎨 AI-Driven UI Enhancement
 Transform your interfaces with intelligent design optimization:
@@ -234,24 +234,24 @@ BACO's agents work in specialized teams with clear responsibilities:
 
 #### Core Development & Management Team (Phase 4)
 The primary team responsible for the software development lifecycle:
-- **Winston** designs system architecture and creates ADRs
-- **James** implements features and handles code quality
-- **Elena** creates test plans and ensures quality standards
-- **Marcus** performs security audits and creates policies
-- **John** manages product strategy and roadmaps
-- **Sarah** owns the backlog and writes user stories
-- **Bob** facilitates agile processes and prepares work
-- **Sally** defines UX and creates design specifications
+- **Daedalus** designs system architecture and creates ADRs
+- **Hephaestus** implements features and handles code quality
+- **Themis** creates test plans and ensures quality standards
+- **Aegis** performs security audits and creates policies
+- **Prometheus** manages product strategy and roadmaps
+- **Athena** owns the backlog and writes user stories
+- **Hermes** facilitates agile processes and prepares work
+- **Apollo** defines UX and creates design specifications
 
 #### UI Enhancement Team (Advanced)
 A specialized team for dramatic UI improvements:
-- **Vision** analyzes visual inspiration and extracts design tokens
-- **Fusion** optimizes designs for target audiences
-- **Motion** adds performance-conscious animations
-- **Voice** ensures consistent brand communication
+- **Oracle** analyzes visual inspiration and extracts design tokens
+- **Harmonia** optimizes designs for target audiences
+- **Iris** adds performance-conscious animations
+- **Calliope** ensures consistent brand communication
 
 #### Orchestration Layer
-- **Baco Master** coordinates all agents and generates dynamic workflows
+- **Janus** coordinates all agents and generates dynamic workflows
 - **Smart Routing Engine** analyzes complexity and routes tasks appropriately
 
 Each agent has dedicated tools (MCPs), templates, and integration points throughout the system.

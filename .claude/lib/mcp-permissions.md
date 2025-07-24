@@ -22,7 +22,7 @@ permissions:
       github: ["read_repo", "create_docs", "create_adr"]
       browsermcp: ["preview", "export_pdf"]
 
-  james: # Developer
+  hephaestus: # Developer
     tools:
       - context7      # Find code patterns
       - github        # Code management
@@ -175,16 +175,16 @@ Some operations require multiple agents to collaborate:
 ```yaml
 collaborative_permissions:
   ui_implementation:
-    required_agents: ["sally", "james"]
-    workflow: "sally designs -> james implements"
+    required_agents: ["sally", "hephaestus"]
+    workflow: "sally designs -> hephaestus implements"
     
   security_review:
-    required_agents: ["marcus", "james", "elena"]
-    workflow: "marcus reviews -> james fixes -> elena validates"
+    required_agents: ["marcus", "hephaestus", "elena"]
+    workflow: "marcus reviews -> hephaestus fixes -> elena validates"
     
   feature_delivery:
-    required_agents: ["john", "sarah", "bob", "james", "elena"]
-    workflow: "john defines -> sarah refines -> bob plans -> james builds -> elena tests"
+    required_agents: ["john", "sarah", "bob", "hephaestus", "elena"]
+    workflow: "john defines -> sarah refines -> bob plans -> hephaestus builds -> elena tests"
 ```
 
 ### Escalation Permissions
@@ -213,7 +213,7 @@ tool_restrictions:
     production_branch_protection:
       - "main"
       - "production"
-    requires_review: ["james", "elena"]
+    requires_review: ["hephaestus", "elena"]
     
   playwright:
     max_parallel_tests: 5
@@ -310,8 +310,8 @@ const workflow = collaborative_permissions.ui_implementation;
 if (canPerformAction("sally", "browsermcp", "create_mockup")) {
   const mockup = await createMockup();
   
-  // Hand off to James
-  if (canPerformAction("james", "shadcn-ui", "generate")) {
+  // Hand off to Hephaestus
+  if (canPerformAction("hephaestus", "shadcn-ui", "generate")) {
     const component = await generateFromMockup(mockup);
   }
 }

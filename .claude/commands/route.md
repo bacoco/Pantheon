@@ -64,7 +64,7 @@ Task Analysis:
   Estimated Duration: weeks
 
 Routing Decision:
-  Primary Agent: Winston (System Architect)
+  Primary Agent: Daedalus (System Architect)
   Confidence: 85%
   Match Factors:
     ✓ domain:architecture (expert)
@@ -73,14 +73,14 @@ Routing Decision:
     ✓ pattern:system architecture
 
 Supporting Agents:
-  - Marcus (Security Expert)
+  - Aegis (Security Expert)
     Role: Security architecture advisor
     Reason: Brings security expertise
 
 Alternative Routes:
   1. BMad Master (75%) - Meta-orchestration approach
-  2. James (60%) - Implementation-focused approach
-  3. John (45%) - Product planning perspective
+  2. Hephaestus (60%) - Implementation-focused approach
+  3. Prometheus (45%) - Product planning perspective
 ```
 
 ### 5. Preview Mode
@@ -91,8 +91,8 @@ If in preview mode, show what would happen:
 🔍 PREVIEW MODE - No agents will be activated
 
 What would happen:
-1. Winston would analyze the system architecture requirements
-2. Marcus would provide security architecture guidance
+1. Daedalus would analyze the system architecture requirements
+2. Aegis would provide security architecture guidance
 3. They would collaborate to create a secure, scalable design
 ```
 
@@ -102,7 +102,7 @@ Allow user to override the routing:
 
 ```yaml
 Options:
-1. ✅ Accept routing (activate Winston with Marcus support)
+1. ✅ Accept routing (activate Daedalus with Aegis support)
 2. 🔄 Choose alternative agent
 3. 📝 Modify task description
 4. ❌ Cancel

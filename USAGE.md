@@ -79,7 +79,7 @@ Simply type any of the following commands in Claude:
 /workflow product-planning    # PM → PO → SM workflow
 /workflow implementation     # Architect → Developer → QA workflow  
 /workflow ui-feature        # UX → Developer → QA workflow
-/workflow security-first    # Marcus → Developer workflow
+/workflow security-first    # Aegis → Developer workflow
 
 # View available workflows
 /workflow list

@@ -68,7 +68,7 @@ available-agents:
     focus: System design, architecture, technology selection
     trigger-keywords: [design, architecture, scale, technology, integration]
   developer:
-    name: James  
+    name: Hephaestus  
     focus: Implementation, coding, best practices, debugging
     trigger-keywords: [implement, code, develop, debug, refactor]
   qa:
@@ -80,19 +80,19 @@ available-agents:
     focus: Security, compliance, threat modeling, authentication
     trigger-keywords: [security, auth, compliance, threat, vulnerability]
   pm:
-    name: John
+    name: Prometheus
     focus: Product strategy, PRDs, user research, prioritization
     trigger-keywords: [product, PRD, requirements, roadmap, user story, feature]
   po:
-    name: Sarah
+    name: Athena
     focus: Validation, quality assurance, story refinement, artifact consistency
     trigger-keywords: [validate, quality, consistency, story, epic, backlog, refinement]
   sm:
-    name: Bob
+    name: Hermes
     focus: Story creation, sprint planning, AI-ready specifications, agile ceremonies
     trigger-keywords: [story, sprint, scrum, agile, planning, retrospective, standup]
   ux:
-    name: Sally
+    name: Apollo
     focus: User experience, design systems, accessibility, usability
     trigger-keywords: [design, UX, UI, user experience, accessibility, interface, mockup, wireframe]
   baco-master:
@@ -167,13 +167,13 @@ help-display-template: |
   
   Available Agents:
   *agent architect .... Winston - System design & architecture
-  *agent developer .... James - Implementation & coding
+  *agent developer .... Hephaestus - Implementation & coding
   *agent qa ........... Elena - Testing & quality
   *agent security ..... Marcus - Security & compliance
-  *agent pm ........... John - Product strategy & requirements
-  *agent po ........... Sarah - Validation & quality assurance
-  *agent sm ........... Bob - Story creation & sprint planning
-  *agent ux ........... Sally - User experience & design
+  *agent pm ........... Prometheus - Product strategy & requirements
+  *agent po ........... Athena - Validation & quality assurance
+  *agent sm ........... Hermes - Story creation & sprint planning
+  *agent ux ........... Apollo - User experience & design
   *agent baco-master .. Baco Master - Universal executor
   
   Workflow Commands:

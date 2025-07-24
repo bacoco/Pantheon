@@ -26,7 +26,7 @@ BACO is a **prompt-based system** that runs entirely within Claude Code. It does
 │   ├── james.md      # Senior Developer
 │   ├── elena.md      # QA Engineer
 │   ├── marcus.md     # Security Expert
-│   ├── john.md       # Product Manager
+│   ├── prometheus.md  # Product Manager
 │   ├── sarah.md      # Product Owner
 │   ├── bob.md        # Scrum Master
 │   ├── sally.md      # UX Designer
@@ -34,8 +34,8 @@ BACO is a **prompt-based system** that runs entirely within Claude Code. It does
 │   ├── fusion.md     # Design Optimizer
 │   ├── motion.md     # Animation Specialist
 │   ├── voice.md      # Microcopy Expert
-│   ├── baco-master.md # Meta-orchestrator
-│   └── baco-orchestrator.md # (Legacy - superseded by Baco Master)
+│   ├── janus.md      # Meta-orchestrator
+│   └── baco-orchestrator.md # (Legacy - superseded by Janus)
 ├── lib/              # Core libraries and engines
 │   ├── workflow-engine.md # Multi-agent workflow execution
 │   ├── workflow-visualizer.md # Workflow progress display
@@ -83,23 +83,23 @@ BACO employs 13 specialized AI agents organized into functional teams:
 #### Agent Teams
 
 **Core Development & Management Team** (Phase 4):
-- **Winston** (Architect): System design, ADRs, component diagrams
-- **James** (Developer): Implementation, code quality, performance
-- **Elena** (QA): Test plans, automated testing, quality metrics
-- **Marcus** (Security): Security audits, compliance, threat modeling
-- **John** (PM): Product strategy, PRDs, roadmaps
-- **Sarah** (PO): Backlog management, user stories, acceptance criteria
-- **Bob** (SM): Agile processes, sprint planning, story preparation
-- **Sally** (UX): User experience, UI specs, design systems
+- **Daedalus** (Architect): System design, ADRs, component diagrams
+- **Hephaestus** (Developer): Implementation, code quality, performance
+- **Themis** (QA): Test plans, automated testing, quality metrics
+- **Aegis** (Security): Security audits, compliance, threat modeling
+- **Prometheus** (PM): Product strategy, PRDs, roadmaps
+- **Athena** (PO): Backlog management, user stories, acceptance criteria
+- **Hermes** (SM): Agile processes, sprint planning, story preparation
+- **Apollo** (UX): User experience, UI specs, design systems
 
 **UI Enhancement Team** (Advanced):
-- **Vision**: Extracts design tokens from visual inspiration
-- **Fusion**: Optimizes designs for target audiences
-- **Motion**: Adds performance-conscious animations (60fps)
-- **Voice**: Ensures consistent brand communication
+- **Oracle**: Extracts design tokens from visual inspiration
+- **Harmonia**: Optimizes designs for target audiences
+- **Iris**: Adds performance-conscious animations (60fps)
+- **Calliope**: Ensures consistent brand communication
 
 **Orchestration Layer**:
-- **Baco Master**: Meta-orchestrator with universal tool access
+- **Janus**: Meta-orchestrator with universal tool access
 - **Smart Routing Engine**: Analyzes complexity and routes tasks
 
 #### Agent Integration
@@ -110,19 +110,19 @@ Agents are integrated throughout the system via:
 2. **Core Libraries**: Central to `smart-router.md`, `workflow-engine.md`
 3. **Templates**: Agent-specific artifacts in `.claude/templates/agents/`
 4. **MCPs**: Each agent has specific tool permissions
-5. **Testing**: Unit tests ensure proper routing (e.g., "architecture → Winston")
+5. **Testing**: Unit tests ensure proper routing (e.g., "architecture → Daedalus")
 
 #### Workflow Examples
 
 ```
-Product Development: John → Sarah → Bob → Development Team
-UI Enhancement: Vision → Fusion → Motion → Voice
-Implementation: Winston → James → Elena
-Security Review: Marcus reviews all → Recommendations
+Product Development: Prometheus → Athena → Hermes → Development Team
+UI Enhancement: Oracle → Harmonia → Iris → Calliope
+Implementation: Daedalus → Hephaestus → Themis
+Security Review: Aegis reviews all → Recommendations
 ```
 
 #### Legacy Note
-The original BACO Orchestrator has been superseded by Baco Master for meta-orchestration and the Smart Routing Engine for complexity analysis.
+The original BACO Orchestrator has been superseded by Janus for meta-orchestration and the Smart Routing Engine for complexity analysis.
 
 ### 3. baco.md Processing
 
@@ -201,16 +201,16 @@ Based on project analysis, BACO selects relevant agents:
 
 ```yaml
 High Complexity + Security Requirements:
-  - Winston (Architect)
-  - Marcus (Security)
-  - Elena (QA)
-  - James (Developer)
+  - Daedalus (Architect)
+  - Aegis (Security)
+  - Themis (QA)
+  - Hephaestus (Developer)
 
 Data-Heavy Project:
-  - Winston (Architect)
+  - Daedalus (Architect)
   - Data Analyst (if available)
-  - James (Developer)
-  - Elena (QA)
+  - Hephaestus (Developer)
+  - Themis (QA)
 ```
 
 ### Pattern Learning
@@ -453,11 +453,11 @@ Safety features:
 4. **Merge Strategies**: Intelligent code merging
 5. **Rollback Support**: Undo changes if needed
 
-## Baco Master Meta-Orchestration
+## Janus Meta-Orchestration
 
 ### Dynamic Workflow Generation
 
-Baco Master can:
+Janus can:
 1. **Analyze Tasks**: Determine optimal agent composition
 2. **Generate Workflows**: Create custom workflows dynamically
 3. **Cross-Domain Bridge**: Connect technical and business domains

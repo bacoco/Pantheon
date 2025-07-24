@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Phase 4: Complete Agent Integration
   - 10 specialized AI agents with unique expertise
   - Multi-agent workflow orchestration system
-  - Baco Master meta-orchestrator for dynamic workflows
+  - Janus meta-orchestrator for dynamic workflows
   - Cross-domain execution bridging technical and business domains
   - Workflow visualization with ASCII progress display
   - Pre-configured workflows (product-planning, implementation, ui-feature, security-first)
@@ -64,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - James (Developer): Template-based implementation, refactoring patterns
   - Elena (QA): Automated test generation, coverage reports
   - Marcus (Security): Threat modeling, compliance checklists
-  - John (PM): PRDs, roadmap generation
+  - Prometheus (PM): PRDs, roadmap generation
   - Sarah (PO): Story validation, sprint planning
   - Bob (SM): AI-ready story preparation, ceremony guides
   - Sally (UX): Design systems, accessibility guidelines
@@ -117,7 +117,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   
   - Agent MCP Assignments
     - All 10 agents assigned appropriate MCP tools
-    - Baco Master has access to all MCP tools
+    - Janus has access to all MCP tools
     - Permission-based tool access per agent role
     - Real tool usage vs simulation capabilities
   

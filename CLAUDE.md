@@ -86,15 +86,15 @@ User Request → BACO analyzes complexity → Selects appropriate approach:
 - `/workflow [name]` - Execute multi-agent workflows with state tracking
 
 ### Available Agents
-- **Winston** (Architect) - System design and architecture
-- **James** (Developer) - Implementation and coding
-- **Elena** (QA) - Testing and quality assurance
-- **Marcus** (Security) - Security and compliance
-- **John** (PM) - Product management and strategy
-- **Sarah** (PO) - Product ownership and validation
-- **Bob** (SM) - Scrum mastery and story preparation
-- **Sally** (UX) - User experience and design
-- **Baco Master** - Universal executor and meta-orchestrator
+- **Daedalus** (Architect) - System design and architecture
+- **Hephaestus** (Developer) - Implementation and coding
+- **Themis** (QA) - Testing and quality assurance
+- **Aegis** (Security) - Security and compliance
+- **Prometheus** (PM) - Product management and strategy
+- **Athena** (PO) - Product ownership and validation
+- **Hermes** (SM) - Scrum mastery and story preparation
+- **Apollo** (UX) - User experience and design
+- **Janus** (Meta-Orchestrator) - Universal executor and meta-orchestrator
 
 ## Enhanced Features from BMAD Integration
 

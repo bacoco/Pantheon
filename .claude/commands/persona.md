@@ -208,27 +208,27 @@ Files created:
 
 ### How Agents Use Personas
 
-**John (PM)**: Creates initial personas during product planning
+**Prometheus (PM)**: Creates initial personas during product planning
 ```yaml
 "I'll create 3-5 personas representing our target users..."
 ```
 
-**Sally (UX)**: References personas for design decisions
+**Apollo (UX)**: References personas for design decisions
 ```yaml
 "Based on Developer Dan's preference for minimal configuration..."
 ```
 
-**Sarah (PO)**: Validates stories against personas
+**Athena (PO)**: Validates stories against personas
 ```yaml
 "This story addresses Efficient Emma's pain point about tool fragmentation..."
 ```
 
-**Bob (SM)**: Includes persona context in story preparation
+**Hermes (SM)**: Includes persona context in story preparation
 ```yaml
 "For Developer Dan persona: Focus on developer experience and API simplicity"
 ```
 
-**James (Developer)**: Implements with persona needs in mind
+**Hephaestus (Developer)**: Implements with persona needs in mind
 ```yaml
 "Adding keyboard shortcuts since Developer Dan values efficiency..."
 ```

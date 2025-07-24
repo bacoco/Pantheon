@@ -60,12 +60,12 @@ Each agent has specific MCP tool access based on their role:
 | James (Developer) | context7, github, shadcn-ui, browsermcp |
 | Elena (QA) | playwright, browsermcp, github, context7 |
 | Marcus (Security) | github, context7, browsermcp |
-| John (PM) | github, claude-task-master, browsermcp |
+| Prometheus (PM) | github, claude-task-master, browsermcp |
 | Sarah (PO) | github, browsermcp, claude-task-master |
 | Bob (SM) | claude-task-master, github, context7 |
 | Sally (UX) | browsermcp, shadcn-ui, playwright |
 | Pixel (UI Healer) | playwright, browsermcp, context7 |
-| Baco Master | ALL tools |
+| Janus | ALL tools |
 
 ## Using MCP Tools in Commands
 
