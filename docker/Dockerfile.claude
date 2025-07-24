@@ -1,0 +1,243 @@
+# =================================================================
+# STAGE 1: Build and protect the Pantheon tools
+# =================================================================
+FROM python:3.10-slim as builder
+
+# Install build tools
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install PyInstaller for creating standalone executables
+RUN pip install pyinstaller
+
+# Copy the BACO/Pantheon source code
+COPY ./gods /app/gods.py
+
+# Build the gods executable
+WORKDIR /app
+RUN pyinstaller --onefile --name gods gods.py
+
+# Make the executable secure
+RUN chmod 755 /app/dist/gods && \
+    chown root:root /app/dist/gods
+
+# =================================================================
+# STAGE 2: Create the final user-facing image
+# =================================================================
+FROM codercom/code-server:latest
+
+USER root
+
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    python3 \
+    python3-pip \
+    build-essential \
+    # For Claude authentication with headless browser
+    chromium \
+    chromium-driver \
+    xvfb \
+    # Additional utilities
+    jq \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js v20
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
+    apt-get install -y nodejs
+
+# Install Claude CLI (try multiple methods to ensure it's installed)
+# Method 1: Try the official install script
+RUN curl -fsSL https://storage.googleapis.com/claude-cli/install.sh | sh || \
+    echo "Official Claude CLI install script not available"
+
+# Method 2: If the above fails, try npm installation
+RUN npm install -g @anthropic-ai/claude-cli || \
+    npm install -g claude-cli || \
+    echo "npm installation of Claude CLI not available"
+
+# Method 3: Create a notice if Claude CLI needs manual installation
+RUN if ! command -v claude &> /dev/null; then \
+        echo "#!/bin/bash" > /usr/local/bin/claude && \
+        echo "echo 'Claude CLI needs to be manually installed.'" >> /usr/local/bin/claude && \
+        echo "echo 'Please check https://claude.ai/docs/cli for installation instructions.'" >> /usr/local/bin/claude && \
+        echo "exit 1" >> /usr/local/bin/claude && \
+        chmod +x /usr/local/bin/claude; \
+    fi
+
+# Copy the compiled BACO executable from the builder stage
+COPY --from=builder /app/dist/gods /usr/local/bin/gods
+
+# Copy authentication scripts
+COPY ./scripts/claude-auth-docker.sh /usr/local/bin/claude-auth-docker.sh
+COPY ./scripts/claude-auth-status.sh /usr/local/bin/claude-auth-status.sh
+COPY ./scripts/claude-auth-helper.sh /usr/local/bin/claude-auth-helper.sh
+RUN chmod +x /usr/local/bin/claude-auth-*.sh
+
+# Copy VS Code extension
+COPY ./baco-vscode-extension /tmp/baco-vscode-extension/
+
+# Setup workspace and user directories
+RUN mkdir -p /home/coder/projects && \
+    mkdir -p /home/coder/.local/share/code-server/User/ && \
+    mkdir -p /home/coder/.claude && \
+    mkdir -p /home/coder/.claude-backups
+
+# VS Code settings.json with terminal profiles
+RUN cat > /home/coder/.local/share/code-server/User/settings.json << 'EOF'
+{
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "/bin/bash",
+      "icon": "terminal-bash"
+    },
+    "claude-auth": {
+      "path": "/bin/bash",
+      "args": ["-c", "claude-auth-docker.sh && bash"],
+      "icon": "key",
+      "color": "terminal.ansiGreen"
+    },
+    "claude-status": {
+      "path": "/bin/bash",
+      "args": ["-c", "claude-auth-status.sh && bash"],
+      "icon": "info",
+      "color": "terminal.ansiBlue"
+    }
+  },
+  "workbench.startupEditor": "readme",
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/dist": true,
+    "**/__pycache__": true
+  },
+  "workbench.colorTheme": "Default Dark+",
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false
+}
+EOF
+
+# Create welcome file for new users
+RUN cat > /home/coder/projects/README.md << 'EOF'
+# Welcome to BACO/Pantheon in VS Code Server! 🚀
+
+## 🔐 Two Ways to Use Claude
+
+### 1. Claude Code Extension (Recommended for IDE usage)
+- **Look for the Claude icon** in the left sidebar
+- **Click it and sign in** when prompted
+- **Start chatting with Claude** directly in VS Code!
+
+### 2. Claude CLI (For terminal/script usage)
+- **Open Terminal**: Press `Ctrl+` ` or View → Terminal
+- **Run Authentication**: Type `claude-auth-docker.sh` and press Enter
+- **Use Claude commands**: e.g., `claude chat "Help me with Python"`
+
+### Quick Commands
+- `claude-auth-docker.sh` - Authenticate CLI
+- `claude-auth-status.sh` - Check CLI auth status
+- `claude help` - Show CLI commands
+
+## 🛠️ Using BACO/Pantheon
+
+The `gods` command is available globally. Here are some examples:
+
+```bash
+# Initialize a new project
+gods init
+
+# Create a development plan
+gods plan "Build a REST API with authentication"
+
+# Execute the plan
+gods execute
+
+# Get help
+gods help
+```
+
+## 📚 VS Code Features
+
+### Terminal Profiles
+Click the dropdown arrow (˅) next to the + in the terminal panel to see:
+- **claude-auth**: Opens a terminal with authentication wizard
+- **claude-status**: Opens a terminal showing auth status
+
+### Command Palette
+Press `Ctrl+Shift+P` and type "BACO" to see available commands.
+
+### Extensions
+Several helpful extensions are pre-installed:
+- Prettier (code formatting)
+- Python support
+- ESLint (JavaScript linting)
+
+## 🐳 Docker Environment
+
+Your authentication is persisted in a Docker volume, so it survives container restarts.
+
+### Important Directories
+- `/home/coder/projects` - Your project files (mounted from host)
+- `/home/coder/.claude` - Claude authentication data (persisted)
+- `/home/coder/.claude-backups` - Authentication backups
+
+## 🆘 Troubleshooting
+
+### Authentication Issues
+1. Run `claude-auth-status.sh` to check current status
+2. Try `claude-auth-helper.sh test` to test connectivity
+3. Use `claude-auth-helper.sh backup` before making changes
+
+### Container Issues
+- Files in `/home/coder/projects` are saved to your host machine
+- VS Code settings persist across restarts
+- Claude authentication persists in the `claude-auth` volume
+
+## 📖 Additional Resources
+
+- [BACO Documentation](https://github.com/your-repo/baco)
+- [Claude CLI Documentation](https://claude.ai/docs/cli)
+- [VS Code Server Documentation](https://github.com/coder/code-server)
+
+---
+Happy coding! 🎉
+EOF
+
+# Set proper permissions for coder user
+RUN chown -R coder:coder /home/coder/
+
+# Switch to non-root user
+USER coder
+
+# Install VS Code extensions
+RUN if [ -d "/tmp/baco-vscode-extension" ]; then \
+        code-server --install-extension /tmp/baco-vscode-extension; \
+    fi && \
+    code-server --install-extension anthropic.claude-code && \
+    code-server --install-extension esbenp.prettier-vscode && \
+    code-server --install-extension dbaeumer.vscode-eslint && \
+    code-server --install-extension ms-python.python && \
+    code-server --install-extension ms-python.vscode-pylance && \
+    code-server --install-extension bradlc.vscode-tailwindcss && \
+    code-server --install-extension ritwickdey.liveserver || \
+    echo "Some extensions may not be available"
+
+# Expose port for code-server
+EXPOSE 8080
+
+# Set password via environment variable (can be overridden)
+ENV PASSWORD=${PASSWORD:-pantheon}
+
+# Add Claude configuration directory to PATH for any custom scripts
+ENV PATH="/home/coder/.claude/bin:${PATH}"
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:8080/healthz || exit 1
+
+# Start code-server
+CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "--disable-telemetry", "/home/coder/projects"]

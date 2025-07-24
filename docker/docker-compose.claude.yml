@@ -1,0 +1,150 @@
+version: '3.8'
+
+services:
+  pantheon-ide:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.claude
+      args:
+        # Build-time arguments if needed
+        PYTHON_VERSION: "3.10"
+    
+    container_name: pantheon-ide
+    
+    ports:
+      # VS Code Server
+      - "8080:8080"
+      # Additional ports for development servers
+      - "3000:3000"  # React dev server
+      - "5173:5173"  # Vite dev server
+      - "8000:8000"  # FastAPI/Django
+      - "4200:4200"  # Angular dev server
+      - "3001:3001"  # Additional services
+    
+    volumes:
+      # Mount local projects directory - your code lives here
+      - ../projects:/home/coder/projects
+      
+      # Persist VS Code server configuration (settings, extensions, etc.)
+      - pantheon-config:/home/coder/.local/share/code-server
+      
+      # Persist Claude authentication data
+      - claude-auth:/home/coder/.claude
+      
+      # Persist authentication backups
+      - claude-backups:/home/coder/.claude-backups
+      
+      # Optional: Mount your SSH keys for Git operations
+      # - ~/.ssh:/home/coder/.ssh:ro
+      
+      # Optional: Mount your Git config
+      # - ~/.gitconfig:/home/coder/.gitconfig:ro
+    
+    environment:
+      # VS Code Server password (change this!)
+      - PASSWORD=${VS_CODE_PASSWORD:-your-secure-password}
+      
+      # Claude authentication
+      - CLAUDE_API_KEY=${CLAUDE_API_KEY:-}
+      - CLAUDE_CONFIG_DIR=/home/coder/.claude
+      
+      # Development environment
+      - NODE_ENV=development
+      - PYTHONUNBUFFERED=1
+      
+      # Optional: Proxy settings for corporate environments
+      # - HTTP_PROXY=${HTTP_PROXY:-}
+      # - HTTPS_PROXY=${HTTPS_PROXY:-}
+      # - NO_PROXY=localhost,127.0.0.1
+      
+      # Optional: Custom VS Code settings
+      - VSCODE_PROXY_URI=${VSCODE_PROXY_URI:-}
+      
+      # Terminal settings
+      - TERM=xterm-256color
+    
+    # Resource limits (adjust based on your system)
+    deploy:
+      resources:
+        limits:
+          cpus: '4'
+          memory: 8G
+        reservations:
+          cpus: '2'
+          memory: 4G
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Networks
+    networks:
+      - pantheon-network
+    
+    # Security options
+    security_opt:
+      - no-new-privileges:true
+    
+    # Additional capabilities for development
+    cap_add:
+      - SYS_PTRACE  # For debugging
+    
+    # Logging
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Optional: Add a database service for development
+  # postgres:
+  #   image: postgres:15-alpine
+  #   container_name: pantheon-postgres
+  #   environment:
+  #     - POSTGRES_USER=pantheon
+  #     - POSTGRES_PASSWORD=pantheon
+  #     - POSTGRES_DB=pantheon_dev
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - pantheon-network
+
+  # Optional: Add Redis for caching/queues
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: pantheon-redis
+  #   ports:
+  #     - "6379:6379"
+  #   networks:
+  #     - pantheon-network
+
+volumes:
+  # VS Code configuration
+  pantheon-config:
+    name: pantheon-vscode-config
+  
+  # Claude authentication
+  claude-auth:
+    name: pantheon-claude-auth
+  
+  # Authentication backups
+  claude-backups:
+    name: pantheon-claude-backups
+  
+  # Optional: Database volume
+  # postgres-data:
+  #   name: pantheon-postgres-data
+
+networks:
+  pantheon-network:
+    name: pantheon-network
+    driver: bridge

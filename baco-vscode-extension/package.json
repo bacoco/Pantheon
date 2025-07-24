@@ -1,0 +1,81 @@
+{
+  "name": "baco-pantheon-shortcuts",
+  "displayName": "BACO Pantheon Shortcuts",
+  "description": "UI shortcuts and authentication helpers for BACO/Pantheon CLI commands.",
+  "version": "0.1.0",
+  "publisher": "baco-dev",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "baco.init",
+        "title": "BACO: Initialize Project"
+      },
+      {
+        "command": "baco.plan",
+        "title": "BACO: Create Plan"
+      },
+      {
+        "command": "baco.execute",
+        "title": "BACO: Execute Plan"
+      },
+      {
+        "command": "baco.showMenu",
+        "title": "BACO: Show Commands"
+      },
+      {
+        "command": "baco.authenticate",
+        "title": "BACO: Authenticate Claude"
+      },
+      {
+        "command": "baco.authStatus",
+        "title": "BACO: Check Authentication Status"
+      },
+      {
+        "command": "baco.authBackup",
+        "title": "BACO: Backup Authentication"
+      },
+      {
+        "command": "baco.authRestore",
+        "title": "BACO: Restore Authentication"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "baco.showMenu",
+        "key": "ctrl+shift+b",
+        "mac": "cmd+shift+b"
+      }
+    ],
+    "configuration": {
+      "title": "BACO Pantheon",
+      "properties": {
+        "baco.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show BACO status bar item"
+        },
+        "baco.autoCheckAuth": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically check Claude authentication on startup"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "echo \"No tests specified\""
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0"
+  }
+}
