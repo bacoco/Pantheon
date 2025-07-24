@@ -1,50 +1,72 @@
-#!/usr/bin/env python3
-"""
-BACO/Pantheon CLI - Placeholder Script
-This is a placeholder for the actual BACO/Pantheon implementation.
-"""
+#!/usr/bin/env bash
+# BACO/Pantheon CLI - Claude Integration Wrapper
+# This script wraps Claude CLI to provide the gods command interface
 
-import sys
-import argparse
+# Check if claude is available
+if ! command -v claude &> /dev/null; then
+    echo "❌ Claude CLI is not installed or authenticated."
+    echo "Please run: claude-auth-docker.sh"
+    exit 1
+fi
 
-def main():
-    parser = argparse.ArgumentParser(
-        description='BACO/Pantheon - Where Gods Build Software',
-        prog='gods'
-    )
-    
-    parser.add_argument('command', nargs='?', help='Command to run')
-    parser.add_argument('--version', action='version', version='BACO/Pantheon v1.0.0 (placeholder)')
-    
-    args = parser.parse_args()
-    
-    if not args.command:
-        print("Welcome to BACO/Pantheon! 🚀")
-        print()
-        print("Available commands:")
-        print("  init      - Initialize a new project")
-        print("  plan      - Create a development plan")
-        print("  execute   - Execute the plan")
-        print("  help      - Show this help message")
-        print()
-        print("Example: gods init")
-        return
-    
-    if args.command == 'init':
-        print("🚀 Initializing new BACO/Pantheon project...")
-        print("✅ Project initialized! (This is a placeholder)")
-    elif args.command == 'plan':
-        print("📋 Creating development plan...")
-        print("✅ Plan created! (This is a placeholder)")
-    elif args.command == 'execute':
-        print("⚡ Executing plan...")
-        print("✅ Execution complete! (This is a placeholder)")
-    elif args.command == 'help':
-        parser.print_help()
-    else:
-        print(f"Unknown command: {args.command}")
-        print("Run 'gods help' for available commands")
-        sys.exit(1)
+# Check if command is provided
+if [ $# -eq 0 ]; then
+    echo "Welcome to BACO/Pantheon! 🚀"
+    echo ""
+    echo "Available commands:"
+    echo "  init      - Initialize a new project"
+    echo "  plan      - Create a development plan"
+    echo "  execute   - Execute the plan"
+    echo "  help      - Show this help message"
+    echo ""
+    echo "Example: gods init"
+    exit 0
+fi
 
-if __name__ == '__main__':
-    main()
+# Get the command
+COMMAND=$1
+shift  # Remove the command from arguments
+
+# Handle commands
+case "$COMMAND" in
+    init)
+        echo "🚀 Summoning the Pantheon..."
+        claude chat "/gods init $*"
+        ;;
+    plan)
+        echo "📋 Consulting the Oracle..."
+        claude chat "/gods plan $*"
+        ;;
+    execute)
+        echo "⚡ Manifesting your vision..."
+        claude chat "/gods execute $*"
+        ;;
+    validate)
+        echo "🔍 Validating sacred scrolls..."
+        claude chat "/gods validate $*"
+        ;;
+    help|--help|-h)
+        echo "BACO/Pantheon - Where Gods Build Software"
+        echo ""
+        echo "Usage: gods <command> [options]"
+        echo ""
+        echo "Commands:"
+        echo "  init      - Initialize a new project with interactive setup"
+        echo "  plan      - Create a development plan for your project"
+        echo "  execute   - Execute the development plan"
+        echo "  validate  - Validate your pantheon.md file"
+        echo "  help      - Show this help message"
+        echo ""
+        echo "Examples:"
+        echo "  gods init"
+        echo "  gods plan \"Build a REST API\""
+        echo "  gods execute"
+        echo ""
+        echo "This command wraps Claude to provide the Pantheon experience."
+        ;;
+    *)
+        echo "❌ Unknown command: $COMMAND"
+        echo "Run 'gods help' for available commands"
+        exit 1
+        ;;
+esac
