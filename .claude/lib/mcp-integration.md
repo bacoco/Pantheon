@@ -22,7 +22,7 @@ MCP servers are external tools that provide specific capabilities:
 
 ```yaml
 agent_request:
-  agent: "sally"
+  agent: "apollo"
   tool: "browsermcp"
   action: "preview_mockup"
   parameters:

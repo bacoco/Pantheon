@@ -151,7 +151,7 @@ async function analyzeUI(url) {
 }
 ```
 
-### Elena (QA)
+### Themis (QA)
 
 ```javascript
 // E2E visual testing workflow
@@ -180,7 +180,7 @@ async function visualE2ETest(testScenario) {
 }
 ```
 
-### Sally (UX)
+### Apollo (UX)
 
 ```javascript
 // Capture design iterations

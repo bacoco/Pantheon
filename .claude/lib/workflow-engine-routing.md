@@ -178,7 +178,7 @@ class SmartRoutingWorkflowEngine extends WorkflowEngine {
       const accept = await confirm(`Route to ${routingDecision.primaryAgent.name}?`);
       if (!accept) {
         // Allow manual override
-        const agents = ['winston', 'james', 'elena', 'marcus', 'john', 'sarah', 'bob', 'sally', 'baco-master'];
+        const agents = ['daedalus', 'hephaestus', 'themis', 'aegis', 'prometheus', 'athena', 'hermes', 'apollo', 'baco-master'];
         return await select('Select agent manually:', agents);
       }
     }
@@ -412,7 +412,7 @@ const workflow = await buildAdaptiveWorkflow();
 // > Step 1:
 // > What should this step accomplish? Design the dashboard architecture
 // > Analysis: architecture, ui | Complexity: 7/10
-// > Recommended: Winston (85%)
+// > Recommended: Daedalus (85%)
 // > Use recommended agent? Yes
 // > Action name: designDashboardArchitecture
 ```

@@ -3,12 +3,12 @@ id: "feature-implementation"
 name: "Feature Implementation Template"
 description: "Template for implementing features with best practices"
 category: "implementation"
-agent: "james"
+agent: "hephaestus"
 frameworks: ["express", "nodejs", "react"]
 dependencies: 
   - package: "express"
     version: "^4.18.0"
-  - package: "winston"
+  - package: "daedalus"
     version: "^3.11.0"
 tags: ["feature", "implementation", "best-practices", "clean-code"]
 testTemplate: "feature-testing"
@@ -31,7 +31,7 @@ targetFiles:
 
 ## Overview
 
-This template helps James implement features following clean architecture principles with proper separation of concerns, error handling, and testability.
+This template helps Hephaestus implement features following clean architecture principles with proper separation of concerns, error handling, and testability.
 
 ## Template Structure
 
@@ -43,7 +43,7 @@ This template helps James implement features following clean architecture princi
  * This module implements the {{featureName}} feature following clean architecture principles.
  * 
  * @module features/{{featureName}}
- * @author James (Developer)
+ * @author Hephaestus (Developer)
  */
 
 export * from './types';
@@ -651,7 +651,7 @@ export const validators = {
 };
 ```
 
-## James's Implementation Best Practices
+## Hephaestus's Implementation Best Practices
 
 1. **Separation of Concerns**: Keep controllers thin, services for business logic, repositories for data access
 2. **Error Handling**: Use custom errors and proper error propagation

@@ -297,7 +297,7 @@ capability_metadata:
         when: "preparing sprint backlog"
       - with: prometheus
         when: "aligning with product roadmap"
-      - with: elena
+      - with: themis
         when: "planning test activities"
       - with: hephaestus
         when: "technical task breakdown"

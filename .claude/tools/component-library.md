@@ -119,7 +119,7 @@ const wizard = await mcp.shadcnui.generateWizard({
 
 ## Agent-Specific Usage
 
-### Sally (UX Designer)
+### Apollo (UX Designer)
 
 ```javascript
 // Create a complete design system
@@ -151,7 +151,7 @@ async function createDesignSystem(brandGuidelines) {
 }
 ```
 
-### James (Developer)
+### Hephaestus (Developer)
 
 ```javascript
 // Implement feature with shadcn-ui components

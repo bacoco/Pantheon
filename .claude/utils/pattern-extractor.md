@@ -35,9 +35,9 @@ component_patterns = {
 ```python
 naming_detection = {
     "variables": {
-        "camelCase": "const userName = 'John'",
-        "snake_case": "user_name = 'John'",
-        "PascalCase": "UserName = 'John'"  # constants
+        "camelCase": "const userName = 'Prometheus'",
+        "snake_case": "user_name = 'Prometheus'",
+        "PascalCase": "UserName = 'Prometheus'"  # constants
     },
     "functions": {
         "camelCase": "function getUserById()",

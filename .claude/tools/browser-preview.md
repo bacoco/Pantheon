@@ -129,7 +129,7 @@ async function testResponsive(url) {
 
 ## Agent-Specific Usage
 
-### Sally (UX Designer)
+### Apollo (UX Designer)
 
 ```javascript
 // Interactive mockup demonstration
@@ -165,7 +165,7 @@ async function demonstrateMockup(mockupHTML) {
 }
 ```
 
-### James (Developer)
+### Hephaestus (Developer)
 
 ```javascript
 // Debug implementation
@@ -206,7 +206,7 @@ async function debugFeature(url, scenario) {
 }
 ```
 
-### Elena (QA)
+### Themis (QA)
 
 ```javascript
 // Automated E2E testing
@@ -251,7 +251,7 @@ async function runE2ETest(testCase) {
 }
 ```
 
-### John (PM)
+### Prometheus (PM)
 
 ```javascript
 // Product demonstration

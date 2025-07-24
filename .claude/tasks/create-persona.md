@@ -133,10 +133,10 @@ Each persona should follow the template structure and include:
 ## Integration Points
 
 The personas will be used by:
-- **Sally (UX)**: Design decisions
-- **James (Developer)**: Feature priorities
-- **Elena (QA)**: Test scenarios
-- **Sarah (PO)**: User story creation
+- **Apollo (UX)**: Design decisions
+- **Hephaestus (Developer)**: Feature priorities
+- **Themis (QA)**: Test scenarios
+- **Athena (PO)**: User story creation
 - **All agents**: Understanding user needs
 
 ## Tips for Success

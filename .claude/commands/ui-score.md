@@ -75,7 +75,7 @@ Non-compliant Elements:
 3. Ad-hoc spacing in navigation
 ```
 
-### Step 4: Accessibility Audit (Pixel + Sally)
+### Step 4: Accessibility Audit (Pixel + Apollo)
 
 ```
 ## ♿ Accessibility Assessment

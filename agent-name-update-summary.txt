@@ -1,0 +1,69 @@
+Pantheon Agent Name Update Summary
+=================================
+Date: Jeu 24 jul 2025 16:16:25 CEST
+
+Name Mappings Applied:
+---------------------
+Winston → Daedalus
+James → Hephaestus
+Elena → Themis
+Marcus → Aegis
+John → Prometheus
+Sarah → Athena
+Bob → Hermes
+Sally → Apollo
+
+Files Modified:
+--------------
+./agents/aegis.md
+./agents/apollo.md
+./agents/argus.md
+./agents/athena.md
+./agents/calliope.md
+./agents/daedalus.md
+./agents/harmonia.md
+./agents/hermes.md
+./agents/iris.md
+./agents/janus.md
+./agents/oracle.md
+./agents/prometheus.md
+./agents/zeus.md
+./checklists/po-master-checklist.md
+./commands/agent.md
+./commands/analytics.md
+./commands/gods.md
+./commands/persona.md
+./commands/team.md
+./commands/ui-score.md
+./examples/docker-workflow-example.md
+./examples/routing-demo.md
+./knowledge/domains/web/react-patterns.md
+./lib/agent-integration.md
+./lib/cross-domain-bridge.md
+./lib/dynamic-workflow-generator.md
+./lib/mcp-integration.md
+./lib/mcp-permissions.md
+./lib/smart-router-helpers.md
+./lib/smart-router.md
+./lib/string-utils.md
+./lib/template-engine.md
+./lib/test-generator.md
+./lib/workflow-engine-routing.md
+./lib/workflow-engine.md
+./lib/workflow-optimization-engine.md
+./lib/workflow-visualizer.md
+./tasks/analyze-complexity.md
+./tasks/create-persona.md
+./tasks/visual-regression-workflow.md
+./templates/agents/aegis/security-implementation.md
+./templates/agents/apollo/design-system.md
+./templates/agents/apollo/ui-component-spec.md
+./templates/agents/athena/user-story-template.md
+./templates/agents/athena/validation-report.md
+./templates/agents/daedalus/adr-template.md
+./templates/agents/daedalus/system-design-doc.md
+./templates/agents/hephaestus/feature-implementation.md
+./templates/agents/hermes/ai-ready-story.md
+./templates/agents/hermes/sprint-planning.md
+
+Backup Location: .claude-backup-20250724-161616.tar.gz

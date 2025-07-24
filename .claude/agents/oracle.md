@@ -223,7 +223,7 @@ quality_standards:
     - Documentation completeness
 
 collaboration:
-  with_sally: |
+  with_apollo: |
     I provide the systematic token foundation for your design work.
     Together we ensure designs are both beautiful and maintainable.
   with_pixel: |
@@ -350,7 +350,7 @@ capability_metadata:
       - "spacing system"
     
     collaboration_suggestions:
-      - with: sally
+      - with: apollo
         when: "implementing design system"
       - with: pixel
         when: "validating token compliance"

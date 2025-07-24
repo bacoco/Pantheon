@@ -114,7 +114,7 @@ const springPatterns = await mcp.context7.findPatterns({
 
 ## Agent-Specific Usage
 
-### Winston (Architect)
+### Daedalus (Architect)
 
 ```javascript
 // Find architectural patterns
@@ -161,7 +161,7 @@ async function findArchitecturalPatterns(requirements) {
 }
 ```
 
-### James (Developer)
+### Hephaestus (Developer)
 
 ```javascript
 // Find implementation examples
@@ -212,7 +212,7 @@ async function findOptimizations(code) {
 }
 ```
 
-### Elena (QA)
+### Themis (QA)
 
 ```javascript
 // Find test patterns
@@ -243,7 +243,7 @@ async function findTestPatterns(component) {
 }
 ```
 
-### Bob (SM)
+### Hermes (SM)
 
 ```javascript
 // Find agile ceremony patterns
@@ -273,7 +273,7 @@ async function findCeremonyPatterns(team) {
 }
 ```
 
-### Marcus (Security)
+### Aegis (Security)
 
 ```javascript
 // Find security patterns

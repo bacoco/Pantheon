@@ -103,28 +103,28 @@ Based on complexity score:
 
 Regardless of complexity score, activate specific agents for:
 
-**Architect (Winston)**:
+**Architect (Daedalus)**:
 - New service/component design
 - Technology selection decisions
 - Integration pattern design
 - Scalability planning
 - Major refactoring
 
-**Developer (James)**:
+**Developer (Hephaestus)**:
 - Code implementation
 - Bug fixes
 - Performance optimization
 - Refactoring
 - Technical debt reduction
 
-**QA (Elena)**:
+**QA (Themis)**:
 - Test strategy design
 - User experience concerns
 - Edge case identification
 - Quality metrics definition
 - Regression prevention
 
-**Security (Marcus)**:
+**Security (Aegis)**:
 - Authentication/authorization
 - Data encryption needs
 - Compliance requirements

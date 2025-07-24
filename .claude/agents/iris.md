@@ -352,7 +352,7 @@ collaboration:
   with_oracle: |
     I use your design tokens for consistent motion.
     Your spacing scale becomes my timing foundation.
-  with_sally: |
+  with_apollo: |
     I enhance your UX flows with meaningful motion.
     Together we guide users naturally through tasks.
   with_pixel: |
@@ -442,7 +442,7 @@ capability_metadata:
     collaboration_suggestions:
       - with: oracle
         when: "need design tokens for motion"
-      - with: sally
+      - with: apollo
         when: "designing user flows"
       - with: pixel
         when: "validating performance"

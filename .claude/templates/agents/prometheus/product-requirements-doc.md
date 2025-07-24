@@ -3,7 +3,7 @@ id: "product-requirements-doc"
 name: "Product Requirements Document Template"
 description: "Comprehensive PRD template for defining product features and requirements"
 category: "product"
-agent: "john"
+agent: "prometheus"
 frameworks: ["any"]
 dependencies: []
 tags: ["product", "requirements", "prd", "specification", "planning"]
@@ -17,7 +17,7 @@ targetFiles:
 
 ## Overview
 
-This template helps John (PM) create comprehensive Product Requirements Documents that clearly communicate product vision, features, and success criteria to all stakeholders.
+This template helps Prometheus (PM) create comprehensive Product Requirements Documents that clearly communicate product vision, features, and success criteria to all stakeholders.
 
 ## Template
 
@@ -25,7 +25,7 @@ This template helps John (PM) create comprehensive Product Requirements Document
 
 **Version**: {{version}}  
 **Date**: {{date}}  
-**Author**: John (Product Manager)  
+**Author**: Prometheus (Product Manager)  
 **Stakeholders**: {{stakeholders}}  
 **Status**: {{status}}
 
@@ -329,7 +329,7 @@ erDiagram
 
 ---
 
-## John's Product Management Principles
+## Prometheus's Product Management Principles
 
 1. **User-Centric**: Every feature must solve a real user problem
 2. **Data-Driven**: Decisions based on metrics, not opinions

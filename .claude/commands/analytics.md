@@ -23,10 +23,10 @@ Shows real-time routing metrics and recent activity:
 └─ Active Alerts: 0
 
 👥 Top Agents (Last 10 Requests)
-├─ James: 4 requests
-├─ Winston: 3 requests
-├─ Elena: 2 requests
-└─ Sally: 1 request
+├─ Hephaestus: 4 requests
+├─ Daedalus: 3 requests
+├─ Themis: 2 requests
+└─ Apollo: 1 request
 
 ⚠️  Alerts
 └─ No active alerts
@@ -49,7 +49,7 @@ Shows detailed performance metrics for each agent:
 
 🏆 Performance Rankings
 
-1. Winston (System Architect)
+1. Daedalus (System Architect)
    ├─ Total Routed: 145
    ├─ Acceptance Rate: 92%
    ├─ Success Rate: 88%
@@ -57,7 +57,7 @@ Shows detailed performance metrics for each agent:
    ├─ User Rating: 9.2/10
    └─ Top Domains: architecture, system_design, scalability
 
-2. James (Senior Developer)
+2. Hephaestus (Senior Developer)
    ├─ Total Routed: 198
    ├─ Acceptance Rate: 88%
    ├─ Success Rate: 91%
@@ -84,9 +84,9 @@ Architecture
 ├─ Avg Complexity: 7.2/10
 ├─ Success Rate: 91%
 ├─ Top Agents:
-│  ├─ Winston: 72 (81%)
+│  ├─ Daedalus: 72 (81%)
 │  ├─ BMad Master: 12 (13%)
-│  └─ James: 5 (6%)
+│  └─ Hephaestus: 5 (6%)
 └─ Avg Duration: 2.3 days
 
 Implementation
@@ -94,9 +94,9 @@ Implementation
 ├─ Avg Complexity: 5.8/10
 ├─ Success Rate: 93%
 ├─ Top Agents:
-│  ├─ James: 128 (82%)
-│  ├─ Winston: 18 (12%)
-│  └─ Elena: 10 (6%)
+│  ├─ Hephaestus: 128 (82%)
+│  ├─ Daedalus: 18 (12%)
+│  └─ Themis: 10 (6%)
 └─ Avg Duration: 1.5 days
 
 [Additional domains...]
@@ -117,7 +117,7 @@ Pattern #1
 ├─ Domains: [security, authentication]
 ├─ Technologies: [jwt, oauth]
 ├─ Complexity: 6-8
-├─ Best Agent: Marcus (95% success)
+├─ Best Agent: Aegis (95% success)
 ├─ Occurrences: 23
 └─ Avg Performance: 9.1/10
 
@@ -125,7 +125,7 @@ Pattern #2
 ├─ Domains: [ui, user_experience]
 ├─ Technologies: [react, css]
 ├─ Complexity: 4-6
-├─ Best Agent: Sally (92% success)
+├─ Best Agent: Apollo (92% success)
 ├─ Occurrences: 31
 └─ Avg Performance: 8.8/10
 
@@ -156,11 +156,11 @@ Generates comprehensive weekly report:
 └─ User Satisfaction: ↗ +0.4 points
 
 🎯 Recommendations
-1. [HIGH] Winston has low acceptance for frontend tasks
+1. [HIGH] Daedalus has low acceptance for frontend tasks
    → Update capability metadata to exclude pure frontend
    
 2. [MEDIUM] High override rate for security domain
-   → Review Marcus's routing patterns
+   → Review Aegis's routing patterns
    
 3. [LOW] BMad Master underutilized for complex tasks
    → Lower complexity threshold for orchestration
@@ -214,10 +214,10 @@ Period: last_7_days
 Filter: complexity > 7
 
 Results:
-├─ Winston: 89.2% avg confidence
+├─ Daedalus: 89.2% avg confidence
 ├─ BMad Master: 85.7% avg confidence
-├─ Marcus: 82.1% avg confidence
-└─ James: 71.3% avg confidence
+├─ Aegis: 82.1% avg confidence
+└─ Hephaestus: 71.3% avg confidence
 ```
 
 ## Configuration

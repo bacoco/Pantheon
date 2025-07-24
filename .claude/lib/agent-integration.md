@@ -14,9 +14,9 @@ The agent integration system allows each specialist agent to:
 
 ### Code Generation Agents
 
-#### Winston (Architect)
+#### Daedalus (Architect)
 ```typescript
-interface WinstonCapabilities {
+interface DaedalusCapabilities {
   artifacts: {
     systemDesignDoc: (requirements: Requirements) => SystemDesign;
     architectureDecisionRecord: (decision: Decision) => ADR;
@@ -39,9 +39,9 @@ interface WinstonCapabilities {
 }
 ```
 
-#### James (Developer)
+#### Hephaestus (Developer)
 ```typescript
-interface JamesCapabilities {
+interface HephaestusCapabilities {
   artifacts: {
     featureImplementation: (spec: FeatureSpec) => CodeFiles[];
     refactoring: (code: Code, patterns: Pattern[]) => RefactoredCode;
@@ -63,9 +63,9 @@ interface JamesCapabilities {
 }
 ```
 
-#### Elena (QA)
+#### Themis (QA)
 ```typescript
-interface ElenaCapabilities {
+interface ThemisCapabilities {
   artifacts: {
     testPlan: (features: Feature[]) => TestPlan;
     testSuite: (code: Code) => TestFiles[];
@@ -90,9 +90,9 @@ interface ElenaCapabilities {
 
 ### Product Management Agents
 
-#### John (PM)
+#### Prometheus (PM)
 ```typescript
-interface JohnCapabilities {
+interface PrometheusCapabilities {
   artifacts: {
     productRequirementsDoc: (vision: Vision) => PRD;
     featureSpecification: (idea: Idea) => FeatureSpec;
@@ -115,9 +115,9 @@ interface JohnCapabilities {
 }
 ```
 
-#### Sarah (PO)
+#### Athena (PO)
 ```typescript
-interface SarahCapabilities {
+interface AthenaCapabilities {
   artifacts: {
     userStory: (feature: Feature) => UserStory;
     acceptanceCriteria: (story: Story) => Criteria[];
@@ -140,9 +140,9 @@ interface SarahCapabilities {
 }
 ```
 
-#### Bob (SM)
+#### Hermes (SM)
 ```typescript
-interface BobCapabilities {
+interface HermesCapabilities {
   artifacts: {
     aiReadyStory: (story: UserStory) => AIReadyStory;
     sprintPlan: (backlog: Backlog, velocity: number) => SprintPlan;
@@ -167,9 +167,9 @@ interface BobCapabilities {
 
 ### Design & Security Agents
 
-#### Sally (UX)
+#### Apollo (UX)
 ```typescript
-interface SallyCapabilities {
+interface ApolloCapabilities {
   artifacts: {
     uiComponents: (requirements: UIReq) => ComponentSpecs[];
     designSystem: (brand: Brand) => DesignSystem;
@@ -192,9 +192,9 @@ interface SallyCapabilities {
 }
 ```
 
-#### Marcus (Security)
+#### Aegis (Security)
 ```typescript
-interface MarcusCapabilities {
+interface AegisCapabilities {
   artifacts: {
     securityPolicy: (app: Application) => SecurityPolicy;
     threatModel: (architecture: Architecture) => ThreatModel;
@@ -385,27 +385,27 @@ class AgentLearning {
 ### Agent-Specific Template Collections
 ```typescript
 const agentTemplateMap = {
-  winston: {
+  daedalus: {
     primary: ['architecture-fullstack', 'architecture-frontend'],
     secondary: ['microservices', 'event-driven', 'serverless'],
     artifacts: ['adr-template', 'design-doc-template']
   },
-  james: {
+  hephaestus: {
     primary: ['rest-api-crud', 'jwt-auth-express'],
     secondary: ['graphql-api', 'websocket-server'],
     patterns: ['repository-pattern', 'factory-pattern']
   },
-  elena: {
+  themis: {
     primary: ['api-endpoint-testing', 'unit-function-testing'],
     secondary: ['e2e-testing', 'performance-testing'],
     frameworks: ['jest', 'cypress', 'k6']
   },
-  marcus: {
+  aegis: {
     primary: ['security-policy', 'threat-model'],
     secondary: ['owasp-checklist', 'gdpr-compliance'],
     scans: ['dependency-check', 'code-analysis']
   },
-  sally: {
+  apollo: {
     primary: ['component-library', 'design-system'],
     secondary: ['wireframe-kit', 'user-flow'],
     tools: ['figma-export', 'storybook-config']
@@ -425,23 +425,23 @@ async function customizeTemplateForAgent(
   
   let customized = { ...template };
   
-  // Winston adds architectural constraints
-  if (agent.id === 'winston') {
+  // Daedalus adds architectural constraints
+  if (agent.id === 'daedalus') {
     customized = addArchitecturalConstraints(customized, context);
   }
   
-  // Elena adds comprehensive test cases
-  if (agent.id === 'elena') {
+  // Themis adds comprehensive test cases
+  if (agent.id === 'themis') {
     customized = enhanceWithTestCases(customized, context);
   }
   
-  // Marcus adds security measures
-  if (agent.id === 'marcus') {
+  // Aegis adds security measures
+  if (agent.id === 'aegis') {
     customized = addSecurityMeasures(customized, context);
   }
   
-  // Sally adds accessibility features
-  if (agent.id === 'sally') {
+  // Apollo adds accessibility features
+  if (agent.id === 'apollo') {
     customized = enhanceAccessibility(customized, context);
   }
   
@@ -453,7 +453,7 @@ async function customizeTemplateForAgent(
 
 ### Agent Activation with Code Generation
 ```typescript
-// When user runs: /agent winston
+// When user runs: /agent daedalus
 async function activateAgentWithCodeGen(agentId: string) {
   const agent = await loadAgent(agentId);
   const context = await gatherContext(agent);
@@ -490,17 +490,17 @@ async function executeProductPlanningWorkflow(
     name: 'Product Planning',
     steps: [
       {
-        agent: 'john',
+        agent: 'prometheus',
         action: 'generatePRD',
         input: productIdea
       },
       {
-        agent: 'sarah',
+        agent: 'athena',
         action: 'createUserStories',
         input: '{{previous.prd}}'
       },
       {
-        agent: 'bob',
+        agent: 'hermes',
         action: 'prepareAIStories',
         input: '{{previous.stories}}'
       }
@@ -522,7 +522,7 @@ async function executeProductPlanningWorkflow(
 
 ## Future Enhancements
 
-1. **Visual Artifact Generation**: Actual diagram rendering for Winston
+1. **Visual Artifact Generation**: Actual diagram rendering for Daedalus
 2. **IDE Integration**: Direct code generation into IDE
 3. **Real-time Collaboration**: Multiple agents working simultaneously
 4. **Learning Networks**: Agents learning from each other's patterns

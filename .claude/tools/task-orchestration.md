@@ -51,20 +51,20 @@ const workflow = await mcp.taskmaster.createWorkflow({
     {
       id: "design",
       type: "design_mockup",
-      assignee: "sally",
+      assignee: "apollo",
       inputs: { requirements: "..." }
     },
     {
       id: "implement", 
       type: "code_implementation",
-      assignee: "james",
+      assignee: "hephaestus",
       dependencies: ["design"],
       inputs: { mockup: "{{design.output}}" }
     },
     {
       id: "test",
       type: "quality_assurance",
-      assignee: "elena",
+      assignee: "themis",
       dependencies: ["implement"],
       inputs: { code: "{{implement.output}}" }
     }
@@ -89,17 +89,17 @@ const parallelWorkflow = await mcp.taskmaster.createWorkflow({
     {
       id: "security_scan",
       type: "security_analysis",
-      assignee: "marcus"
+      assignee: "aegis"
     },
     {
       id: "performance_test",
       type: "performance_analysis", 
-      assignee: "james"
+      assignee: "hephaestus"
     },
     {
       id: "ux_review",
       type: "ux_evaluation",
-      assignee: "sally"
+      assignee: "apollo"
     },
     {
       id: "aggregate_results",
@@ -130,7 +130,7 @@ const conditionalWorkflow = await mcp.taskmaster.createWorkflow({
     {
       id: "complexity_analysis",
       type: "analyze_complexity",
-      assignee: "winston"
+      assignee: "daedalus"
     },
     {
       id: "route_decision",
@@ -155,7 +155,7 @@ const conditionalWorkflow = await mcp.taskmaster.createWorkflow({
     {
       id: "simple_path", 
       type: "direct_implementation",
-      assignee: "james",
+      assignee: "hephaestus",
       conditional: true
     }
   ]
@@ -178,18 +178,18 @@ async function orchestrateCrossTeamProject(project) {
         name: "Discovery",
         parallel: true,
         tasks: [
-          { type: "market_research", assignee: "john" },
-          { type: "technical_feasibility", assignee: "winston" },
-          { type: "ux_research", assignee: "sally" }
+          { type: "market_research", assignee: "prometheus" },
+          { type: "technical_feasibility", assignee: "daedalus" },
+          { type: "ux_research", assignee: "apollo" }
         ]
       },
       {
         name: "Planning",
         sequential: true,
         tasks: [
-          { type: "roadmap_creation", assignee: "john" },
-          { type: "architecture_design", assignee: "winston" },
-          { type: "story_creation", assignee: "sarah" }
+          { type: "roadmap_creation", assignee: "prometheus" },
+          { type: "architecture_design", assignee: "daedalus" },
+          { type: "story_creation", assignee: "athena" }
         ]
       },
       {
@@ -223,7 +223,7 @@ async function orchestrateCrossTeamProject(project) {
 }
 ```
 
-### John (PM) 
+### Prometheus (PM) 
 
 ```javascript
 // Orchestrate product roadmap execution
@@ -280,7 +280,7 @@ async function optimizeResourceAllocation(teams, workload) {
 }
 ```
 
-### Bob (SM)
+### Hermes (SM)
 
 ```javascript
 // Orchestrate sprint ceremonies
@@ -353,7 +353,7 @@ async function orchestrateSprint(sprint) {
 }
 ```
 
-### Sarah (PO)
+### Athena (PO)
 
 ```javascript
 // Orchestrate backlog refinement

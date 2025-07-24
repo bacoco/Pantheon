@@ -196,7 +196,7 @@ commands:
       
       ---
       
-      ### 👩‍💼 Persona 3: "Strategic Sarah"
+      ### 👩‍💼 Persona 3: "Strategic Athena"
       **Role**: VP of Product
       **Age**: 40
       **Tech Savvy**: Medium
@@ -213,7 +213,7 @@ commands:
       
       **Quote**: "I need to see the forest, not just the trees"
       
-      **Scenario**: Sarah prepares weekly exec reports by manually gathering data from multiple sources.
+      **Scenario**: Athena prepares weekly exec reports by manually gathering data from multiple sources.
 
   - name: user-flows
     description: Design user flow diagrams

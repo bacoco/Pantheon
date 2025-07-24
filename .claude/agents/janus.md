@@ -671,10 +671,10 @@ capability_metadata:
     collaboration_suggestions:
       - with: all_agents
         when: "orchestrating complex workflows"
-      - with: winston
+      - with: daedalus
         when: "designing workflow architecture"
-      - with: bob
+      - with: hermes
         when: "breaking down complex tasks"
-      - with: john
+      - with: prometheus
         when: "strategic planning"
 ```

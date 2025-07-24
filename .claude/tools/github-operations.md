@@ -131,7 +131,7 @@ await mcp.github.addComment({
 
 ## Agent-Specific Usage
 
-### Winston (Architect)
+### Daedalus (Architect)
 
 ```javascript
 // Create Architecture Decision Record
@@ -190,7 +190,7 @@ async function analyzeRepository(repo) {
 }
 ```
 
-### James (Developer)
+### Hephaestus (Developer)
 
 ```javascript
 // Create feature branch and PR workflow
@@ -260,7 +260,7 @@ async function handleReviewFeedback(pr, feedback) {
 }
 ```
 
-### Elena (QA)
+### Themis (QA)
 
 ```javascript
 // Create test report issue
@@ -321,7 +321,7 @@ async function updateTestCoverage(repo, coverage) {
 }
 ```
 
-### Marcus (Security)
+### Aegis (Security)
 
 ```javascript
 // Security audit workflow
@@ -370,7 +370,7 @@ async function performSecurityAudit(repo) {
 }
 ```
 
-### John (PM)
+### Prometheus (PM)
 
 ```javascript
 // Project management
@@ -419,7 +419,7 @@ async function manageProject(project) {
 }
 ```
 
-### Sarah (PO)
+### Athena (PO)
 
 ```javascript
 // User story management

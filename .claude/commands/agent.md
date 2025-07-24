@@ -17,9 +17,9 @@ Shows all available specialist agents with descriptions.
 ### Transform to Specific Agent
 ```
 /agent architect
-/agent winston
+/agent daedalus
 /agent developer
-/agent james
+/agent hephaestus
 ```
 Directly loads and activates the specified agent.
 
@@ -95,7 +95,7 @@ When this command is invoked:
    ```
 
 3. **For transformation**:
-   - Resolve agent name (support aliases like 'winston' → 'architect')
+   - Resolve agent name (support aliases like 'daedalus' → 'architect')
    - Load the agent file from `.claude/agents/{name}.md`
    - Follow the agent's activation instructions
    - Agent takes over with its command system
@@ -103,14 +103,14 @@ When this command is invoked:
 ## Agent Name Resolution
 
 Support flexible naming:
-- `architect`, `winston` → `.claude/agents/architect.md`
-- `developer`, `dev`, `james` → `.claude/agents/developer.md`
-- `qa`, `quality`, `elena` → `.claude/agents/qa.md`
-- `security`, `sec`, `marcus` → `.claude/agents/security.md`
-- `pm`, `product`, `john` → `.claude/agents/pm.md`
-- `po`, `owner`, `sarah` → `.claude/agents/po.md`
-- `sm`, `scrum`, `bob` → `.claude/agents/sm.md`
-- `ux`, `design`, `sally` → `.claude/agents/ux.md`
+- `architect`, `daedalus` → `.claude/agents/architect.md`
+- `developer`, `dev`, `hephaestus` → `.claude/agents/developer.md`
+- `qa`, `quality`, `themis` → `.claude/agents/qa.md`
+- `security`, `sec`, `aegis` → `.claude/agents/security.md`
+- `pm`, `product`, `prometheus` → `.claude/agents/pm.md`
+- `po`, `owner`, `athena` → `.claude/agents/po.md`
+- `sm`, `scrum`, `hermes` → `.claude/agents/sm.md`
+- `ux`, `design`, `apollo` → `.claude/agents/ux.md`
 - `oracle`, `vision`, `style` → `.claude/agents/oracle.md`
 - `harmonia`, `fusion`, `psychology` → `.claude/agents/harmonia.md`
 - `iris`, `motion`, `animation` → `.claude/agents/iris.md`

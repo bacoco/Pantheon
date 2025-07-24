@@ -372,7 +372,7 @@ curl -X POST http://localhost:3000/api/auth/register \
   -d '{
     "email": "user@example.com",
     "password": "securepassword123",
-    "name": "John Doe"
+    "name": "Prometheus Doe"
   }'
 ```
 

@@ -6,9 +6,9 @@ This document demonstrates how the Product Planning workflow (PM → PO → SM) 
 
 The Product Planning workflow transforms a high-level product vision into sprint-ready, AI-optimized user stories through three specialist agents:
 
-1. **John (PM)**: Creates PRD and roadmap from vision
-2. **Sarah (PO)**: Generates and validates user stories
-3. **Bob (SM)**: Prepares AI-ready stories and sprint plan
+1. **Prometheus (PM)**: Creates PRD and roadmap from vision
+2. **Athena (PO)**: Generates and validates user stories
+3. **Hermes (SM)**: Prepares AI-ready stories and sprint plan
 
 ## Example Execution
 
@@ -26,14 +26,14 @@ Team Capacity: 40 story points per sprint
 
 ### Step-by-Step Execution
 
-#### Step 1: John Creates PRD
+#### Step 1: Prometheus Creates PRD
 
 **Input Context**:
 - Product vision
 - Market research data
 - Business objectives
 
-**John's Process**:
+**Prometheus's Process**:
 ```markdown
 # Product Requirements Document: AI Personal Finance Assistant
 
@@ -74,14 +74,14 @@ An intelligent personal finance application that combines expense tracking with 
 
 **Output**: `docs/product/prd.md`
 
-#### Step 2: John Creates Roadmap
+#### Step 2: Prometheus Creates Roadmap
 
 **Input Context**:
 - Completed PRD
 - Market urgency
 - Team capacity
 
-**John's Process**:
+**Prometheus's Process**:
 ```markdown
 # Product Roadmap: AI Personal Finance Assistant
 
@@ -121,14 +121,14 @@ An intelligent personal finance application that combines expense tracking with 
 
 **Output**: `docs/product/roadmap.md`
 
-#### Step 3: Sarah Creates User Stories
+#### Step 3: Athena Creates User Stories
 
 **Input Context**:
-- PRD from John
+- PRD from Prometheus
 - Roadmap priorities
 - First sprint focus
 
-**Sarah's Process**:
+**Athena's Process**:
 ```markdown
 # User Story: Secure User Registration
 
@@ -149,7 +149,7 @@ An intelligent personal finance application that combines expense tracking with 
 - Store passwords with bcrypt
 ```
 
-*Sarah creates 8 user stories for Sprint 1*
+*Athena creates 8 user stories for Sprint 1*
 
 **Outputs**: 
 - `docs/stories/user-registration.md`
@@ -161,7 +161,7 @@ An intelligent personal finance application that combines expense tracking with 
 - `docs/stories/data-export.md`
 - `docs/stories/account-settings.md`
 
-#### Step 4: Sarah Validates Stories
+#### Step 4: Athena Validates Stories
 
 **Validation Report**:
 ```markdown
@@ -188,14 +188,14 @@ An intelligent personal finance application that combines expense tracking with 
 
 **Output**: `docs/validation/sprint-1-validation.md`
 
-#### Step 5: Bob Creates AI-Ready Stories
+#### Step 5: Hermes Creates AI-Ready Stories
 
 **Input Context**:
-- Validated stories from Sarah
+- Validated stories from Athena
 - Technical architecture
 - AI implementation patterns
 
-**Bob's Process for Each Story**:
+**Hermes's Process for Each Story**:
 ```markdown
 # AI-Ready Story: Secure User Registration
 
@@ -265,7 +265,7 @@ Total: 10 hours (5 story points)
 
 **Outputs**: 8 AI-ready stories in `docs/stories/ai-ready/`
 
-#### Step 6: Bob Creates Sprint Plan
+#### Step 6: Hermes Creates Sprint Plan
 
 **Final Sprint Plan**:
 ```markdown
@@ -317,11 +317,11 @@ Total: 10 hours (5 story points)
 
 ## Handoff Examples
 
-### John → Sarah Handoff
+### Prometheus → Athena Handoff
 ```
-John has completed the PRD and Roadmap.
+Prometheus has completed the PRD and Roadmap.
 
-Key Points for Sarah:
+Key Points for Athena:
 - Focus on Sprint 1: Authentication & Basic Tracking
 - Security is paramount for financial data
 - Keep MVP scope tight - save AI features for Q2
@@ -332,11 +332,11 @@ Artifacts available:
 - Roadmap showing sprint priorities
 ```
 
-### Sarah → Bob Handoff
+### Athena → Hermes Handoff
 ```
-Sarah has created and validated 8 user stories.
+Athena has created and validated 8 user stories.
 
-Key Points for Bob:
+Key Points for Hermes:
 - All stories validated and INVEST-compliant
 - Security considerations added to each story
 - Total points: 38 (within capacity)

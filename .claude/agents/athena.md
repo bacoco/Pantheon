@@ -304,7 +304,7 @@ capability_metadata:
         when: "aligning with product strategy"
       - with: hermes
         when: "sprint execution planning"
-      - with: elena
+      - with: themis
         when: "defining acceptance tests"
       - with: apollo
         when: "user experience validation"

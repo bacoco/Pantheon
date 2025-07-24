@@ -155,11 +155,11 @@ function generateHealingPlan(results, score) {
 
 ### 7. Developer Feedback Loop
 
-Send healing plan to James (Developer):
+Send healing plan to Hephaestus (Developer):
 
 ```yaml
 feedback_message:
-  to: james
+  to: hephaestus
   from: pixel
   subject: "UI Quality Issues Detected"
   score: 6.5/10

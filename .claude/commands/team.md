@@ -197,9 +197,9 @@ User: /team product-team
 
 PM (Prometheus): Welcome! I'm leading the product team. We have:
 - Apollo (UX) for design
-- Winston (Architect) for system design  
-- James (Developer) for implementation
-- Elena (QA) for quality
+- Daedalus (Architect) for system design  
+- Hephaestus (Developer) for implementation
+- Themis (QA) for quality
 
 What product feature should we tackle?
 

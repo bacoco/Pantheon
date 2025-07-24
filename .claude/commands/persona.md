@@ -21,7 +21,7 @@ Interactive persona creation using the standard template:
 Let's create a detailed user persona for your project.
 
 1. Basic Information
-   Name: Sarah Chen
+   Name: Athena Chen
    Age: 28
    Occupation: Software Developer
    Location: San Francisco, CA

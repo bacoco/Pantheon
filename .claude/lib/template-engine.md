@@ -340,10 +340,10 @@ app.use(errorHandler);
 
 Different agents use templates differently:
 
-- **Winston (Architect)**: Selects overall template strategy
-- **James (Developer)**: Implements and customizes templates
-- **Elena (QA)**: Adds testing templates
-- **Marcus (Security)**: Enhances with security patterns
+- **Daedalus (Architect)**: Selects overall template strategy
+- **Hephaestus (Developer)**: Implements and customizes templates
+- **Themis (QA)**: Adds testing templates
+- **Aegis (Security)**: Enhances with security patterns
 
 ## Future Enhancements
 

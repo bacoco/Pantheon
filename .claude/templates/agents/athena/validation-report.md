@@ -3,7 +3,7 @@ id: "validation-report"
 name: "Story Validation Report Template"
 description: "Comprehensive validation report for implemented features"
 category: "product"
-agent: "sarah"
+agent: "athena"
 frameworks: ["agile", "scrum"]
 dependencies: []
 tags: ["validation", "acceptance", "quality", "verification", "product-owner"]
@@ -17,7 +17,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Sarah validate that implemented features meet all acceptance criteria and business requirements before release.
+This template helps Athena validate that implemented features meet all acceptance criteria and business requirements before release.
 
 ## Template
 
@@ -25,7 +25,7 @@ This template helps Sarah validate that implemented features meet all acceptance
 
 **Story ID**: {{storyId}}  
 **Validation Date**: {{validationDate}}  
-**Validator**: Sarah (Product Owner)  
+**Validator**: Athena (Product Owner)  
 **Development Team**: {{devTeam}}  
 **Sprint**: {{sprintNumber}}  
 **Overall Status**: {{overallStatus}}
@@ -256,7 +256,7 @@ This template helps Sarah validate that implemented features meet all acceptance
 ## Sign-off
 
 ### Product Owner Approval
-**Sarah (Product Owner)**  
+**Athena (Product Owner)**  
 **Date**: {{poSignoffDate}}  
 **Decision**: {{poDecision}}  
 **Conditions**: {{poConditions}}
@@ -287,7 +287,7 @@ This template helps Sarah validate that implemented features meet all acceptance
 
 ---
 
-## Sarah's Validation Principles
+## Athena's Validation Principles
 
 1. **Trust but Verify**: Test everything, assume nothing
 2. **User Advocacy**: Represent the user's interests

@@ -3,7 +3,7 @@ id: "user-story-template"
 name: "User Story with Acceptance Criteria Template"
 description: "Comprehensive user story template with detailed acceptance criteria"
 category: "product"
-agent: "sarah"
+agent: "athena"
 frameworks: ["agile", "scrum"]
 dependencies: []
 tags: ["user-story", "acceptance-criteria", "agile", "requirements", "validation"]
@@ -17,7 +17,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Sarah (PO) create detailed user stories with comprehensive acceptance criteria, ensuring clear communication between product and development teams.
+This template helps Athena (PO) create detailed user stories with comprehensive acceptance criteria, ensuring clear communication between product and development teams.
 
 ## Template
 
@@ -29,7 +29,7 @@ This template helps Sarah (PO) create detailed user stories with comprehensive a
 **Points**: {{storyPoints}}  
 **Priority**: {{priority}}  
 **Created**: {{createdDate}}  
-**Author**: Sarah (Product Owner)  
+**Author**: Athena (Product Owner)  
 **Status**: {{status}}
 
 ## Story Overview
@@ -308,7 +308,7 @@ Scenario: {{scenario1Name}}
 
 ---
 
-## Sarah's PO Best Practices
+## Athena's PO Best Practices
 
 1. **Clear is Kind**: Ambiguity leads to rework
 2. **Test Everything**: If it's not tested, it's not done

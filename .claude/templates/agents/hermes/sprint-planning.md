@@ -3,7 +3,7 @@ id: "sprint-planning"
 name: "Sprint Planning Document Template"
 description: "Comprehensive sprint planning template for effective sprint execution"
 category: "agile"
-agent: "bob"
+agent: "hermes"
 frameworks: ["scrum", "agile"]
 dependencies: []
 tags: ["sprint", "planning", "scrum", "agile", "velocity"]
@@ -17,7 +17,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Bob create detailed sprint plans that set teams up for successful sprint execution with clear goals, capacity planning, and risk mitigation.
+This template helps Hermes create detailed sprint plans that set teams up for successful sprint execution with clear goals, capacity planning, and risk mitigation.
 
 ## Template
 
@@ -26,7 +26,7 @@ This template helps Bob create detailed sprint plans that set teams up for succe
 **Sprint Name**: {{sprintName}}  
 **Sprint Duration**: {{startDate}} - {{endDate}}  
 **Sprint Goal**: {{sprintGoal}}  
-**Scrum Master**: Bob  
+**Scrum Master**: Hermes  
 **Product Owner**: {{productOwner}}  
 **Team Members**: {{teamMembers}}  
 **Planning Date**: {{planningDate}}
@@ -342,7 +342,7 @@ daily_health:
 
 ---
 
-## Bob's Sprint Planning Principles
+## Hermes's Sprint Planning Principles
 
 1. **Realistic Commitments**: Under-promise, over-deliver
 2. **Clear Communication**: Everyone knows the plan

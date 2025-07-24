@@ -3,7 +3,7 @@ id: "ai-ready-story"
 name: "AI-Ready Story Template"
 description: "Story template optimized for AI implementation with complete context"
 category: "agile"
-agent: "bob"
+agent: "hermes"
 frameworks: ["agile", "scrum", "ai-development"]
 dependencies: []
 tags: ["ai-ready", "story", "context", "implementation", "scrum-master"]
@@ -17,7 +17,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Bob create AI-ready stories with comprehensive context, enabling AI developers to implement features without additional clarification.
+This template helps Hermes create AI-ready stories with comprehensive context, enabling AI developers to implement features without additional clarification.
 
 ## Template
 
@@ -28,7 +28,7 @@ This template helps Bob create AI-ready stories with comprehensive context, enab
 **Sprint**: {{sprintNumber}}  
 **Points**: {{storyPoints}}  
 **AI Complexity**: {{aiComplexity}}  
-**Prepared By**: Bob (Scrum Master)  
+**Prepared By**: Hermes (Scrum Master)  
 **Date**: {{preparedDate}}  
 **Implementation Confidence**: {{confidenceScore}}/10
 
@@ -493,7 +493,7 @@ feature_flag:
 
 ---
 
-## Bob's AI-Ready Story Principles
+## Hermes's AI-Ready Story Principles
 
 1. **Complete Context**: Include everything an AI needs to implement successfully
 2. **No Assumptions**: Spell out every detail, no matter how obvious

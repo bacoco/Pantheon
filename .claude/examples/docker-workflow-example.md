@@ -25,7 +25,7 @@ The Docker preferences are saved in your `baco.md` file:
 ---
 version: 1.0
 project_type: "Next.js E-commerce Platform"
-author: "Sarah Chen"
+author: "Athena Chen"
 created_at: "2024-01-21"
 workflow:
   git_enabled: true

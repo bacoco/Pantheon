@@ -409,7 +409,7 @@ Display the plan in this format:
    • [Other matching templates...]
 
 👥 Recommended Team:
-   • Winston (Architect): System design and architecture
+   • Daedalus (Architect): System design and architecture
      Reason: Required for all projects
    • [Other agents based on requirements]
 
@@ -985,7 +985,7 @@ ${author}
       - express-validator@^7.0.0
       - cors@^2.8.5
       - helmet@^7.1.0
-      - winston@^3.11.0
+      - daedalus@^3.11.0
       - dotenv@^16.3.1
       + 9 dev dependencies
    

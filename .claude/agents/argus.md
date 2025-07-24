@@ -320,12 +320,12 @@ capability_metadata:
       - "ui healing"
     
     collaboration_suggestions:
-      - with: sally
+      - with: apollo
         when: "design system alignment"
-      - with: elena
+      - with: themis
         when: "comprehensive quality testing"
       - with: hephaestus
         when: "implementing ui fixes"
-      - with: marcus
+      - with: aegis
         when: "security ui indicators"
 ```

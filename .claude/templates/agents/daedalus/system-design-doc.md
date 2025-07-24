@@ -3,7 +3,7 @@ id: "system-design-doc"
 name: "System Design Document Template"
 description: "Comprehensive system design documentation template"
 category: "architecture"
-agent: "winston"
+agent: "daedalus"
 frameworks: ["any"]
 dependencies: []
 tags: ["architecture", "system-design", "documentation", "technical-design"]
@@ -17,7 +17,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Winston create comprehensive system design documents that communicate architectural decisions, component interactions, and implementation strategies.
+This template helps Daedalus create comprehensive system design documents that communicate architectural decisions, component interactions, and implementation strategies.
 
 ## Template
 
@@ -25,7 +25,7 @@ This template helps Winston create comprehensive system design documents that co
 
 **Version**: {{version}}  
 **Last Updated**: {{lastUpdated}}  
-**Author**: Winston (System Architect)  
+**Author**: Daedalus (System Architect)  
 **Reviewers**: {{reviewers}}  
 **Status**: {{status}}
 
@@ -374,7 +374,7 @@ graph LR
 
 ---
 
-## Winston's Design Principles
+## Daedalus's Design Principles
 
 1. **Clarity over Cleverness**: Design for understanding, not impressiveness
 2. **Evolve Gracefully**: Plan for change from the beginning

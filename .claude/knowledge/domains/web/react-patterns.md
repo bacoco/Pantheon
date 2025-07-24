@@ -331,7 +331,7 @@ jest.mock('../api/users');
 test('displays users after loading', async () => {
   const mockUsers = [
     { id: 1, name: 'Alice' },
-    { id: 2, name: 'Bob' }
+    { id: 2, name: 'Hermes' }
   ];
   
   getUsersAPI.mockResolvedValue(mockUsers);
@@ -342,7 +342,7 @@ test('displays users after loading', async () => {
   
   await waitFor(() => {
     expect(screen.getByText('Alice')).toBeInTheDocument();
-    expect(screen.getByText('Bob')).toBeInTheDocument();
+    expect(screen.getByText('Hermes')).toBeInTheDocument();
   });
 });
 ```

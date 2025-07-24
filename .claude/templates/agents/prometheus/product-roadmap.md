@@ -3,7 +3,7 @@ id: "product-roadmap"
 name: "Product Roadmap Template"
 description: "Strategic product roadmap for planning and communication"
 category: "product"
-agent: "john"
+agent: "prometheus"
 frameworks: ["any"]
 dependencies: []
 tags: ["product", "roadmap", "planning", "strategy", "timeline"]
@@ -17,7 +17,7 @@ targetFiles:
 
 ## Overview
 
-This template helps John create visual and strategic product roadmaps that align teams around product direction and priorities.
+This template helps Prometheus create visual and strategic product roadmaps that align teams around product direction and priorities.
 
 ## Template
 
@@ -25,7 +25,7 @@ This template helps John create visual and strategic product roadmaps that align
 
 **Year**: {{year}}  
 **Last Updated**: {{lastUpdated}}  
-**Product Manager**: John  
+**Product Manager**: Prometheus  
 **Review Cycle**: {{reviewCycle}}
 
 ## Executive Summary
@@ -329,7 +329,7 @@ graph LR
 
 ---
 
-## John's Roadmap Best Practices
+## Prometheus's Roadmap Best Practices
 
 1. **Themes Over Features**: Focus on outcomes, not outputs
 2. **Regular Reviews**: Roadmaps are living documents

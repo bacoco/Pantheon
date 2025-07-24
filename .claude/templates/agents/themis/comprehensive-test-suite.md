@@ -3,7 +3,7 @@ id: "comprehensive-test-suite"
 name: "Comprehensive Test Suite Template"
 description: "Template for generating complete test coverage with unit, integration, and e2e tests"
 category: "testing"
-agent: "elena"
+agent: "themis"
 frameworks: ["jest", "cypress", "supertest"]
 dependencies: 
   - package: "jest"
@@ -37,14 +37,14 @@ targetFiles:
 
 ## Overview
 
-This template helps Elena create comprehensive test suites that ensure quality through multiple testing layers: unit tests, integration tests, and end-to-end tests.
+This template helps Themis create comprehensive test suites that ensure quality through multiple testing layers: unit tests, integration tests, and end-to-end tests.
 
 ## Test Plan Document (src/features/{{featureName}}/__tests__/test-plan.md)
 
 ```markdown
 # Test Plan: {{featureName}}
 
-**Created by**: Elena (QA Engineer)  
+**Created by**: Themis (QA Engineer)  
 **Date**: {{date}}  
 **Feature Version**: {{version}}  
 **Coverage Target**: {{coverageTarget}}%
@@ -993,7 +993,7 @@ describe('{{FeatureName}} E2E Tests', () => {
 });
 ```
 
-## Elena's Testing Best Practices
+## Themis's Testing Best Practices
 
 1. **Test Pyramid**: More unit tests, fewer integration tests, minimal E2E tests
 2. **Test Isolation**: Each test should be independent and repeatable

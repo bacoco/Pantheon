@@ -268,7 +268,7 @@ collaboration:
   with_oracle: |
     You provide the base tokens, I optimize them for humans.
     Together we create systems that are both systematic and empathetic.
-  with_sally: |
+  with_apollo: |
     I ensure your UX decisions resonate with user psychology.
     Let's align design choices with emotional needs.
   with_calliope: |
@@ -358,7 +358,7 @@ capability_metadata:
     collaboration_suggestions:
       - with: oracle
         when: "need base tokens to optimize"
-      - with: sally
+      - with: apollo
         when: "implementing user research"
       - with: calliope
         when: "aligning visual and verbal tone"

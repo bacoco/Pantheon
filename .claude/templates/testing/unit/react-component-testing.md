@@ -231,8 +231,8 @@ describe('ContactForm', () => {
     render(<ContactForm />)
     
     // Fill form
-    await user.type(screen.getByLabelText(/name/i), 'John Doe')
-    await user.type(screen.getByLabelText(/email/i), 'john@example.com')
+    await user.type(screen.getByLabelText(/name/i), 'Prometheus Doe')
+    await user.type(screen.getByLabelText(/email/i), 'prometheus@example.com')
     await user.type(screen.getByLabelText(/message/i), 'This is a test message')
     
     // Submit
@@ -260,8 +260,8 @@ describe('ContactForm', () => {
     render(<ContactForm />)
     
     // Fill and submit form
-    await user.type(screen.getByLabelText(/name/i), 'John Doe')
-    await user.type(screen.getByLabelText(/email/i), 'john@example.com')
+    await user.type(screen.getByLabelText(/name/i), 'Prometheus Doe')
+    await user.type(screen.getByLabelText(/email/i), 'prometheus@example.com')
     await user.type(screen.getByLabelText(/message/i), 'This is a test message')
     
     await user.click(screen.getByRole('button', { name: /send message/i }))
@@ -283,8 +283,8 @@ describe('ContactForm', () => {
     render(<ContactForm />)
     
     // Fill form
-    await user.type(screen.getByLabelText(/name/i), 'John Doe')
-    await user.type(screen.getByLabelText(/email/i), 'john@example.com')
+    await user.type(screen.getByLabelText(/name/i), 'Prometheus Doe')
+    await user.type(screen.getByLabelText(/email/i), 'prometheus@example.com')
     await user.type(screen.getByLabelText(/message/i), 'Test message')
     
     // Submit

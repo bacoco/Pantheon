@@ -148,7 +148,7 @@ function getArtifactIcon(type: string): string {
 
 Transform product vision into sprint-ready stories
 
-Agents involved: John → Sarah → Bob
+Agents involved: Prometheus → Athena → Hermes
 Estimated duration: 30-45 minutes
 
 Required inputs:
@@ -168,7 +168,7 @@ Required inputs:
 Overall: ████████░░░░░░░░░░░░ 40%
 Elapsed: 5 minutes | Est. remaining: 7 minutes
 
-✨ Sarah (PO): Starting generateUserStories
+✨ Athena (PO): Starting generateUserStories
    Processing PRD and roadmap to create detailed user stories...
    
 📄 Created: docs/stories/user-authentication.md
@@ -184,14 +184,14 @@ Elapsed: 5 minutes | Est. remaining: 7 minutes
 Architecture to tested implementation
 
 ⚙️ Parallel Execution:
-Winston: ████████████░░░ 75% generateSystemDesign
-Marcus:  ██████░░░░░░░░░ 40% securityAssessment
-Elena:   ████████████████ 100% createTestPlan
+Daedalus: ████████████░░░ 75% generateSystemDesign
+Aegis:  ██████░░░░░░░░░ 40% securityAssessment
+Themis:   ████████████████ 100% createTestPlan
 
-✅ Elena (QA): Completed createTestPlan
+✅ Themis (QA): Completed createTestPlan
 📄 Created: docs/test/test-plan.md
 
-Waiting for Winston and Marcus to complete...
+Waiting for Daedalus and Aegis to complete...
 ```
 
 ## Interactive Elements

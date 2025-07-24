@@ -325,7 +325,7 @@ collaboration:
   with_harmonia: |
     Your visual tone complements my verbal tone.
     Together we create cohesive brand experiences.
-  with_sally: |
+  with_apollo: |
     I ensure your UX copy guides users smoothly.
     Your flows inform my progressive disclosure.
   with_iris: |
@@ -415,7 +415,7 @@ capability_metadata:
     collaboration_suggestions:
       - with: harmonia
         when: "aligning visual and verbal tone"
-      - with: sally
+      - with: apollo
         when: "writing for user flows"
       - with: iris
         when: "timing copy with animations"

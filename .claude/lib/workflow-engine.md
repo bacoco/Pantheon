@@ -59,11 +59,11 @@ const productPlanningWorkflow: Workflow = {
   id: 'product-planning',
   name: 'Product Planning Workflow',
   description: 'From product vision to sprint-ready stories',
-  agents: ['john', 'sarah', 'bob'],
+  agents: ['prometheus', 'athena', 'hermes'],
   steps: [
     {
       id: 'create-prd',
-      agent: 'john',
+      agent: 'prometheus',
       action: 'generatePRD',
       inputs: [
         { type: 'user-input', name: 'productVision' },
@@ -76,7 +76,7 @@ const productPlanningWorkflow: Workflow = {
     },
     {
       id: 'create-roadmap',
-      agent: 'john',
+      agent: 'prometheus',
       action: 'generateRoadmap',
       inputs: [
         { type: 'artifact', name: 'prd', from: 'create-prd' }
@@ -88,7 +88,7 @@ const productPlanningWorkflow: Workflow = {
     },
     {
       id: 'create-user-stories',
-      agent: 'sarah',
+      agent: 'athena',
       action: 'generateUserStories',
       inputs: [
         { type: 'artifact', name: 'prd', from: 'create-prd' },
@@ -101,7 +101,7 @@ const productPlanningWorkflow: Workflow = {
     },
     {
       id: 'validate-stories',
-      agent: 'sarah',
+      agent: 'athena',
       action: 'validateStories',
       inputs: [
         { type: 'artifacts', name: 'userStories', from: 'create-user-stories' }
@@ -113,7 +113,7 @@ const productPlanningWorkflow: Workflow = {
     },
     {
       id: 'prepare-ai-stories',
-      agent: 'bob',
+      agent: 'hermes',
       action: 'createAIReadyStories',
       inputs: [
         { type: 'artifacts', name: 'userStories', from: 'create-user-stories' },
@@ -126,7 +126,7 @@ const productPlanningWorkflow: Workflow = {
     },
     {
       id: 'create-sprint-plan',
-      agent: 'bob',
+      agent: 'hermes',
       action: 'generateSprintPlan',
       inputs: [
         { type: 'artifacts', name: 'aiStories', from: 'prepare-ai-stories' },
@@ -161,11 +161,11 @@ const implementationWorkflow: Workflow = {
   id: 'implementation',
   name: 'Implementation Workflow',
   description: 'From architecture to tested implementation',
-  agents: ['winston', 'james', 'elena'],
+  agents: ['daedalus', 'hephaestus', 'themis'],
   steps: [
     {
       id: 'design-architecture',
-      agent: 'winston',
+      agent: 'daedalus',
       action: 'generateSystemDesign',
       inputs: [
         { type: 'artifact', name: 'requirements', path: 'docs/requirements.md' },
@@ -179,7 +179,7 @@ const implementationWorkflow: Workflow = {
     },
     {
       id: 'security-review',
-      agent: 'marcus',
+      agent: 'aegis',
       action: 'securityAssessment',
       inputs: [
         { type: 'artifact', name: 'systemDesign', from: 'design-architecture' }
@@ -192,7 +192,7 @@ const implementationWorkflow: Workflow = {
     },
     {
       id: 'implement-feature',
-      agent: 'james',
+      agent: 'hephaestus',
       action: 'implementFeature',
       inputs: [
         { type: 'artifact', name: 'systemDesign', from: 'design-architecture' },
@@ -205,7 +205,7 @@ const implementationWorkflow: Workflow = {
     },
     {
       id: 'apply-security',
-      agent: 'marcus',
+      agent: 'aegis',
       action: 'implementSecurityMeasures',
       inputs: [
         { type: 'code', name: 'implementation', from: 'implement-feature' },
@@ -218,7 +218,7 @@ const implementationWorkflow: Workflow = {
     },
     {
       id: 'create-test-plan',
-      agent: 'elena',
+      agent: 'themis',
       action: 'generateTestPlan',
       inputs: [
         { type: 'artifact', name: 'systemDesign', from: 'design-architecture' },
@@ -232,7 +232,7 @@ const implementationWorkflow: Workflow = {
     },
     {
       id: 'implement-tests',
-      agent: 'elena',
+      agent: 'themis',
       action: 'generateTests',
       inputs: [
         { type: 'code', name: 'secureImplementation', from: 'apply-security' },
@@ -268,11 +268,11 @@ const uiFeatureWorkflow: Workflow = {
   id: 'ui-feature',
   name: 'UI Feature Workflow',
   description: 'From design to implemented UI component',
-  agents: ['sally', 'james', 'elena'],
+  agents: ['apollo', 'hephaestus', 'themis'],
   steps: [
     {
       id: 'design-component',
-      agent: 'sally',
+      agent: 'apollo',
       action: 'generateComponentSpec',
       inputs: [
         { type: 'artifact', name: 'userStory', path: 'docs/stories/current.md' },
@@ -286,7 +286,7 @@ const uiFeatureWorkflow: Workflow = {
     },
     {
       id: 'create-design-system',
-      agent: 'sally',
+      agent: 'apollo',
       action: 'updateDesignSystem',
       inputs: [
         { type: 'artifact', name: 'componentSpec', from: 'design-component' }
@@ -298,7 +298,7 @@ const uiFeatureWorkflow: Workflow = {
     },
     {
       id: 'implement-component',
-      agent: 'james',
+      agent: 'hephaestus',
       action: 'implementUIComponent',
       inputs: [
         { type: 'artifact', name: 'componentSpec', from: 'design-component' },
@@ -312,7 +312,7 @@ const uiFeatureWorkflow: Workflow = {
     },
     {
       id: 'accessibility-review',
-      agent: 'sally',
+      agent: 'apollo',
       action: 'accessibilityAudit',
       inputs: [
         { type: 'code', name: 'component', from: 'implement-component' }
@@ -325,7 +325,7 @@ const uiFeatureWorkflow: Workflow = {
     },
     {
       id: 'create-ui-tests',
-      agent: 'elena',
+      agent: 'themis',
       action: 'generateUITests',
       inputs: [
         { type: 'code', name: 'component', from: 'implement-component' },
@@ -339,7 +339,7 @@ const uiFeatureWorkflow: Workflow = {
     },
     {
       id: 'visual-regression',
-      agent: 'elena',
+      agent: 'themis',
       action: 'visualRegressionTests',
       inputs: [
         { type: 'code', name: 'component', from: 'implement-component' },
@@ -375,11 +375,11 @@ const securityDevelopmentWorkflow: Workflow = {
   id: 'security-development',
   name: 'Security-First Development Workflow',
   description: 'Implement features with security built-in from the start',
-  agents: ['marcus', 'james'],
+  agents: ['aegis', 'hephaestus'],
   steps: [
     {
       id: 'threat-modeling',
-      agent: 'marcus',
+      agent: 'aegis',
       action: 'threatModeling',
       inputs: [
         { type: 'artifact', name: 'requirements', path: 'docs/requirements.md' },
@@ -393,7 +393,7 @@ const securityDevelopmentWorkflow: Workflow = {
     },
     {
       id: 'security-architecture',
-      agent: 'marcus',
+      agent: 'aegis',
       action: 'securityArchitecture',
       inputs: [
         { type: 'artifact', name: 'threatModel', from: 'threat-modeling' }
@@ -406,7 +406,7 @@ const securityDevelopmentWorkflow: Workflow = {
     },
     {
       id: 'secure-implementation-guide',
-      agent: 'marcus',
+      agent: 'aegis',
       action: 'createSecureImplementationGuide',
       inputs: [
         { type: 'artifact', name: 'securityArchitecture', from: 'security-architecture' },
@@ -420,7 +420,7 @@ const securityDevelopmentWorkflow: Workflow = {
     },
     {
       id: 'implement-with-security',
-      agent: 'james',
+      agent: 'hephaestus',
       action: 'implementSecureFeature',
       inputs: [
         { type: 'artifact', name: 'implementationGuide', from: 'secure-implementation-guide' },
@@ -435,7 +435,7 @@ const securityDevelopmentWorkflow: Workflow = {
     },
     {
       id: 'security-validation',
-      agent: 'marcus',
+      agent: 'aegis',
       action: 'validateSecureImplementation',
       inputs: [
         { type: 'code', name: 'secureImplementation', from: 'implement-with-security' },
@@ -449,7 +449,7 @@ const securityDevelopmentWorkflow: Workflow = {
     },
     {
       id: 'apply-remediations',
-      agent: 'james',
+      agent: 'hephaestus',
       action: 'applySecurityRemediations',
       inputs: [
         { type: 'artifact', name: 'remediationTasks', from: 'security-validation' },

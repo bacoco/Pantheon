@@ -182,14 +182,14 @@ function extractRequiredCapabilities(analysis: TaskAnalysis): string[] {
 ```javascript
 function getAgentTopCapabilities(agentName: string): string[] {
   const agentCapabilities = {
-    winston: ["architecture-design", "system-design", "scalability-planning"],
+    daedalus: ["architecture-design", "system-design", "scalability-planning"],
     hephaestus: ["implementation", "code-quality", "refactoring"],
-    elena: ["testing-strategy", "qa-automation", "user-validation"],
-    marcus: ["security-audit", "compliance", "threat-analysis"],
-    john: ["product-planning", "requirements", "roadmapping"],
-    sarah: ["user-stories", "prioritization", "validation"],
-    bob: ["scrum-process", "task-breakdown", "team-coordination"],
-    sally: ["ux-design", "ui-patterns", "user-research"],
+    themis: ["testing-strategy", "qa-automation", "user-validation"],
+    aegis: ["security-audit", "compliance", "threat-analysis"],
+    prometheus: ["product-planning", "requirements", "roadmapping"],
+    athena: ["user-stories", "prioritization", "validation"],
+    hermes: ["scrum-process", "task-breakdown", "team-coordination"],
+    apollo: ["ux-design", "ui-patterns", "user-research"],
     pixel: ["ui-quality", "visual-testing", "style-compliance"],
     "baco-master": ["orchestration", "meta-analysis", "workflow-design"]
   };
@@ -199,23 +199,23 @@ function getAgentTopCapabilities(agentName: string): string[] {
 
 function determineRole(agentName: string, analysis: TaskAnalysis): string {
   const roleMap = {
-    winston: "Technical Architecture Advisor",
+    daedalus: "Technical Architecture Advisor",
     hephaestus: "Implementation Partner",
-    elena: "Quality Assurance Lead",
-    marcus: "Security Consultant",
-    john: "Product Strategy Advisor",
-    sarah: "User Story Validator",
-    bob: "Process Facilitator",
-    sally: "Design Consultant",
+    themis: "Quality Assurance Lead",
+    aegis: "Security Consultant",
+    prometheus: "Product Strategy Advisor",
+    athena: "User Story Validator",
+    hermes: "Process Facilitator",
+    apollo: "Design Consultant",
     pixel: "UI Quality Checker",
     "baco-master": "Workflow Orchestrator"
   };
   
   // Customize role based on task
-  if (analysis.taskType === "review" && agentName === "marcus") {
+  if (analysis.taskType === "review" && agentName === "aegis") {
     return "Security Reviewer";
   }
-  if (analysis.taskType === "testing" && agentName === "elena") {
+  if (analysis.taskType === "testing" && agentName === "themis") {
     return "Test Strategy Lead";
   }
   
@@ -255,11 +255,11 @@ function generateTradeoffs(
   analysis: TaskAnalysis
 ): string {
   const tradeoffTemplates = {
-    "winston-vs-hephaestus": "More theoretical, less hands-on implementation",
-    "hephaestus-vs-winston": "More practical, less architectural overview",
-    "elena-vs-hephaestus": "Focus on testing rather than implementation",
-    "marcus-vs-winston": "Security-first approach vs. general architecture",
-    "sally-vs-hephaestus": "Design-driven vs. code-first approach"
+    "daedalus-vs-hephaestus": "More theoretical, less hands-on implementation",
+    "hephaestus-vs-daedalus": "More practical, less architectural overview",
+    "themis-vs-hephaestus": "Focus on testing rather than implementation",
+    "aegis-vs-daedalus": "Security-first approach vs. general architecture",
+    "apollo-vs-hephaestus": "Design-driven vs. code-first approach"
   };
   
   const key = `${alternativeAgent}-vs-${primaryAgent}`;
@@ -277,14 +277,14 @@ function generateTradeoffs(
 
 function getAgentSpecialty(agentName: string): string {
   const specialties = {
-    winston: "architectural",
+    daedalus: "architectural",
     hephaestus: "implementation",
-    elena: "quality assurance",
-    marcus: "security",
-    john: "product management",
-    sarah: "user-focused",
-    bob: "process",
-    sally: "design",
+    themis: "quality assurance",
+    aegis: "security",
+    prometheus: "product management",
+    athena: "user-focused",
+    hermes: "process",
+    apollo: "design",
     pixel: "visual quality",
     "baco-master": "orchestration"
   };
@@ -371,12 +371,12 @@ function getFallbackRouting(): RoutingDecision {
       capabilities: ["implementation", "general-development"]
     },
     supportingAgents: [{
-      name: "winston",
+      name: "daedalus",
       role: "Architecture Advisor",
       matchScore: 0.5
     }],
     confidence: 0.6,
-    reasoning: "Falling back to Hephaestus (Developer) with Winston (Architect) support as a safe default",
+    reasoning: "Falling back to Hephaestus (Developer) with Daedalus (Architect) support as a safe default",
     alternativeRoutes: [],
     flags: {
       autoRoute: false,

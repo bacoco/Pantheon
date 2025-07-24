@@ -41,42 +41,42 @@ interface TaskComplexity {
 ### Agent Capability Matching
 ```typescript
 interface AgentCapabilityMatrix {
-  winston: {
+  daedalus: {
     strengths: ['architecture', 'system-design', 'scalability', 'patterns'];
     domains: ['backend', 'distributed', 'cloud', 'microservices'];
     bestFor: ['complex-systems', 'refactoring', 'performance'];
   };
-  james: {
+  hephaestus: {
     strengths: ['implementation', 'coding', 'debugging', 'integration'];
     domains: ['fullstack', 'api', 'database', 'frontend'];
     bestFor: ['feature-development', 'bug-fixes', 'prototypes'];
   };
-  elena: {
+  themis: {
     strengths: ['testing', 'quality', 'validation', 'user-experience'];
     domains: ['testing', 'automation', 'performance', 'security'];
     bestFor: ['test-suites', 'quality-assurance', 'validation'];
   };
-  marcus: {
+  aegis: {
     strengths: ['security', 'compliance', 'risk-assessment', 'hardening'];
     domains: ['security', 'authentication', 'encryption', 'audit'];
     bestFor: ['security-review', 'compliance', 'threat-modeling'];
   };
-  john: {
+  prometheus: {
     strengths: ['product-strategy', 'requirements', 'roadmap', 'prioritization'];
     domains: ['product', 'business', 'market', 'strategy'];
     bestFor: ['product-planning', 'requirements', 'roadmaps'];
   };
-  sarah: {
+  athena: {
     strengths: ['validation', 'user-stories', 'acceptance', 'quality'];
     domains: ['product', 'agile', 'user-needs', 'validation'];
     bestFor: ['story-creation', 'validation', 'acceptance-criteria'];
   };
-  bob: {
+  hermes: {
     strengths: ['sprint-planning', 'story-prep', 'team-coordination', 'agile'];
     domains: ['agile', 'scrum', 'planning', 'coordination'];
     bestFor: ['sprint-planning', 'story-preparation', 'team-coordination'];
   };
-  sally: {
+  apollo: {
     strengths: ['user-experience', 'design', 'accessibility', 'usability'];
     domains: ['ux', 'ui', 'design', 'frontend'];
     bestFor: ['ui-design', 'user-experience', 'design-systems'];
@@ -201,31 +201,31 @@ workflow:
     - name: "Architecture & Planning"
       parallel: true
       agents:
-        - winston: "System architecture and scalability design"
-        - john: "Product requirements and feature prioritization"
-        - marcus: "Security architecture and compliance"
+        - daedalus: "System architecture and scalability design"
+        - prometheus: "Product requirements and feature prioritization"
+        - aegis: "Security architecture and compliance"
       
     - name: "Core Development"
       parallel_groups:
         - group1:
-            - james: "API and backend services"
-            - marcus: "Authentication and security layers"
+            - hephaestus: "API and backend services"
+            - aegis: "Authentication and security layers"
         - group2:
-            - sally: "UI/UX design system"
-            - elena: "Test framework setup"
+            - apollo: "UI/UX design system"
+            - themis: "Test framework setup"
       
     - name: "Feature Implementation"
       agents:
-        - james: "Shopping cart and checkout"
-        - winston: "Real-time inventory system"
-        - sally: "Product catalog UI"
+        - hephaestus: "Shopping cart and checkout"
+        - daedalus: "Real-time inventory system"
+        - apollo: "Product catalog UI"
       dependencies: ["Core Development"]
       
     - name: "Integration & Testing"
       agents:
-        - elena: "End-to-end testing"
-        - marcus: "Security audit"
-        - james: "Performance optimization"
+        - themis: "End-to-end testing"
+        - aegis: "Security audit"
+        - hephaestus: "Performance optimization"
 ```
 
 ### Example 2: Quick Prototype
@@ -241,19 +241,19 @@ workflow:
   phases:
     - name: "Quick Design"
       agents:
-        - winston: "Simple architecture sketch"
+        - daedalus: "Simple architecture sketch"
       duration: "2 hours"
       
     - name: "Rapid Implementation"
       agents:
-        - james: "Core chatbot logic and API"
+        - hephaestus: "Core chatbot logic and API"
       duration: "2 days"
       
     - name: "Basic Testing"
       parallel: true
       agents:
-        - elena: "Functionality testing"
-        - sally: "User interaction testing"
+        - themis: "Functionality testing"
+        - apollo: "User interaction testing"
       duration: "1 day"
 ```
 

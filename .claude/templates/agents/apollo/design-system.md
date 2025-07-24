@@ -3,7 +3,7 @@ id: "design-system"
 name: "Design System Documentation Template"
 description: "Comprehensive design system for consistent product experiences"
 category: "design"
-agent: "sally"
+agent: "apollo"
 frameworks: ["any"]
 dependencies: []
 tags: ["design-system", "ui", "ux", "patterns", "guidelines"]
@@ -23,7 +23,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Sally create a comprehensive design system that ensures consistent, scalable, and delightful user experiences across all products.
+This template helps Apollo create a comprehensive design system that ensures consistent, scalable, and delightful user experiences across all products.
 
 ## Template
 
@@ -31,7 +31,7 @@ This template helps Sally create a comprehensive design system that ensures cons
 
 **Version**: {{version}}  
 **Last Updated**: {{lastUpdated}}  
-**Design Lead**: Sally (UX Designer)  
+**Design Lead**: Apollo (UX Designer)  
 **Status**: {{status}}
 
 ## Introduction
@@ -575,7 +575,7 @@ This template helps Sally create a comprehensive design system that ensures cons
 
 ---
 
-## Sally's Design System Philosophy
+## Apollo's Design System Philosophy
 
 1. **Systematic Thinking**: Design decisions that scale
 2. **Inclusive by Default**: Accessibility is not optional

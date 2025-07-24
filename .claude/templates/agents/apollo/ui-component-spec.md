@@ -3,7 +3,7 @@ id: "ui-component-spec"
 name: "UI Component Specification Template"
 description: "Detailed component specifications for consistent UI implementation"
 category: "design"
-agent: "sally"
+agent: "apollo"
 frameworks: ["react", "vue", "angular", "web-components"]
 dependencies: []
 tags: ["ui", "component", "design", "specification", "ux"]
@@ -19,7 +19,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Sally create comprehensive UI component specifications that provide developers with everything needed to implement consistent, accessible, and delightful user interfaces.
+This template helps Apollo create comprehensive UI component specifications that provide developers with everything needed to implement consistent, accessible, and delightful user interfaces.
 
 ## Template
 
@@ -28,7 +28,7 @@ This template helps Sally create comprehensive UI component specifications that 
 **Component Name**: {{componentName}}  
 **Category**: {{componentCategory}}  
 **Version**: {{version}}  
-**Designer**: Sally (UX Designer)  
+**Designer**: Apollo (UX Designer)  
 **Last Updated**: {{lastUpdated}}  
 **Status**: {{status}}
 
@@ -514,7 +514,7 @@ export default {{ComponentName}};
 
 ---
 
-## Sally's Design Principles
+## Apollo's Design Principles
 
 1. **User-Centered**: Every pixel serves the user's needs
 2. **Accessible First**: Design for everyone from the start

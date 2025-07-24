@@ -202,8 +202,8 @@ describe('Button', () => {
 describe('POST /api/users', () => {
   it('creates a new user with valid data', async () => {
     const userData = {
-      name: 'John Doe',
-      email: 'john@example.com',
+      name: 'Prometheus Doe',
+      email: 'prometheus@example.com',
       password: 'securePassword123'
     };
 
@@ -218,7 +218,7 @@ describe('POST /api/users', () => {
 
   it('returns 400 for invalid email', async () => {
     const userData = {
-      name: 'John Doe',
+      name: 'Prometheus Doe',
       email: 'invalid-email',
       password: 'securePassword123'
     };

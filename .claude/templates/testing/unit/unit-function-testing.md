@@ -115,10 +115,10 @@ describe('String Utilities', () => {
   describe('parseTemplate', () => {
     it('replaces template variables', () => {
       const template = 'Hello {{name}}, welcome to {{place}}!';
-      const data = { name: 'John', place: 'Paris' };
+      const data = { name: 'Prometheus', place: 'Paris' };
       
       expect(parseTemplate(template, data))
-        .toBe('Hello John, welcome to Paris!');
+        .toBe('Hello Prometheus, welcome to Paris!');
     });
 
     it('handles missing variables', () => {
@@ -130,9 +130,9 @@ describe('String Utilities', () => {
 
     it('handles nested properties', () => {
       const template = 'Hello {{user.name}}!';
-      const data = { user: { name: 'John' } };
+      const data = { user: { name: 'Prometheus' } };
       
-      expect(parseTemplate(template, data)).toBe('Hello John!');
+      expect(parseTemplate(template, data)).toBe('Hello Prometheus!');
     });
 
     it('escapes HTML by default', () => {

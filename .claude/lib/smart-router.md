@@ -326,14 +326,14 @@ function getCapabilityScore(level: string): number {
 function canHandleComplexity(agent: string, complexity: number): boolean {
   const complexityThresholds = {
     "janus": 10,
-    winston: 9,
-    james: 8,
-    elena: 7,
-    marcus: 8,
-    john: 7,
-    sarah: 6,
-    bob: 6,
-    sally: 7,
+    daedalus: 9,
+    hephaestus: 8,
+    themis: 7,
+    aegis: 8,
+    prometheus: 7,
+    athena: 6,
+    hermes: 6,
+    apollo: 7,
     pixel: 6
   };
   return complexity <= (complexityThresholds[agent] || 5);
@@ -437,8 +437,8 @@ The router dynamically loads agent capabilities from their metadata:
 ```javascript
 function loadAgentCapabilities() {
   const agents = [
-    'winston', 'james', 'elena', 'marcus', 'john', 
-    'sarah', 'bob', 'sally', 'pixel', 'janus',
+    'daedalus', 'hephaestus', 'themis', 'aegis', 'prometheus', 
+    'athena', 'hermes', 'apollo', 'pixel', 'janus',
     'oracle', 'harmonia', 'iris', 'calliope'
   ];
   
@@ -456,8 +456,8 @@ function loadAgentCapabilities() {
 function getAgentMetadata(agentId) {
   // This maps to the capability_metadata we added to each agent
   const metadata = {
-    winston: {
-      name: "Winston",
+    daedalus: {
+      name: "Daedalus",
       role: "System Architect",
       domains: ['architecture', 'system_design', 'scalability', 'devops'],
       capabilities: [
@@ -467,8 +467,8 @@ function getAgentMetadata(agentId) {
       complexityRange: [6, 10],
       strongPatterns: ['system architecture', 'design pattern', 'scalability']
     },
-    james: {
-      name: "James",
+    hephaestus: {
+      name: "Hephaestus",
       role: "Senior Developer",
       domains: ['implementation', 'debugging', 'frontend', 'backend'],
       capabilities: [
@@ -478,8 +478,8 @@ function getAgentMetadata(agentId) {
       complexityRange: [3, 8],
       strongPatterns: ['implement feature', 'build component', 'fix bug']
     },
-    elena: {
-      name: "Elena",
+    themis: {
+      name: "Themis",
       role: "QA Lead",
       domains: ['testing', 'quality_assurance', 'automation'],
       capabilities: [
@@ -489,8 +489,8 @@ function getAgentMetadata(agentId) {
       complexityRange: [3, 8],
       strongPatterns: ['test strategy', 'quality assurance', 'automated testing']
     },
-    marcus: {
-      name: "Marcus",
+    aegis: {
+      name: "Aegis",
       role: "Security Expert",
       domains: ['security', 'compliance', 'authentication'],
       capabilities: [

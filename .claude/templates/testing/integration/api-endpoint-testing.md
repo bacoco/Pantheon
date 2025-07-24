@@ -97,7 +97,7 @@ describe('Users API', () => {
     beforeEach(async () => {
       // Seed test data
       await User.create([
-        { name: 'John Doe', email: 'john@example.com' },
+        { name: 'Prometheus Doe', email: 'prometheus@example.com' },
         { name: 'Jane Smith', email: 'jane@example.com' }
       ]);
     });
@@ -109,7 +109,7 @@ describe('Users API', () => {
 
       expect(response.body).toHaveProperty('data');
       expect(response.body.data).toHaveLength(2);
-      expect(response.body.data[0]).toHaveProperty('email', 'john@example.com');
+      expect(response.body.data[0]).toHaveProperty('email', 'prometheus@example.com');
     });
 
     it('supports pagination', async () => {
@@ -136,19 +136,19 @@ describe('Users API', () => {
 
     it('filters by search query', async () => {
       const response = await request(app)
-        .get('/api/users?search=john')
+        .get('/api/users?search=prometheus')
         .expect(200);
 
       expect(response.body.data).toHaveLength(1);
-      expect(response.body.data[0].name).toBe('John Doe');
+      expect(response.body.data[0].name).toBe('Prometheus Doe');
     });
   });
 
   describe('GET /api/users/:id', () => {
     it('returns user by id', async () => {
       const user = await User.create({
-        name: 'John Doe',
-        email: 'john@example.com'
+        name: 'Prometheus Doe',
+        email: 'prometheus@example.com'
       });
 
       const response = await request(app)
@@ -156,8 +156,8 @@ describe('Users API', () => {
         .expect(200);
 
       expect(response.body.data).toMatchObject({
-        name: 'John Doe',
-        email: 'john@example.com'
+        name: 'Prometheus Doe',
+        email: 'prometheus@example.com'
       });
     });
 

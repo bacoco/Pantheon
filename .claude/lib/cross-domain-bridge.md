@@ -159,7 +159,7 @@ const fullStackPattern = {
   phases: [
     {
       name: 'API Design',
-      agents: ['winston', 'james'],
+      agents: ['daedalus', 'hephaestus'],
       domains: ['backend'],
       outputs: ['API contracts', 'Data models']
     },
@@ -168,12 +168,12 @@ const fullStackPattern = {
       parallel: true,
       branches: [
         {
-          agents: ['james'],
+          agents: ['hephaestus'],
           domains: ['backend'],
           tasks: ['Implement endpoints', 'Database setup']
         },
         {
-          agents: ['sally', 'james'],
+          agents: ['apollo', 'hephaestus'],
           domains: ['frontend'],
           tasks: ['UI components', 'State management']
         }
@@ -181,7 +181,7 @@ const fullStackPattern = {
     },
     {
       name: 'Integration',
-      agents: ['james', 'elena'],
+      agents: ['hephaestus', 'themis'],
       domains: ['frontend', 'backend'],
       tasks: ['Connect UI to API', 'End-to-end testing']
     }
@@ -197,7 +197,7 @@ const alignmentPattern = {
   phases: [
     {
       name: 'Requirements Translation',
-      agents: ['john', 'winston'],
+      agents: ['prometheus', 'daedalus'],
       bridge: 'business-to-technical',
       tasks: [
         'Convert business goals to technical requirements',
@@ -207,7 +207,7 @@ const alignmentPattern = {
     },
     {
       name: 'Solution Design',
-      agents: ['winston', 'james'],
+      agents: ['daedalus', 'hephaestus'],
       tasks: [
         'Architecture with business constraints',
         'Cost-optimized design',
@@ -216,7 +216,7 @@ const alignmentPattern = {
     },
     {
       name: 'Validation',
-      agents: ['sarah', 'elena'],
+      agents: ['athena', 'themis'],
       bridge: 'technical-to-business',
       tasks: [
         'Verify business requirements met',
@@ -236,21 +236,21 @@ const multiPlatformPattern = {
   phases: [
     {
       name: 'Shared Design',
-      agents: ['winston', 'sally'],
+      agents: ['daedalus', 'apollo'],
       outputs: ['Design system', 'API contracts', 'Data models']
     },
     {
       name: 'Platform Implementation',
       parallel: true,
       branches: [
-        { domain: 'web', agents: ['james'] },
-        { domain: 'mobile', agents: ['james'] },
-        { domain: 'backend', agents: ['james'] }
+        { domain: 'web', agents: ['hephaestus'] },
+        { domain: 'mobile', agents: ['hephaestus'] },
+        { domain: 'backend', agents: ['hephaestus'] }
       ]
     },
     {
       name: 'Cross-Platform Testing',
-      agents: ['elena'],
+      agents: ['themis'],
       tasks: ['Integration tests', 'Platform compatibility', 'Performance']
     }
   ]

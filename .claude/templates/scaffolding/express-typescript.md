@@ -187,7 +187,7 @@ temp/
     "compression": "^1.7.4",
     "express-rate-limit": "^7.1.5",
     "dotenv": "^16.3.1",
-    "winston": "^3.11.0",
+    "daedalus": "^3.11.0",
     "express-async-errors": "^3.1.1"
   },
   "devDependencies": {

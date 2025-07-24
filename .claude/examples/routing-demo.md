@@ -21,7 +21,7 @@ Task Analysis:
   Estimated Duration: weeks
 
 Routing Decision:
-  Primary Agent: Winston (System Architect)
+  Primary Agent: Daedalus (System Architect)
   Confidence: 92%
   Match Factors:
     ✓ domain:architecture (expert)
@@ -32,17 +32,17 @@ Routing Decision:
     ✓ pattern:system architecture
 
 Supporting Agents:
-  - Marcus (Security Expert)
+  - Aegis (Security Expert)
     Role: Security architecture advisor
     Reason: Brings security, compliance expertise
 
 Alternative Routes:
   1. BMad Master (78%) - Orchestrate full architecture team
-  2. James (45%) - Implementation-focused approach
-  3. Bob (35%) - Break down into sprint tasks
+  2. Hephaestus (45%) - Implementation-focused approach
+  3. Hermes (35%) - Break down into sprint tasks
 
 Options:
-1. ✅ Accept routing (activate Winston with Marcus support)
+1. ✅ Accept routing (activate Daedalus with Aegis support)
 2. 🔄 Choose alternative agent
 3. 📝 Modify task description
 4. ❌ Cancel
@@ -69,7 +69,7 @@ Task Analysis:
   Estimated Duration: hours
 
 Routing Decision:
-  Primary Agent: James (Senior Developer)
+  Primary Agent: Hephaestus (Senior Developer)
   Confidence: 88%
   Match Factors:
     ✓ domain:implementation (expert)
@@ -79,21 +79,21 @@ Routing Decision:
     ✓ pattern:fix bug
 
 Supporting Agents:
-  - Marcus (Security Expert)
+  - Aegis (Security Expert)
     Role: Authentication security validator
     Reason: Brings authentication, security expertise
 
 Alternative Routes:
-  1. Elena (65%) - Test-driven fix approach
-  2. Marcus (55%) - Security-first debugging
+  1. Themis (65%) - Test-driven fix approach
+  2. Aegis (55%) - Security-first debugging
   3. BMad Master (40%) - Orchestrated approach
 
 ✅ High Confidence Routing (88%)
 
-I'm highly confident that James is the best choice for this task.
-James (Senior Developer) is the best choice with 88% match. Strong domain expertise in implementation, debugging. Has 2 matching capabilities at expert/advanced level. Task complexity (4/10) is within optimal range. Request matches known patterns for this agent.
+I'm highly confident that Hephaestus is the best choice for this task.
+Hephaestus (Senior Developer) is the best choice with 88% match. Strong domain expertise in implementation, debugging. Has 2 matching capabilities at expert/advanced level. Task complexity (4/10) is within optimal range. Request matches known patterns for this agent.
 
-The task will be handled by James with support from Marcus.
+The task will be handled by Hephaestus with support from Aegis.
 ```
 
 ## Example 3: UI Design Task
@@ -115,7 +115,7 @@ Task Analysis:
   Estimated Duration: days
 
 Routing Decision:
-  Primary Agent: Sally (UX Designer)
+  Primary Agent: Apollo (UX Designer)
   Confidence: 95%
   Match Factors:
     ✓ domain:ui (expert)
@@ -132,14 +132,14 @@ Supporting Agents:
     Reason: Brings ui_quality, visual_testing expertise
 
 Alternative Routes:
-  1. James (40%) - Direct implementation approach
+  1. Hephaestus (40%) - Direct implementation approach
   2. BMad Master (35%) - Full team coordination
-  3. Elena (30%) - Accessibility testing focus
+  3. Themis (30%) - Accessibility testing focus
 
 ✅ High Confidence Routing (95%)
 
-I'm highly confident that Sally is the best choice for this task.
-Sally (UX Designer) is the best choice with 95% match. Strong domain expertise in ui, user_experience. Has 3 matching capabilities at expert/advanced level. Task complexity (6/10) is within optimal range. Request matches known patterns for this agent.
+I'm highly confident that Apollo is the best choice for this task.
+Apollo (UX Designer) is the best choice with 95% match. Strong domain expertise in ui, user_experience. Has 3 matching capabilities at expert/advanced level. Task complexity (6/10) is within optimal range. Request matches known patterns for this agent.
 ```
 
 ## Example 4: Complex Multi-Domain Task
@@ -177,20 +177,20 @@ Routing Decision:
     ✓ pattern:complex task
 
 Suggested Team Composition:
-  - Winston: Architecture design
-  - James: Implementation
-  - Marcus: Security (JWT auth)
-  - Elena: Test strategy
-  - Sally: UI/UX design
+  - Daedalus: Architecture design
+  - Hephaestus: Implementation
+  - Aegis: Security (JWT auth)
+  - Themis: Test strategy
+  - Apollo: UI/UX design
 
 Alternative Routes:
-  1. James (72%) - Lead implementation with ad-hoc support
-  2. Winston (68%) - Architecture-first approach
+  1. Hephaestus (72%) - Lead implementation with ad-hoc support
+  2. Daedalus (68%) - Architecture-first approach
   3. Manual team selection
 
 Would you like to:
 1. ✅ Use BMad Master orchestration mode
-2. 🎯 Select James as lead developer
+2. 🎯 Select Hephaestus as lead developer
 3. 👥 Manually compose team
 4. ❌ Cancel
 ```
@@ -245,7 +245,7 @@ Task Analysis:
   Estimated Duration: weeks
 
 Routing Decision:
-  Primary Agent: Elena (QA Lead)
+  Primary Agent: Themis (QA Lead)
   Confidence: 93%
   Match Factors:
     ✓ domain:testing (expert)
@@ -256,21 +256,21 @@ Routing Decision:
     ✓ pattern:test strategy
 
 Supporting Agents:
-  - James (Senior Developer)
+  - Hephaestus (Senior Developer)
     Role: Test implementation advisor
     Reason: Brings implementation, testing expertise
-  - Marcus (Security Expert)
+  - Aegis (Security Expert)
     Role: Security testing requirements
     Reason: Payment systems need security validation
 
 Alternative Routes:
   1. BMad Master (70%) - Orchestrate full QA team
-  2. James (55%) - Developer-driven testing
-  3. Marcus (45%) - Security-first testing
+  2. Hephaestus (55%) - Developer-driven testing
+  3. Aegis (45%) - Security-first testing
 
 ✅ High Confidence Routing (93%)
 
-Elena will create a comprehensive test strategy covering:
+Themis will create a comprehensive test strategy covering:
 - Test pyramid design (unit, integration, E2E)
 - Payment-specific test scenarios
 - Security test requirements
@@ -299,7 +299,7 @@ Task Analysis:
   Estimated Duration: weeks
 
 Routing Decision:
-  Primary Agent: James (Senior Developer)
+  Primary Agent: Hephaestus (Senior Developer)
   Confidence: 82%
   Match Factors:
     ✓ domain:implementation (expert)
@@ -309,14 +309,14 @@ Routing Decision:
     ✓ complexity:in-range
 
 What would happen:
-1. James would set up React Native project structure
-2. James would implement core app functionality
-3. Sally would be consulted for UI/UX design
-4. Elena would create mobile-specific test suite
+1. Hephaestus would set up React Native project structure
+2. Hephaestus would implement core app functionality
+3. Apollo would be consulted for UI/UX design
+4. Themis would create mobile-specific test suite
 
 Supporting Agents:
-  - Sally (UX Designer) - Mobile UI patterns
-  - Elena (QA Lead) - Mobile testing strategy
+  - Apollo (UX Designer) - Mobile UI patterns
+  - Themis (QA Lead) - Mobile testing strategy
 
 This is a preview - no agents have been activated.
 Use '/baco route Create a mobile app using React Native' to proceed.
@@ -341,8 +341,8 @@ Use '/baco route Create a mobile app using React Native' to proceed.
   },
   "routing": {
     "primaryAgent": {
-      "id": "james",
-      "name": "James",
+      "id": "hephaestus",
+      "name": "Hephaestus",
       "role": "Senior Developer",
       "confidence": 0.86,
       "matchFactors": [
@@ -354,14 +354,14 @@ Use '/baco route Create a mobile app using React Native' to proceed.
     },
     "supportingAgents": [
       {
-        "id": "winston",
-        "name": "Winston",
+        "id": "daedalus",
+        "name": "Daedalus",
         "role": "API architecture advisor",
         "reason": "Brings architecture expertise"
       }
     ],
     "alternatives": [
-      {"id": "winston", "confidence": 0.65},
+      {"id": "daedalus", "confidence": 0.65},
       {"id": "baco-master", "confidence": 0.50}
     ]
   },
@@ -392,10 +392,10 @@ Task Analysis:
 
 ✅ AUTO-ROUTING (85% confidence threshold met)
 
-Routing to: James (Senior Developer)
+Routing to: Hephaestus (Senior Developer)
 Confidence: 90%
 
-Task automatically assigned. James will fix the typo in the README file.
+Task automatically assigned. Hephaestus will fix the typo in the README file.
 ```
 
 These examples demonstrate the Smart Router's ability to:

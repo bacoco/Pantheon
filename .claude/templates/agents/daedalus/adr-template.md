@@ -3,7 +3,7 @@ id: "adr-template"
 name: "Architecture Decision Record Template"
 description: "Template for documenting architectural decisions"
 category: "architecture"
-agent: "winston"
+agent: "daedalus"
 frameworks: ["any"]
 dependencies: []
 tags: ["architecture", "documentation", "decision-record", "adr"]
@@ -17,7 +17,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Winston (Architect) create comprehensive Architecture Decision Records (ADRs) that document important architectural decisions made during the project.
+This template helps Daedalus (Architect) create comprehensive Architecture Decision Records (ADRs) that document important architectural decisions made during the project.
 
 ## Template
 
@@ -169,7 +169,7 @@ const adrData = {
   title: "api-gateway-selection",
   date: "2024-01-20",
   status: "Accepted",
-  deciders: "Winston (Architect), James (Developer), Marcus (Security)",
+  deciders: "Daedalus (Architect), Hephaestus (Developer), Aegis (Security)",
   technicalStory: "TECH-123",
   contextDescription: "Our microservices architecture requires a central entry point for client applications",
   problemStatement: "select an API gateway solution",
@@ -177,10 +177,10 @@ const adrData = {
   // ... other variables
 };
 
-const adr = await winston.generateADR(adrData);
+const adr = await daedalus.generateADR(adrData);
 ```
 
-## Winston's Best Practices
+## Daedalus's Best Practices
 
 1. **Be Specific**: Avoid vague statements; include concrete details
 2. **Consider Trade-offs**: Every decision has pros and cons - document them

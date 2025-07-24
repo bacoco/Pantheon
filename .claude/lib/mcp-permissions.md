@@ -12,7 +12,7 @@ When checking MCP permissions, reference this matrix to validate agent access to
 
 ```yaml
 permissions:
-  winston: # Architect
+  daedalus: # Architect
     tools:
       - context7      # Find architectural patterns
       - github        # Repository analysis, ADR creation
@@ -34,7 +34,7 @@ permissions:
       shadcn-ui: ["generate", "get_docs", "list_components"]
       browsermcp: ["preview", "debug", "test_interaction"]
 
-  elena: # QA Engineer
+  themis: # QA Engineer
     tools:
       - playwright    # E2E testing
       - browsermcp    # Manual testing
@@ -46,7 +46,7 @@ permissions:
       github: ["create_issue", "update_issue", "create_test_report"]
       context7: ["search_tests", "find_test_patterns"]
 
-  marcus: # Security Expert
+  aegis: # Security Expert
     tools:
       - github        # Security scanning
       - context7      # Security patterns
@@ -56,7 +56,7 @@ permissions:
       context7: ["search_vulnerabilities", "find_security_patterns"]
       browsermcp: ["preview_docs", "export_report"]
 
-  john: # Product Manager
+  prometheus: # Product Manager
     tools:
       - github        # Project management
       - claude-task-master  # Complex orchestration
@@ -66,7 +66,7 @@ permissions:
       claude-task-master: ["orchestrate", "track_progress", "generate_roadmap"]
       browsermcp: ["demo", "present", "export_slides"]
 
-  sarah: # Product Owner
+  athena: # Product Owner
     tools:
       - github        # Story management
       - browsermcp    # Feature demos
@@ -76,7 +76,7 @@ permissions:
       browsermcp: ["demo_feature", "capture_feedback"]
       claude-task-master: ["prioritize", "plan_sprint"]
 
-  bob: # Scrum Master
+  hermes: # Scrum Master
     tools:
       - claude-task-master  # Sprint orchestration
       - github        # Sprint tracking
@@ -86,7 +86,7 @@ permissions:
       github: ["update_sprint", "generate_burndown", "manage_board"]
       context7: ["find_ceremony_patterns", "search_agile_practices"]
 
-  sally: # UX Designer
+  apollo: # UX Designer
     tools:
       - browsermcp    # Interactive mockups
       - shadcn-ui     # Component library
@@ -175,16 +175,16 @@ Some operations require multiple agents to collaborate:
 ```yaml
 collaborative_permissions:
   ui_implementation:
-    required_agents: ["sally", "hephaestus"]
-    workflow: "sally designs -> hephaestus implements"
+    required_agents: ["apollo", "hephaestus"]
+    workflow: "apollo designs -> hephaestus implements"
     
   security_review:
-    required_agents: ["marcus", "hephaestus", "elena"]
-    workflow: "marcus reviews -> hephaestus fixes -> elena validates"
+    required_agents: ["aegis", "hephaestus", "themis"]
+    workflow: "aegis reviews -> hephaestus fixes -> themis validates"
     
   feature_delivery:
-    required_agents: ["john", "sarah", "bob", "hephaestus", "elena"]
-    workflow: "john defines -> sarah refines -> bob plans -> hephaestus builds -> elena tests"
+    required_agents: ["prometheus", "athena", "hermes", "hephaestus", "themis"]
+    workflow: "prometheus defines -> athena refines -> hermes plans -> hephaestus builds -> themis tests"
 ```
 
 ### Escalation Permissions
@@ -213,7 +213,7 @@ tool_restrictions:
     production_branch_protection:
       - "main"
       - "production"
-    requires_review: ["hephaestus", "elena"]
+    requires_review: ["hephaestus", "themis"]
     
   playwright:
     max_parallel_tests: 5
@@ -295,8 +295,8 @@ sensitive_operations:
 
 ```javascript
 // In agent workflow
-if (!canPerformAction("sally", "browsermcp", "create_mockup")) {
-  throw new Error("Sally lacks permission to create mockups");
+if (!canPerformAction("apollo", "browsermcp", "create_mockup")) {
+  throw new Error("Apollo lacks permission to create mockups");
 }
 ```
 
@@ -306,8 +306,8 @@ if (!canPerformAction("sally", "browsermcp", "create_mockup")) {
 // UI implementation workflow
 const workflow = collaborative_permissions.ui_implementation;
 
-// Sally designs
-if (canPerformAction("sally", "browsermcp", "create_mockup")) {
+// Apollo designs
+if (canPerformAction("apollo", "browsermcp", "create_mockup")) {
   const mockup = await createMockup();
   
   // Hand off to Hephaestus

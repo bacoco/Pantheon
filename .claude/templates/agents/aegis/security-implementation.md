@@ -3,7 +3,7 @@ id: "security-implementation"
 name: "Security Implementation Template"
 description: "Comprehensive security measures including authentication, authorization, and threat protection"
 category: "security"
-agent: "marcus"
+agent: "aegis"
 frameworks: ["express", "nodejs"]
 dependencies: 
   - package: "helmet"
@@ -45,7 +45,7 @@ targetFiles:
 
 ## Overview
 
-This template helps Marcus implement comprehensive security measures following OWASP best practices and defense-in-depth principles.
+This template helps Aegis implement comprehensive security measures following OWASP best practices and defense-in-depth principles.
 
 ## Security Configuration (src/security/config.ts)
 
@@ -55,7 +55,7 @@ This template helps Marcus implement comprehensive security measures following O
  * Centralized security settings following principle of least privilege
  * 
  * @module security/config
- * @author Marcus (Security Engineer)
+ * @author Aegis (Security Engineer)
  */
 
 export const securityConfig = {
@@ -634,7 +634,7 @@ const commonPasswords = [
 ```markdown
 # Threat Model: {{applicationName}}
 
-**Created by**: Marcus (Security Engineer)  
+**Created by**: Aegis (Security Engineer)  
 **Date**: {{date}}  
 **Version**: {{version}}  
 **Classification**: Confidential
@@ -842,7 +842,7 @@ graph LR
 
 ---
 
-## Marcus's Security Principles
+## Aegis's Security Principles
 
 1. **Defense in Depth**: Multiple layers of security controls
 2. **Least Privilege**: Minimal access rights for all entities
@@ -851,7 +851,7 @@ graph LR
 5. **Security by Design**: Built-in, not bolt-on security
 ```
 
-## Marcus's Security Best Practices
+## Aegis's Security Best Practices
 
 1. **Never Trust Input**: Validate and sanitize everything
 2. **Encrypt Everything**: Data at rest and in transit

@@ -160,7 +160,7 @@ export function slugify(str: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
-// Extract initials: "John Doe" -> "JD"
+// Extract initials: "Prometheus Doe" -> "JD"
 export function getInitials(name: string): string {
   return name
     .split(' ')

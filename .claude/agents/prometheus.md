@@ -295,7 +295,7 @@ capability_metadata:
     collaboration_suggestions:
       - with: athena
         when: "validating requirements with PO"
-      - with: winston
+      - with: daedalus
         when: "technical feasibility assessment"
       - with: apollo
         when: "user experience planning"

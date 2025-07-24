@@ -18,9 +18,9 @@ taskType: implementation
 ```
 
 ### Expected Routing
-- Primary: James (Developer) - High confidence
-- Supporting: Marcus (Security) - Authentication expertise
-- Alternatives: Winston (architecture approach)
+- Primary: Hephaestus (Developer) - High confidence
+- Supporting: Aegis (Security) - Authentication expertise
+- Alternatives: Daedalus (architecture approach)
 
 ## Test 2: Complex Multi-Domain
 
@@ -38,7 +38,7 @@ taskType: design/implementation
 ```
 
 ### Expected Routing
-- Primary: Baco Master or Winston (complexity requires orchestration)
+- Primary: Baco Master or Daedalus (complexity requires orchestration)
 - Team composition suggested
 - Multiple alternatives provided
 
@@ -58,7 +58,7 @@ taskType: design
 ```
 
 ### Expected Routing
-- Primary: Sally (UX Designer) - Expert match
+- Primary: Apollo (UX Designer) - Expert match
 - Supporting: Pixel (UI quality)
 - High confidence (>90%)
 
@@ -78,8 +78,8 @@ taskType: testing
 ```
 
 ### Expected Routing
-- Primary: Elena (QA Lead) - Expert match
-- Supporting: James (implementation support)
+- Primary: Themis (QA Lead) - Expert match
+- Supporting: Hephaestus (implementation support)
 - Pattern match: "test suite"
 
 ## Test 5: Security Audit
@@ -98,8 +98,8 @@ taskType: analysis/testing
 ```
 
 ### Expected Routing
-- Primary: Marcus (Security Expert)
-- Supporting: Elena (testing methodology)
+- Primary: Aegis (Security Expert)
+- Supporting: Themis (testing methodology)
 - High confidence
 
 ## Test 6: Edge Cases
@@ -123,7 +123,7 @@ Expected: Lower confidence, Baco Master fallback
 /gods route Add a button to the homepage
 ```
 
-Expected: James with high confidence, low complexity
+Expected: Hephaestus with high confidence, low complexity
 
 ## Test 7: Feature Flags
 

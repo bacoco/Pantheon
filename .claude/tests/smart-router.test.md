@@ -61,7 +61,7 @@ describe('TaskAnalysis', () => {
 
 ```javascript
 describe('Agent Matching', () => {
-  test('should route architecture tasks to Winston', () => {
+  test('should route architecture tasks to Daedalus', () => {
     const analysis = {
       domains: ['architecture'],
       technologies: ['aws'],
@@ -74,11 +74,11 @@ describe('Agent Matching', () => {
     
     const decision = matchAgents(analysis);
     
-    expect(decision.primaryAgent.name).toBe('winston');
+    expect(decision.primaryAgent.name).toBe('daedalus');
     expect(decision.confidence).toBeGreaterThan(0.7);
   });
 
-  test('should route implementation tasks to James', () => {
+  test('should route implementation tasks to Hephaestus', () => {
     const analysis = {
       domains: ['implementation'],
       technologies: ['react', 'nodejs'],
@@ -91,7 +91,7 @@ describe('Agent Matching', () => {
     
     const decision = matchAgents(analysis);
     
-    expect(decision.primaryAgent.name).toBe('james');
+    expect(decision.primaryAgent.name).toBe('hephaestus');
   });
 
   test('should suggest supporting agents for complex tasks', () => {
@@ -108,7 +108,7 @@ describe('Agent Matching', () => {
     const decision = matchAgents(analysis);
     
     expect(decision.supportingAgents.length).toBeGreaterThan(0);
-    expect(decision.supportingAgents.map(a => a.name)).toContain('marcus');
+    expect(decision.supportingAgents.map(a => a.name)).toContain('aegis');
   });
 
   test('should handle unknown domains gracefully', () => {
@@ -162,9 +162,9 @@ describe('Helper Functions', () => {
   });
 
   test('getAgentTopCapabilities should return correct capabilities', () => {
-    expect(getAgentTopCapabilities('winston')).toContain('architecture-design');
-    expect(getAgentTopCapabilities('james')).toContain('implementation');
-    expect(getAgentTopCapabilities('elena')).toContain('testing-strategy');
+    expect(getAgentTopCapabilities('daedalus')).toContain('architecture-design');
+    expect(getAgentTopCapabilities('hephaestus')).toContain('implementation');
+    expect(getAgentTopCapabilities('themis')).toContain('testing-strategy');
     expect(getAgentTopCapabilities('unknown')).toContain('general-support');
   });
 
@@ -188,7 +188,7 @@ describe('Routing Decisions', () => {
       taskType: 'design'
     };
     
-    const reasoning = generateReasoning('winston', analysis, 0.85);
+    const reasoning = generateReasoning('daedalus', analysis, 0.85);
     
     expect(reasoning).toContain('highly confident');
     expect(reasoning).toContain('architecture');
@@ -197,9 +197,9 @@ describe('Routing Decisions', () => {
 
   test('should provide alternative routes', () => {
     const scores = new Map([
-      ['winston', 0.9],
-      ['james', 0.7],
-      ['marcus', 0.6]
+      ['daedalus', 0.9],
+      ['hephaestus', 0.7],
+      ['aegis', 0.6]
     ]);
     
     const decision = generateRoutingDecision(scores, {
@@ -209,12 +209,12 @@ describe('Routing Decisions', () => {
     });
     
     expect(decision.alternativeRoutes.length).toBeGreaterThan(0);
-    expect(decision.alternativeRoutes[0].agent).toBe('james');
+    expect(decision.alternativeRoutes[0].agent).toBe('hephaestus');
   });
 
   test('should set auto-route flag based on confidence', () => {
-    const highConfidenceScores = new Map([['winston', 0.85]]);
-    const lowConfidenceScores = new Map([['james', 0.5]]);
+    const highConfidenceScores = new Map([['daedalus', 0.85]]);
+    const lowConfidenceScores = new Map([['hephaestus', 0.5]]);
     
     const highConfDecision = generateRoutingDecision(highConfidenceScores, { complexity: 5 });
     const lowConfDecision = generateRoutingDecision(lowConfidenceScores, { complexity: 5 });
@@ -248,7 +248,7 @@ describe('Feature Flags', () => {
     const decision = safeRoute(null);
     
     expect(decision).toBeDefined();
-    expect(decision.primaryAgent.name).toBe('james'); // fallback
+    expect(decision.primaryAgent.name).toBe('hephaestus'); // fallback
     expect(decision.confidence).toBeLessThan(0.7);
   });
 });
@@ -258,29 +258,29 @@ describe('Feature Flags', () => {
 
 ```javascript
 describe('End-to-End Routing', () => {
-  test('should route security audit to Marcus', () => {
+  test('should route security audit to Aegis', () => {
     const request = "Perform a comprehensive security audit of the authentication system";
     const analysis = analyzeTask(request);
     const decision = matchAgents(analysis);
     
-    expect(decision.primaryAgent.name).toBe('marcus');
+    expect(decision.primaryAgent.name).toBe('aegis');
     expect(decision.reasoning).toContain('security');
   });
 
-  test('should route UI design to Sally', () => {
+  test('should route UI design to Apollo', () => {
     const request = "Create beautiful and accessible UI mockups for the dashboard";
     const analysis = analyzeTask(request);
     const decision = matchAgents(analysis);
     
-    expect(decision.primaryAgent.name).toBe('sally');
+    expect(decision.primaryAgent.name).toBe('apollo');
   });
 
-  test('should route testing strategy to Elena', () => {
+  test('should route testing strategy to Themis', () => {
     const request = "Develop comprehensive test strategy with automated regression testing";
     const analysis = analyzeTask(request);
     const decision = matchAgents(analysis);
     
-    expect(decision.primaryAgent.name).toBe('elena');
+    expect(decision.primaryAgent.name).toBe('themis');
   });
 
   test('should suggest collaboration for full-stack features', () => {
@@ -288,7 +288,7 @@ describe('End-to-End Routing', () => {
     const analysis = analyzeTask(request);
     const decision = matchAgents(analysis);
     
-    expect(decision.primaryAgent.name).toBe('james');
+    expect(decision.primaryAgent.name).toBe('hephaestus');
     expect(decision.supportingAgents.length).toBeGreaterThan(0);
   });
 });

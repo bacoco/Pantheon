@@ -327,6 +327,6 @@ capability_metadata:
         when: "implementing security controls"
       - with: themis
         when: "testing security measures"
-      - with: john
+      - with: prometheus
         when: "planning security roadmap"
 ```

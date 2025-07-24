@@ -251,7 +251,7 @@ capability_metadata:
         when: "implementing architectural designs"
       - with: aegis
         when: "security architecture required"
-      - with: bob
+      - with: hermes
         when: "breaking down architecture into tasks"
       - with: themis
         when: "testing strategy for architecture"

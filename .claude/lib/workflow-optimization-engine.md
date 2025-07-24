@@ -466,14 +466,14 @@ Total: 4 hours (56% improvement)
 
 Agent Load Distribution:
 Original:
-- James: ████████████████████ 80%
-- Elena: ████████ 30%
-- Winston: ████ 20%
+- Hephaestus: ████████████████████ 80%
+- Themis: ████████ 30%
+- Daedalus: ████ 20%
 
 Optimized:
-- James: ████████████ 50%
-- Elena: ████████████ 50%
-- Winston: ██████████ 40%
+- Hephaestus: ████████████ 50%
+- Themis: ████████████ 50%
+- Daedalus: ██████████ 40%
 
 Bottlenecks Eliminated: 3
 Parallelization Increase: 45%
