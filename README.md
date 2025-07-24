@@ -1,7 +1,5 @@
-<h1 align="center">Pantheon</h1>
-
 <div align="center">
-  <img src="docs/images/pantheon.jpeg" alt="Pantheon" width="150" style="border-radius: 8px;">
+  <img src="docs/images/pantheon.jpeg" alt="Pantheon" width="300" style="border-radius: 8px;">
 </div>
 
 > Transform your ideas into production-ready applications with a pantheon of AI-powered development deities.
