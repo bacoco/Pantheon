@@ -39,6 +39,15 @@ COPY ./scripts/claude-auth-status.sh /usr/local/bin/claude-auth-status.sh
 COPY ./scripts/claude-auth-helper.sh /usr/local/bin/claude-auth-helper.sh
 RUN chmod +x /usr/local/bin/claude-auth-*.sh
 
+# Copy the .claude directory with all Pantheon commands and agents
+COPY ./.claude /home/coder/projects/.claude
+
+# Copy example pantheon files
+COPY ./examples /home/coder/projects/examples
+
+# Copy CLAUDE.md for project context
+COPY ./CLAUDE.md /home/coder/projects/CLAUDE.md
+
 # Copy VS Code extension
 COPY ./baco-vscode-extension /tmp/baco-vscode-extension/
 
