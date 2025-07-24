@@ -1,5 +1,9 @@
 # Pantheon - Where Gods Build Software
 
+<div align="center">
+  <img src="docs/images/pantheon.jpeg" alt="Pantheon" width="800" style="border-radius: 8px;">
+</div>
+
 > Transform your ideas into production-ready applications with a pantheon of AI-powered development deities.
 
 
