@@ -64,7 +64,7 @@ Each agent has specific MCP tool access based on their role:
 | Sarah (PO) | github, browsermcp, claude-task-master |
 | Bob (SM) | claude-task-master, github, context7 |
 | Sally (UX) | browsermcp, shadcn-ui, playwright |
-| Pixel (UI Healer) | playwright, browsermcp, context7 |
+| Argus (UI Healer) | playwright, browsermcp, context7 |
 | Janus | ALL tools |
 
 ## Using MCP Tools in Commands
@@ -124,11 +124,11 @@ feature_implementation:
 
 ### 1. UI Development Workflow
 ```
-Sally (UX) → James (Developer) → Pixel (UI Healer)
+Sally (UX) → James (Developer) → Argus (UI Healer)
 
 1. Sally creates mockup with browsermcp
 2. James implements using shadcn-ui components
-3. Pixel validates with playwright screenshots
+3. Argus validates with playwright screenshots
 4. Any issues trigger healing workflow
 ```
 
@@ -276,7 +276,7 @@ async function developComponent(requirements) {
     props: requirements.testData
   });
   
-  // Pixel validates quality
+  // Argus validates quality
   const quality = await mcp.playwright.analyzeUI({
     url: preview.url,
     styleGuide: requirements.styleGuide

@@ -153,12 +153,12 @@
   - [x] Create Code Transformer library (`.claude/lib/code-transformer.md`)
   - [x] Add animation support to the transformer (7 animation categories)
 - [x] **Pillar 3: UI Self-Healing**
-  - [x] Create the "Pixel" UI Healer agent (`.claude/agents/ui-healer.md`)
+  - [x] Create the "Argus" UI Healer agent (`.claude/agents/ui-healer.md`)
   - [x] Define `style-guide.md` and `ux-rules.md` templates
   - [x] Implement playwright MCP for real screenshot capture
   - [x] Add visual regression testing with playwright
-  - [x] Build the developer feedback loop with the "Pixel" agent
-  - [x] Integrate Pixel into the core QA workflow
+  - [x] Build the developer feedback loop with the "Argus" agent
+  - [x] Integrate Argus into the core QA workflow
 
 ## Phase 7: MCP Integration (Agent Tooling) ✅
 - [x] **Core Infrastructure**
@@ -184,7 +184,7 @@
   - [x] **Hermes (SM)**: claude-task-master, GitHub MCP, Context7
   - [x] **Apollo (UX)**: browsermcp, shadcn-ui, playwright
   - [x] **Janus**: All MCP tools (meta-orchestration)
-  - [x] **Pixel (UI Healer)**: playwright, browsermcp, Context7
+  - [x] **Argus (UI Healer)**: playwright, browsermcp, Context7
 - [x] **Documentation & Examples**
   - [x] MCP usage guide (`docs/mcp-usage-guide.md`)
   - [x] Tool usage examples for each agent
@@ -414,7 +414,7 @@
   - [x] Update Athena with capabilities: `user-stories:expert`, `prioritization:expert`
   - [x] Update Hermes with capabilities: `scrum:expert`, `task-breakdown:expert`
   - [x] Update Apollo with capabilities: `ux-design:expert`, `ui-patterns:expert`
-  - [x] Update Pixel with capabilities: `ui-quality:expert`, `visual-testing:expert`
+  - [x] Update Argus with capabilities: `ui-quality:expert`, `visual-testing:expert`
   - [x] Update Janus with capabilities: `orchestration:expert`, `meta-analysis:expert`
 
 - [x] **Day 5: Task Analyzer**

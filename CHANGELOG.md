@@ -94,7 +94,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - HTML mockup to React/Vue/Angular component transformation
   
   - UI Self-Healing
-    - Pixel (UI Healer) agent (`.claude/agents/ui-healer.md`)
+    - Argus (UI Healer) agent (`.claude/agents/ui-healer.md`)
     - 1-10 UI quality scoring system
     - Visual regression testing with playwright MCP
     - Style guide and UX rules templates
