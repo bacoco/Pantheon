@@ -1,0 +1,65 @@
+/* BACO/Pantheon Custom Styles */
+
+/* Add lightning emoji to title bar */
+.window-title::before {
+    content: "⚡ ";
+    font-size: 1.2em;
+}
+
+.window-title::after {
+    content: " ⚡";
+    font-size: 1.2em;
+}
+
+/* Activity bar styling */
+.activitybar .codicon {
+    color: #ffd700 !important;
+}
+
+/* Welcome tab customization */
+.editor-container .welcome-view {
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0a0a0a 100%);
+}
+
+/* Terminal styling */
+.terminal-container {
+    background: linear-gradient(to bottom, #0a0a0a 0%, #0f0f1e 100%);
+}
+
+/* Status bar gradient */
+.statusbar {
+    background: linear-gradient(to right, #1a1a2e 0%, #2a2a3e 50%, #1a1a2e 100%) !important;
+}
+
+/* Sidebar header styling */
+.sidebar .title {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Button hover effects */
+.monaco-button:hover {
+    box-shadow: 0 0 10px #ffd700;
+    transition: all 0.3s ease;
+}
+
+/* Tab styling with lightning effect */
+.tabs-container .tab.active {
+    border-top: 2px solid #ffd700;
+    box-shadow: 0 -2px 10px #ffd70040;
+}
+
+/* Add pantheon watermark */
+body::after {
+    content: "PANTHEON";
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 100px;
+    font-weight: bold;
+    color: #ffd70010;
+    pointer-events: none;
+    transform: rotate(-15deg);
+    z-index: -1;
+}
