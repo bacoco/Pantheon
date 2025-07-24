@@ -50,8 +50,8 @@ For terminal enthusiasts and automation:
 ## 🎯 Quick Start
 
 ```bash
-git clone https://github.com/bacoco/BACO.git
-cd BACO
+git clone https://github.com/bacoco/Pantheon.git
+cd Pantheon
 ```
 
 ### Start Your First Project
@@ -361,8 +361,8 @@ Additional context...
 - [Examples](examples/) - Real-world project templates
 
 ### Community
-- [GitHub Discussions](https://github.com/bacoco/BACO/discussions) - Ask questions, share ideas
-- [Issue Tracker](https://github.com/bacoco/BACO/issues) - Report bugs, request features
+- [GitHub Discussions](https://github.com/bacoco/Pantheon/discussions) - Ask questions, share ideas
+- [Issue Tracker](https://github.com/bacoco/Pantheon/issues) - Report bugs, request features
 
 ### Getting Started
 - [Interactive Pantheon Guide](docs/interactive-baco-guide.md)
@@ -433,4 +433,4 @@ Join the future of AI-powered development with Pantheon!
 
 ---
 
-For support and discussions: [github.com/bacoco/BACO](https://github.com/bacoco/BACO)
+For support and discussions: [github.com/bacoco/Pantheon](https://github.com/bacoco/Pantheon)
