@@ -22,11 +22,20 @@ Imagine describing your app idea in plain English and watching as a pantheon of 
 
 ### Your Development Journey:
 
-1. **Describe Your Vision** → "I need a task management app for small teams"
+1. **Describe Your Vision** → `gods create "task management app"`
 2. **Pantheon Understands** → Analyzes complexity, suggests architecture, identifies requirements  
 3. **AI Team Assembles** → Architect, Developer, QA, and UX specialists collaborate
 4. **Watch It Build** → Real-time progress as your app takes shape
 5. **Preview & Iterate** → Instant live preview with hot-reload
+
+### Quick Start - No Setup Required!
+
+```bash
+# Start building immediately - no init needed!
+gods create "todo app with React"
+gods generate "user authentication API"
+gods plan "e-commerce platform"
+```
 
 ## 🖥️ Choose Your Interface
 
@@ -77,7 +86,19 @@ cd Pantheon
 ./start-docker.sh
 ```
 
-Then open **http://localhost:8080** and run `gods init` in the VS Code terminal.
+Then open **http://localhost:8080** and start building immediately:
+
+```bash
+# Just type 'gods' to initialize (same as 'gods init')
+gods
+
+# Or jump straight into creating:
+gods create "todo app with React"
+gods generate "REST API endpoints" 
+gods plan "e-commerce platform"
+```
+
+**Note**: The terminal will show the Pantheon prompt: `⚡ [coder@pantheon projects]$ `
 
 **Note**: The `gods` command automatically integrates with Claude to provide the full Pantheon experience.
 
@@ -89,8 +110,15 @@ cd Pantheon
 ```
 
 Then:
-- **In Claude Code (Web/Desktop)**: Use slash command `/gods init`
-- **In Docker Terminal**: Use regular command `gods init` (automatically calls Claude)
+- **In Claude Code (Web/Desktop)**: Use slash commands like `/gods create "app idea"`
+- **In Terminal**: Use commands like `gods create "app idea"` (no init required!)
+
+Examples:
+```bash
+gods create "social media dashboard"
+gods generate "user profile component"
+gods plan "inventory management system"
+```
 
 ## 📦 Installation & Prerequisites
 
@@ -349,12 +377,17 @@ Browse all templates in the `examples/` directory.
 
 ## Core Commands
 
+### Quick Commands (No Init Required!)
+- `gods create "app description"` - Create a new app instantly
+- `gods generate "code description"` - Generate code from natural language
+- `gods build` - Build your project automatically
+- `gods plan "project idea"` - Create a development plan
+- `gods execute` - Execute the development plan
+
 ### Project Commands
-- `/gods init` - Summon the pantheon to bless a new project
+- `/gods init` - Initialize a new project with full setup (optional)
 - `/gods init --template` - Request a sacred scroll template
 - `/gods validate` - Have the gods verify your sacred scrolls
-- `/gods plan` - The gods devise your divine development plan
-- `/gods execute` - The gods manifest your vision into reality
 
 ### UI Enhancement Commands
 - `/ui-improve` - Run comprehensive UI enhancement pipeline
@@ -420,6 +453,20 @@ Pantheon is most valuable for:
 - ✅ Rapid prototyping and MVPs
 - ✅ Modernizing legacy systems
 - ✅ Creating design systems
+
+## Known Issues & Solutions
+
+### VS Code Welcome Page
+The default Microsoft welcome page may appear instead of the custom Pantheon welcome. 
+
+**Solution**: 
+- Click on `WELCOME.html` in the file explorer to view the Pantheon welcome
+- Or use this URL: http://localhost:8080/?open=/home/coder/projects/WELCOME.html
+
+### Terminal Directory
+If terminal doesn't start in `/projects`:
+- Close all terminals and open a new one with `Ctrl+` ` (or `Cmd+` ` on Mac)
+- The prompt should show: `⚡ [coder@pantheon projects]$ `
 
 ## License
 

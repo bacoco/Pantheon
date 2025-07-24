@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantheon - Where Gods Build Software</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(138, 43, 226, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 191, 255, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .pantheon-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.5);
+        }
+        
+        .pantheon-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .pantheon-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+            transform: rotate(0deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 4em;
+            font-weight: 900;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #ffd700, #ff6b6b, #4ecdc4, #ffd700);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 5s ease infinite;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .acronym {
+            font-size: 1.1em;
+            color: #ffd700;
+            margin: 10px 0 30px;
+            letter-spacing: 2px;
+        }
+        
+        .acronym b {
+            color: #fff;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.3em;
+            color: #888;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        
+        /* Journey Section */
+        .journey {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+        
+        .journey h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5em;
+            color: #ffd700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .journey-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 215, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+        
+        .step-number {
+            font-size: 2em;
+            color: #ffd700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        /* Commands Grid */
+        .commands {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .command-card {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), rgba(138, 43, 226, 0.05));
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .command-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .command-card:hover::before {
+            left: 100%;
+        }
+        
+        .command-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+        }
+        
+        .command-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .command-card h3 {
+            font-family: 'Orbitron', monospace;
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .command-card p {
+            color: #bbb;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .command-code {
+            background: #000;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            font-size: 0.95em;
+            white-space: nowrap;
+            overflow-x: auto;
+        }
+        
+        /* Gods Section */
+        .gods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .god-card {
+            background: rgba(138, 43, 226, 0.05);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .god-card:hover {
+            transform: scale(1.05);
+            background: rgba(138, 43, 226, 0.1);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.3);
+        }
+        
+        .god-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .god-name {
+            font-family: 'Orbitron', monospace;
+            color: #e6b3ff;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .god-role {
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        /* Quick Start Terminal */
+        .terminal {
+            background: #000;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .terminal::before {
+            content: '● ● ●';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            color: #ffd700;
+            font-size: 0.8em;
+            letter-spacing: 5px;
+        }
+        
+        .terminal-content {
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        .terminal-prompt {
+            color: #ffd700;
+        }
+        
+        /* Features */
+        .features {
+            background: rgba(0, 191, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 191, 255, 0.2);
+        }
+        
+        .features h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5em;
+            color: #00bfff;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+        }
+        
+        .feature-icon {
+            font-size: 1.5em;
+            color: #00bfff;
+            flex-shrink: 0;
+        }
+        
+        .feature-text {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        /* CTA */
+        .cta {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cta h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 3em;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            color: #666;
+        }
+        
+        .lightning-icon {
+            font-size: 3em;
+            color: #ffd700;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="pantheon-logo">
+                <img src="docs/images/pantheon.jpeg" alt="Pantheon" onerror="this.style.display='none'">
+            </div>
+            
+            <h1>Pantheon</h1>
+            
+            <div class="acronym">
+                <b>P</b>rincipled <b>A</b>gent <b>N</b>exus for <b>T</b>eam <b>H</b>armonization and <b>E</b>ngineering <b>O</b>rchestration <b>N</b>etwork
+            </div>
+            
+            <p class="tagline">Transform your ideas into production-ready applications with AI-powered development deities</p>
+        </div>
+        
+        <!-- Journey Section -->
+        <div class="journey">
+            <h2>🚀 From Idea to Implementation</h2>
+            <div class="journey-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <strong>Describe Vision</strong>
+                    <p>"I need a task app"</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <strong>AI Understands</strong>
+                    <p>Analyzes complexity</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <strong>Team Assembles</strong>
+                    <p>Gods collaborate</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <strong>Watch It Build</strong>
+                    <p>Real-time progress</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <strong>Preview & Ship</strong>
+                    <p>Instant deployment</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Start Terminal -->
+        <div class="terminal">
+            <div class="terminal-content">
+                <div><span class="terminal-prompt">⚡ pantheon@olympus:</span> ~ $ gods init</div>
+                <div><span class="terminal-prompt">⚡ pantheon@olympus:</span> ~ $ gods plan "task management app for teams"</div>
+                <div><span class="terminal-prompt">⚡ pantheon@olympus:</span> ~ $ gods execute</div>
+                <div><span class="terminal-prompt">⚡ pantheon@olympus:</span> ~ $ gods deploy</div>
+            </div>
+        </div>
+        
+        <!-- Commands Grid -->
+        <div class="commands">
+            <div class="command-card">
+                <div class="command-icon">🎯</div>
+                <h3>Initialize</h3>
+                <p>Start a new project with guided setup and best practices</p>
+                <div class="command-code">gods init</div>
+            </div>
+            
+            <div class="command-card">
+                <div class="command-icon">📋</div>
+                <h3>Plan</h3>
+                <p>Create detailed development plan with AI analysis</p>
+                <div class="command-code">gods plan "your idea"</div>
+            </div>
+            
+            <div class="command-card">
+                <div class="command-icon">🔨</div>
+                <h3>Execute</h3>
+                <p>Build your application with AI pair programming</p>
+                <div class="command-code">gods execute</div>
+            </div>
+            
+            <div class="command-card">
+                <div class="command-icon">✅</div>
+                <h3>Validate</h3>
+                <p>Ensure code quality with automated testing</p>
+                <div class="command-code">gods validate</div>
+            </div>
+            
+            <div class="command-card">
+                <div class="command-icon">🚀</div>
+                <h3>Deploy</h3>
+                <p>Ship to production with confidence</p>
+                <div class="command-code">gods deploy</div>
+            </div>
+            
+            <div class="command-card">
+                <div class="command-icon">📚</div>
+                <h3>Help</h3>
+                <p>Explore all available divine commands</p>
+                <div class="command-code">gods help</div>
+            </div>
+        </div>
+        
+        <!-- Gods Section -->
+        <div class="features">
+            <h2>🏛️ Meet Your AI Development Team</h2>
+            <div class="gods-grid">
+                <div class="god-card">
+                    <div class="god-icon">⚡</div>
+                    <div class="god-name">Zeus</div>
+                    <div class="god-role">The Orchestrator</div>
+                </div>
+                <div class="god-card">
+                    <div class="god-icon">🏗️</div>
+                    <div class="god-name">Hephaestus</div>
+                    <div class="god-role">The Developer</div>
+                </div>
+                <div class="god-card">
+                    <div class="god-icon">🎨</div>
+                    <div class="god-name">Apollo</div>
+                    <div class="god-role">The UX Designer</div>
+                </div>
+                <div class="god-card">
+                    <div class="god-icon">⚖️</div>
+                    <div class="god-name">Themis</div>
+                    <div class="god-role">Quality Guardian</div>
+                </div>
+                <div class="god-card">
+                    <div class="god-icon">🛡️</div>
+                    <div class="god-name">Aegis</div>
+                    <div class="god-role">Security Expert</div>
+                </div>
+                <div class="god-card">
+                    <div class="god-icon">🌊</div>
+                    <div class="god-name">Poseidon</div>
+                    <div class="god-role">Database Architect</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features -->
+        <div class="features">
+            <h2>✨ Pantheon Features</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <span class="feature-icon">🤖</span>
+                    <span class="feature-text">Claude AI integration for intelligent code generation</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🖥️</span>
+                    <span class="feature-text">Full VS Code IDE in your browser</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔄</span>
+                    <span class="feature-text">Live preview with hot-reload</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">📦</span>
+                    <span class="feature-text">Pre-configured Node.js, Python, Git</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💾</span>
+                    <span class="feature-text">Persistent project storage</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🚀</span>
+                    <span class="feature-text">One-click deployment ready</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA -->
+        <div class="cta">
+            <h2>Ready to Build Something Legendary?</h2>
+            <p style="margin: 20px 0; color: #999;">Open a terminal with Ctrl+` (or Cmd+` on Mac)</p>
+            <a href="#" class="cta-button" onclick="alert('Open terminal with Ctrl+` and type: gods init'); return false;">Start Building</a>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="lightning-icon">⚡</div>
+            <p>Powered by Claude AI | BACO/Pantheon Development Environment</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Where Gods Build Software</p>
+        </div>
+    </div>
+</body>
+</html>

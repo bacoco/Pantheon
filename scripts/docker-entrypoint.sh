@@ -1,87 +1,93 @@
 #!/bin/bash
-# Docker entrypoint script for BACO/Pantheon
-# This ensures Pantheon files are available in the mounted projects directory
+# Docker entrypoint for BACO/Pantheon
 
 echo "🚀 Initializing Pantheon environment..."
 
-# Copy Pantheon files to projects directory if they don't exist
+# Set PATH for npm global packages
+export PATH="/home/coder/.npm-global/bin:$PATH"
+
+# Check Claude status
+if command -v claude &> /dev/null; then
+    echo "✅ Claude Code CLI available"
+else
+    echo "🔍 Claude Code CLI not found - install with: npm install -g @anthropic-ai/claude-code"
+fi
+
+# Install custom theme
+if [ -f "/usr/local/bin/install-theme.sh" ]; then
+    /usr/local/bin/install-theme.sh
+fi
+
+# Ensure .claude directory is in projects
 if [ ! -d "/home/coder/projects/.claude" ]; then
-    echo "📁 Setting up Pantheon command files..."
-    cp -r /home/coder/.pantheon-files/.claude /home/coder/projects/.claude 2>/dev/null || true
-    
-    # Make files read-only to prevent accidental modification
-    find /home/coder/projects/.claude -type f -exec chmod 444 {} \;
-    find /home/coder/projects/.claude -type d -exec chmod 555 {} \;
-    
-    # Add notice about proprietary files
-    cat > /home/coder/projects/.claude/README.txt << 'EOF'
-PANTHEON SYSTEM FILES
-====================
-These files are proprietary components of the BACO/Pantheon system.
-They are provided for Claude Code functionality only.
-
-DO NOT:
-- Copy or distribute these files
-- Modify the contents
-- Use outside of this environment
-
-© BACO/Pantheon - All rights reserved
-EOF
+    echo "📁 Setting up .claude directory..."
+    if [ -d "/home/coder/.config/pantheon/claude-source" ]; then
+        cp -r /home/coder/.config/pantheon/claude-source /home/coder/projects/.claude
+        echo "✅ Copied .claude directory to projects"
+    else
+        echo "❌ Source .claude directory not found!"
+    fi
 fi
 
-if [ ! -d "/home/coder/projects/examples" ]; then
+# Check .claude directory
+if [ -d "/home/coder/projects/.claude" ]; then
+    file_count=$(find /home/coder/projects/.claude -type f -name "*.md" 2>/dev/null | wc -l)
+    echo "📁 .claude directory ready with $file_count command files"
+    echo "📝 Commands available:"
+    echo "   Type: gods init    (to initialize a project)"
+    echo "   Type: gods help    (for all commands)"
+    echo ""
+    echo "⚠️  Note: Use 'gods' not '/gods'"
+else
+    echo "❌ .claude directory not found!"
+fi
+
+# Copy other needed files if needed
+if [ ! -d "/home/coder/projects/examples" ] && [ -d "/home/coder/.config/pantheon/files/examples" ]; then
     echo "📚 Copying example files..."
-    cp -r /home/coder/.pantheon-files/examples /home/coder/projects/examples 2>/dev/null || true
+    cp -r /home/coder/.config/pantheon/files/examples /home/coder/projects/examples 2>/dev/null || true
 fi
 
-if [ ! -f "/home/coder/projects/CLAUDE.md" ]; then
-    echo "📄 Copying CLAUDE.md..."
-    cp /home/coder/.pantheon-files/CLAUDE.md /home/coder/projects/CLAUDE.md 2>/dev/null || true
-fi
-
-# Check Claude CLI installation
-echo "🔍 Checking Claude integration..."
-if ! command -v claude &> /dev/null; then
-    echo "📦 Attempting to install Claude CLI..."
-    npm install -g @anthropic-ai/claude-code 2>/dev/null || \
-    npm install -g claude-cli 2>/dev/null || \
-    npm install -g claude 2>/dev/null || \
-    echo "⚠️  Claude CLI not available - use VS Code extension instead"
-fi
-
-# Check VS Code extension installation
-if ! code-server --list-extensions 2>/dev/null | grep -q "anthropic.claude-code"; then
-    echo "🔌 Installing Claude VS Code extension..."
-    code-server --install-extension anthropic.claude-code 2>/dev/null || \
-    echo "⚠️  Claude extension will need manual installation"
-fi
-
-# Create helper command for extension usage
-if [ ! -f "/usr/local/bin/claude-extension" ]; then
-    cat > /usr/local/bin/claude-extension << 'EOF'
-#!/bin/bash
-echo "🚀 Claude VS Code Extension Guide"
-echo "================================"
-echo ""
-echo "1. Look for the Claude icon in the VS Code sidebar (left panel)"
-echo "2. Click on it to open the Claude panel"
-echo "3. Sign in with your Claude account"
-echo "4. Use /gods commands directly in the Claude chat"
-echo ""
-echo "If you don't see the Claude icon:"
-echo "  - Press Ctrl+Shift+P and search for 'Claude'"
-echo "  - Or reload the window: Ctrl+R"
-EOF
-    chmod +x /usr/local/bin/claude-extension
-fi
+# Don't copy CLAUDE.md to projects - it doesn't work there
 
 # Show welcome message
-if [ -f "/home/coder/.pantheon-branding/motd.sh" ]; then
-    /home/coder/.pantheon-branding/motd.sh
+if [ -f "/home/coder/.config/pantheon/branding/motd.sh" ]; then
+    /home/coder/.config/pantheon/branding/motd.sh
 fi
+
+# Don't start the Pantheon server - it creates too many port forwards
+# The compiled commands are available if needed
 
 echo "✅ Pantheon environment ready!"
 echo ""
 
-# Start code-server with all arguments passed to this script
+# Ensure we're in the right directory
+cd /home/coder/projects
+
+# Set Pantheon prompt if not already set
+if ! grep -q "pantheon" /home/coder/.bashrc; then
+    echo "export PS1='⚡ [\\u@pantheon \\W]$ '" >> /home/coder/.bashrc
+fi
+
+# Create a symlink to hide the home directory mess
+if [ ! -L "/home/coder/workspace" ]; then
+    ln -s /home/coder/projects /home/coder/workspace
+fi
+
+# Create a startup file that VS Code will open by default
+if [ -f "/home/coder/projects/WELCOME.html" ]; then
+    # Create a .code-workspace file that opens our welcome page
+    cat > /home/coder/projects/.vscode/startup.code-workspace << 'EOF'
+{
+    "folders": [{"path": ".."}],
+    "settings": {
+        "workbench.startupEditor": "none"
+    },
+    "extensions": {},
+    "launch": {}
+}
+EOF
+fi
+
+# Start code-server - it will open the projects folder and our welcome page
 exec code-server "$@"

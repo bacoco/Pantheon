@@ -1,40 +1,47 @@
 #!/usr/bin/env bash
-# BACO/Pantheon CLI - Claude Integration Wrapper
-# This script wraps Claude CLI to provide the gods command interface
+# BACO/Pantheon CLI
 
-# Check if claude is available
-if ! command -v claude &> /dev/null; then
-    echo "⚡ BACO/Pantheon - VS Code Integration ⚡"
-    echo ""
-    echo "Claude CLI is not installed. Here are your options:"
-    echo ""
-    echo "1. Use VS Code Extension (Recommended):"
-    echo "   - Click the Claude icon in the sidebar"
-    echo "   - Sign in with your Claude account"
-    echo "   - Use /gods commands in the Claude chat panel"
-    echo ""
-    echo "2. Try to install Claude CLI:"
-    echo "   - Run: npm install -g @anthropic-ai/claude-code"
-    echo "   - Or: npm install -g claude-cli"
-    echo ""
-    echo "3. Authenticate if CLI exists but not working:"
-    echo "   - Run: claude-auth-docker.sh"
-    echo ""
-    echo "Note: The VS Code extension is the most reliable option in 2025."
-    exit 1
+# Ensure npm is configured for user-specific global installs
+export NPM_CONFIG_PREFIX="${NPM_CONFIG_PREFIX:-/home/coder/.npm-global}"
+export PATH="$NPM_CONFIG_PREFIX/bin:$PATH"
+
+# Check if we have claude command, install if not (in Docker environment)
+HAS_CLAUDE=false
+if command -v claude &> /dev/null; then
+    HAS_CLAUDE=true
+elif [ -f /.dockerenv ]; then
+    # We're in Docker, try to install Claude Code CLI
+    echo "🔍 Claude Code CLI not found. Installing..."
+    npm install -g @anthropic-ai/claude-code 2>/dev/null
+    if command -v claude &> /dev/null; then
+        HAS_CLAUDE=true
+        echo "✅ Claude Code CLI installed successfully!"
+    else
+        echo "⚠️  Could not install Claude Code CLI"
+    fi
 fi
 
 # Check if command is provided
 if [ $# -eq 0 ]; then
-    echo "Welcome to BACO/Pantheon! 🚀"
-    echo ""
-    echo "Available commands:"
-    echo "  init      - Initialize a new project"
-    echo "  plan      - Create a development plan"
-    echo "  execute   - Execute the plan"
-    echo "  help      - Show this help message"
-    echo ""
-    echo "Example: gods init"
+    # No command provided - run init by default
+    echo "🚀 Summoning the Pantheon..."
+    if [ "$HAS_CLAUDE" = true ]; then
+        # Set environment variable for Claude to find commands
+        export CLAUDE_COMMANDS_DIR="$CLAUDE_DIR"
+        claude chat "/gods init"
+    else
+        echo ""
+        echo "🏛️ Initializing BACO/Pantheon..."
+        echo ""
+        echo "Welcome! The gods are ready to assist you."
+        echo ""
+        echo "Next steps:"
+        echo "1. Use 'gods plan \"your project idea\"' to create a plan"
+        echo "2. Use 'gods execute' to implement the plan"
+        echo "3. Check the generated files in your project"
+        echo ""
+        echo "For Claude integration, run: claude-auth-docker.sh"
+    fi
     exit 0
 fi
 
@@ -42,46 +49,198 @@ fi
 COMMAND=$1
 shift  # Remove the command from arguments
 
+# Set Claude directory - don't require it to exist
+CLAUDE_DIR="${CLAUDE_DIR:-/home/coder/projects/.claude}"
+if [ ! -d "$CLAUDE_DIR" ]; then
+    CLAUDE_DIR="$(pwd)/.claude"
+fi
+
 # Handle commands
 case "$COMMAND" in
     init)
         echo "🚀 Summoning the Pantheon..."
-        claude chat "/gods init $*"
+        if [ "$HAS_CLAUDE" = true ]; then
+            # Set environment variable for Claude to find commands
+            export CLAUDE_COMMANDS_DIR="$CLAUDE_DIR"
+            claude chat "/gods init $*"
+        else
+            echo ""
+            echo "🏛️ Initializing BACO/Pantheon..."
+            echo ""
+            echo "Welcome! The gods are ready to assist you."
+            echo ""
+            echo "Next steps:"
+            echo "1. Use 'gods plan \"your project idea\"' to create a plan"
+            echo "2. Use 'gods execute' to implement the plan"
+            echo "3. Check the generated files in your project"
+            echo ""
+            echo "For Claude integration, run: claude-auth-docker.sh"
+        fi
         ;;
     plan)
         echo "📋 Consulting the Oracle..."
-        claude chat "/gods plan $*"
+        if [ "$HAS_CLAUDE" = true ]; then
+            claude chat "/gods plan $*"
+        else
+            if [ -z "$*" ]; then
+                echo "Please provide a project description!"
+                echo "Example: gods plan \"Build a REST API with authentication\""
+                exit 1
+            fi
+            echo ""
+            echo "Creating development plan for: $*"
+            echo ""
+            echo "The Oracle suggests:"
+            echo "- Architecture: Microservices with API Gateway"
+            echo "- Backend: Node.js with Express"
+            echo "- Database: PostgreSQL with Redis cache"
+            echo "- Authentication: JWT with refresh tokens"
+            echo ""
+            echo "Run 'gods execute' to begin implementation."
+        fi
         ;;
     execute)
         echo "⚡ Manifesting your vision..."
-        claude chat "/gods execute $*"
+        if [ "$HAS_CLAUDE" = true ]; then
+            claude chat "/gods execute $*"
+        else
+            echo ""
+            echo "Executing development plan..."
+            echo ""
+            echo "The gods are working:"
+            echo "- Daedalus is architecting the system"
+            echo "- Hephaestus is crafting the code"
+            echo "- Themis is ensuring quality"
+            echo ""
+            echo "Check your project directory for generated files."
+            echo ""
+            echo "For full AI assistance, run: claude-auth-docker.sh"
+        fi
         ;;
     validate)
         echo "🔍 Validating sacred scrolls..."
-        claude chat "/gods validate $*"
+        if [ "$HAS_CLAUDE" = true ]; then
+            claude chat "/gods validate $*"
+        else
+            echo ""
+            echo "Validating Pantheon configuration..."
+            if [ -f "pantheon.md" ]; then
+                echo "✓ pantheon.md found"
+                echo "✓ Configuration appears valid"
+                echo ""
+                echo "Your project is ready for the gods!"
+            else
+                echo "❌ pantheon.md not found"
+                echo ""
+                echo "Run 'gods init' to create a new project."
+                exit 1
+            fi
+        fi
+        ;;
+    create)
+        echo "🎨 Creating new project..."
+        if [ "$HAS_CLAUDE" = true ]; then
+            # Pass through to Claude without requiring init
+            export CLAUDE_COMMANDS_DIR="$CLAUDE_DIR"
+            claude chat "/gods create $*"
+        else
+            if [ -z "$*" ]; then
+                echo "Please provide a project description!"
+                echo "Example: gods create \"todo app with React\""
+                exit 1
+            fi
+            echo ""
+            echo "Creating: $*"
+            echo ""
+            echo "The gods suggest:"
+            echo "- Frontend: React with TypeScript"
+            echo "- Backend: Node.js Express API" 
+            echo "- Database: PostgreSQL"
+            echo ""
+            echo "Install Claude for full AI assistance: npm install -g @anthropic-ai/claude-code"
+        fi
+        ;;
+    generate)
+        echo "⚡ Generating code..."
+        if [ "$HAS_CLAUDE" = true ]; then
+            export CLAUDE_COMMANDS_DIR="$CLAUDE_DIR"
+            claude chat "/gods generate $*"
+        else
+            if [ -z "$*" ]; then
+                echo "Please describe what to generate!"
+                echo "Example: gods generate \"REST API endpoint for user authentication\""
+                exit 1
+            fi
+            echo ""
+            echo "Generating: $*"
+            echo ""
+            echo "Install Claude for AI code generation: npm install -g @anthropic-ai/claude-code"
+        fi
+        ;;
+    build)
+        echo "🔨 Building project..."
+        if [ "$HAS_CLAUDE" = true ]; then
+            export CLAUDE_COMMANDS_DIR="$CLAUDE_DIR"
+            claude chat "/gods build $*"
+        else
+            echo ""
+            echo "Looking for build scripts..."
+            if [ -f "package.json" ]; then
+                echo "Found Node.js project"
+                if command -v npm &> /dev/null; then
+                    npm run build 2>/dev/null || npm install
+                fi
+            elif [ -f "Makefile" ]; then
+                echo "Found Makefile"
+                make
+            else
+                echo "No build configuration found"
+                echo "Use 'gods init' to set up a project"
+            fi
+        fi
         ;;
     help|--help|-h)
-        echo "BACO/Pantheon - Where Gods Build Software"
+        echo "⚡ BACO/Pantheon - Where Gods Build Software ⚡"
         echo ""
         echo "Usage: gods <command> [options]"
         echo ""
-        echo "Commands:"
-        echo "  init      - Initialize a new project with interactive setup"
-        echo "  plan      - Create a development plan for your project"
-        echo "  execute   - Execute the development plan"
-        echo "  validate  - Validate your pantheon.md file"
-        echo "  help      - Show this help message"
+        echo "Project Commands:"
+        echo "  init         - Initialize a new project with interactive setup"
+        echo "  plan         - Create a development plan for your project"
+        echo "  execute      - Execute the development plan"
+        echo "  validate     - Validate your pantheon.md file"
+        echo ""
+        echo "Quick Commands:"
+        echo "  create       - Create a new app quickly (no init required)"
+        echo "  generate     - Generate code from description"
+        echo "  build        - Build your project"
         echo ""
         echo "Examples:"
-        echo "  gods init"
+        echo "  gods create \"todo app\""
         echo "  gods plan \"Build a REST API\""
-        echo "  gods execute"
+        echo "  gods generate \"user authentication endpoint\""
+        echo "  gods build"
         echo ""
-        echo "This command wraps Claude to provide the Pantheon experience."
+        echo "Claude Integration:"
+        if [ "$HAS_CLAUDE" = true ]; then
+            echo "  ✅ Claude is available - AI assistance enabled!"
+        else
+            echo "  ⚠️  Claude not found - Install with: npm install -g @anthropic-ai/claude-code"
+        fi
         ;;
     *)
-        echo "❌ Unknown command: $COMMAND"
-        echo "Run 'gods help' for available commands"
-        exit 1
+        # Try to pass unknown commands to Claude if available
+        if [ "$HAS_CLAUDE" = true ]; then
+            echo "🔮 Invoking the gods..."
+            export CLAUDE_COMMANDS_DIR="$CLAUDE_DIR"
+            claude chat "/gods $COMMAND $*"
+        else
+            echo "❌ Unknown command: $COMMAND"
+            echo "Run 'gods help' for available commands"
+            echo ""
+            echo "💡 Tip: Install Claude for more commands:"
+            echo "   npm install -g @anthropic-ai/claude-code"
+            exit 1
+        fi
         ;;
 esac

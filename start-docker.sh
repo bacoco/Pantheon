@@ -181,6 +181,38 @@ setup_directories() {
         print_color $GREEN "  ✓ projects/ directory exists"
     fi
     
+    # Create .vscode directory with settings to fix terminal
+    if [ ! -d ".vscode" ]; then
+        mkdir -p .vscode
+    fi
+    
+    # Create VS Code settings to force terminal to start in projects
+    cat > .vscode/settings.json << 'EOF'
+{
+    "terminal.integrated.cwd": "${workspaceFolder}/projects",
+    "terminal.integrated.defaultProfile.linux": "projects-bash",
+    "terminal.integrated.profiles.linux": {
+        "projects-bash": {
+            "path": "/bin/bash",
+            "args": ["--login", "-c", "cd /home/coder/projects && exec bash"],
+            "cwd": "/home/coder/projects",
+            "overrideName": true,
+            "env": {
+                "PS1": "⚡ [\\u@pantheon \\W]$ "
+            }
+        }
+    },
+    "remote.autoForwardPorts": false,
+    "remote.autoForwardPortsSource": "process"
+}
+EOF
+    print_color $GREEN "  ✓ Created VS Code terminal settings"
+    
+    # Ensure workspace file is configured correctly
+    if [ -f "docker/pantheon.code-workspace" ]; then
+        print_color $GREEN "  ✓ Workspace file exists - Explorer will open in projects directory"
+    fi
+    
     echo
 }
 
@@ -188,25 +220,25 @@ setup_directories() {
 build_image() {
     print_color $BLUE "🔨 Building Docker image..."
     
-    # Check for secure mode flag or default to secure
-    local compose_file="docker-compose.secure.yml"
-    if [ "$1" = "--standard" ]; then
-        compose_file="docker-compose.claude.yml"
-        print_color $YELLOW "  Using standard mode (visible commands)"
-    else
-        print_color $GREEN "  Using secure mode (protected commands)"
-        print_color $PURPLE "  Commands will be compiled and protected"
-    fi
+    local compose_file="docker-compose.yml"
+    local force_rebuild="$1"
+    print_color $GREEN "  Building BACO/Pantheon environment"
+    print_color $PURPLE "  Copying .claude directory with $(find .claude -name '*.md' 2>/dev/null | wc -l) command files"
     
     print_color $YELLOW "  This may take a few minutes on first run..."
     echo
     
     cd docker
-    if docker-compose -f $compose_file build; then
+    if [ "$force_rebuild" = true ]; then
+        print_color $YELLOW "  Force rebuilding (no cache)..."
+        build_cmd="docker-compose -f $compose_file build --no-cache"
+    else
+        build_cmd="docker-compose -f $compose_file build"
+    fi
+    
+    if $build_cmd; then
         cd ..
         print_color $GREEN "✅ Docker image built successfully!"
-        # Store which mode we used
-        echo $compose_file > .docker-mode
     else
         cd ..
         print_color $RED "❌ Failed to build Docker image"
@@ -219,14 +251,8 @@ build_image() {
 start_container() {
     print_color $BLUE "🚀 Starting BACO/Pantheon container..."
     
-    # Use the same compose file that was used for building
-    local compose_file="docker-compose.secure.yml"
-    if [ -f ".docker-mode" ]; then
-        compose_file=$(cat .docker-mode)
-    fi
-    
     cd docker
-    if docker-compose -f $compose_file up -d; then
+    if docker-compose up -d; then
         cd ..
         print_color $GREEN "✅ Container started successfully!"
     else
@@ -247,6 +273,11 @@ wait_for_vscode() {
     while [ $attempt -lt $max_attempts ]; do
         if curl -s -o /dev/null http://localhost:8080; then
             print_color $GREEN "✅ VS Code Server is ready!"
+            
+            # Disable auto port forwarding in running container
+            print_color $BLUE "🔧 Disabling auto port forwarding..."
+            docker exec pantheon-ide bash -c 'mkdir -p /home/coder/.local/share/code-server/User && echo "{\"remote.autoForwardPorts\": false}" > /home/coder/.local/share/code-server/User/settings.json' 2>/dev/null || true
+            
             return 0
         fi
         
@@ -266,18 +297,25 @@ show_next_steps() {
     echo
     print_color $CYAN "🎉 BACO/Pantheon Docker environment is ready!"
     echo
-    print_color $GREEN "📡 Access VS Code Server at: http://localhost:8080"
+    print_color $GREEN "📡 Access VS Code Server at: http://localhost:8080/?folder=/home/coder/projects"
+    print_color $YELLOW "📄 To see the welcome page, open: http://localhost:8080/?folder=/home/coder/projects&open=/home/coder/projects/WELCOME.html"
     echo
     print_color $PURPLE "Next steps:"
-    echo "1. Open http://localhost:8080 in your browser"
+    echo "1. Open the URL above in your browser (it will open the Pantheon welcome page)"
     echo "2. Enter the password you set (check docker/.env if you forgot)"
-    echo "3. Open a terminal in VS Code (Ctrl+\` or Cmd+\`)"
-    echo "4. Start using BACO with the 'gods' command!"
+    echo "3. The custom Pantheon welcome page will be displayed automatically"
+    echo "4. Terminal shows: ⚡ [coder@pantheon projects]$ "
+    echo "5. Start using BACO with the 'gods' command!"
     echo
     print_color $YELLOW "Useful commands:"
     echo "  make shell     - Open a shell in the container"
     echo "  make logs      - View container logs"
     echo "  make down      - Stop the container"
+    echo
+    print_color $CYAN "To stop auto port forwarding immediately:"
+    echo "  1. Click on PORTS tab"
+    echo "  2. Right-click any port and select 'Stop Forwarding Port'"
+    echo "  3. Or press Ctrl+Shift+P and search for 'Forward a Port' settings"
     echo
     print_color $BLUE "Happy coding! 🚀"
 }
@@ -288,21 +326,16 @@ main() {
     print_banner
     
     # Parse command line arguments
-    local build_mode="secure"
+    local force_rebuild=false
     for arg in "$@"; do
         case $arg in
-            --standard)
-                build_mode="standard"
-                shift
-                ;;
-            --secure)
-                build_mode="secure"
+            --rebuild|--no-cache)
+                force_rebuild=true
                 shift
                 ;;
             --help)
-                echo "Usage: $0 [--secure|--standard]"
-                echo "  --secure    Use secure Dockerfile with protected commands (default)"
-                echo "  --standard  Use standard Dockerfile with visible commands"
+                echo "Usage: $0 [--rebuild]"
+                echo "  --rebuild   Force rebuild without cache"
                 exit 0
                 ;;
         esac
@@ -317,15 +350,14 @@ main() {
     
     # Check if container is already running
     if docker ps --format '{{.Names}}' | grep -q '^pantheon-ide'; then
-        print_color $YELLOW "⚠️  Container 'pantheon-ide' or 'pantheon-ide-secure' is already running"
+        print_color $YELLOW "⚠️  Container 'pantheon-ide' is already running"
         read -p "Would you like to restart it? (y/N): " restart
         
         if [[ "$restart" =~ ^[Yy]$ ]]; then
             print_color $BLUE "Stopping existing container..."
-            # Stop both possible containers
+            # Stop container
             cd docker
-            docker-compose -f docker-compose.claude.yml down 2>/dev/null || true
-            docker-compose -f docker-compose.secure.yml down 2>/dev/null || true
+            docker-compose down
             cd ..
         else
             wait_for_vscode
@@ -335,11 +367,7 @@ main() {
     fi
     
     # Build and start
-    if [ "$build_mode" = "standard" ]; then
-        build_image --standard
-    else
-        build_image --secure
-    fi
+    build_image "$force_rebuild"
     start_container
     wait_for_vscode
     

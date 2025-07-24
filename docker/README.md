@@ -39,9 +39,22 @@ make clean      # Remove everything (careful!)
 
 ```bash
 cd docker
-docker-compose -f docker-compose.claude.yml up -d    # Start
-docker-compose -f docker-compose.claude.yml down     # Stop
-docker-compose -f docker-compose.claude.yml logs -f  # Logs
+docker-compose up -d    # Start
+docker-compose down     # Stop
+docker-compose logs -f  # Logs
+```
+
+## 🏛️ Using BACO/Pantheon
+
+### Quick Start
+```bash
+# Just type 'gods' to initialize Pantheon (same as 'gods init')
+gods
+
+# Or use any command directly:
+gods create "todo app"
+gods generate "REST API"
+gods plan "e-commerce site"
 ```
 
 ## 🔐 Claude Authentication
@@ -73,21 +86,76 @@ make status
 
 ```
 docker/
-├── Dockerfile.claude        # Multi-stage Docker build
-├── docker-compose.claude.yml # Container configuration
+├── Dockerfile              # Multi-stage Docker build
+├── docker-compose.yml      # Container configuration
 ├── .env.example            # Environment template
 └── README.md              # This file
 
 scripts/
 ├── claude-auth-docker.sh   # Main authentication script
 ├── claude-auth-status.sh   # Status checker
-└── claude-auth-helper.sh   # Utility functions
+├── claude-auth-helper.sh   # Utility functions
+└── docker-entrypoint.sh    # Container startup script
 
 baco-vscode-extension/      # VS Code integration
 ├── extension.js
 ├── package.json
 └── README.md
 ```
+
+## 🗂️ Volume and Directory Setup
+
+### Projects Directory
+
+```yaml
+volumes:
+  - ../projects:/home/coder/projects
+```
+
+- This is a **bind mount** (not a Docker volume)
+- Maps your host's `/Users/[username]/develop/BACO/projects` → container's `/home/coder/projects`
+- Any changes are **immediately synced** between host and container
+- VS Code starts in this directory
+
+### VS Code Configuration
+
+```yaml
+- pantheon-config:/home/coder/.local/share/code-server
+```
+
+- This is a **named Docker volume** that persists VS Code settings
+- Survives container restarts
+- Stores extensions, preferences, and configuration
+
+### How it Works
+
+- When you open http://localhost:8080, VS Code starts in `/home/coder/projects`
+- Any files you create/edit in the container appear instantly in your host's `projects` folder
+- You can edit files from either side (host or container) and they stay in sync
+- The `.claude` directory is copied into the container during build at `/home/coder/projects/.claude`
+
+### .claude Directory Setup
+
+The `.claude` directory contains all Pantheon commands and is handled specially due to volume mounts:
+
+1. **During build**: The Dockerfile copies `.claude` to `/home/coder/.claude-source`
+2. **At runtime**: The entrypoint script copies it to `/home/coder/projects/.claude`
+3. **Why this approach**: The `projects` directory is volume-mounted from your host, so we can't copy directly there during build
+
+This ensures:
+- The directory survives volume mounts
+- Proper permissions for all files and directories
+- Claude Code can find all commands - just type `gods` to start
+- Fresh copy on each container start
+
+### Benefits
+
+- **No data loss** - your work is saved on your host machine
+- **Easy access** - you can use any host tools on the files
+- **Persistent** - survives container restarts
+- **VS Code settings persist** - extensions, preferences saved in Docker volume
+
+Your projects are directly accessible from your host filesystem - it's not a Docker volume, it's a direct mount!
 
 ## 🛠️ Configuration
 

@@ -18,14 +18,18 @@ cat << 'EOF'
 Welcome to your divine development environment!
 
 🏛️  15 AI-powered deities await your command
-⚡  Type 'gods init' to begin your journey (no slash!)
+⚡  Type 'gods' to begin your journey (just 'gods', no arguments!)
 🔐  Claude integration ready (CLI + Extension)
+📄  Welcome page: Click WELCOME.html in the file explorer
 
 Quick Commands:
-  gods init      - Summon the pantheon
-  claude chat    - Talk to Claude
+  gods           - Initialize Pantheon (same as 'gods init')
+  gods create    - Create a new app instantly
   gods help      - View all commands
   
 Note: Use 'gods' without slash. The '/gods' syntax is for Claude Code only.
 
 EOF
+
+# Ensure we're in the projects directory
+cd /home/coder/projects 2>/dev/null || true
