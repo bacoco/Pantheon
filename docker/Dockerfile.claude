@@ -86,14 +86,18 @@ RUN mkdir -p /home/coder/projects && \
     mkdir -p /home/coder/.claude && \
     mkdir -p /home/coder/.claude-backups
 
-# VS Code settings.json with terminal profiles
+# VS Code settings.json with terminal profiles and Pantheon customization
 RUN cat > /home/coder/.local/share/code-server/User/settings.json << 'EOF'
 {
-  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.linux": "pantheon",
   "terminal.integrated.profiles.linux": {
-    "bash": {
+    "pantheon": {
       "path": "/bin/bash",
-      "icon": "terminal-bash"
+      "icon": "zap",
+      "color": "terminal.ansiYellow",
+      "env": {
+        "PS1": "⚡ [\\u@pantheon \\W]$ "
+      }
     },
     "claude-auth": {
       "path": "/bin/bash",
@@ -109,6 +113,41 @@ RUN cat > /home/coder/.local/share/code-server/User/settings.json << 'EOF'
     }
   },
   "workbench.startupEditor": "readme",
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#1a1a2e",
+    "activityBar.foreground": "#FFD700",
+    "activityBar.activeBorder": "#FFD700",
+    "activityBarBadge.background": "#FFD700",
+    "activityBarBadge.foreground": "#000000",
+    "titleBar.activeBackground": "#1a1a2e",
+    "titleBar.activeForeground": "#FFD700",
+    "statusBar.background": "#1a1a2e",
+    "statusBar.foreground": "#FFD700",
+    "statusBar.border": "#FFD700",
+    "sideBar.background": "#0f0f23",
+    "sideBar.foreground": "#ffffff",
+    "sideBar.border": "#FFD70033",
+    "editor.background": "#0a0a14",
+    "editor.foreground": "#ffffff",
+    "editorCursor.foreground": "#FFD700",
+    "editorLineNumber.foreground": "#FFD70066",
+    "editorLineNumber.activeForeground": "#FFD700",
+    "tab.activeBackground": "#1a1a2e",
+    "tab.activeForeground": "#FFD700",
+    "tab.activeBorderTop": "#FFD700",
+    "terminal.background": "#0a0a14",
+    "terminal.foreground": "#ffffff",
+    "terminal.ansiYellow": "#FFD700",
+    "terminal.ansiBrightYellow": "#FFA500",
+    "button.background": "#FFD700",
+    "button.foreground": "#000000",
+    "button.hoverBackground": "#FFA500",
+    "input.background": "#1a1a2e",
+    "input.border": "#FFD70066",
+    "input.foreground": "#ffffff",
+    "focusBorder": "#FFD700"
+  },
+  "window.title": "⚡ Pantheon - ${activeEditorShort}",
   "files.exclude": {
     "**/node_modules": true,
     "**/.git": true,
@@ -117,34 +156,102 @@ RUN cat > /home/coder/.local/share/code-server/User/settings.json << 'EOF'
   },
   "workbench.colorTheme": "Default Dark+",
   "editor.formatOnSave": true,
-  "editor.minimap.enabled": false
+  "editor.minimap.enabled": false,
+  "workbench.productIconTheme": "Default",
+  "workbench.iconTheme": "vs-minimal"
 }
 EOF
 
-# Create welcome file for new users
+# Copy Pantheon branding files
+COPY ./docker/pantheon-branding /home/coder/.pantheon-branding/
+
+# Create welcome file for new users with Pantheon branding
 RUN cat > /home/coder/projects/README.md << 'EOF'
-# Welcome to BACO/Pantheon in VS Code Server! 🚀
+<div align="center">
+  <h1>⚡ PANTHEON ⚡</h1>
+  <h3>Where Gods Build Software</h3>
+  <p><em>Powered by Claude AI and 15 Specialized Development Deities</em></p>
+</div>
 
-## 🔐 Two Ways to Use Claude
+---
 
-### 1. Claude Code Extension (Recommended for IDE usage)
-- **Look for the Claude icon** in the left sidebar
-- **Click it and sign in** when prompted
-- **Start chatting with Claude** directly in VS Code!
+## 🏛️ Welcome to Your Divine Development Environment
 
-### 2. Claude CLI (For terminal/script usage)
-- **Open Terminal**: Press `Ctrl+` ` or View → Terminal
-- **Run Authentication**: Type `claude-auth-docker.sh` and press Enter
-- **Use Claude commands**: e.g., `claude chat "Help me with Python"`
+You have entered the realm of Pantheon, where AI-powered gods collaborate to transform your ideas into reality.
 
-### Quick Commands
-- `claude-auth-docker.sh` - Authenticate CLI
-- `claude-auth-status.sh` - Check CLI auth status
-- `claude help` - Show CLI commands
+### 🌟 Your AI Pantheon Awaits
 
-## 🛠️ Using BACO/Pantheon
+| Deity | Domain | Summon With |
+|-------|--------|-------------|
+| **Zeus** 👑 | Supreme Orchestrator | `/gods init` |
+| **Daedalus** 🏗️ | System Architecture | Through Zeus |
+| **Hephaestus** 🔨 | Code Implementation | Through Zeus |
+| **Athena** 🦉 | Product Strategy | Through Zeus |
+| **Apollo** 🎨 | UX/UI Design | Through Zeus |
+| And 10 more specialized deities... |
 
-The `gods` command is available globally. Here are some examples:
+## 🚀 Quick Start: Summon the Gods
+
+### Begin Your Divine Journey:
+```bash
+/gods init
+```
+
+This sacred command initiates a conversation with Zeus, who will:
+1. 🎯 Understand your vision
+2. 🏛️ Assemble the right deities for your project
+3. ⚡ Guide the creation process
+4. 🎨 Deliver production-ready results
+
+## 🔐 Two Paths to AI Power
+
+### Path 1: Claude Code Extension (Visual)
+- Click the **Claude icon** in the sidebar ←
+- Sign in when prompted
+- Chat with Claude directly in your editor
+
+### Path 2: Claude CLI (Terminal)
+```bash
+# First time setup:
+claude-auth-docker.sh
+
+# Then use Claude:
+claude chat "Help me create a REST API"
+```
+
+## ⚡ Essential Commands
+
+### Pantheon Commands
+- `/gods init` - Start a new divine project
+- `/gods plan` - Receive architectural wisdom
+- `/gods execute` - Manifest your vision into code
+
+### Claude Commands
+- `claude-auth-docker.sh` - Authenticate Claude CLI
+- `claude-auth-status.sh` - Check authentication
+- `claude help` - View all Claude commands
+
+## 🎨 VS Code is Pantheon-Enhanced
+
+This environment has been blessed with:
+- 🌈 Pantheon color theme and branding
+- ⚡ Pre-installed Claude extension
+- 🛠️ All development tools configured
+- 💾 Persistent storage for your divine creations
+
+## 📚 Sacred Texts (Documentation)
+
+- [Interactive Guide](docs/interactive-pantheon-guide.md)
+- [Architecture](TECHNICAL.md)
+- [Examples](examples/)
+
+---
+
+<div align="center">
+  <p><strong>Ready to build something legendary?</strong></p>
+  <p>Type <code>/gods init</code> in any file to begin</p>
+  <h2>⚡</h2>
+</div>
 
 ```bash
 # Initialize a new project
@@ -209,6 +316,10 @@ EOF
 
 # Set proper permissions for coder user
 RUN chown -R coder:coder /home/coder/
+
+# Add Pantheon welcome message to bashrc
+RUN echo '[ -f /home/coder/.pantheon-branding/motd.sh ] && bash /home/coder/.pantheon-branding/motd.sh' >> /home/coder/.bashrc && \
+    chmod +x /home/coder/.pantheon-branding/motd.sh || true
 
 # Switch to non-root user
 USER coder

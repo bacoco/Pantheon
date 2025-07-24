@@ -1,9 +1,10 @@
 {
-  "name": "baco-pantheon-shortcuts",
-  "displayName": "BACO Pantheon Shortcuts",
-  "description": "UI shortcuts and authentication helpers for BACO/Pantheon CLI commands.",
-  "version": "0.1.0",
-  "publisher": "baco-dev",
+  "name": "pantheon-development-suite",
+  "displayName": "⚡ Pantheon - Where Gods Build Software",
+  "description": "Divine development environment with AI-powered deities for software creation",
+  "version": "1.0.0",
+  "publisher": "pantheon-dev",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.60.0"
   },

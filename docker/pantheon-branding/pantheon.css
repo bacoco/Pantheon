@@ -1,0 +1,118 @@
+/* Pantheon Custom CSS for VS Code Server */
+
+/* Main background with Pantheon gradient */
+.monaco-workbench {
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f23 100%) !important;
+}
+
+/* Activity bar with golden accent */
+.monaco-workbench .activitybar {
+    background: rgba(26, 26, 46, 0.95) !important;
+    border-right: 1px solid rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Activity bar icons glow effect */
+.monaco-workbench .activitybar .action-item:hover {
+    background: rgba(255, 215, 0, 0.1) !important;
+}
+
+.monaco-workbench .activitybar .action-item.checked {
+    border-left-color: #FFD700 !important;
+    background: rgba(255, 215, 0, 0.05) !important;
+}
+
+/* Sidebar with Pantheon theme */
+.monaco-workbench .sidebar {
+    background: rgba(15, 15, 35, 0.95) !important;
+    border-right: 1px solid rgba(255, 215, 0, 0.1) !important;
+}
+
+/* Title bar customization */
+.monaco-workbench .part.titlebar {
+    background: rgba(26, 26, 46, 0.98) !important;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Golden highlights for active elements */
+.monaco-workbench .monaco-list-row.selected,
+.monaco-workbench .monaco-list-row.focused {
+    background: rgba(255, 215, 0, 0.1) !important;
+    outline: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Tab styling */
+.monaco-workbench .tabs-container .tab.active {
+    background: rgba(255, 215, 0, 0.1) !important;
+    border-bottom: 2px solid #FFD700 !important;
+}
+
+/* Terminal customization */
+.monaco-workbench .panel.integrated-terminal {
+    background: rgba(10, 10, 20, 0.95) !important;
+}
+
+/* Status bar */
+.monaco-workbench .part.statusbar {
+    background: linear-gradient(90deg, #1a1a2e 0%, #FFD700 100%) !important;
+    color: #000 !important;
+}
+
+/* Custom welcome message in empty editor */
+.monaco-editor .margin-view-overlays::before {
+    content: "⚡ Pantheon Ready - /gods init to start";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: rgba(255, 215, 0, 0.3);
+    pointer-events: none;
+}
+
+/* Scrollbar styling */
+.monaco-scrollable-element > .scrollbar > .slider {
+    background: rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Button styling */
+.monaco-button {
+    background: linear-gradient(45deg, #FFD700, #FFA500) !important;
+    color: #000 !important;
+    border: none !important;
+}
+
+.monaco-button:hover {
+    background: linear-gradient(45deg, #FFA500, #FFD700) !important;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Input fields */
+.monaco-inputbox {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+}
+
+.monaco-inputbox:focus {
+    border-color: #FFD700 !important;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Notification toasts */
+.monaco-workbench .notifications-toasts .notification-toast {
+    background: rgba(26, 26, 46, 0.95) !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2) !important;
+}
+
+/* Command palette */
+.quick-input-widget {
+    background: rgba(26, 26, 46, 0.98) !important;
+    border: 1px solid rgba(255, 215, 0, 0.3) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Extension sidebar Claude icon highlight */
+.codicon-hubot::before {
+    color: #FFD700 !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}

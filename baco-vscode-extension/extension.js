@@ -10,7 +10,17 @@ let authStatusBar;
 
 // Extension activation
 function activate(context) {
-    console.log('BACO Pantheon extension is now active!');
+    console.log('⚡ Pantheon Divine Development Suite Activated!');
+
+    // Show welcome notification
+    vscode.window.showInformationMessage('⚡ Pantheon Ready - Where Gods Build Software', 'Summon Gods', 'View Guide')
+        .then(selection => {
+            if (selection === 'Summon Gods') {
+                vscode.commands.executeCommand('baco.showMenu');
+            } else if (selection === 'View Guide') {
+                vscode.commands.executeCommand('workbench.action.files.openFile', vscode.Uri.file('/home/coder/projects/README.md'));
+            }
+        });
 
     // Initialize status bars
     initializeStatusBars(context);
@@ -29,11 +39,12 @@ function activate(context) {
 
 // Initialize status bar items
 function initializeStatusBars(context) {
-    // Main BACO status bar
+    // Main Pantheon status bar
     statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-    statusBar.text = '🚀 BACO';
-    statusBar.tooltip = 'Click for BACO Commands';
+    statusBar.text = '⚡ Pantheon';
+    statusBar.tooltip = 'Summon the Gods of Development';
     statusBar.command = 'baco.showMenu';
+    statusBar.color = new vscode.ThemeColor('statusBarItem.warningForeground');
     
     if (vscode.workspace.getConfiguration('baco').get('showStatusBar')) {
         statusBar.show();
@@ -80,14 +91,14 @@ function registerBACoCommands(context) {
     // Show menu command
     let menuCmd = vscode.commands.registerCommand('baco.showMenu', async () => {
         const items = [
-            { label: '🚀 Initialize Project', description: 'Run gods init', command: 'baco.init' },
-            { label: '📋 Create Plan', description: 'Run gods plan', command: 'baco.plan' },
-            { label: '⚡ Execute Plan', description: 'Run gods execute', command: 'baco.execute' },
+            { label: '⚡ Summon the Gods', description: 'Initialize divine project (/gods init)', command: 'baco.init' },
+            { label: '🏛️ Divine Architecture', description: 'Receive architectural wisdom (/gods plan)', command: 'baco.plan' },
+            { label: '🔨 Manifest Vision', description: 'Transform ideas into code (/gods execute)', command: 'baco.execute' },
             { label: '---' },
-            { label: '🔐 Authenticate Claude', description: 'Run authentication wizard', command: 'baco.authenticate' },
-            { label: '📊 Check Auth Status', description: 'View authentication status', command: 'baco.authStatus' },
-            { label: '💾 Backup Authentication', description: 'Backup current auth', command: 'baco.authBackup' },
-            { label: '📥 Restore Authentication', description: 'Restore from backup', command: 'baco.authRestore' }
+            { label: '🔐 Authenticate Claude', description: 'Connect to AI power source', command: 'baco.authenticate' },
+            { label: '📊 Divine Status', description: 'Check authentication status', command: 'baco.authStatus' },
+            { label: '💾 Preserve Power', description: 'Backup authentication', command: 'baco.authBackup' },
+            { label: '📥 Restore Power', description: 'Restore authentication', command: 'baco.authRestore' }
         ];
         
         const selected = await vscode.window.showQuickPick(
