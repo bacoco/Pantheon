@@ -2,7 +2,9 @@
   <img src="docs/images/pantheon.jpeg" alt="Pantheon" width="300" style="border-radius: 8px;">
 </div>
 
-**P**rincipled **A**gent **N**exus for **T**eam **H**armonization and **E**ngineering **O**rchestration **N**etwork
+<div align="center">
+<b>P</b>rincipled <b>A</b>gent <b>N</b>exus for <b>T</b>eam <b>H</b>armonization and <b>E</b>ngineering <b>O</b>rchestration <b>N</b>etwork
+</div>
 
 A central hub (Nexus) where specialized agents follow clear principles to work together in perfect harmony. This harmonized team is then orchestrated by the platform to manage and execute every facet of the software engineering lifecycle, from design to deployment.
 
