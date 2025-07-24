@@ -137,23 +137,24 @@ Secure login system with email/password...
 ## 📋 Features Overview
 
 ### 🤖 Intelligent Multi-Agent System
-**13 Specialized AI Agents** collaborate on your project:
+**14 Specialized AI Agents** collaborate on your project:
 
-| Team | Agent | Role | Specialization |
-|------|-------|------|----------------|
-| **Core Development** | **Daedalus** | Lead Architect | System design, scalability, best practices |
-| | **Hephaestus** | Senior Developer | Implementation, code quality, performance |
-| | **Themis** | QA Engineer | Testing strategies, quality assurance |
-| | **Aegis** | Security Expert | Security audits, compliance, threat modeling |
-| **Product Management** | **Prometheus** | Product Manager | Product strategy, roadmap planning, prioritization |
-| | **Athena** | Product Owner | Requirements validation, user stories, acceptance criteria |
-| | **Hermes** | Scrum Master | Agile processes, sprint planning, team coordination |
-| **UX & Design** | **Apollo** | UX Designer | User experience, accessibility, design systems |
-| **UI Enhancement** | **Oracle** | Style Guide Expert | Design tokens, visual consistency, brand identity |
-| | **Harmonia** | Design Optimizer | Audience-specific UI, psychology-based design |
-| | **Iris** | Animation Specialist | Micro-interactions, transitions, 60fps performance |
-| | **Calliope** | Microcopy Expert | UI text, tone consistency, user communication |
-| **Orchestration** | **Janus** | Meta-Orchestrator | Cross-agent coordination, workflow optimization |
+| Team | Agent | Role | Mythological Identity | Specialization |
+|------|-------|------|-----------------------|-----------------|
+| **Core Development** | **Daedalus** | Lead Architect | Master craftsman who built the Labyrinth | System design, scalability, best practices |
+| | **Hephaestus** | Senior Developer | Divine forger of the gods' weapons | Implementation, code quality, performance |
+| | **Themis** | QA Engineer | Titaness of divine order and justice | Testing strategies, quality assurance |
+| | **Aegis** | Security Expert | Impenetrable shield of Zeus and Athena | Security audits, compliance, threat modeling |
+| **Product Management** | **Prometheus** | Product Manager | Titan who gave fire to humanity | Product strategy, roadmap planning, prioritization |
+| | **Athena** | Product Owner | Goddess of wisdom and strategic warfare | Requirements validation, user stories, acceptance criteria |
+| | **Hermes** | Scrum Master | Messenger god bridging all realms | Agile processes, sprint planning, team coordination |
+| **UX & Design** | **Apollo** | UX Designer | God of music, harmony, and arts | User experience, accessibility, design systems |
+| **UI Enhancement** | **Oracle** | Style Guide Expert | Divine source of prophetic wisdom | Design tokens, visual consistency, brand identity |
+| | **Harmonia** | Design Optimizer | Goddess of harmony and concord | Audience-specific UI, psychology-based design |
+| | **Iris** | Animation Specialist | Rainbow messenger, swift as light | Micro-interactions, transitions, 60fps performance |
+| | **Calliope** | Microcopy Expert | Muse of epic poetry and eloquence | UI text, tone consistency, user communication |
+| | **Argus** | UI Quality Guardian | Hundred-eyed giant who sees all flaws | UI quality assessment, visual regression detection |
+| **Orchestration** | **Janus** | Meta-Orchestrator | Two-faced god seeing past and future | Cross-agent coordination, workflow optimization |
 
 ### 🎨 AI-Driven UI Enhancement
 Transform your interfaces with intelligent design optimization:
@@ -249,6 +250,7 @@ A specialized team for dramatic UI improvements:
 - **Harmonia** optimizes designs for target audiences
 - **Iris** adds performance-conscious animations
 - **Calliope** ensures consistent brand communication
+- **Argus** maintains vigilant watch over UI quality with hundred eyes
 
 #### Orchestration Layer
 - **Janus** coordinates all agents and generates dynamic workflows
