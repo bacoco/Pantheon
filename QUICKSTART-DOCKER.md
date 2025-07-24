@@ -88,7 +88,7 @@ baco/
 - **VS Code Server**: Full IDE in your browser
 - **Claude Code Extension**: Official Anthropic VS Code extension (pre-installed!)
 - **Claude CLI**: Command-line interface with authentication support
-- **BACO/Pantheon**: The `gods` command for AI-driven development
+- **BACO/Pantheon**: The `gods` command integrated with Claude for AI-driven development
 - **Development Tools**: Node.js, Python, Git, and more
 - **Persistent Storage**: Your code and settings are saved
 
@@ -130,11 +130,15 @@ cat docs/CLAUDE_AUTH_DOCKER.md
 
 ## Next Steps
 
-1. Create a new project: `gods init` (no slash in Docker!)
+1. Create a new project: `gods init` (automatically calls Claude)
 2. Generate a plan: `gods plan "your idea"`
 3. Execute the plan: `gods execute`
 
-**Important**: In the Docker terminal, use `gods` without the slash. The `/gods` syntax only works in Claude Code (claude.ai/code).
+**How it works**: 
+- In Docker: `gods init` → executes `claude chat "/gods init"`
+- In Claude Code: `/gods init` → direct slash command
+
+Both provide the same Pantheon experience!
 
 Happy coding! 🎉
 

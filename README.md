@@ -43,7 +43,7 @@ Access at **http://localhost:8080** - includes:
 - 🤖 Pre-installed Claude Code extension
 - 🔐 Integrated authentication wizard
 - 🚀 Live preview server on ports 3000, 5173, 8000
-- 🏛️ All Pantheon `gods` commands
+- 🏛️ All Pantheon `gods` commands (integrated with Claude)
 - 📦 Node.js, Python, Git pre-installed
 - 💾 Persistent storage for your projects
 
@@ -79,6 +79,8 @@ cd Pantheon
 
 Then open **http://localhost:8080** and run `gods init` in the VS Code terminal.
 
+**Note**: The `gods` command automatically integrates with Claude to provide the full Pantheon experience.
+
 ### Option 2: CLI in Claude Code
 
 ```bash
@@ -88,7 +90,7 @@ cd Pantheon
 
 Then:
 - **In Claude Code (Web/Desktop)**: Use slash command `/gods init`
-- **In Docker Terminal**: Use regular command `gods init`
+- **In Docker Terminal**: Use regular command `gods init` (automatically calls Claude)
 
 ## 📦 Installation & Prerequisites
 

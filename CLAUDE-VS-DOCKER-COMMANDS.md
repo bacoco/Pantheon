@@ -12,9 +12,9 @@ There are two different environments where you can use Pantheon:
 
 ### 2. Docker Terminal (VS Code Server)
 - **Command syntax**: `gods init` (no slash)
-- **How it works**: Regular CLI commands in bash
-- **Available commands**: Standard terminal commands
-- **Claude integration**: Via VS Code extension + CLI
+- **How it works**: Bash wrapper that calls `claude chat "/gods init"`
+- **Available commands**: All Pantheon commands via Claude integration
+- **Claude integration**: Automatic via wrapper script + VS Code extension
 
 ## Quick Reference
 
@@ -29,7 +29,7 @@ There are two different environments where you can use Pantheon:
 ## Why the Difference?
 
 - **Claude Code**: Uses special slash commands that trigger Claude's built-in capabilities
-- **Docker Terminal**: Uses regular bash commands that run Python scripts
+- **Docker Terminal**: Uses regular bash commands that wrap Claude CLI to provide the same experience
 
 ## Using Claude in Docker
 
@@ -53,12 +53,28 @@ claude --help
 
 ## Pantheon Integration
 
-The `gods` command is currently a placeholder that will eventually integrate with Claude. For now:
+The `gods` command now fully integrates with Claude! Here's how:
 
-1. Use `gods init` to see the command structure
-2. Use the Claude extension for actual AI assistance
-3. Follow the interactive guides in the documentation
+### In Docker Terminal:
+```bash
+gods init          # Executes: claude chat "/gods init"
+gods plan "idea"  # Executes: claude chat "/gods plan idea"
+gods execute       # Executes: claude chat "/gods execute"
+```
 
-## Future Integration
+### In Claude Code:
+```
+/gods init         # Direct slash command
+/gods plan "idea" # Direct slash command
+/gods execute      # Direct slash command
+```
 
-The plan is to have `gods` commands automatically invoke Claude with the right context and prompts, making the full Pantheon experience available in both environments.
+## Behind the Scenes
+
+The Docker `gods` command is a bash script that:
+1. Checks if Claude CLI is authenticated
+2. Wraps your command with the appropriate slash syntax
+3. Passes it to `claude chat`
+4. Provides the same Pantheon experience as Claude Code
+
+This means you get the full AI-powered Pantheon experience in both environments!

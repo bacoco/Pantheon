@@ -201,7 +201,7 @@ You have entered the realm of Pantheon, where AI-powered gods collaborate to tra
 gods init
 ```
 
-**Note:** In Docker, use `gods init` (without the slash). The `/gods` slash commands only work in Claude Code's web/desktop interface.
+**Note:** The `gods` command automatically calls Claude with the appropriate slash commands, providing the full Pantheon experience!
 
 This sacred command initiates a conversation with Zeus, who will:
 1. 🎯 Understand your vision
@@ -260,7 +260,7 @@ This environment has been blessed with:
 </div>
 
 ```bash
-# Initialize a new project
+# Initialize a new project (calls claude chat "/gods init")
 gods init
 
 # Create a development plan
@@ -272,6 +272,8 @@ gods execute
 # Get help
 gods help
 ```
+
+**Integration Note**: Each `gods` command automatically invokes Claude with the corresponding slash command!
 
 ## 📚 VS Code Features
 

@@ -1,24 +1,34 @@
 # Pantheon Command Executor
 
-This file demonstrates how to use Pantheon commands in Claude Code.
+This file demonstrates how to use Pantheon commands in different environments.
+
+## Environment-Specific Usage
+
+### In Claude Code (claude.ai/code)
+Use slash commands directly: `/gods init`, `/gods plan`, `/gods execute`
+
+### In Docker Terminal (VS Code Server)  
+Use regular commands: `gods init`, `gods plan`, `gods execute`
+- These automatically call `claude chat` with the appropriate slash commands
+- Requires Claude CLI authentication: run `claude-auth-docker.sh` first
 
 ## New: Simplified Workflow with pantheon.md
 
 Pantheon now supports a simplified workflow using `pantheon.md` files for project configuration:
 
 ### Quick Start with pantheon.md
-```
-# 1. Create a pantheon.md file through interactive conversation
-/gods init
+```bash
+# In Claude Code (use slash commands):
+/gods init              # Interactive setup
+/gods init --template   # Manual template
+/gods plan             # Generate plan
+/gods execute          # Execute plan
 
-# Or use the template for manual editing
-/gods init --template
-
-# 2. Generate a development plan
-/gods plan
-
-# 3. Execute the plan
-/gods execute
+# In Docker Terminal (same experience via wrapper):
+gods init              # Calls: claude chat "/gods init"
+gods init --template   # Calls: claude chat "/gods init --template"
+gods plan             # Calls: claude chat "/gods plan"
+gods execute          # Calls: claude chat "/gods execute"
 ```
 
 See the `examples/` directory for complete examples across various domains:
@@ -165,12 +175,22 @@ Additional context and requirements...
 
 ## How It Works
 
-1. When you type a command, Claude reads the corresponding file in `.claude/commands/`
+### In Claude Code:
+1. When you type a slash command, Claude reads the corresponding file in `.claude/commands/`
 2. For orchestration, Claude embodies the agent personas in `.claude/agents/`
-3. Multi-agent workflows coordinate specialist agents with context preservation
-4. Git integration manages version control throughout development
-5. Live preview provides instant feedback with hot reload
-6. All processing happens within Claude - no external APIs needed
+3. All processing happens directly within Claude
+
+### In Docker Terminal:
+1. The `gods` command is a bash wrapper that checks Claude authentication
+2. It transforms your command into the appropriate slash command format
+3. Passes it to `claude chat` which then processes it as in Claude Code
+4. Provides the exact same Pantheon experience
+
+### Both Environments:
+- Multi-agent workflows coordinate specialist agents with context preservation
+- Git integration manages version control throughout development
+- Live preview provides instant feedback with hot reload
+- No external APIs needed beyond Claude itself
 
 ## Quick Start Example
 
