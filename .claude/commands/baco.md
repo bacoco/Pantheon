@@ -1,6 +1,6 @@
-# /baco - Simplified BACO Workflow Command
+# /baco - Simplified Pantheon Workflow Command
 
-The primary command for the simplified BACO workflow using `baco.md` files.
+The primary command for the simplified Pantheon workflow using `baco.md` files.
 
 ## ACTIVATION
 When the user runs `/baco` or any `/baco [subcommand]`, activate this simplified workflow.

@@ -1,4 +1,4 @@
-# BACO Development Phases Todo List
+# Pantheon Development Phases Todo List
 
 ## Phase 1: Testing & Refinement ✅ (Current)
 - [x] Basic interactive workflow

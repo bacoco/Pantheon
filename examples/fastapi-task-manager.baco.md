@@ -1,7 +1,7 @@
 ---
 version: 1.0
 project_type: "FastAPI Web Service"
-author: "BACO Development Team"
+author: "Pantheon Development Team"
 created_at: "2024-01-20T10:00:00Z"
 tags: ["web", "api", "authentication", "tasks"]
 ---

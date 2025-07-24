@@ -1,20 +1,20 @@
-# BACO Project Directory Guide
+# Pantheon Project Directory Guide
 
 ## Overview
 
-BACO now creates dedicated project directories for each project, keeping your code organized and BACO system files separate.
+Pantheon now creates dedicated project directories for each project, keeping your code organized and Pantheon system files separate.
 
 ## What Changed?
 
 ### Before
 - Files created in current directory
-- Mixed BACO files with project files
+- Mixed Pantheon files with project files
 - Potential conflicts and confusion
 
 ### After  
 - Each project gets its own directory
 - Clean separation of concerns
-- Multiple projects from one BACO installation
+- Multiple projects from one Pantheon installation
 
 ## How It Works
 
@@ -50,9 +50,9 @@ my-awesome-app/
 └── ...                   # Other project files
 ```
 
-### 3. BACO System Files
+### 3. Pantheon System Files
 
-BACO's own files remain in the `.claude/` directory:
+Pantheon's own files remain in the `.claude/` directory:
 
 ```
 .claude/
@@ -66,8 +66,8 @@ BACO's own files remain in the `.claude/` directory:
 
 ## Benefits
 
-1. **Clean Projects**: No BACO-specific files in your project
-2. **Multiple Projects**: Manage many projects from one BACO
+1. **Clean Projects**: No Pantheon-specific files in your project
+2. **Multiple Projects**: Manage many projects from one Pantheon
 3. **Easy Deployment**: Project directories are ready to deploy
 4. **Better Organization**: Clear separation of system and project
 
@@ -77,7 +77,7 @@ BACO's own files remain in the `.claude/` directory:
 ```bash
 /baco init
 # Enter project name when prompted
-# BACO creates directory automatically
+# Pantheon creates directory automatically
 ```
 
 ### Resuming Work
@@ -114,7 +114,7 @@ Just use `/baco init` - everything is handled automatically!
 A: Yes, just rename the directory. Update any hardcoded paths if needed.
 
 **Q: What if the directory already exists?**
-A: BACO will ask if you want to use the existing directory.
+A: Pantheon will ask if you want to use the existing directory.
 
 **Q: Can I have nested projects?**
 A: Yes, but it's recommended to keep projects at the same level for clarity.
@@ -126,7 +126,7 @@ A: In `.claude/memory/projects/{project-name}-state.json`
 
 1. **Use descriptive project names**: `ai-chat-app` not `project1`
 2. **One project per directory**: Don't mix multiple projects
-3. **Keep BACO at parent level**: Run BACO from parent of project directories
+3. **Keep Pantheon at parent level**: Run Pantheon from parent of project directories
 4. **Check location**: Always verify you're in the right directory
 
 ## Example Workflow
@@ -135,13 +135,13 @@ A: In `.claude/memory/projects/{project-name}-state.json`
 # 1. Start in your development directory
 cd ~/projects
 
-# 2. Run BACO init
+# 2. Run Pantheon init
 /baco init
 
 # 3. Enter project name
 Project name: recipe-finder
 
-# 4. BACO creates directory
+# 4. Pantheon creates directory
 ✅ Created project directory: ./recipe-finder/
 
 # 5. Continue with setup...

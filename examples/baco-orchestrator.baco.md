@@ -1,7 +1,7 @@
 ---
 version: 1.0
 project_type: "Prompt-based Orchestration System"
-author: "BACO Team"
+author: "Pantheon Team"
 tags: ["orchestration", "claude-code", "agents", "prompts", "ai-assistance"]
 ---
 
@@ -79,7 +79,7 @@ Dependencies: Command System
 
 ## OTHER CONSIDERATIONS:
 
-BACO is designed as a prompt-based system where all logic is implemented through markdown instructions that Claude interprets. Key architectural decisions:
+Pantheon is designed as a prompt-based system where all logic is implemented through markdown instructions that Claude interprets. Key architectural decisions:
 
 - **Separation of Concerns**: Commands, agents, and utilities in separate directories
 - **Extensibility**: Easy to add new commands and agents

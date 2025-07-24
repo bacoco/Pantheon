@@ -202,7 +202,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.3.0] - 2024-01-10
 
 ### Added
-- Phase 1: Interactive BACO Workflow
+- Phase 1: Interactive Pantheon Workflow
   - Interactive project setup with `/baco init`
   - Conversation-based requirement gathering
   - Intelligent documentation analysis

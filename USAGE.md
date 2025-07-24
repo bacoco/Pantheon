@@ -1,10 +1,10 @@
-# BACO Command Executor
+# Pantheon Command Executor
 
-This file demonstrates how to use BACO commands in Claude Code.
+This file demonstrates how to use Pantheon commands in Claude Code.
 
 ## New: Simplified Workflow with baco.md
 
-BACO now supports a simplified workflow using `baco.md` files for project configuration:
+Pantheon now supports a simplified workflow using `baco.md` files for project configuration:
 
 ### Quick Start with baco.md
 ```
@@ -55,7 +55,7 @@ Simply type any of the following commands in Claude:
 /help
 ```
 
-### New BACO Commands
+### New Pantheon Commands
 ```
 # Start interactive project setup (recommended)
 /baco init
@@ -223,7 +223,7 @@ When a `baco.md` file is present, existing commands can leverage it:
 /baco execute       # Run orchestration and generation
 ```
 
-## Extending BACO
+## Extending Pantheon
 
 To add new commands:
 1. Create a new file in `.claude/commands/`

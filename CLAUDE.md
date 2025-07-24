@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-BACO is a composite repository containing three integrated systems:
+Pantheon is a composite repository containing three integrated systems:
 
-1. **BACO** - Beyond Automated Context Orchestrator (prompt-based orchestration for Claude Code)
+1. **Pantheon** - Where Gods Build Software (prompt-based orchestration for Claude Code)
 2. **BMAD-METHOD** - Agent framework for AI-driven development  
 3. **Context Engineering** - Templates and patterns for AI coding assistants
 
@@ -43,8 +43,8 @@ npm run deploy            # Deploy to Cloudflare Workers
 
 ## Architecture and Key Workflows
 
-### BACO Command Architecture
-BACO operates through slash commands that trigger specific behaviors:
+### Pantheon Command Architecture
+Pantheon operates through slash commands that trigger specific behaviors:
 
 1. **Command Flow**: `/command` → reads `.claude/commands/{command}.md` → executes instructions
 2. **Agent Orchestration**: Commands can activate specialist agents from `.claude/agents/`
@@ -65,13 +65,13 @@ Two-phase development approach:
 
 ### Integration Pattern
 ```
-User Request → BACO analyzes complexity → Selects appropriate approach:
+User Request → Pantheon analyzes complexity → Selects appropriate approach:
     ├── Simple: Direct implementation guidance
     ├── Moderate: Agent orchestration (2-3 specialists)
     └── Complex: Full BMAD workflow with all agents
 ```
 
-## BACO Commands Reference
+## Pantheon Commands Reference
 
 ### Core Commands
 - `/analyze <task>` - Perform multi-dimensional complexity analysis
@@ -128,7 +128,7 @@ User Request → BACO analyzes complexity → Selects appropriate approach:
 
 ## Key Development Patterns
 
-### When working on BACO commands:
+### When working on Pantheon commands:
 1. Commands are defined in `.claude/commands/`
 2. Follow the ACTIVATION pattern in command files
 3. Use structured output formats (YAML blocks for data)
@@ -145,7 +145,7 @@ User Request → BACO analyzes complexity → Selects appropriate approach:
 
 ## File Structure Guidelines
 
-- **BACO-specific**: `.claude/` directory contains all Claude Code integrations
+- **Pantheon-specific**: `.claude/` directory contains all Claude Code integrations
 - **BMAD agents**: `BMAD-METHOD/bmad-core/` contains agent definitions and workflows
 - **Context templates**: `context-engineering-intro/` contains PRP and example structures
 - **Documentation**: Each system has its own docs/ directory
@@ -154,11 +154,11 @@ User Request → BACO analyzes complexity → Selects appropriate approach:
 
 - BMAD validation: Use `npm run validate` to check agent/workflow configurations
 - MCP server: Run `npm test` for unit tests, check OAuth flows
-- BACO commands: Test by invoking commands directly in Claude Code
+- Pantheon commands: Test by invoking commands directly in Claude Code
 
 ## Important Notes
 
-- BACO runs entirely within Claude Code - no external APIs needed
+- Pantheon runs entirely within Claude Code - no external APIs needed
 - BMAD can be used in both IDE and Web UI environments  
 - All three systems can work independently or together
 

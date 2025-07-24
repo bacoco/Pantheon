@@ -1,10 +1,10 @@
-# BACO MCP Integration Usage Guide
+# Pantheon MCP Integration Usage Guide
 
-This guide explains how to use MCP (Model Context Protocol) tools within BACO agents for enhanced real-world capabilities.
+This guide explains how to use MCP (Model Context Protocol) tools within Pantheon agents for enhanced real-world capabilities.
 
 ## Overview
 
-MCP tools provide BACO agents with access to external services and capabilities, transforming them from prompt-based assistants to agents that can interact with real tools and services.
+MCP tools provide Pantheon agents with access to external services and capabilities, transforming them from prompt-based assistants to agents that can interact with real tools and services.
 
 ## Available MCP Tools
 
@@ -71,7 +71,7 @@ Each agent has specific MCP tool access based on their role:
 
 ### Basic Usage Pattern
 
-When creating BACO commands that use MCP tools, follow this pattern:
+When creating Pantheon commands that use MCP tools, follow this pattern:
 
 ```yaml
 # In your command or agent file
@@ -339,7 +339,7 @@ const mcpMetrics = {
 
 ## Future Enhancements
 
-As MCP tools evolve, BACO will integrate:
+As MCP tools evolve, Pantheon will integrate:
 - Additional MCP servers
 - Custom tool development
 - Enhanced error recovery
@@ -349,7 +349,7 @@ As MCP tools evolve, BACO will integrate:
 ## Resources
 
 - [MCP Documentation](https://github.com/anthropics/mcp)
-- [BACO MCP Integration](.claude/lib/mcp-integration.md)
+- [Pantheon MCP Integration](.claude/lib/mcp-integration.md)
 - [MCP Permissions Matrix](.claude/lib/mcp-permissions.md)
 - [Tool Configurations](.claude/tools/)
 

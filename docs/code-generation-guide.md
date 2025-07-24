@@ -1,24 +1,24 @@
-# BACO Code Generation Guide
+# Pantheon Code Generation Guide
 
-This guide explains how BACO generates actual code files, not just plans and blueprints.
+This guide explains how Pantheon generates actual code files, not just plans and blueprints.
 
 ## The Complete Flow
 
 ### 1. Project Definition (`/baco init`)
-User defines their project interactively. BACO creates a `baco.md` file.
+User defines their project interactively. Pantheon creates a `baco.md` file.
 
 ### 2. Development Plan (`/baco plan`)
-BACO analyzes requirements and creates a phased implementation plan.
+Pantheon analyzes requirements and creates a phased implementation plan.
 
 ### 3. PRP Generation (`/baco execute`)
-BACO generates a detailed Product Requirements Prompt with:
+Pantheon generates a detailed Product Requirements Prompt with:
 - Code templates
 - File structures
 - Implementation phases
 - Validation criteria
 
 ### 4. Code Generation (The Missing Piece)
-When user chooses "Start implementing immediately", BACO:
+When user chooses "Start implementing immediately", Pantheon:
 
 #### Phase 1: Project Setup
 ```bash
@@ -161,7 +161,7 @@ export async function POST(request: NextRequest) {
 
 ## Interactive Progress Updates
 
-During implementation, BACO shows:
+During implementation, Pantheon shows:
 ```
 📋 Phase 1: Foundation Setup
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100%
@@ -229,7 +229,7 @@ Your project is ready to use! 🚀
 
 ## Under the Hood
 
-BACO uses these Claude Code tools:
+Pantheon uses these Claude Code tools:
 - `Write`: Creates new files with content
 - `Edit/MultiEdit`: Modifies existing files
 - `Bash`: Runs commands (npm, git, etc.)
@@ -245,4 +245,4 @@ BACO uses these Claude Code tools:
 5. **Validation**: Ensures code works
 6. **Complete Project**: Ready to run
 
-This is what makes BACO truly powerful - it doesn't just plan, it builds.
+This is what makes Pantheon truly powerful - it doesn't just plan, it builds.

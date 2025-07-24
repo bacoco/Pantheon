@@ -1,10 +1,10 @@
-# BACO Technical Architecture
+# Pantheon Technical Architecture
 
-This document describes the technical implementation of BACO (Beyond Automated Context Orchestrator), a prompt-based orchestration system for Claude Code.
+This document describes the technical implementation of Pantheon, a prompt-based orchestration system for Claude Code where AI gods collaborate to build software.
 
 ## Architecture Overview
 
-BACO is a **prompt-based system** that runs entirely within Claude Code. It does not contain executable code - instead, it provides structured markdown instructions that Claude interprets and executes.
+Pantheon is a **prompt-based system** that runs entirely within Claude Code. It does not contain executable code - instead, it provides structured markdown instructions that Claude interprets and executes.
 
 ### Core Components
 
@@ -53,7 +53,7 @@ BACO is a **prompt-based system** that runs entirely within Claude Code. It does
     └── patterns.json
 ```
 
-## How BACO Works
+## How Pantheon Works
 
 ### 1. Command Invocation Flow
 
@@ -78,7 +78,7 @@ INSTRUCTIONS:
 
 ### 2. Agent Orchestration
 
-BACO employs 13 specialized AI agents organized into functional teams:
+Pantheon employs 15 specialized AI gods organized into divine teams:
 
 #### Agent Teams
 
@@ -170,7 +170,7 @@ The example analyzer (`example-analyzer.md`) instructs Claude to:
 
 ### Pseudo-Code Interpretation
 
-BACO uses pseudo-code that Claude interprets. Example:
+Pantheon uses pseudo-code that Claude interprets. Example:
 
 ```python
 # From baco-parser.md
@@ -197,7 +197,7 @@ Claude interprets this as instructions for how to process files, not actual exec
 
 ### Dynamic Team Composition
 
-Based on project analysis, BACO selects relevant agents:
+Based on project analysis, Pantheon summons relevant deities:
 
 ```yaml
 High Complexity + Security Requirements:
@@ -254,7 +254,7 @@ When a `baco.md` file exists, all commands leverage it:
 
 ### 3. Tool Usage
 
-BACO commands instruct Claude to use available tools:
+Pantheon commands instruct Claude to use available tools:
 - **Read**: Access command/agent definitions
 - **TodoWrite**: Maintain task tracking
 - **Multi-file operations**: Batch analysis
@@ -512,7 +512,7 @@ New potential improvements:
 
 ## Development Philosophy
 
-BACO follows these principles:
+Pantheon follows these principles:
 
 1. **Simplicity**: Markdown-based, no runtime required
 2. **Transparency**: All logic visible and modifiable
@@ -522,7 +522,7 @@ BACO follows these principles:
 
 ## Debugging
 
-When BACO commands don't work as expected:
+When Pantheon commands don't work as expected:
 
 1. Check command file syntax in `.claude/commands/`
 2. Verify agent definitions are complete
@@ -532,7 +532,7 @@ When BACO commands don't work as expected:
 
 ## Contributing
 
-To contribute to BACO:
+To contribute to Pantheon:
 
 1. Follow existing markdown instruction patterns
 2. Test commands thoroughly in Claude Code
@@ -542,4 +542,4 @@ To contribute to BACO:
 
 ---
 
-*BACO Technical Documentation v1.0 - Implementation details for developers and contributors*
+*Pantheon Technical Documentation v1.0 - Implementation details for developers and contributors*
