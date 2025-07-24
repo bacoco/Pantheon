@@ -217,7 +217,7 @@ jobs:
       
       - name: Run Visual Regression
         run: |
-          baco agent pixel
+          pantheon agent argus
           pixel visual-test --all
       
       - name: Check UI Score

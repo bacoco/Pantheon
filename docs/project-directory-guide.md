@@ -41,7 +41,7 @@ All project files are created within the project directory:
 ```
 my-awesome-app/
 ├── pantheon.md                 # Project definition
-├── baco-prp-20250120.md   # Generated PRP
+├── pantheon-prp-20250120.md   # Generated PRP
 ├── package.json           # Project dependencies
 ├── src/                   # Source code
 │   ├── components/        # React components

@@ -31,7 +31,7 @@ Dynamic specialist agents with unique capabilities:
 
 ## FEATURE: Structured Project Definition
 
-Simplified workflow using baco.md files:
+Simplified workflow using pantheon.md files:
 
 - YAML frontmatter for metadata
 - Multiple features with dependencies and priorities
@@ -58,7 +58,7 @@ Dependencies: Command System
 
 - `.claude/commands/analyze.md`: Command implementation pattern
 - `.claude/agents/architect.md`: Agent persona definition
-- `.claude/utils/baco-parser.md`: Parser instruction format
+- `.claude/utils/pantheon-parser.md`: Parser instruction format
 - `.claude/commands/orchestrate.md`: Multi-agent coordination
 
 ## DOCUMENTATION:

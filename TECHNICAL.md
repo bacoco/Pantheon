@@ -45,10 +45,10 @@ Pantheon is a **prompt-based system** that runs entirely within Claude Code. It 
 │   ├── cross-domain-bridge.md # Cross-domain execution
 │   └── workflow-optimization-engine.md # Workflow optimization
 ├── utils/            # Parsing and analysis utilities
-│   ├── baco-parser.md
+│   ├── pantheon-parser.md
 │   └── example-analyzer.md
 ├── schemas/          # Data structure definitions
-│   └── baco-md-schema.yaml
+│   └── pantheon-md-schema.yaml
 └── memory/           # Pattern storage
     └── patterns.json
 ```
@@ -124,7 +124,7 @@ Security Review: Aegis reviews all → Recommendations
 #### Orchestration Hierarchy
 Zeus serves as the Supreme Orchestrator (main entry point), while Janus handles meta-orchestration for complex multi-agent workflows. The Smart Routing Engine assists with intelligent task routing.
 
-### 3. baco.md Processing
+### 3. pantheon.md Processing
 
 The new simplified workflow uses structured project files:
 
@@ -173,8 +173,8 @@ The example analyzer (`example-analyzer.md`) instructs Claude to:
 Pantheon uses pseudo-code that Claude interprets. Example:
 
 ```python
-# From baco-parser.md
-def parse_baco_file(content):
+# From pantheon-parser.md
+def parse_pantheon_file(content):
     # Extract frontmatter
     if content.startswith('---'):
         frontmatter = extract_yaml_frontmatter(content)
@@ -245,9 +245,9 @@ Commands can be composed:
 /generate-prp "Build chat app"     # Create implementation guide
 ```
 
-### 2. baco.md Integration
+### 2. pantheon.md Integration
 
-When a `baco.md` file exists, all commands leverage it:
+When a `pantheon.md` file exists, all commands leverage it:
 - `/analyze` includes all features and constraints
 - `/orchestrate` uses recommended team composition
 - `/generate-prp` incorporates full project context
@@ -261,7 +261,7 @@ Pantheon commands instruct Claude to use available tools:
 
 ## File Format Specifications
 
-### baco.md Schema
+### pantheon.md Schema
 
 Required structure:
 - YAML frontmatter with version, project_type, author
@@ -327,7 +327,7 @@ APPROACH:
 
 ### Custom Workflows
 
-Extend baco.md with new sections:
+Extend pantheon.md with new sections:
 ```yaml
 ## CUSTOM_SECTION:
 Your domain-specific requirements
@@ -506,7 +506,7 @@ New potential improvements:
 1. **Graph-based Dependencies**: Visual feature relationships
 2. **Multi-Project Patterns**: Cross-project learning
 3. **Performance Metrics**: Track command effectiveness
-4. **Custom Schema Extensions**: Domain-specific baco.md sections
+4. **Custom Schema Extensions**: Domain-specific pantheon.md sections
 5. **Cloud Integration**: Deploy to cloud providers
 6. **CI/CD Pipelines**: Automated testing and deployment
 
@@ -526,7 +526,7 @@ When Pantheon commands don't work as expected:
 
 1. Check command file syntax in `.claude/commands/`
 2. Verify agent definitions are complete
-3. Validate baco.md structure with `/baco validate`
+3. Validate pantheon.md structure with `/pantheon validate`
 4. Review Claude's interpretation in responses
 5. Check for typos in ACTIVATION conditions
 

@@ -160,8 +160,8 @@ Continue? (y/n)
     }
   ],
   "artifacts": {
-    "complexity-analysis.md": "docs/baco/workflows/session-123/complexity-analysis.md",
-    "architecture-design.md": "docs/baco/workflows/session-123/architecture-design.md"
+    "complexity-analysis.md": "docs/pantheon/workflows/session-123/complexity-analysis.md",
+    "architecture-design.md": "docs/pantheon/workflows/session-123/architecture-design.md"
   },
   "decisions": {
     "include_security": true,
@@ -274,7 +274,7 @@ workflow_context:
   active: true
   workflow_id: "analysis-to-implementation"
   current_step: 3
-  artifacts_path: "docs/baco/workflows/session-123/"
+  artifacts_path: "docs/pantheon/workflows/session-123/"
 ```
 
 ## Success Criteria

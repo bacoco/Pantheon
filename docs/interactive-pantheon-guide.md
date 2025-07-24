@@ -45,7 +45,7 @@ Pantheon: [Generates comprehensive plan]
 
 You: 1
 
-Pantheon: ✅ PRP Generated: baco-prp-20250120.md
+Pantheon: ✅ PRP Generated: pantheon-prp-20250120.md
       
       What would you like to do next?
       1. 🚀 Start implementing immediately
@@ -141,7 +141,7 @@ When presented with numbered options:
 # Edit pantheon.md manually
 /gods plan
 /gods execute
-/execute-prp baco-prp-20250120.md
+/execute-prp pantheon-prp-20250120.md
 ```
 
 ### New Flow (Interactive)

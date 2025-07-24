@@ -162,7 +162,7 @@ Final review steps:
 Prepare final deliverable:
 
 1. **Save to appropriate location**:
-   - Default: `docs/baco/{document-type}-{timestamp}.md`
+   - Default: `docs/pantheon/{document-type}-{timestamp}.md`
    - Or user-specified location
    - Create directory if needed
 

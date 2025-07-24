@@ -101,7 +101,7 @@ pantheon-ui/
 # Clone the repository
 git clone https://github.com/bacoco/Pantheon.git
 cd Pantheon
-git checkout baco-ui
+git checkout pantheon-ui
 
 # Navigate to pantheon-ui directory
 cd pantheon-ui

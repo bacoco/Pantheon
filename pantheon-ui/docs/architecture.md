@@ -210,7 +210,7 @@ interface ClientEvents {
    ↓
 2. Frontend parses to Pantheon command: "/pantheon init"
    ↓
-3. API request: POST /api/execute { command: "/baco init", args: [] }
+3. API request: POST /api/execute { command: "/gods init", args: [] }
    ↓
 4. Backend spawns Claude Code process
    ↓
