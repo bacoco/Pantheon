@@ -4,13 +4,13 @@ This guide explains how Pantheon generates actual code files, not just plans and
 
 ## The Complete Flow
 
-### 1. Project Definition (`/baco init`)
+### 1. Project Definition (`/gods init`)
 User defines their project interactively. Pantheon creates a `baco.md` file.
 
-### 2. Development Plan (`/baco plan`)
+### 2. Development Plan (`/gods plan`)
 Pantheon analyzes requirements and creates a phased implementation plan.
 
-### 3. PRP Generation (`/baco execute`)
+### 3. PRP Generation (`/gods execute`)
 Pantheon generates a detailed Product Requirements Prompt with:
 - Code templates
 - File structures
@@ -207,7 +207,7 @@ Fixing type error...
 
 ## Complete Working Project
 
-At the end of `/baco execute` with actual implementation:
+At the end of `/gods execute` with actual implementation:
 ```
 🎉 Implementation Complete!
 

@@ -34,8 +34,8 @@ Imagine describing your app idea in plain English and watching as a pantheon of 
 For terminal enthusiasts and automation:
 
 ```bash
-# Use directly in Claude Code
-/baco init
+# Summon the gods directly in Claude Code
+/gods init
 ```
 
 ## ✨ What Makes Pantheon Different?
@@ -57,7 +57,7 @@ cd BACO
 ### Start Your First Project
 
 ```
-/baco init
+/gods init
 ```
 
 This starts an interactive conversation where Pantheon helps you define your project:
@@ -96,7 +96,7 @@ Pantheon: Based on task management apps, consider:
 Pantheon: Generating your customized baco.md file...
 ```
 
-For a quick template instead, use: `/baco init --template`
+For a quick template instead, use: `/gods init --template`
 
 ```yaml
 ---
@@ -172,7 +172,7 @@ Transform your interfaces with intelligent design optimization:
 ### 3. Generate Development Plan
 
 ```
-/baco plan
+/gods plan
 ```
 
 Pantheon analyzes your requirements and provides:
@@ -184,7 +184,7 @@ Pantheon analyzes your requirements and provides:
 ### 4. Execute Implementation
 
 ```
-/baco execute
+/gods execute
 ```
 
 Generates a comprehensive Product Requirements Prompt (PRP) to guide implementation.
@@ -247,7 +247,7 @@ Pantheon now features a **fully interactive experience** that guides you seamles
 
 ### Complete Development Flow
 ```
-/baco init → Interactive setup → Auto-plan → Auto-execute → Real code + Git + Preview
+/gods init → Interactive setup → Auto-plan → Auto-execute → Real code + Git + Preview
 ```
 
 **Pantheon now generates actual code files with professional features:**
@@ -310,11 +310,11 @@ Browse all templates in the `examples/` directory.
 ## Core Commands
 
 ### Project Commands
-- `/baco init` - Start interactive project setup conversation
-- `/baco init --template` - Create a basic template for manual editing
-- `/baco validate` - Check your baco.md syntax
-- `/baco plan` - Generate a development plan
-- `/baco execute` - Create implementation guide
+- `/gods init` - Summon the pantheon to bless a new project
+- `/gods init --template` - Request a sacred scroll template
+- `/gods validate` - Have the gods verify your sacred scrolls
+- `/gods plan` - The gods devise your divine development plan
+- `/gods execute` - The gods manifest your vision into reality
 
 ### UI Enhancement Commands
 - `/ui-improve` - Run comprehensive UI enhancement pipeline
@@ -417,7 +417,7 @@ pnpm dev
 
 ![Pantheon UI Preview](docs/images/baco-ui-preview.png)
 
-**Note**: The Web UI is currently in development. For production use, please use the CLI mode with `/baco init` in Claude Code.
+**Note**: The Web UI is currently in development. For production use, summon the gods with `/gods init` in Claude Code.
 
 ---
 
@@ -425,7 +425,7 @@ pnpm dev
 
 Ready to transform how you build software?
 
-1. **CLI**: Use `/baco init` in Claude Code (Production Ready)
+1. **CLI**: Summon the gods with `/gods init` in Claude Code (Production Ready)
 2. **Learn More**: Check out our [documentation](docs/)
 3. **Web UI**: Coming soon! (Currently in development)
 

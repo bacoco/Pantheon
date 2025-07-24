@@ -1,9 +1,9 @@
-# /baco - Simplified Pantheon Workflow Command
+# /gods - Summon the Divine Development Pantheon
 
-The primary command for the simplified Pantheon workflow using `baco.md` files.
+The primary command to summon the gods of software development. Uses `baco.md` files for project configuration.
 
 ## ACTIVATION
-When the user runs `/baco` or any `/baco [subcommand]`, activate this simplified workflow.
+When the user runs `/gods` or any `/gods [subcommand]`, activate this simplified workflow.
 
 ## HOW TO HANDLE THE COMMAND
 
@@ -17,22 +17,22 @@ This is a prompt-based system. When invoked, you should:
 
 > **Note**: All command handlers should follow the interactive flow patterns defined in `.claude/lib/interactive-flow.md` for consistent user experience.
 
-### `/baco` (no subcommand)
+### `/gods` (no subcommand)
 Show available subcommands and check for baco.md file:
-- If baco.md exists: "📄 Found baco.md file. Run `/baco plan` to generate a development plan."
-- If no baco.md: "No baco.md file found. Run `/baco init` to create one."
+- If baco.md exists: "📄 Found baco.md file. Run `/gods plan` to summon the gods for planning."
+- If no baco.md: "No baco.md file found. Run `/gods init` to create one."
 
-### `/baco init`
+### `/gods init`
 Start an interactive project definition session. When invoked:
 
-1. **Check for --template flag**: If user types `/baco init --template`, provide the basic template (see below)
+1. **Check for --template flag**: If user types `/gods init --template`, provide the basic template (see below)
 2. **Otherwise, start interactive session**:
 
 #### Interactive Session Flow:
 
 **Step 1: Welcome & Project Setup**
 ```
-🎯 Welcome to BACO Interactive Project Setup!
+🏛️ Welcome to the Pantheon! The gods await your command.
 
 I'll help you create a comprehensive project definition through conversation.
 This will help me understand your needs and generate a customized baco.md file.
@@ -188,8 +188,8 @@ If "yes", generate customized baco.md with all gathered information in the proje
     kubernetes_manifests: [based on option 13]
     cicd_workflows: [based on option 14]
   ```
-- Save as `{project-name}/baco.md`
-- Show: "✅ Created {project-name}/baco.md"
+- Save as `{project-name}/gods.md`
+- Show: "✅ Created {project-name}/gods.md"
 
 #### GitHub Repository Creation (if enabled):
 If `create_github_immediately` is true in workflow preferences:
@@ -201,9 +201,9 @@ If `create_github_immediately` is true in workflow preferences:
    if generate_readme is true:
      echo "# {project-name}" > README.md
      echo "" >> README.md
-     echo "Project initialized by BACO. Full README will be generated during implementation." >> README.md
+     echo "Project initialized by Pantheon. Full README will be generated during implementation." >> README.md
    git add .
-   git commit -m "Initial commit: Project setup by BACO"
+   git commit -m "Initial commit: Project setup by Pantheon"
    ```
 
 2. **Create GitHub Repository**:
@@ -226,7 +226,7 @@ If `create_github_immediately` is true in workflow preferences:
    ```
 
 #### Template Mode (--template flag):
-If user specifically requests template mode with `/baco init --template`:
+If user specifically requests template mode with `/gods init --template`:
 
 ```yaml
 ---
@@ -306,7 +306,7 @@ When user mentions specific technologies:
 Example:
 ```
 User: "I'm building with FastAPI"
-BACO: "Great choice! FastAPI is excellent for modern Python APIs. From my knowledge base:
+Pantheon: "Great choice! FastAPI is excellent for modern Python APIs. From my knowledge base:
        • Project structure: app/ with api/, models/, schemas/ subdirectories
        • Common libraries: SQLAlchemy, Pydantic, python-jose for auth
        • Best practices: Use async handlers, dependency injection, type hints
@@ -340,7 +340,7 @@ Throughout the conversation:
 - Use for intelligent suggestions
 - Summarize before final generation
 
-### `/baco validate`
+### `/gods validate`
 When invoked:
 1. Ask the user to share their baco.md file content
 2. Check for:
@@ -351,7 +351,7 @@ When invoked:
 3. Provide specific feedback on any issues found
 4. If valid, show a summary of features, examples, constraints
 
-### `/baco plan`
+### `/gods plan`
 When invoked:
 1. Ask the user to share their baco.md file content (if not already shared)
 2. Parse the content to understand:
@@ -382,7 +382,7 @@ When invoked:
 
 Display the plan in this format:
 ```
-🎯 BACO DEVELOPMENT PLAN
+⚡ DIVINE DEVELOPMENT PLAN
 ========================
 
 📋 Project Type: [type]
@@ -436,7 +436,7 @@ Duration: [estimate]
 
 💡 Next Steps:
    1. Review and adjust the plan if needed
-   2. Run '/baco execute' to start implementation
+   2. Run '/gods execute' to start implementation
    3. Or use '/generate-prp' to create a detailed PRP
 ```
 
@@ -451,9 +451,9 @@ What would you like to do with this plan?
 Your choice (1-4):
 ```
 
-If user chooses option 1, seamlessly transition to `/baco execute` functionality without requiring them to type a new command.
+If user chooses option 1, seamlessly transition to `/gods execute` functionality without requiring them to type a new command.
 
-### `/baco execute`
+### `/gods execute`
 When invoked:
 1. Ensure a baco.md file has been shared/validated
 2. Generate a comprehensive Product Requirements Prompt (PRP) that includes:
@@ -471,7 +471,7 @@ When invoked:
    - What validation would occur
 
 4. Save the generated PRP with timestamp in project directory:
-   - Save as `{project-name}/baco-prp-[timestamp].md`
+   - Save as `{project-name}/gods-prp-[timestamp].md`
    - Track project location in session state
 
 5. **Interactive Continuation** (NEW):
@@ -507,7 +507,7 @@ When invoked:
      - **Git Setup** (automatic by default):
        1. Initialize git repository: `git init --initial-branch=main`
        2. Create .gitignore based on project type (see `.claude/lib/test-detection.md`)
-       3. Initial commit: "Initial project setup by BACO"
+       3. Initial commit: "Initial project setup by Pantheon"
        4. Create feature branch if enabled: `git checkout -b feature/[project-name]`
      - **CRITICAL: Actually implement the code**:
        1. Read the full PRP content
@@ -546,7 +546,7 @@ When invoked:
                - [List main changes]
                - Tests: [status]
                
-               Generated by BACO"
+               Generated by Pantheon"
                ```
             d. Continuous push (if enabled):
                ```
@@ -631,7 +631,7 @@ When implementing (Choice 1), follow this exact process:
         - Generate README.md (if generate_readme is true):
           ```javascript
           // Parse baco.md to extract project details
-          const bacoContent = Read("{project-name}/baco.md");
+          const bacoContent = Read("{project-name}/gods.md");
           const projectType = extractFromYAML(bacoContent, "project_type");
           const author = extractFromYAML(bacoContent, "author");
           const features = extractFeatures(bacoContent); // Parse FEATURE sections
@@ -645,7 +645,7 @@ ${extractProjectDescription(features)}
 
 ## 🚀 Overview
 
-This ${projectType} was generated by BACO (Basic Adaptive Context Orchestrator) with comprehensive development automation.
+This ${projectType} was generated by Pantheon (Basic Adaptive Context Orchestrator) with comprehensive development automation.
 
 ## 🛠️ Tech Stack
 
@@ -737,7 +737,7 @@ Key configuration files:
 
 ## 📝 Development Workflow
 
-This project was set up with BACO's automated workflow:
+This project was set up with Pantheon's automated workflow:
 
 - ✅ Automatic Git commits after each development phase
 - ✅ Continuous GitHub integration
@@ -763,7 +763,7 @@ ${author}
 
 ---
 
-*Generated with ❤️ by [BACO](https://github.com/bacoco/BACO) on ${new Date().toLocaleDateString()}*`;
+*Generated with ❤️ by [Pantheon](https://github.com/godsco/Pantheon) on ${new Date().toLocaleDateString()}*`;
           
           Write("{project-name}/README.md", readmeContent);
           ✅ Generated comprehensive README.md
@@ -1137,7 +1137,7 @@ ${author}
    🔄 Watching for changes... Press Ctrl+C to stop
    ```
 
-## INTEGRATION WITH OTHER BACO COMMANDS
+## INTEGRATION WITH OTHER Pantheon COMMANDS
 
 When a baco.md file has been processed:
 - `/analyze` should consider all features and constraints from baco.md
@@ -1148,7 +1148,7 @@ When a baco.md file has been processed:
 
 ### Monorepo Context Awareness
 
-When any BACO command is run:
+When any Pantheon command is run:
 1. Detect monorepo context using monorepo-detector library
 2. Adjust paths and operations accordingly
 3. Respect workspace boundaries and conventions
@@ -1161,7 +1161,7 @@ Always provide helpful, specific error messages:
 - For YAML errors: Point to the specific issue and suggest fixes
 - For missing sections: Explain what's required and why
 - For dependency issues: List the specific problems
-- For missing examples: Explain that BACO can work without them but they help
+- For missing examples: Explain that Pantheon can work without them but they help
 
 ## EXAMPLE ANALYSIS
 
@@ -1186,11 +1186,11 @@ When analyzing examples in baco.md:
 
 ## PROJECT DIRECTORY STRUCTURE
 
-When using BACO, all project files are organized in a dedicated directory:
+When using Pantheon, all project files are organized in a dedicated directory:
 
 ```
-./                          # Current directory (where BACO is run)
-├── project-name/           # Created by /baco init
+./                          # Current directory (where Pantheon is run)
+├── project-name/           # Created by /gods init
 │   ├── baco.md            # Project definition
 │   ├── baco-prp-*.md      # Generated PRPs with timestamps
 │   ├── package.json       # Created during implementation
@@ -1200,7 +1200,7 @@ When using BACO, all project files are organized in a dedicated directory:
 │   │   └── ...           # Other source files
 │   └── ...               # Other project files
 
-.claude/                    # BACO system files (not in project)
+.claude/                    # Pantheon system files (not in project)
 ├── commands/              # Command definitions
 ├── agents/               # Agent personas
 ├── lib/                  # Shared libraries
@@ -1213,17 +1213,17 @@ When using BACO, all project files are organized in a dedicated directory:
 - Each project gets its own directory
 - No .claude files are created in user projects
 - Projects remain clean and standard
-- BACO tracks project state separately
-- Multiple projects can be managed from one BACO installation
+- Pantheon tracks project state separately
+- Multiple projects can be managed from one Pantheon installation
 
 ## COMPLETE INTERACTIVE FLOW EXAMPLE
 
-Here's how the entire BACO workflow should feel from the user's perspective:
+Here's how the entire Pantheon workflow should feel from the user's perspective:
 
 ```
-User: /baco init
+User: /gods init
 
-Claude: 🎯 Welcome to BACO Interactive Project Setup!
+Claude: 🏛️ Welcome to the Pantheon! The gods await your command.
 
 First, let's set up your project:
 
@@ -1241,13 +1241,13 @@ Great! Based on our conversation, here's what I understand:
 
 Shall I generate your customized baco.md file? (yes/no/refine): yes
 
-✅ Created ai-image-gen/baco.md!
+✅ Created ai-image-gen/gods.md!
 
 Would you like me to create a development plan now? (y/n): y
 
 [Seamlessly transitions to planning...]
 
-🎯 BACO DEVELOPMENT PLAN
+⚡ DIVINE DEVELOPMENT PLAN
 ========================
 [... shows plan ...]
 
@@ -1263,7 +1263,7 @@ Your choice (1-4): 1
 
 Generating comprehensive implementation blueprint...
 
-✅ PRP Generated: ai-image-gen/baco-prp-20250120.md
+✅ PRP Generated: ai-image-gen/gods-prp-20250120.md
 
 I've created a comprehensive implementation blueprint for your Mobile AI Image Generator.
 
@@ -1327,4 +1327,4 @@ Starting Phase 2...
 5. **Graceful Interruption**: Can pause and resume without losing progress
 6. **Success Celebration**: Acknowledge completed milestones
 
-The goal is to make BACO feel like an intelligent assistant guiding users through the entire development process, not a series of disconnected commands.
+The goal is to make Pantheon feel like an intelligent assistant guiding users through the entire development process, not a series of disconnected commands.

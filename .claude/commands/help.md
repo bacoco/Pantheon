@@ -4,31 +4,31 @@ ACTIVATION: When user types `/help`, display available commands and usage.
 
 ## 🆕 New: Simplified Workflow with baco.md
 
-BACO now supports a simplified workflow using `baco.md` files:
+The gods now guide your development through sacred `baco.md` scrolls:
 
 ### Quick Start
 ```bash
-/baco init     # Create a template baco.md file
+/gods init     # Create a template baco.md file
 /baco plan     # Generate development plan from baco.md
 /baco execute  # Execute the plan
 ```
 
 ## Available Commands
 
-### 📄 BACO Commands (NEW)
-#### `/baco`
-Main command for simplified workflow using baco.md files.
+### 🏛️ Divine Commands (NEW)
+#### `/gods`
+Summon the divine pantheon to orchestrate your development.
 
 **Subcommands**:
-- `/baco init` - Start interactive project setup conversation
-- `/baco init --template` - Create a basic template baco.md file
-- `/baco plan` - Generate development plan from baco.md
-- `/baco validate` - Validate baco.md syntax and structure
-- `/baco execute` - Execute the development plan
+- `/gods init` - Start interactive project setup conversation
+- `/gods init --template` - Create a basic template baco.md file
+- `/gods plan` - Generate development plan from baco.md
+- `/gods validate` - Validate baco.md syntax and structure
+- `/gods execute` - Execute the development plan
 
 **Usage**: 
 ```
-/baco init
+/gods init
 # Edit baco.md with your requirements
 /baco plan
 ```
@@ -61,10 +61,10 @@ Evaluate and store successful implementation patterns for future use.
 
 **Output**: Pattern evaluation and storage decision with applicability conditions.
 
-### 🎯 `/baco route <task>` (NEW - Preview)
+### 🎯 `/gods route <task>` (NEW - Preview)
 Intelligently route tasks to the most appropriate specialist agent(s) using Smart Routing.
 
-**Usage**: `/baco route Design a secure API with rate limiting`
+**Usage**: `/gods route Design a secure API with rate limiting`
 
 **Options**:
 - `--preview` - Show routing without activation
@@ -225,7 +225,7 @@ See the `examples/` directory for complete examples:
 
 **Template baco.md Approach:**
 ```
-/baco init --template
+/gods init --template
 # Edit baco.md with search feature requirements
 /baco plan
 /baco execute
@@ -233,7 +233,7 @@ See the `examples/` directory for complete examples:
 
 **Interactive baco.md Approach (Recommended):**
 ```
-/baco init
+/gods init
 # Answer questions about your project
 # BACO analyzes your needs and generates customized baco.md
 /baco plan
@@ -251,7 +251,7 @@ See the `examples/` directory for complete examples:
 
 **Interactive baco.md Approach (Recommended):**
 ```
-/baco init
+/gods init
 # BACO guides you through:
 #   - Project type and architecture questions
 #   - Feature discovery and prioritization
@@ -280,7 +280,7 @@ See the `examples/` directory for complete examples:
 /workspace graph                   # Visualize dependencies
 
 # BACO detects monorepo context automatically
-/baco init                         # Offers to create package or work at root
+/gods init                         # Offers to create package or work at root
 ```
 
 ## Need More Help?

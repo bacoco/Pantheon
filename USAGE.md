@@ -9,16 +9,16 @@ Pantheon now supports a simplified workflow using `baco.md` files for project co
 ### Quick Start with baco.md
 ```
 # 1. Create a baco.md file through interactive conversation
-/baco init
+/gods init
 
 # Or use the template for manual editing
-/baco init --template
+/gods init --template
 
 # 2. Generate a development plan
-/baco plan
+/gods plan
 
 # 3. Execute the plan
-/baco execute
+/gods execute
 ```
 
 See the `examples/` directory for complete examples across various domains:
@@ -58,19 +58,19 @@ Simply type any of the following commands in Claude:
 ### New Pantheon Commands
 ```
 # Start interactive project setup (recommended)
-/baco init
+/gods init
 
 # Create a basic template for manual editing
-/baco init --template
+/gods init --template
 
 # Validate your baco.md file
-/baco validate
+/gods validate
 
 # Generate a plan from baco.md
-/baco plan
+/gods plan
 
 # Execute the development plan
-/baco execute
+/gods execute
 ```
 
 ### Multi-Agent Workflow Commands
@@ -122,7 +122,7 @@ Simply type any of the following commands in Claude:
 /update-deps [package]    # Update specific package
 ```
 
-The interactive `/baco init` will:
+The interactive `/gods init` will:
 - Guide you through project requirements with intelligent questions
 - Analyze documentation and code examples you provide
 - Detect patterns and conventions from your examples
@@ -217,10 +217,10 @@ When a `baco.md` file is present, existing commands can leverage it:
 
 **New baco.md Workflow:**
 ```
-/baco init          # Create template
+/gods init          # Create template
 # Edit baco.md with your requirements
-/baco plan          # Analyze and plan
-/baco execute       # Run orchestration and generation
+/gods plan          # Analyze and plan
+/gods execute       # Run orchestration and generation
 ```
 
 ## Extending Pantheon

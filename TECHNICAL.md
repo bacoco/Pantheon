@@ -14,7 +14,7 @@ Pantheon is a **prompt-based system** that runs entirely within Claude Code. It 
 │   ├── analyze.md    # Multi-dimensional task analysis
 │   ├── orchestrate.md # Agent coordination
 │   ├── generate-prp.md # PRP generation
-│   ├── baco.md       # baco.md workflow commands
+│   ├── gods.md       # gods workflow commands
 │   ├── workflow.md   # Multi-agent workflow orchestration
 │   ├── git.md        # Git integration commands
 │   ├── preview.md    # Live preview server

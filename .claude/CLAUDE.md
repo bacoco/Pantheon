@@ -40,7 +40,7 @@ Activate pre-configured agent teams for coordinated work
 ### `/workflow [name]`
 Execute multi-agent workflows with state management
 
-### `/baco route <task>`
+### `/gods route <task>`
 Intelligently route tasks to the most appropriate specialist agent(s) (Preview Feature)
 
 ### `/help`
@@ -68,7 +68,7 @@ When orchestrating or using `/agent`, you can embody these specialist personas:
 
 ## Using Examples
 
-BACO includes an examples directory (`.claude/examples/`) with patterns to follow:
+Pantheon includes an examples directory (`.claude/examples/`) with patterns to follow:
 - **Architecture patterns**: Microservice, monolith, event-driven
 - **Implementation patterns**: APIs, databases, authentication
 - **Testing patterns**: Unit, integration, E2E tests

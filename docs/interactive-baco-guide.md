@@ -9,7 +9,7 @@ Pantheon now features a fully interactive workflow that guides you through the e
 ### Starting Your Project
 
 ```bash
-/baco init
+/gods init
 ```
 
 Instead of just creating a file, Pantheon now:
@@ -23,7 +23,7 @@ Instead of just creating a file, Pantheon now:
 Here's what you'll experience:
 
 ```
-You: /baco init
+You: /gods init
 
 Pantheon: 🎯 Welcome to Pantheon Interactive Project Setup!
       [Asks about your project type, features, timeline...]
@@ -88,12 +88,12 @@ Pantheon: Ready to proceed with Phase 2? (y/n):
 You: pause
 
 Pantheon: ⏸️ Session paused. Your progress has been saved.
-      Resume anytime with '/baco resume'
+      Resume anytime with '/gods resume'
 ```
 
 ### 4. Smart Resumption
 ```
-You: /baco resume
+You: /gods resume
 
 Pantheon: Found paused session: Mobile AI Image Generator
       Progress: Phase 2 of 4 (40% complete)
@@ -137,16 +137,16 @@ When presented with numbered options:
 
 ### Old Flow (Multiple Commands)
 ```bash
-/baco init
+/gods init
 # Edit baco.md manually
-/baco plan
-/baco execute
+/gods plan
+/gods execute
 /execute-prp baco-prp-20250120.md
 ```
 
 ### New Flow (Interactive)
 ```bash
-/baco init
+/gods init
 # Answer questions, everything else happens automatically
 ```
 
@@ -155,14 +155,14 @@ When presented with numbered options:
 ### Skipping Steps
 If you already have a baco.md file:
 ```bash
-/baco plan
+/gods plan
 # Offers to proceed to implementation automatically
 ```
 
 ### Direct Execution
 If you want to jump straight to coding:
 ```bash
-/baco execute
+/gods execute
 # Still provides interactive options
 ```
 
@@ -178,9 +178,9 @@ Create your own interactive workflows:
 ### Session Issues
 If something goes wrong:
 ```bash
-/baco status     # Check current session
-/baco reset      # Clear all sessions (with confirmation)
-/baco resume     # Try to resume
+/gods status     # Check current session
+/gods reset      # Clear all sessions (with confirmation)
+/gods resume     # Try to resume
 ```
 
 ### Getting Help

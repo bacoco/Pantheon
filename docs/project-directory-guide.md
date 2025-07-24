@@ -20,7 +20,7 @@ Pantheon now creates dedicated project directories for each project, keeping you
 
 ### 1. Project Initialization
 
-When you run `/baco init`, the first question is now:
+When you run `/gods init`, the first question is now:
 
 ```
 📁 What would you like to name your project?
@@ -75,14 +75,14 @@ Pantheon's own files remain in the `.claude/` directory:
 
 ### Creating a New Project
 ```bash
-/baco init
+/gods init
 # Enter project name when prompted
 # Pantheon creates directory automatically
 ```
 
 ### Resuming Work
 ```bash
-/baco resume
+/gods resume
 # Shows: "Project: my-awesome-app/"
 # Continues in the right directory
 ```
@@ -103,10 +103,10 @@ Bash("cd my-awesome-app && npm install")
 If you have an existing project without a directory:
 1. Create a directory: `mkdir my-project`
 2. Move files: `mv baco.md *.ts *.tsx package.json my-project/`
-3. Continue with `/baco execute` from project root
+3. Continue with `/gods execute` from project root
 
 ### For New Projects
-Just use `/baco init` - everything is handled automatically!
+Just use `/gods init` - everything is handled automatically!
 
 ## FAQ
 
@@ -136,7 +136,7 @@ A: In `.claude/memory/projects/{project-name}-state.json`
 cd ~/projects
 
 # 2. Run Pantheon init
-/baco init
+/gods init
 
 # 3. Enter project name
 Project name: recipe-finder
