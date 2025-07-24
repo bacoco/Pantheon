@@ -35,7 +35,7 @@ BACO is a **prompt-based system** that runs entirely within Claude Code. It does
 │   ├── motion.md     # Animation Specialist
 │   ├── voice.md      # Microcopy Expert
 │   ├── janus.md      # Meta-orchestrator
-│   └── baco-orchestrator.md # (Legacy - superseded by Janus)
+│   └── zeus.md       # Supreme Orchestrator (main entry point)
 ├── lib/              # Core libraries and engines
 │   ├── workflow-engine.md # Multi-agent workflow execution
 │   ├── workflow-visualizer.md # Workflow progress display
@@ -121,8 +121,8 @@ Implementation: Daedalus → Hephaestus → Themis
 Security Review: Aegis reviews all → Recommendations
 ```
 
-#### Legacy Note
-The original BACO Orchestrator has been superseded by Janus for meta-orchestration and the Smart Routing Engine for complexity analysis.
+#### Orchestration Hierarchy
+Zeus serves as the Supreme Orchestrator (main entry point), while Janus handles meta-orchestration for complex multi-agent workflows. The Smart Routing Engine assists with intelligent task routing.
 
 ### 3. baco.md Processing
 

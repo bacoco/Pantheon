@@ -16,26 +16,7 @@ Imagine describing your app idea in plain English and watching as a team of spec
 
 ## 🖥️ Choose Your Interface
 
-### Web UI (New!)
-A modern chat interface for visual thinkers:
-
-```bash
-# Start the web interface
-cd baco-ui
-pnpm install
-pnpm dev
-```
-
-**Features:**
-- 💬 Natural conversation flow
-- 📊 Visual project structure
-- 📈 Real-time progress tracking  
-- 🎨 Integrated UI preview
-- 📱 Mobile-responsive design
-
-![BACO UI Preview](docs/images/baco-ui-preview.png)
-
-### CLI Mode
+### CLI Mode (Production Ready)
 For terminal enthusiasts and automation:
 
 ```bash
@@ -45,7 +26,7 @@ For terminal enthusiasts and automation:
 
 ## ✨ What Makes BACO Different?
 
-- **AI Team Collaboration**: 14+ specialized agents work together on your project
+- **AI Team Collaboration**: 15 specialized agents work together on your project
 - **Smart Context Management**: Never lose track of requirements across sessions
 - **UI Quality Scoring**: AI-driven design improvements with measurable results
 - **Live Development**: See changes instantly with integrated preview server
@@ -53,19 +34,6 @@ For terminal enthusiasts and automation:
 
 
 ## 🎯 Quick Start
-
-### Option 1: Web Interface (Recommended)
-
-```bash
-git clone https://github.com/bacoco/BACO.git
-cd BACO/baco-ui
-pnpm install
-pnpm dev
-```
-
-Open http://localhost:3000 and start chatting!
-
-### Option 2: Claude Code CLI
 
 ```bash
 git clone https://github.com/bacoco/BACO.git
@@ -137,10 +105,10 @@ Secure login system with email/password...
 ## 📋 Features Overview
 
 ### 🤖 Intelligent Multi-Agent System
-**14 Specialized AI Agents** collaborate on your project:
+**15 Specialized AI Agents** collaborate on your project:
 
 | Team | Agent | Role | Mythological Identity | Specialization |
-|------|-------|------|-----------------------|-----------------|
+|------|--------------|------|------------------------|-----------------|
 | **Core Development** | **Daedalus** | Lead Architect | Master craftsman who built the Labyrinth | System design, scalability, best practices |
 | | **Hephaestus** | Senior Developer | Divine forger of the gods' weapons | Implementation, code quality, performance |
 | | **Themis** | QA Engineer | Titaness of divine order and justice | Testing strategies, quality assurance |
@@ -154,7 +122,8 @@ Secure login system with email/password...
 | | **Iris** | Animation Specialist | Rainbow messenger, swift as light | Micro-interactions, transitions, 60fps performance |
 | | **Calliope** | Microcopy Expert | Muse of epic poetry and eloquence | UI text, tone consistency, user communication |
 | | **Argus** | UI Quality Guardian | Hundred-eyed giant who sees all flaws | UI quality assessment, visual regression detection |
-| **Orchestration** | **Janus** | Meta-Orchestrator | Two-faced god seeing past and future | Cross-agent coordination, workflow optimization |
+| **Orchestration** | **Zeus** | Supreme Orchestrator | King of gods ruling from Mount Olympus | System-wide orchestration, agent summoning |
+| | **Janus** | Meta-Orchestrator | Two-faced god seeing past and future | Cross-agent coordination, workflow optimization |
 
 ### 🎨 AI-Driven UI Enhancement
 Transform your interfaces with intelligent design optimization:
@@ -414,13 +383,37 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 
 ---
 
+## 🧪 Web UI (In Development)
+
+A modern chat interface is currently in development for visual thinkers:
+
+```bash
+# Start the web interface (experimental)
+cd baco-ui
+pnpm install
+pnpm dev
+```
+
+**Planned Features:**
+- 💬 Natural conversation flow
+- 📊 Visual project structure
+- 📈 Real-time progress tracking  
+- 🎨 Integrated UI preview
+- 📱 Mobile-responsive design
+
+![BACO UI Preview](docs/images/baco-ui-preview.png)
+
+**Note**: The Web UI is currently in development. For production use, please use the CLI mode with `/baco init` in Claude Code.
+
+---
+
 ## 🚀 Get Started Now
 
 Ready to transform how you build software?
 
-1. **Web UI**: `cd baco-ui && pnpm install && pnpm dev`
-2. **CLI**: Use `/baco init` in Claude Code
-3. **Learn More**: Check out our [documentation](docs/)
+1. **CLI**: Use `/baco init` in Claude Code (Production Ready)
+2. **Learn More**: Check out our [documentation](docs/)
+3. **Web UI**: Coming soon! (Currently in development)
 
 Join the future of AI-powered development with BACO!
 
