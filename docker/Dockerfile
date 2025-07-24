@@ -402,13 +402,19 @@ RUN code-server --install-extension Anthropic.claude-code || echo "Claude extens
     code-server --install-extension ritwickdey.liveserver || \
     echo "Some extensions may not be available"
 
-# Build and install the Pantheon Claude Chat extension as coder user
-RUN su - coder -c "cd /tmp/pantheon-claude-chat && \
-    npm install && \
-    npm install -g @vscode/vsce && \
+# Build and install the Pantheon Claude Chat extension
+# Switch to coder user temporarily for npm operations
+USER coder
+WORKDIR /tmp/pantheon-claude-chat
+RUN npm install && \
+    npm install -g @vscode/vsce@2.22.0 && \
     npm run compile && \
-    vsce package --no-dependencies" && \
-    code-server --install-extension /tmp/pantheon-claude-chat/*.vsix && \
+    vsce package --no-dependencies --allow-missing-repository
+    
+# Switch back to root to install extension
+USER root
+WORKDIR /
+RUN code-server --install-extension /tmp/pantheon-claude-chat/*.vsix && \
     rm -rf /tmp/pantheon-claude-chat && \
     echo "Pantheon Claude Chat extension installed"
 
