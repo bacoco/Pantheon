@@ -122,7 +122,7 @@ function hasToolAccess(agent, tool) {
   const agentPerms = permissions[agent];
   if (!agentPerms) return false;
   
-  // BMad Master has access to all tools
+  // Janus has access to all tools
   if (agentPerms.tools.includes("ALL")) return true;
   
   return agentPerms.tools.includes(tool);
@@ -139,7 +139,7 @@ function canPerformAction(agent, tool, action) {
   // Check basic tool access first
   if (!hasToolAccess(agent, tool)) return false;
   
-  // BMad Master can perform all actions
+  // Janus can perform all actions
   if (agentPerms.allowed_actions.ALL === ["ALL"]) return true;
   
   // Check specific action permission

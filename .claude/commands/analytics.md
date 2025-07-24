@@ -85,7 +85,7 @@ Architecture
 ├─ Success Rate: 91%
 ├─ Top Agents:
 │  ├─ Daedalus: 72 (81%)
-│  ├─ BMad Master: 12 (13%)
+│  ├─ Janus: 12 (13%)
 │  └─ Hephaestus: 5 (6%)
 └─ Avg Duration: 2.3 days
 
@@ -162,7 +162,7 @@ Generates comprehensive weekly report:
 2. [MEDIUM] High override rate for security domain
    → Review Aegis's routing patterns
    
-3. [LOW] BMad Master underutilized for complex tasks
+3. [LOW] Janus underutilized for complex tasks
    → Lower complexity threshold for orchestration
 
 [Full report continues...]
@@ -215,7 +215,7 @@ Filter: complexity > 7
 
 Results:
 ├─ Daedalus: 89.2% avg confidence
-├─ BMad Master: 85.7% avg confidence
+├─ Janus: 85.7% avg confidence
 ├─ Aegis: 82.1% avg confidence
 └─ Hephaestus: 71.3% avg confidence
 ```

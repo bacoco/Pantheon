@@ -354,7 +354,7 @@ function getDefaultRouting(): RoutingDecision {
     },
     supportingAgents: [],
     confidence: 0.5,
-    reasoning: "Using BMad Master as the default orchestrator for complex routing decisions",
+    reasoning: "Using Janus as the default orchestrator for complex routing decisions",
     alternativeRoutes: [],
     flags: {
       autoRoute: false,

@@ -189,6 +189,76 @@ At any prompt:
 - Type "?" for available options
 - Type "back" to go to previous step
 
+## The pantheon.md File Format
+
+The `pantheon.md` file is a structured way to define your project requirements:
+
+```yaml
+---
+version: 1.0
+project_type: "FastAPI Web Service"
+author: "Your Name"
+---
+
+## FEATURE: User Authentication
+Description of the authentication feature...
+
+## FEATURE: Task Management
+Description of task management feature...
+Dependencies: User Authentication
+
+## EXAMPLES:
+- `./examples/auth_pattern.py`: Authentication example
+- `./examples/crud_pattern.py`: CRUD operations example
+
+## DOCUMENTATION:
+- `https://fastapi.tiangolo.com/`: FastAPI documentation
+
+## CONSTRAINTS:
+- Must use PostgreSQL
+- JWT tokens required
+- Response time < 200ms
+
+## OTHER CONSIDERATIONS:
+Additional context and requirements...
+```
+
+### Key Components
+
+1. **YAML Frontmatter**: Contains metadata like version, project type, and author
+2. **FEATURE Sections**: Each major feature gets its own section with dependencies
+3. **EXAMPLES**: Links to code examples or patterns to follow
+4. **DOCUMENTATION**: External resources and documentation links
+5. **CONSTRAINTS**: Technical and business constraints
+6. **OTHER CONSIDERATIONS**: Any additional context or requirements
+
+### Integration with Existing Commands
+
+When a `pantheon.md` file is present, existing commands automatically leverage it:
+
+- **`/analyze`** - Considers all features and constraints from pantheon.md
+- **`/orchestrate`** - Uses recommended team composition from pantheon.md analysis
+- **`/generate-prp`** - Incorporates all pantheon.md content into the PRP
+
+### Workflow Comparison
+
+**Traditional CLI Workflow:**
+```
+/analyze "Build a task management API"
+/orchestrate "Build a task management API"
+/generate-prp "Build a task management API with auth"
+```
+
+**New pantheon.md Workflow:**
+```
+/gods init          # Create template interactively
+# Edit pantheon.md with your requirements (optional)
+/gods plan          # Analyze and plan
+/gods execute       # Run orchestration and generation
+```
+
+The pantheon.md approach ensures all commands have complete context and requirements, leading to more accurate and comprehensive results.
+
 ## Future Enhancements
 
 Coming soon:

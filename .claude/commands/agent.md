@@ -116,7 +116,7 @@ Support flexible naming:
 - `iris`, `motion`, `animation` → `.claude/agents/iris.md`
 - `calliope`, `voice`, `microcopy` → `.claude/agents/calliope.md`
 - `janus`, `master` → `.claude/agents/janus.md`
-- `orchestrator`, `baco` → `.claude/agents/baco-orchestrator.md`
+- `orchestrator`, `baco` → `.claude/agents/janus.md`
 
 ## Example Interaction
 

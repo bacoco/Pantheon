@@ -163,7 +163,7 @@ When using `/orchestrate`, these specialists may be activated:
 - **🎯 Athena (PO)**: Story validation, acceptance criteria
 - **🏃️ Hermes (SM)**: Sprint planning, AI-ready stories
 - **🎨 Apollo (UX)**: User experience, design systems
-- **🤖 BMad Master**: Meta-orchestration, workflow optimization
+- **🤖 Janus**: Meta-orchestration, workflow optimization
 
 ## The pantheon.md File Format
 
@@ -193,7 +193,7 @@ Additional context...
 ```
 
 See the `examples/` directory for complete examples:
-- `baco-orchestrator.pantheon.md` - BACO itself (meta-example)
+- `janus.pantheon.md` - BACO itself (meta-example)
 - `ecommerce-platform.pantheon.md` - E-commerce platform
 - `saas-dashboard.pantheon.md` - Multi-tenant SaaS
 - `chat-messaging.pantheon.md` - Real-time chat

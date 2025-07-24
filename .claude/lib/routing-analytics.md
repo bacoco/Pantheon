@@ -310,7 +310,7 @@ class RoutingAnalyticsAggregator {
       recommendations.push({
         type: 'complexity-handling',
         priority: 'high',
-        message: 'High-complexity tasks have low success rate. Consider using BMad Master more often.',
+        message: 'High-complexity tasks have low success rate. Consider using Janus more often.',
         action: 'Lower auto-route threshold for complex tasks'
       });
     }

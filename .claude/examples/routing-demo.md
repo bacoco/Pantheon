@@ -37,7 +37,7 @@ Supporting Agents:
     Reason: Brings security, compliance expertise
 
 Alternative Routes:
-  1. BMad Master (78%) - Orchestrate full architecture team
+  1. Janus (78%) - Orchestrate full architecture team
   2. Hephaestus (45%) - Implementation-focused approach
   3. Hermes (35%) - Break down into sprint tasks
 
@@ -86,7 +86,7 @@ Supporting Agents:
 Alternative Routes:
   1. Themis (65%) - Test-driven fix approach
   2. Aegis (55%) - Security-first debugging
-  3. BMad Master (40%) - Orchestrated approach
+  3. Janus (40%) - Orchestrated approach
 
 ✅ High Confidence Routing (88%)
 
@@ -133,7 +133,7 @@ Supporting Agents:
 
 Alternative Routes:
   1. Hephaestus (40%) - Direct implementation approach
-  2. BMad Master (35%) - Full team coordination
+  2. Janus (35%) - Full team coordination
   3. Themis (30%) - Accessibility testing focus
 
 ✅ High Confidence Routing (95%)
@@ -164,10 +164,10 @@ Task Analysis:
 
 This task spans multiple domains and may benefit from orchestration:
 - Domains: implementation, frontend, backend, testing, security
-- Suggested approach: BMad Master orchestration with specialist team
+- Suggested approach: Janus orchestration with specialist team
 
 Routing Decision:
-  Primary Agent: BMad Master (Meta-Orchestrator)
+  Primary Agent: Janus (Meta-Orchestrator)
   Confidence: 85%
   Match Factors:
     ✓ domain:orchestration (expert)
@@ -189,7 +189,7 @@ Alternative Routes:
   3. Manual team selection
 
 Would you like to:
-1. ✅ Use BMad Master orchestration mode
+1. ✅ Use Janus orchestration mode
 2. 🎯 Select Hephaestus as lead developer
 3. 👥 Manually compose team
 4. ❌ Cancel
@@ -221,7 +221,7 @@ Examples of clear task descriptions:
 
 Would you like to:
 1. 📝 Provide more details
-2. 🤖 Use BMad Master for general help
+2. 🤖 Use Janus for general help
 3. 📚 See more examples
 4. ❌ Cancel
 ```
@@ -264,7 +264,7 @@ Supporting Agents:
     Reason: Payment systems need security validation
 
 Alternative Routes:
-  1. BMad Master (70%) - Orchestrate full QA team
+  1. Janus (70%) - Orchestrate full QA team
   2. Hephaestus (55%) - Developer-driven testing
   3. Aegis (45%) - Security-first testing
 

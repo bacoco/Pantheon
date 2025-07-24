@@ -1,10 +1,10 @@
 # /orchestrate Command - Multi-Agent Coordination
 
-ACTIVATION: When user types `/orchestrate <task>`, activate the BACO Orchestrator for intelligent agent coordination.
+ACTIVATION: When user types `/orchestrate <task>`, activate the Zeus for intelligent agent coordination.
 
 ## New Orchestration Approach
 
-This command now activates the BACO Orchestrator agent, which provides:
+This command now activates the Zeus agent, which provides:
 - Dynamic agent transformation capabilities
 - Intelligent workflow selection
 - Pattern-based learning
@@ -14,7 +14,7 @@ This command now activates the BACO Orchestrator agent, which provides:
 
 When the user types `/orchestrate` or `/orchestrate <task>`:
 
-1. **Load and activate** `.claude/agents/baco-orchestrator.md`
+1. **Load and activate** `.claude/agents/janus.md`
 2. The orchestrator will:
    - Greet the user and explain capabilities
    - Analyze the task (if provided)
@@ -44,9 +44,9 @@ Once in orchestrator mode, users can:
 ```
 User: /orchestrate Build a payment processing microservice
 
-[System loads BACO Orchestrator]
+[System loads Zeus]
 
-Orchestrator: Welcome! I'm the BACO Orchestrator. I see you want to build a payment processing microservice. This is a complex task involving security, architecture, and careful implementation.
+Orchestrator: Welcome! I'm the Zeus. I see you want to build a payment processing microservice. This is a complex task involving security, architecture, and careful implementation.
 
 Let me analyze this for you...
 

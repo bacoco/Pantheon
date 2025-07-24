@@ -47,7 +47,7 @@ Access at **http://localhost:8080** - includes:
 - 📦 Node.js, Python, Git pre-installed
 - 💾 Persistent storage for your projects
 
-[**Quick Start with Docker →**](QUICKSTART-DOCKER.md)
+[**Quick Start with Docker →**](docs/docker/DOCKER-COMPLETE-GUIDE.md)
 
 ### CLI Mode (Direct Integration)
 For terminal enthusiasts and Claude Code users:
@@ -324,7 +324,7 @@ Phase 1 Complete! (Created 12 files, 1,245 lines of code)
 Ready to proceed with Phase 2: Core Logic? (y/n): 
 ```
 
-See the [Interactive Pantheon Guide](docs/interactive-pantheon-guide.md) and [Code Generation Guide](docs/code-generation-guide.md) for details.
+See the [Interactive Pantheon Guide](docs/core/interactive-pantheon-guide.md) and [Code Generation Guide](docs/core/code-generation-guide.md) for details.
 
 ## 📚 Project Templates
 
@@ -395,21 +395,19 @@ Additional context...
 ## 🎓 Resources & Support
 
 ### Documentation
-- [Docker Quick Start](QUICKSTART-DOCKER.md) - Get started with Docker in 2 minutes
-- [Docker Setup Guide](docker/README.md) - Detailed Docker configuration
-- [CLI Reference](USAGE.md) - Command line documentation  
-- [Technical Architecture](TECHNICAL.md) - How Pantheon works internally
+- [Docker Complete Guide](docs/docker/DOCKER-COMPLETE-GUIDE.md) - Get started with Docker in 2 minutes
+- [Docker Architecture](docs/docker/DOCKER-ARCHITECTURE.md) - Detailed Docker architecture
+- [Technical Architecture](docs/core/TECHNICAL.md) - How Pantheon works internally
 - [Examples](examples/) - Real-world project templates
-- [Claude Authentication](docs/CLAUDE_AUTH_DOCKER.md) - Docker authentication guide
 
 ### Community
 - [GitHub Discussions](https://github.com/bacoco/Pantheon/discussions) - Ask questions, share ideas
 - [Issue Tracker](https://github.com/bacoco/Pantheon/issues) - Report bugs, request features
 
 ### Getting Started
-- [Docker Quick Start](QUICKSTART-DOCKER.md) - Web UI setup
-- [Interactive Pantheon Guide](docs/interactive-pantheon-guide.md)
-- [Code Generation Guide](docs/code-generation-guide.md)
+- [Docker Complete Guide](docs/docker/DOCKER-COMPLETE-GUIDE.md) - Web UI setup
+- [Interactive Pantheon Guide](docs/core/interactive-pantheon-guide.md)
+- [Code Generation Guide](docs/core/code-generation-guide.md)
 
 ## When to Use Pantheon
 
@@ -434,13 +432,11 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 ## 📚 Documentation
 
 ### Setup Guides
-- [Docker Quick Start](QUICKSTART-DOCKER.md) - Web UI setup in 2 minutes
-- [Docker Details](docker/README.md) - Advanced Docker configuration
-- [Claude Authentication](docs/CLAUDE_AUTH_DOCKER.md) - Auth troubleshooting
+- [Docker Complete Guide](docs/docker/DOCKER-COMPLETE-GUIDE.md) - Web UI setup and full reference
+- [Docker Architecture](docs/docker/DOCKER-ARCHITECTURE.md) - Technical architecture details
 
 ### Reference
-- [Usage Guide](USAGE.md) - Detailed command reference
-- [Technical Architecture](TECHNICAL.md) - Implementation details
+- [Technical Architecture](docs/core/TECHNICAL.md) - Implementation details
 - [Examples](examples/) - Sample project definitions
 
 ---
@@ -460,9 +456,9 @@ Then visit **http://localhost:8080** and use `gods init` in the terminal
 In Claude Code (claude.ai/code), use slash commands like `/gods init`
 
 **Learn More**: 
-- [Docker Quick Start Guide](QUICKSTART-DOCKER.md)
+- [Docker Complete Guide](docs/docker/DOCKER-COMPLETE-GUIDE.md)
 - [Full Documentation](docs/)
-- [Docker Setup Details](docker/README.md)
+- [Docker Architecture](docs/docker/DOCKER-ARCHITECTURE.md)
 
 Join the future of AI-powered development with Pantheon!
 

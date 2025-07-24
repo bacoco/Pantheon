@@ -164,7 +164,7 @@ const conditionalWorkflow = await mcp.taskmaster.createWorkflow({
 
 ## Agent-Specific Usage
 
-### BMad Master (Meta-Orchestrator)
+### Janus (Meta-Orchestrator)
 
 ```javascript
 // Orchestrate cross-functional team workflow

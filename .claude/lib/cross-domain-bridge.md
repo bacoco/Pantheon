@@ -1,10 +1,10 @@
-# Cross-Domain Bridge for BMad Master
+# Cross-Domain Bridge for Janus
 
-This library enables BMad Master to seamlessly bridge different technical and business domains, translating concepts and coordinating work across diverse areas.
+This library enables Janus to seamlessly bridge different technical and business domains, translating concepts and coordinating work across diverse areas.
 
 ## Overview
 
-Cross-domain execution allows BMad Master to:
+Cross-domain execution allows Janus to:
 - Translate concepts between technical and business domains
 - Coordinate agents with different specializations
 - Maintain consistency across diverse technologies
@@ -362,11 +362,11 @@ class CrossDomainCoordinator {
 }
 ```
 
-## Usage in BMad Master
+## Usage in Janus
 
 ### Cross-Domain Command Implementation
 ```typescript
-// In BMad Master
+// In Janus
 async function executeCrossDomain(
   domains: string[],
   objective: string
@@ -456,4 +456,4 @@ bridge:
 4. **Document Mappings**: Keep record of concept translations
 5. **Iterate on Feedback**: Refine bridges based on execution results
 
-The Cross-Domain Bridge enables BMad Master to create truly integrated solutions that span multiple technical and business domains seamlessly.
+The Cross-Domain Bridge enables Janus to create truly integrated solutions that span multiple technical and business domains seamlessly.

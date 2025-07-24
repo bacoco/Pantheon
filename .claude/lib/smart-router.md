@@ -556,7 +556,7 @@ function getAgentMetadata(agentId) {
       strongPatterns: ['ui quality', 'visual testing', 'pixel perfect']
     },
     'janus': {
-      name: "BMad Master",
+      name: "Janus",
       role: "Meta-Orchestrator",
       domains: ['orchestration', 'meta_analysis', 'workflow_design'],
       capabilities: [

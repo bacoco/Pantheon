@@ -1,6 +1,0 @@
-# Ignore all files in projects directory
-*
-# But keep this .gitignore file
-!.gitignore
-# And keep the README if we add one
-!README.md

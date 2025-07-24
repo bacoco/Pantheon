@@ -24,7 +24,7 @@ const { isFeatureEnabled, getFeatureConfig } = require('.claude/lib/feature-flag
 
 if (!isFeatureEnabled('SMART_ROUTING')) {
   console.log("⚠️  Smart Routing is currently disabled.");
-  console.log("Using default routing: All complex tasks go to BMad Master for orchestration.");
+  console.log("Using default routing: All complex tasks go to Janus for orchestration.");
   return;
 }
 
@@ -78,7 +78,7 @@ Supporting Agents:
     Reason: Brings security expertise
 
 Alternative Routes:
-  1. BMad Master (75%) - Meta-orchestration approach
+  1. Janus (75%) - Meta-orchestration approach
   2. Hephaestus (60%) - Implementation-focused approach
   3. Prometheus (45%) - Product planning perspective
 ```
@@ -226,7 +226,7 @@ try {
   // Routing logic
 } catch (error) {
   console.error("Routing error:", error.message);
-  console.log("Falling back to BMad Master for general orchestration.");
+  console.log("Falling back to Janus for general orchestration.");
 }
 ```
 
@@ -250,7 +250,7 @@ Please provide more details about:
 
 This task spans multiple domains and may benefit from orchestration:
 - Domains: ${domains.join(', ')}
-- Suggested approach: BMad Master orchestration with specialist team
+- Suggested approach: Janus orchestration with specialist team
 
 Would you like to use orchestration mode?
 ```
@@ -262,7 +262,7 @@ Would you like to use orchestration mode?
 
 The task doesn't clearly match any specialist's expertise.
 Options:
-1. BMad Master - General orchestration
+1. Janus - General orchestration
 2. Provide more specific details
 3. Manually select an agent
 ```

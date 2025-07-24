@@ -1,6 +1,6 @@
-# Workflow Optimization Engine for BMad Master
+# Workflow Optimization Engine for Janus
 
-This library provides sophisticated workflow analysis and optimization capabilities for BMad Master to improve execution efficiency.
+This library provides sophisticated workflow analysis and optimization capabilities for Janus to improve execution efficiency.
 
 ## Overview
 
@@ -390,11 +390,11 @@ class ContinuousImprover {
 }
 ```
 
-## Usage in BMad Master
+## Usage in Janus
 
 ### Optimization Command
 ```typescript
-// In BMad Master
+// In Janus
 async function optimizeWorkflow(workflowId: string) {
   const optimizer = new WorkflowOptimizer();
   const workflow = await loadWorkflow(workflowId);
@@ -488,4 +488,4 @@ Context Overhead Reduction: 30%
 4. **Monitor Continuously**: Track performance over time
 5. **Learn from History**: Use past optimizations to improve future ones
 
-The Workflow Optimization Engine empowers BMad Master to continuously improve workflow performance, ensuring maximum efficiency while maintaining quality.
+The Workflow Optimization Engine empowers Janus to continuously improve workflow performance, ensuring maximum efficiency while maintaining quality.

@@ -3,7 +3,7 @@ id: "workflow-optimization"
 name: "Workflow Optimization Analysis Template"
 description: "Template for analyzing and optimizing existing workflows"
 category: "optimization"
-agent: "bmad-master"
+agent: "janus"
 frameworks: ["any"]
 dependencies: []
 tags: ["optimization", "analysis", "performance", "workflow"]
@@ -17,13 +17,13 @@ targetFiles:
 
 ## Overview
 
-This template helps BMad Master analyze existing workflows and generate optimization recommendations.
+This template helps Janus analyze existing workflows and generate optimization recommendations.
 
 ## Template
 
 # Workflow Optimization Report: {{workflowName}}
 
-**Analyzed by**: BMad Master
+**Analyzed by**: Janus
 **Date**: {{analysisDate}}
 **Current Version**: {{currentVersion}}
 **Proposed Version**: {{proposedVersion}}
@@ -301,6 +301,6 @@ optimized_workflow:
 
 ---
 
-*Optimization analysis performed by BMad Master*
+*Optimization analysis performed by Janus*
 *Using pattern recognition and workflow optimization algorithms*
 *Report ID: {{reportId}}*
