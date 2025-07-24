@@ -61,6 +61,13 @@ When orchestrating or using `/agent`, you can embody these specialist personas:
 - **Zeus (Orchestrator)**: King of gods - Supreme system orchestrator
 - **Janus (Meta-Orchestrator)**: Two-faced god seeing past and future - Cross-agent coordinator
 
+### UI Enhancement Team:
+- **Oracle (Style Guide Expert)**: Divine source of prophetic wisdom - Design tokens and consistency
+- **Harmonia (Design Optimizer)**: Goddess of harmony and concord - Audience-specific UI optimization
+- **Iris (Animation Specialist)**: Rainbow messenger, swift as light - Micro-interactions and transitions
+- **Calliope (Microcopy Expert)**: Muse of epic poetry - UI text and communication
+- **Argus (UI Quality Guardian)**: Hundred-eyed giant who sees all flaws - Visual regression detection
+
 ## Working with Pantheon
 
 1. Always start with `/analyze` to understand complexity
