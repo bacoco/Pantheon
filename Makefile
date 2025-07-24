@@ -29,17 +29,33 @@ help:
 	@echo "Combined Commands:"
 	@echo "  make fresh      - Clean, build, and start"
 	@echo "  make setup      - Build, start, and authenticate"
+	@echo ""
+	@echo "Security Modes:"
+	@echo "  make MODE=secure build  - Build with protected commands (default)"
+	@echo "  make MODE=standard build - Build with visible commands"
 
-# Docker compose file
-COMPOSE_FILE := docker/docker-compose.claude.yml
+# Build mode (secure by default)
+MODE ?= secure
+
+# Docker compose file and container name based on mode
+ifeq ($(MODE),standard)
+    COMPOSE_FILE := docker/docker-compose.claude.yml
+    CONTAINER := pantheon-ide
+else
+    COMPOSE_FILE := docker/docker-compose.secure.yml
+    CONTAINER := pantheon-ide-secure
+endif
+
 COMPOSE := docker-compose -f $(COMPOSE_FILE)
-
-# Container name
-CONTAINER := pantheon-ide
 
 # Build the Docker image
 build:
 	@echo "🔨 Building BACO/Pantheon Docker image..."
+	@if [ "$(MODE)" = "secure" ]; then \
+		echo "🔒 Using secure mode - commands will be protected"; \
+	else \
+		echo "📁 Using standard mode - commands will be visible"; \
+	fi
 	$(COMPOSE) build
 
 # Start the container

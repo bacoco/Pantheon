@@ -8,6 +8,25 @@ echo "🚀 Initializing Pantheon environment..."
 if [ ! -d "/home/coder/projects/.claude" ]; then
     echo "📁 Setting up Pantheon command files..."
     cp -r /home/coder/.pantheon-files/.claude /home/coder/projects/.claude 2>/dev/null || true
+    
+    # Make files read-only to prevent accidental modification
+    find /home/coder/projects/.claude -type f -exec chmod 444 {} \;
+    find /home/coder/projects/.claude -type d -exec chmod 555 {} \;
+    
+    # Add notice about proprietary files
+    cat > /home/coder/projects/.claude/README.txt << 'EOF'
+PANTHEON SYSTEM FILES
+====================
+These files are proprietary components of the BACO/Pantheon system.
+They are provided for Claude Code functionality only.
+
+DO NOT:
+- Copy or distribute these files
+- Modify the contents
+- Use outside of this environment
+
+© BACO/Pantheon - All rights reserved
+EOF
 fi
 
 if [ ! -d "/home/coder/projects/examples" ]; then

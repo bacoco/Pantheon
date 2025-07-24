@@ -50,14 +50,16 @@ Show available commands and usage
 
 When orchestrating or using `/agent`, you can embody these specialist personas:
 
-- **Winston (Architect)**: Holistic system designer
-- **Hephaestus (Developer)**: Pragmatic implementation expert  
-- **Elena (QA)**: User-centric quality guardian
-- **Marcus (Security)**: Defense-in-depth specialist
-- **Prometheus (PM)**: Investigative product strategist (formerly John)
-- **Athena (PO)**: Validation and quality assurance (formerly Sarah)
-- **Hermes (SM)**: Story preparation for AI implementation (formerly Bob)
-- **Apollo (UX)**: User experience and design specialist (formerly Sally)
+- **Daedalus (Architect)**: Master craftsman who built the Labyrinth - System design expert
+- **Hephaestus (Developer)**: Divine forger of the gods' weapons - Implementation specialist  
+- **Themis (QA)**: Titaness of divine order and justice - Quality guardian
+- **Aegis (Security)**: Zeus's impenetrable shield - Defense and security expert
+- **Prometheus (PM)**: Titan who gave fire to humanity - Product strategist
+- **Athena (PO)**: Goddess of wisdom and strategic warfare - Product ownership
+- **Hermes (SM)**: Messenger god bridging all realms - Agile process facilitator
+- **Apollo (UX)**: God of music, harmony, and arts - User experience designer
+- **Zeus (Orchestrator)**: King of gods - Supreme system orchestrator
+- **Janus (Meta-Orchestrator)**: Two-faced god seeing past and future - Cross-agent coordinator
 
 ## Working with Pantheon
 

@@ -187,13 +187,26 @@ setup_directories() {
 # Function to build the Docker image
 build_image() {
     print_color $BLUE "🔨 Building Docker image..."
+    
+    # Check for secure mode flag or default to secure
+    local compose_file="docker-compose.secure.yml"
+    if [ "$1" = "--standard" ]; then
+        compose_file="docker-compose.claude.yml"
+        print_color $YELLOW "  Using standard mode (visible commands)"
+    else
+        print_color $GREEN "  Using secure mode (protected commands)"
+        print_color $PURPLE "  Commands will be compiled and protected"
+    fi
+    
     print_color $YELLOW "  This may take a few minutes on first run..."
     echo
     
     cd docker
-    if docker-compose -f docker-compose.claude.yml build; then
+    if docker-compose -f $compose_file build; then
         cd ..
         print_color $GREEN "✅ Docker image built successfully!"
+        # Store which mode we used
+        echo $compose_file > .docker-mode
     else
         cd ..
         print_color $RED "❌ Failed to build Docker image"
@@ -206,8 +219,14 @@ build_image() {
 start_container() {
     print_color $BLUE "🚀 Starting BACO/Pantheon container..."
     
+    # Use the same compose file that was used for building
+    local compose_file="docker-compose.secure.yml"
+    if [ -f ".docker-mode" ]; then
+        compose_file=$(cat .docker-mode)
+    fi
+    
     cd docker
-    if docker-compose -f docker-compose.claude.yml up -d; then
+    if docker-compose -f $compose_file up -d; then
         cd ..
         print_color $GREEN "✅ Container started successfully!"
     else
@@ -283,6 +302,27 @@ handle_authentication() {
 main() {
     print_banner
     
+    # Parse command line arguments
+    local build_mode="secure"
+    for arg in "$@"; do
+        case $arg in
+            --standard)
+                build_mode="standard"
+                shift
+                ;;
+            --secure)
+                build_mode="secure"
+                shift
+                ;;
+            --help)
+                echo "Usage: $0 [--secure|--standard]"
+                echo "  --secure    Use secure Dockerfile with protected commands (default)"
+                echo "  --standard  Use standard Dockerfile with visible commands"
+                exit 0
+                ;;
+        esac
+    done
+    
     # Check prerequisites
     check_prerequisites
     
@@ -291,13 +331,17 @@ main() {
     setup_directories
     
     # Check if container is already running
-    if docker ps --format '{{.Names}}' | grep -q '^pantheon-ide$'; then
-        print_color $YELLOW "⚠️  Container 'pantheon-ide' is already running"
+    if docker ps --format '{{.Names}}' | grep -q '^pantheon-ide'; then
+        print_color $YELLOW "⚠️  Container 'pantheon-ide' or 'pantheon-ide-secure' is already running"
         read -p "Would you like to restart it? (y/N): " restart
         
         if [[ "$restart" =~ ^[Yy]$ ]]; then
             print_color $BLUE "Stopping existing container..."
-            cd docker && docker-compose -f docker-compose.claude.yml down && cd ..
+            # Stop both possible containers
+            cd docker
+            docker-compose -f docker-compose.claude.yml down 2>/dev/null || true
+            docker-compose -f docker-compose.secure.yml down 2>/dev/null || true
+            cd ..
         else
             wait_for_vscode
             show_next_steps
@@ -306,7 +350,11 @@ main() {
     fi
     
     # Build and start
-    build_image
+    if [ "$build_mode" = "standard" ]; then
+        build_image --standard
+    else
+        build_image --secure
+    fi
     start_container
     wait_for_vscode
     
