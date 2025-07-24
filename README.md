@@ -149,13 +149,7 @@ Transform your interfaces with intelligent design optimization:
 
 ### 🚀 Modern Development Features
 
-#### Web UI Dashboard
-- Real-time project visualization
-- Chat-based interaction
-- Live code preview
-- Progress tracking
-- Mobile responsive
-
+#
 #### Smart Code Generation
 - Production-ready code with tests
 - Follows industry best practices
@@ -355,7 +349,6 @@ Additional context...
 ## 🎓 Resources & Support
 
 ### Documentation
-- [Web UI Guide](pantheon-ui/README.md) - Using the web interface
 - [CLI Reference](USAGE.md) - Command line documentation  
 - [Technical Architecture](TECHNICAL.md) - How Pantheon works internally
 - [Examples](examples/) - Real-world project templates
@@ -367,7 +360,6 @@ Additional context...
 ### Getting Started
 - [Interactive Pantheon Guide](docs/interactive-pantheon-guide.md)
 - [Code Generation Guide](docs/code-generation-guide.md)
-- [Web UI Setup](pantheon-ui/README.md)
 
 ## When to Use Pantheon
 
@@ -397,37 +389,13 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 
 ---
 
-## 🧪 Web UI (In Development)
-
-A modern chat interface is currently in development for visual thinkers:
-
-```bash
-# Start the web interface (experimental)
-cd pantheon-ui
-pnpm install
-pnpm dev
-```
-
-**Planned Features:**
-- 💬 Natural conversation flow
-- 📊 Visual project structure
-- 📈 Real-time progress tracking  
-- 🎨 Integrated UI preview
-- 📱 Mobile-responsive design
-
-![Pantheon UI Preview](docs/images/pantheon-ui-preview.png)
-
-**Note**: The Web UI is currently in development. For production use, summon the gods with `/gods init` in Claude Code.
-
----
 
 ## 🚀 Get Started Now
 
 Ready to transform how you build software?
 
-1. **CLI**: Summon the gods with `/gods init` in Claude Code (Production Ready)
+1. **CLI**: Summon the gods with `/gods init` in Claude Code
 2. **Learn More**: Check out our [documentation](docs/)
-3. **Web UI**: Coming soon! (Currently in development)
 
 Join the future of AI-powered development with Pantheon!
 
