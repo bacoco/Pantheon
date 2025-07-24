@@ -159,3 +159,8 @@ context-engineering-intro/aurus/
 vlad/
 aurus/
 delala/
+
+# Docker generated files
+docker/claude-files.tar.gz
+
+# Docker build artifacts
