@@ -1,10 +1,10 @@
-# BACO UI - Chat Interface for BACO
+# Pantheon UI - Chat Interface for Pantheon
 
-A modern web-based chat interface for BACO (Beyond Automated Context Orchestrator) that provides an intuitive way to interact with Claude Code Max while maintaining all its powerful capabilities.
+A modern web-based chat interface for Pantheon (Beyond Automated Context Orchestrator) that provides an intuitive way to interact with Claude Code Max while maintaining all its powerful capabilities.
 
 ## 🎯 Vision
 
-Transform BACO from a CLI-based tool to a modern web interface that:
+Transform Pantheon from a CLI-based tool to a modern web interface that:
 - Provides an intuitive chat-based interaction model
 - Visualizes project structure and progress in real-time
 - Maintains full Claude Code Max capabilities
@@ -52,10 +52,10 @@ baco-ui/
 ## 🚀 Features
 
 ### Phase 1: MVP (Weeks 1-2)
-- ✨ **Chat Interface**: Natural language interaction with BACO
+- ✨ **Chat Interface**: Natural language interaction with Pantheon
 - 🔄 **Real-time Updates**: Live streaming of command output
-- 📝 **Command Execution**: Support for all BACO commands
-- 🎯 **Natural Language Processing**: Convert chat to BACO commands
+- 📝 **Command Execution**: Support for all Pantheon commands
+- 🎯 **Natural Language Processing**: Convert chat to Pantheon commands
 
 ### Phase 2: Enhanced (Weeks 3-4)
 - 📁 **Project Explorer**: Visual file tree with Git status
@@ -64,7 +64,7 @@ baco-ui/
 - 🔍 **Code Preview**: View generated files inline
 
 ### Phase 3: Advanced (Weeks 5-6)
-- 🚀 **Multi-Project Support**: Manage multiple BACO projects
+- 🚀 **Multi-Project Support**: Manage multiple Pantheon projects
 - 🛠️ **Command Builder**: Visual command construction
 - ⚙️ **Settings Panel**: Configure preferences and Claude Code path
 - 📱 **Responsive Design**: Mobile and tablet support
@@ -99,8 +99,8 @@ baco-ui/
 
 ```bash
 # Clone the repository
-git clone https://github.com/bacoco/BACO.git
-cd BACO
+git clone https://github.com/bacoco/Pantheon.git
+cd Pantheon
 git checkout baco-ui
 
 # Navigate to baco-ui directory
@@ -176,13 +176,13 @@ pnpm start
 
 ## 📄 License
 
-This project is part of BACO and follows the same license.
+This project is part of Pantheon and follows the same license.
 
 ## 🙏 Acknowledgments
 
 - Inspired by [Vibe Kanban](https://github.com/skorokithakis/vibe-kanban) architecture
 - Built with Claude Code Max integration in mind
-- Designed for the BACO community
+- Designed for the Pantheon community
 
 ---
 

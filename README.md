@@ -93,7 +93,7 @@ Pantheon: Based on task management apps, consider:
       
 [... continues gathering requirements ...]
 
-Pantheon: Generating your customized baco.md file...
+Pantheon: Generating your customized pantheon.md file...
 ```
 
 For a quick template instead, use: `/gods init --template`
@@ -284,7 +284,7 @@ Phase 1 Complete! (Created 12 files, 1,245 lines of code)
 Ready to proceed with Phase 2: Core Logic? (y/n): 
 ```
 
-See the [Interactive Pantheon Guide](docs/interactive-baco-guide.md) and [Code Generation Guide](docs/code-generation-guide.md) for details.
+See the [Interactive Pantheon Guide](docs/interactive-pantheon-guide.md) and [Code Generation Guide](docs/code-generation-guide.md) for details.
 
 ## 📚 Project Templates
 
@@ -325,7 +325,7 @@ Browse all templates in the `examples/` directory.
 - `/orchestrate [task]` - Get multi-agent perspectives
 - `/generate-prp [task]` - Generate implementation guide
 
-## The baco.md Format
+## The pantheon.md Format
 
 ```yaml
 ---
@@ -355,7 +355,7 @@ Additional context...
 ## 🎓 Resources & Support
 
 ### Documentation
-- [Web UI Guide](baco-ui/README.md) - Using the web interface
+- [Web UI Guide](pantheon-ui/README.md) - Using the web interface
 - [CLI Reference](USAGE.md) - Command line documentation  
 - [Technical Architecture](TECHNICAL.md) - How Pantheon works internally
 - [Examples](examples/) - Real-world project templates
@@ -365,9 +365,9 @@ Additional context...
 - [Issue Tracker](https://github.com/bacoco/Pantheon/issues) - Report bugs, request features
 
 ### Getting Started
-- [Interactive Pantheon Guide](docs/interactive-baco-guide.md)
+- [Interactive Pantheon Guide](docs/interactive-pantheon-guide.md)
 - [Code Generation Guide](docs/code-generation-guide.md)
-- [Web UI Setup](baco-ui/README.md)
+- [Web UI Setup](pantheon-ui/README.md)
 
 ## When to Use Pantheon
 
@@ -403,7 +403,7 @@ A modern chat interface is currently in development for visual thinkers:
 
 ```bash
 # Start the web interface (experimental)
-cd baco-ui
+cd pantheon-ui
 pnpm install
 pnpm dev
 ```
@@ -415,7 +415,7 @@ pnpm dev
 - 🎨 Integrated UI preview
 - 📱 Mobile-responsive design
 
-![Pantheon UI Preview](docs/images/baco-ui-preview.png)
+![Pantheon UI Preview](docs/images/pantheon-ui-preview.png)
 
 **Note**: The Web UI is currently in development. For production use, summon the gods with `/gods init` in Claude Code.
 

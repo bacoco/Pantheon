@@ -1,6 +1,6 @@
-# BACO Changelog
+# Pantheon Changelog
 
-All notable changes to the BACO project will be documented in this file.
+All notable changes to the Pantheon project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -53,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Incremental updates library (`.claude/lib/incremental-updates.md`)
 
 ### Enhanced
-- BACO execution workflow now includes:
+- Pantheon execution workflow now includes:
   - Git repository initialization options
   - Automatic commits after each phase
   - Live preview launch after completion
@@ -241,10 +241,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2023-12-20
 
 ### Added
-- Initial BACO release
+- Initial Pantheon release
 - Core command system (`/analyze`, `/orchestrate`, `/generate-prp`)
 - Basic agent definitions
-- baco.md file format specification
+- pantheon.md file format specification
 - Pattern memory system
 - 14 example project templates
 
@@ -256,7 +256,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Notes
 
 ### Version Numbering
-- Major version: Breaking changes to command structure or baco.md format
+- Major version: Breaking changes to command structure or pantheon.md format
 - Minor version: New features, commands, or agents
 - Patch version: Bug fixes and minor improvements
 

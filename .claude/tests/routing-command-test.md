@@ -1,12 +1,12 @@
 # Routing Command Test Scenarios
 
-This file tests the `/baco route` command implementation.
+This file tests the `/gods route` command implementation.
 
 ## Test 1: Basic Routing
 
 ### Command
 ```
-/baco route Implement user authentication with JWT tokens
+/gods route Implement user authentication with JWT tokens
 ```
 
 ### Expected Analysis
@@ -26,7 +26,7 @@ taskType: implementation
 
 ### Command
 ```
-/baco route Design and build a scalable real-time chat system with React frontend, Node.js backend, WebSocket support, and Redis for message queue
+/gods route Design and build a scalable real-time chat system with React frontend, Node.js backend, WebSocket support, and Redis for message queue
 ```
 
 ### Expected Analysis
@@ -46,7 +46,7 @@ taskType: design/implementation
 
 ### Command
 ```
-/baco route Create accessible and responsive mockups for mobile banking app
+/gods route Create accessible and responsive mockups for mobile banking app
 ```
 
 ### Expected Analysis
@@ -66,7 +66,7 @@ taskType: design
 
 ### Command
 ```
-/baco route Develop comprehensive E2E test suite for checkout flow
+/gods route Develop comprehensive E2E test suite for checkout flow
 ```
 
 ### Expected Analysis
@@ -86,7 +86,7 @@ taskType: testing
 
 ### Command
 ```
-/baco route Perform security audit and penetration testing for our API
+/gods route Perform security audit and penetration testing for our API
 ```
 
 ### Expected Analysis
@@ -106,21 +106,21 @@ taskType: analysis/testing
 
 ### Unclear Request
 ```
-/baco route fix the thing
+/gods route fix the thing
 ```
 
 Expected: Request for clarification
 
 ### No Technology Match
 ```
-/baco route Implement quantum computing algorithm
+/gods route Implement quantum computing algorithm
 ```
 
 Expected: Lower confidence, BMad Master fallback
 
 ### Simple Task
 ```
-/baco route Add a button to the homepage
+/gods route Add a button to the homepage
 ```
 
 Expected: James with high confidence, low complexity
@@ -136,14 +136,14 @@ Expected: Message that routing is disabled, fallback to default
 
 ### Preview Mode
 ```
-/baco route --preview Design microservices architecture
+/gods route --preview Design microservices architecture
 ```
 
 Expected: Show routing without activation
 
 ### Auto Mode
 ```
-/baco route --auto Fix CSS styling issue
+/gods route --auto Fix CSS styling issue
 ```
 
 Expected: Auto-accept if confidence > 70%
@@ -152,7 +152,7 @@ Expected: Auto-accept if confidence > 70%
 
 ### Command
 ```
-/baco route --json Build REST API
+/gods route --json Build REST API
 ```
 
 ### Expected Output Structure

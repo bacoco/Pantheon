@@ -5,7 +5,7 @@ This guide explains how Pantheon generates actual code files, not just plans and
 ## The Complete Flow
 
 ### 1. Project Definition (`/gods init`)
-User defines their project interactively. Pantheon creates a `baco.md` file.
+User defines their project interactively. Pantheon creates a `pantheon.md` file.
 
 ### 2. Development Plan (`/gods plan`)
 Pantheon analyzes requirements and creates a phased implementation plan.

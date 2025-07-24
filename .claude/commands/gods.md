@@ -1,6 +1,6 @@
 # /gods - Summon the Divine Development Pantheon
 
-The primary command to summon the gods of software development. Uses `baco.md` files for project configuration.
+The primary command to summon the gods of software development. Uses `pantheon.md` files for project configuration.
 
 ## ACTIVATION
 When the user runs `/gods` or any `/gods [subcommand]`, activate this simplified workflow.
@@ -18,9 +18,9 @@ This is a prompt-based system. When invoked, you should:
 > **Note**: All command handlers should follow the interactive flow patterns defined in `.claude/lib/interactive-flow.md` for consistent user experience.
 
 ### `/gods` (no subcommand)
-Show available subcommands and check for baco.md file:
-- If baco.md exists: "📄 Found baco.md file. Run `/gods plan` to summon the gods for planning."
-- If no baco.md: "No baco.md file found. Run `/gods init` to create one."
+Show available subcommands and check for pantheon.md file:
+- If pantheon.md exists: "📄 Found pantheon.md file. Run `/gods plan` to summon the gods for planning."
+- If no pantheon.md: "No pantheon.md file found. Run `/gods init` to create one."
 
 ### `/gods init`
 Start an interactive project definition session. When invoked:
@@ -35,7 +35,7 @@ Start an interactive project definition session. When invoked:
 🏛️ Welcome to the Pantheon! The gods await your command.
 
 I'll help you create a comprehensive project definition through conversation.
-This will help me understand your needs and generate a customized baco.md file.
+This will help me understand your needs and generate a customized pantheon.md file.
 
 First, let's set up your project:
 
@@ -150,7 +150,7 @@ Would you like to change any of these? (y/N):
 If yes, which numbers to toggle? (1-14):
 ```
 
-Based on response, update preferences and add to baco.md configuration.
+Based on response, update preferences and add to pantheon.md configuration.
 
 **Step 7: Review & Generate**
 ```
@@ -165,11 +165,11 @@ Great! Based on our conversation, here's what I understand:
 ⚠️ Constraints: [summarize]
 🔧 Workflow: Git enabled, auto-commit, test-driven, Docker ready
 
-Shall I generate your customized baco.md file? (yes/no/refine)
+Shall I generate your customized pantheon.md file? (yes/no/refine)
 ```
 
 If "refine", ask what needs adjustment.
-If "yes", generate customized baco.md with all gathered information in the project directory:
+If "yes", generate customized pantheon.md with all gathered information in the project directory:
 - Include workflow settings based on user preferences:
   ```yaml
   workflow:
@@ -285,7 +285,7 @@ Any additional notes, gotchas, or important context that doesn't
 fit in the other sections.
 ```
 
-Tell the user: "✅ Created baco.md template. Copy this to a file named `baco.md` and edit it with your project requirements."
+Tell the user: "✅ Created pantheon.md template. Copy this to a file named `pantheon.md` and edit it with your project requirements."
 
 #### Smart Feature Suggestions:
 Based on project type, proactively suggest common features:
@@ -330,7 +330,7 @@ When user provides documentation URLs:
 - Identify required vs optional features
 - Note performance/security guidelines
 - Capture best practices
-- Reference in generated baco.md
+- Reference in generated pantheon.md
 
 ### Interactive Init Memory:
 Throughout the conversation:
@@ -342,7 +342,7 @@ Throughout the conversation:
 
 ### `/gods validate`
 When invoked:
-1. Ask the user to share their baco.md file content
+1. Ask the user to share their pantheon.md file content
 2. Check for:
    - Valid YAML frontmatter between --- markers
    - At least one ## FEATURE: section
@@ -353,7 +353,7 @@ When invoked:
 
 ### `/gods plan`
 When invoked:
-1. Ask the user to share their baco.md file content (if not already shared)
+1. Ask the user to share their pantheon.md file content (if not already shared)
 2. Parse the content to understand:
    - Project type and metadata
    - All features with their priorities and dependencies
@@ -455,7 +455,7 @@ If user chooses option 1, seamlessly transition to `/gods execute` functionality
 
 ### `/gods execute`
 When invoked:
-1. Ensure a baco.md file has been shared/validated
+1. Ensure a pantheon.md file has been shared/validated
 2. Generate a comprehensive Product Requirements Prompt (PRP) that includes:
    - All features as goals
    - Detected coding conventions
@@ -477,7 +477,7 @@ When invoked:
 5. **Interactive Continuation** (NEW):
    After PRP generation, present options:
    ```
-   ✅ PRP Generated: baco-prp-[timestamp].md
+   ✅ PRP Generated: pantheon-prp-[timestamp].md
 
    I've created a comprehensive implementation blueprint for your [project type].
 
@@ -621,7 +621,7 @@ When implementing (Choice 1), follow this exact process:
    - All commands run in project directory:
    - **Framework Detection and Setup**:
      ```
-     1. Detect framework from package.json or baco.md
+     1. Detect framework from package.json or pantheon.md
      2. If no framework detected, infer from project type
      3. Scaffold project structure based on framework:
         - Create directories (src, tests, etc.)
@@ -630,7 +630,7 @@ When implementing (Choice 1), follow this exact process:
         - Set up .gitignore for framework
         - Generate README.md (if generate_readme is true):
           ```javascript
-          // Parse baco.md to extract project details
+          // Parse pantheon.md to extract project details
           const bacoContent = Read("{project-name}/gods.md");
           const projectType = extractFromYAML(bacoContent, "project_type");
           const author = extractFromYAML(bacoContent, "author");
@@ -1069,7 +1069,7 @@ ${author}
 
 7. **Docker Generation** (if docker_enabled in workflow):
    ```
-   # Check if docker_enabled is true in baco.md workflow
+   # Check if docker_enabled is true in pantheon.md workflow
    if (workflow.docker_enabled) {
      🐳 Generating Docker configuration...
      
@@ -1139,10 +1139,10 @@ ${author}
 
 ## INTEGRATION WITH OTHER Pantheon COMMANDS
 
-When a baco.md file has been processed:
-- `/analyze` should consider all features and constraints from baco.md
+When a pantheon.md file has been processed:
+- `/analyze` should consider all features and constraints from pantheon.md
 - `/orchestrate` should use the recommended team composition
-- `/generate-prp` should incorporate all baco.md content
+- `/generate-prp` should incorporate all pantheon.md content
 - `/workspace` commands for monorepo management (list, add, link, run)
 - Store the parsed information in "memory" for the session
 
@@ -1165,7 +1165,7 @@ Always provide helpful, specific error messages:
 
 ## EXAMPLE ANALYSIS
 
-When analyzing examples in baco.md:
+When analyzing examples in pantheon.md:
 1. Look for patterns in the described examples:
    - Technology stack mentioned
    - Architectural patterns described
@@ -1181,7 +1181,7 @@ When analyzing examples in baco.md:
 - This is a prompt-based system running in Claude Code
 - All "parsing" is done through your understanding of the content
 - Maintain consistency with the user's style and preferences
-- Be helpful and suggest improvements to their baco.md structure
+- Be helpful and suggest improvements to their pantheon.md structure
 - The goal is to make project planning and implementation more structured and successful
 
 ## PROJECT DIRECTORY STRUCTURE
@@ -1191,8 +1191,8 @@ When using Pantheon, all project files are organized in a dedicated directory:
 ```
 ./                          # Current directory (where Pantheon is run)
 ├── project-name/           # Created by /gods init
-│   ├── baco.md            # Project definition
-│   ├── baco-prp-*.md      # Generated PRPs with timestamps
+│   ├── pantheon.md            # Project definition
+│   ├── pantheon-prp-*.md      # Generated PRPs with timestamps
 │   ├── package.json       # Created during implementation
 │   ├── src/               # Source code directory
 │   │   ├── components/    # React components
@@ -1239,7 +1239,7 @@ Project name: ai-image-gen
 Great! Based on our conversation, here's what I understand:
 [... summary ...]
 
-Shall I generate your customized baco.md file? (yes/no/refine): yes
+Shall I generate your customized pantheon.md file? (yes/no/refine): yes
 
 ✅ Created ai-image-gen/gods.md!
 

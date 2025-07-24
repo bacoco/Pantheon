@@ -40,7 +40,7 @@ All project files are created within the project directory:
 
 ```
 my-awesome-app/
-├── baco.md                 # Project definition
+├── pantheon.md                 # Project definition
 ├── baco-prp-20250120.md   # Generated PRP
 ├── package.json           # Project dependencies
 ├── src/                   # Source code
@@ -102,7 +102,7 @@ Bash("cd my-awesome-app && npm install")
 ### For Existing Projects
 If you have an existing project without a directory:
 1. Create a directory: `mkdir my-project`
-2. Move files: `mv baco.md *.ts *.tsx package.json my-project/`
+2. Move files: `mv pantheon.md *.ts *.tsx package.json my-project/`
 3. Continue with `/gods execute` from project root
 
 ### For New Projects

@@ -28,7 +28,7 @@ You: /gods init
 Pantheon: 🎯 Welcome to Pantheon Interactive Project Setup!
       [Asks about your project type, features, timeline...]
       
-      ✅ Created baco.md!
+      ✅ Created pantheon.md!
       Would you like me to create a development plan now? (y/n)
 
 You: y
@@ -138,7 +138,7 @@ When presented with numbered options:
 ### Old Flow (Multiple Commands)
 ```bash
 /gods init
-# Edit baco.md manually
+# Edit pantheon.md manually
 /gods plan
 /gods execute
 /execute-prp baco-prp-20250120.md
@@ -153,7 +153,7 @@ When presented with numbered options:
 ## Advanced Usage
 
 ### Skipping Steps
-If you already have a baco.md file:
+If you already have a pantheon.md file:
 ```bash
 /gods plan
 # Offers to proceed to implementation automatically

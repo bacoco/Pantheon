@@ -2,13 +2,13 @@
 
 This file demonstrates how to use Pantheon commands in Claude Code.
 
-## New: Simplified Workflow with baco.md
+## New: Simplified Workflow with pantheon.md
 
-Pantheon now supports a simplified workflow using `baco.md` files for project configuration:
+Pantheon now supports a simplified workflow using `pantheon.md` files for project configuration:
 
-### Quick Start with baco.md
+### Quick Start with pantheon.md
 ```
-# 1. Create a baco.md file through interactive conversation
+# 1. Create a pantheon.md file through interactive conversation
 /gods init
 
 # Or use the template for manual editing
@@ -22,13 +22,13 @@ Pantheon now supports a simplified workflow using `baco.md` files for project co
 ```
 
 See the `examples/` directory for complete examples across various domains:
-- **E-commerce**: `ecommerce-platform.baco.md`
-- **SaaS**: `saas-dashboard.baco.md`
-- **Mobile**: `mobile-backend.baco.md`
-- **Real-time**: `chat-messaging.baco.md`, `video-streaming.baco.md`
-- **Developer Tools**: `developer-tools.baco.md`, `api-gateway.baco.md`
-- **Data/ML**: `analytics-platform.baco.md`, `ml-api-service.baco.md`
-- **Content**: `cms-platform.baco.md`
+- **E-commerce**: `ecommerce-platform.pantheon.md`
+- **SaaS**: `saas-dashboard.pantheon.md`
+- **Mobile**: `mobile-backend.pantheon.md`
+- **Real-time**: `chat-messaging.pantheon.md`, `video-streaming.pantheon.md`
+- **Developer Tools**: `developer-tools.pantheon.md`, `api-gateway.pantheon.md`
+- **Data/ML**: `analytics-platform.pantheon.md`, `ml-api-service.pantheon.md`
+- **Content**: `cms-platform.pantheon.md`
 - And more...
 
 ## Usage
@@ -63,10 +63,10 @@ Simply type any of the following commands in Claude:
 # Create a basic template for manual editing
 /gods init --template
 
-# Validate your baco.md file
+# Validate your pantheon.md file
 /gods validate
 
-# Generate a plan from baco.md
+# Generate a plan from pantheon.md
 /gods plan
 
 # Execute the development plan
@@ -126,12 +126,12 @@ The interactive `/gods init` will:
 - Guide you through project requirements with intelligent questions
 - Analyze documentation and code examples you provide
 - Detect patterns and conventions from your examples
-- Generate a customized baco.md file based on the conversation
+- Generate a customized pantheon.md file based on the conversation
 - Suggest features and best practices for your project type
 
-## The baco.md File Format
+## The pantheon.md File Format
 
-The `baco.md` file is a structured way to define your project requirements:
+The `pantheon.md` file is a structured way to define your project requirements:
 
 ```yaml
 ---
@@ -198,13 +198,13 @@ Try this sequence:
 - **Customizable**: Modify prompts and agents as needed
 - **Comprehensive**: From analysis to implementation guide
 
-## Integration: baco.md with Existing Commands
+## Integration: pantheon.md with Existing Commands
 
-When a `baco.md` file is present, existing commands can leverage it:
+When a `pantheon.md` file is present, existing commands can leverage it:
 
-- **`/analyze`** - Considers all features and constraints from baco.md
-- **`/orchestrate`** - Uses recommended team composition from baco.md analysis
-- **`/generate-prp`** - Incorporates all baco.md content into the PRP
+- **`/analyze`** - Considers all features and constraints from pantheon.md
+- **`/orchestrate`** - Uses recommended team composition from pantheon.md analysis
+- **`/generate-prp`** - Incorporates all pantheon.md content into the PRP
 
 ### Workflow Comparison
 
@@ -215,10 +215,10 @@ When a `baco.md` file is present, existing commands can leverage it:
 /generate-prp "Build a task management API with auth"
 ```
 
-**New baco.md Workflow:**
+**New pantheon.md Workflow:**
 ```
 /gods init          # Create template
-# Edit baco.md with your requirements
+# Edit pantheon.md with your requirements
 /gods plan          # Analyze and plan
 /gods execute       # Run orchestration and generation
 ```

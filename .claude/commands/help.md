@@ -2,14 +2,14 @@
 
 ACTIVATION: When user types `/help`, display available commands and usage.
 
-## 🆕 New: Simplified Workflow with baco.md
+## 🆕 New: Simplified Workflow with pantheon.md
 
-The gods now guide your development through sacred `baco.md` scrolls:
+The gods now guide your development through sacred `pantheon.md` scrolls:
 
 ### Quick Start
 ```bash
-/gods init     # Create a template baco.md file
-/baco plan     # Generate development plan from baco.md
+/gods init     # Create a template pantheon.md file
+/baco plan     # Generate development plan from pantheon.md
 /baco execute  # Execute the plan
 ```
 
@@ -21,15 +21,15 @@ Summon the divine pantheon to orchestrate your development.
 
 **Subcommands**:
 - `/gods init` - Start interactive project setup conversation
-- `/gods init --template` - Create a basic template baco.md file
-- `/gods plan` - Generate development plan from baco.md
-- `/gods validate` - Validate baco.md syntax and structure
+- `/gods init --template` - Create a basic template pantheon.md file
+- `/gods plan` - Generate development plan from pantheon.md
+- `/gods validate` - Validate pantheon.md syntax and structure
 - `/gods execute` - Execute the development plan
 
 **Usage**: 
 ```
 /gods init
-# Edit baco.md with your requirements
+# Edit pantheon.md with your requirements
 /baco plan
 ```
 
@@ -165,7 +165,7 @@ When using `/orchestrate`, these specialists may be activated:
 - **🎨 Apollo (UX)**: User experience, design systems
 - **🤖 BMad Master**: Meta-orchestration, workflow optimization
 
-## The baco.md File Format
+## The pantheon.md File Format
 
 Create structured project requirements with YAML frontmatter and markdown sections:
 
@@ -193,20 +193,20 @@ Additional context...
 ```
 
 See the `examples/` directory for complete examples:
-- `baco-orchestrator.baco.md` - BACO itself (meta-example)
-- `ecommerce-platform.baco.md` - E-commerce platform
-- `saas-dashboard.baco.md` - Multi-tenant SaaS
-- `chat-messaging.baco.md` - Real-time chat
-- `video-streaming.baco.md` - Video platform
-- `cms-platform.baco.md` - Content management
-- `analytics-platform.baco.md` - Data analytics
-- `ml-api-service.baco.md` - Machine learning API
-- `developer-tools.baco.md` - Developer tools
+- `baco-orchestrator.pantheon.md` - BACO itself (meta-example)
+- `ecommerce-platform.pantheon.md` - E-commerce platform
+- `saas-dashboard.pantheon.md` - Multi-tenant SaaS
+- `chat-messaging.pantheon.md` - Real-time chat
+- `video-streaming.pantheon.md` - Video platform
+- `cms-platform.pantheon.md` - Content management
+- `analytics-platform.pantheon.md` - Data analytics
+- `ml-api-service.pantheon.md` - Machine learning API
+- `developer-tools.pantheon.md` - Developer tools
 - And more...
 
 ## Tips for Effective Use
 
-1. **Use baco.md for Complex Projects**: Structured requirements lead to better results
+1. **Use pantheon.md for Complex Projects**: Structured requirements lead to better results
 2. **Provide Examples**: BACO learns from your coding patterns
 3. **Be Specific**: The more context you provide, the better the analysis
 4. **Iterate**: Use analysis results to refine your orchestration requests
@@ -223,19 +223,19 @@ See the `examples/` directory for complete examples:
 /generate-prp Add a search function to the user list
 ```
 
-**Template baco.md Approach:**
+**Template pantheon.md Approach:**
 ```
 /gods init --template
-# Edit baco.md with search feature requirements
+# Edit pantheon.md with search feature requirements
 /baco plan
 /baco execute
 ```
 
-**Interactive baco.md Approach (Recommended):**
+**Interactive pantheon.md Approach (Recommended):**
 ```
 /gods init
 # Answer questions about your project
-# BACO analyzes your needs and generates customized baco.md
+# BACO analyzes your needs and generates customized pantheon.md
 /baco plan
 /baco execute
 ```
@@ -249,7 +249,7 @@ See the `examples/` directory for complete examples:
 /generate-prp Implement operational transformation for collaborative editing
 ```
 
-**Interactive baco.md Approach (Recommended):**
+**Interactive pantheon.md Approach (Recommended):**
 ```
 /gods init
 # BACO guides you through:
@@ -257,7 +257,7 @@ See the `examples/` directory for complete examples:
 #   - Feature discovery and prioritization
 #   - Technical requirements gathering
 #   - Documentation and example analysis
-# Generates comprehensive baco.md automatically
+# Generates comprehensive pantheon.md automatically
 
 /baco plan      # Review AI-generated plan
 /baco execute   # Implement with full context

@@ -1,8 +1,8 @@
-# Interactive BACO Init Task
+# Interactive Pantheon Init Task
 
 ## Purpose
 
-Guide an interactive conversation to gather comprehensive project requirements and generate a customized baco.md file. This task transforms the initialization process from a template-filling exercise into an intelligent dialogue that builds deep understanding of the project.
+Guide an interactive conversation to gather comprehensive project requirements and generate a customized pantheon.md file. This task transforms the initialization process from a template-filling exercise into an intelligent dialogue that builds deep understanding of the project.
 
 ## Conversation Architecture
 
@@ -13,7 +13,7 @@ Guide an interactive conversation to gather comprehensive project requirements a
 🎯 Welcome to BACO Interactive Project Setup!
 
 I'll help you create a comprehensive project definition through conversation.
-This will help me understand your needs and generate a customized baco.md file.
+This will help me understand your needs and generate a customized pantheon.md file.
 
 Let's start with the basics...
 
@@ -229,7 +229,7 @@ LOW PRIORITY:
   • [Constraint 1]
   • [Constraint 2]
 
-Shall I generate your customized baco.md file? (yes/no/refine)
+Shall I generate your customized pantheon.md file? (yes/no/refine)
 ```
 
 #### Refinement Options
@@ -327,7 +327,7 @@ Handle common conversation issues:
 
 ### Quality Checks
 
-Before generating final baco.md:
+Before generating final pantheon.md:
 
 1. **Completeness:**
    - At least 3 features defined
@@ -346,7 +346,7 @@ Before generating final baco.md:
 
 ### Final Generation
 
-Generate baco.md with:
+Generate pantheon.md with:
 - Rich descriptions from conversation
 - Discovered patterns and conventions
 - Analyzed documentation references
