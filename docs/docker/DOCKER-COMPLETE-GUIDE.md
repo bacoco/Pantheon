@@ -109,9 +109,9 @@ By default, VS Code opens with the README visible. To open with terminal instead
 
 ## Claude Integration
 
-Your Docker environment includes **TWO ways** to interact with Claude:
+Your Docker environment includes Claude integration through:
 
-### Claude Code Extension
+### Claude Code Extension (Primary Method)
 
 #### Features
 - **Interactive Chat** - Chat with Claude in a sidebar panel
@@ -129,48 +129,32 @@ Your Docker environment includes **TWO ways** to interact with Claude:
 - `Cmd/Ctrl + Shift + P` → Type "Claude" to see all commands
 - Right-click on code → See Claude options in context menu
 
-### Claude CLI
+### Claude CLI (Optional - May Require Setup)
 
-#### Features
-- **Script Automation** - Use Claude in bash scripts
-- **Batch Processing** - Process multiple files
-- **CI/CD Integration** - Use in automated workflows
-- **Terminal Workflows** - Quick commands without leaving terminal
+**Note**: Claude CLI availability varies. If not pre-installed, you can:
+1. Run `fix-claude-docker.sh` to attempt installation
+2. Use the VS Code extension as the primary method
 
-#### How to Use
-1. Open a terminal in VS Code (`` Ctrl+` ``)
-2. Authenticate: `claude-auth-docker.sh`
-3. Use Claude commands:
-
+#### If CLI is Available:
 ```bash
-# Interactive chat
-claude chat
+# Authenticate
+claude-auth-docker.sh
 
-# Ask a question
-claude chat "How do I implement a binary search in Python?"
-
-# Analyze a file
-claude analyze main.py
-
-# Generate code
-claude generate "Create a REST API endpoint for user authentication"
+# Use Claude
+claude chat "Help me build a REST API"
 ```
 
 ### Authentication
 
-#### Important: Extension and CLI Use Different Auth Systems!
+#### Claude Code Extension
+- Uses browser-based OAuth
+- Click the Claude icon and sign in
+- Works immediately after sign-in
 
-1. **Claude Code Extension**
-   - Uses browser-based OAuth
-   - Sign in through the extension UI
-   - Credentials stored in VS Code
-
-2. **Claude CLI**
-   - Uses API key or device code
-   - Authenticate with `claude-auth-docker.sh`
-   - Credentials stored in `~/.claude/`
-
-You need to authenticate BOTH separately if you want to use both!
+#### Claude CLI (If Available)
+- Run `claude-auth-docker.sh`
+- Follow the prompts
+- If issues occur, run `fix-claude-docker.sh`
 
 #### Authentication Methods
 
@@ -407,6 +391,25 @@ baco/
 | `/update-deps [package]` | Update specific package |
 
 ## Troubleshooting
+
+### Claude Integration Issues
+
+#### Extension Not Visible
+1. Press `Ctrl+Shift+P` and search for "Claude"
+2. Reload window: `Ctrl+R`
+3. Check extensions: `code-server --list-extensions`
+4. Manually install: `code-server --install-extension anthropic.claude-code`
+
+#### CLI Not Working
+1. Run `fix-claude-docker.sh` to fix common issues
+2. Check if installed: `which claude`
+3. Try manual install: `npm install -g @anthropic-ai/claude-code`
+4. Use extension instead: Click Claude icon in sidebar
+
+#### Authentication Failed
+1. For extension: Sign out and sign in again
+2. For CLI: Run `claude-auth-docker.sh`
+3. If Xvfb error: Run `fix-claude-docker.sh` first
 
 ### Common Issues
 

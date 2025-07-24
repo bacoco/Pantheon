@@ -16,6 +16,8 @@ RUN apt-get update && apt-get install -y \
     chromium \
     chromium-driver \
     xvfb \
+    x11vnc \
+    xfonts-base \
     # Additional utilities
     jq \
     wget \
@@ -25,19 +27,23 @@ RUN apt-get update && apt-get install -y \
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs
 
-# Install Claude CLI via npm
-RUN npm install -g @anthropic-ai/claude-code || \
-    echo "Warning: Claude CLI installation failed, but continuing..."
+# Install Claude CLI (2025 version)
+# Try npm first, then fallback to alternative methods
+RUN npm install -g @anthropic-ai/claude-code 2>/dev/null || \
+    (echo "Trying alternative Claude CLI installation..." && \
+     npm install -g claude-cli 2>/dev/null) || \
+    echo "Claude CLI will be configured later"
 
 # Copy the gods bash script
 COPY ./gods /usr/local/bin/gods
 RUN chmod +x /usr/local/bin/gods
 
-# Copy authentication scripts
+# Copy authentication and fix scripts
 COPY ./scripts/claude-auth-docker.sh /usr/local/bin/claude-auth-docker.sh
 COPY ./scripts/claude-auth-status.sh /usr/local/bin/claude-auth-status.sh
 COPY ./scripts/claude-auth-helper.sh /usr/local/bin/claude-auth-helper.sh
-RUN chmod +x /usr/local/bin/claude-auth-*.sh
+COPY ./scripts/fix-claude-docker.sh /usr/local/bin/fix-claude-docker.sh
+RUN chmod +x /usr/local/bin/claude-auth-*.sh /usr/local/bin/fix-claude-docker.sh
 
 # Copy Pantheon files to a location that won't be overwritten by volume mount
 # These will be symlinked or copied on startup
@@ -304,14 +310,14 @@ USER coder
 RUN if [ -d "/tmp/baco-vscode-extension" ]; then \
         code-server --install-extension /tmp/baco-vscode-extension; \
     fi && \
-    code-server --install-extension Anthropic.claude-code || echo "Claude extension may not be available" && \
+    code-server --install-extension anthropic.claude-code && \
     code-server --install-extension esbenp.prettier-vscode && \
     code-server --install-extension dbaeumer.vscode-eslint && \
     code-server --install-extension ms-python.python && \
     code-server --install-extension ms-python.vscode-pylance && \
     code-server --install-extension bradlc.vscode-tailwindcss && \
     code-server --install-extension ritwickdey.liveserver || \
-    echo "Some extensions may not be available"
+    echo "Note: Some extensions may require manual installation"
 
 # Expose port for code-server
 EXPOSE 8080

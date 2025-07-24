@@ -6,15 +6,21 @@
 if ! command -v claude &> /dev/null; then
     echo "⚡ BACO/Pantheon - VS Code Integration ⚡"
     echo ""
-    echo "Claude CLI is not installed. You can use Claude through:"
+    echo "Claude CLI is not installed. Here are your options:"
     echo ""
-    echo "1. VS Code Extension:"
+    echo "1. Use VS Code Extension (Recommended):"
     echo "   - Click the Claude icon in the sidebar"
-    echo "   - Sign in and use /gods commands there"
+    echo "   - Sign in with your Claude account"
+    echo "   - Use /gods commands in the Claude chat panel"
     echo ""
-    echo "2. Install Claude CLI:"
-    echo "   npm install -g @anthropic-ai/claude-code"
+    echo "2. Try to install Claude CLI:"
+    echo "   - Run: npm install -g @anthropic-ai/claude-code"
+    echo "   - Or: npm install -g claude-cli"
     echo ""
+    echo "3. Authenticate if CLI exists but not working:"
+    echo "   - Run: claude-auth-docker.sh"
+    echo ""
+    echo "Note: The VS Code extension is the most reliable option in 2025."
     exit 1
 fi
 

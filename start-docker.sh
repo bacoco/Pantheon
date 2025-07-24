@@ -272,11 +272,9 @@ show_next_steps() {
     echo "1. Open http://localhost:8080 in your browser"
     echo "2. Enter the password you set (check docker/.env if you forgot)"
     echo "3. Open a terminal in VS Code (Ctrl+\` or Cmd+\`)"
-    echo "4. Run 'claude-auth-docker.sh' to authenticate Claude"
-    echo "5. Start using BACO with the 'gods' command!"
+    echo "4. Start using BACO with the 'gods' command!"
     echo
     print_color $YELLOW "Useful commands:"
-    echo "  make status    - Check Claude authentication status"
     echo "  make shell     - Open a shell in the container"
     echo "  make logs      - View container logs"
     echo "  make down      - Stop the container"
@@ -284,19 +282,6 @@ show_next_steps() {
     print_color $BLUE "Happy coding! 🚀"
 }
 
-# Function to handle Claude authentication
-handle_authentication() {
-    echo
-    read -p "Would you like to authenticate Claude now? (y/N): " auth_now
-    
-    if [[ "$auth_now" =~ ^[Yy]$ ]]; then
-        print_color $BLUE "🔐 Starting Claude authentication..."
-        echo
-        docker exec -it pantheon-ide claude-auth-docker.sh
-    else
-        print_color $YELLOW "You can authenticate later by running: make auth"
-    fi
-}
 
 # Main function
 main() {
@@ -360,9 +345,6 @@ main() {
     
     # Show next steps
     show_next_steps
-    
-    # Optionally handle authentication
-    handle_authentication
 }
 
 # Run main function

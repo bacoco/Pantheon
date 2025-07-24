@@ -80,6 +80,7 @@ main() {
         
         # Try different variations of the command
         for flag in "--no-browser" "--device" "--headless"; do
+            print_color $YELLOW "Trying: claude login $flag"
             if claude login $flag 2>&1 | tee /tmp/claude-auth.log; then
                 if check_auth_status; then
                     print_color $GREEN "✅ Successfully authenticated!"
@@ -87,6 +88,8 @@ main() {
                 fi
             fi
         done
+    else
+        print_color $YELLOW "Device code authentication not supported in this Claude CLI version"
     fi
 
     # Method 3: Headless browser authentication
@@ -96,7 +99,10 @@ main() {
     # Check if Xvfb is installed
     if ! command -v Xvfb &> /dev/null; then
         print_color $RED "❌ Error: Xvfb is not installed. Cannot proceed with headless authentication."
-        print_color $YELLOW "   Please ensure the Docker image includes Xvfb package."
+        print_color $YELLOW "   Please try one of these alternatives:"
+        echo "   1. Rebuild the Docker image: make build"
+        echo "   2. Install manually: sudo apt-get update && sudo apt-get install -y xvfb"
+        echo "   3. Use the VS Code Claude extension instead (click Claude icon in sidebar)"
         exit 1
     fi
 
