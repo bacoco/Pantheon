@@ -30,8 +30,27 @@ Imagine describing your app idea in plain English and watching as a pantheon of 
 
 ## 🖥️ Choose Your Interface
 
-### CLI Mode (Production Ready)
-For terminal enthusiasts and automation:
+### Web UI with Docker (New Pantheon UI!)
+Full VS Code experience in your browser with integrated Claude:
+
+```bash
+# One-command setup with VS Code Server
+./start-docker.sh
+```
+
+Access at **http://localhost:8080** - includes:
+- 🖥️ Full VS Code IDE in your browser
+- 🤖 Pre-installed Claude Code extension
+- 🔐 Integrated authentication wizard
+- 🚀 Live preview server on ports 3000, 5173, 8000
+- 🏛️ All Pantheon `gods` commands
+- 📦 Node.js, Python, Git pre-installed
+- 💾 Persistent storage for your projects
+
+[**Quick Start with Docker →**](QUICKSTART-DOCKER.md)
+
+### CLI Mode (Direct Integration)
+For terminal enthusiasts and Claude Code users:
 
 ```bash
 # Summon the gods directly in Claude Code
@@ -40,6 +59,7 @@ For terminal enthusiasts and automation:
 
 ## ✨ What Makes Pantheon Different?
 
+- **Web-Based IDE**: Full VS Code experience in your browser with Docker setup
 - **AI Team Collaboration**: 15 specialized agents work together on your project
 - **Smart Context Management**: Never lose track of requirements across sessions
 - **UI Quality Scoring**: AI-driven design improvements with measurable results
@@ -49,18 +69,42 @@ For terminal enthusiasts and automation:
 
 ## 🎯 Quick Start
 
+### Option 1: Docker with Web UI (Recommended)
+
+```bash
+git clone https://github.com/bacoco/Pantheon.git
+cd Pantheon
+./start-docker.sh
+```
+
+Then open **http://localhost:8080** and run `gods init` in the VS Code terminal.
+
+### Option 2: CLI in Claude Code
+
 ```bash
 git clone https://github.com/bacoco/Pantheon.git
 cd Pantheon
 ```
 
-### Start Your First Project
+Then:
+- **In Claude Code (Web/Desktop)**: Use slash command `/gods init`
+- **In Docker Terminal**: Use regular command `gods init`
 
-```
-/gods init
-```
+## 📦 Installation & Prerequisites
 
-This starts an interactive conversation where Pantheon helps you define your project:
+### For Docker Setup (Recommended)
+- Docker Desktop installed and running
+- Git
+- Web browser
+- 5 minutes
+
+### For CLI Mode
+- Claude Code (claude.ai/code)
+- Git
+
+## 📝 How Pantheon Works
+
+Pantheon starts an interactive conversation to help you define your project:
 
 **Example conversation:**
 ```
@@ -349,15 +393,19 @@ Additional context...
 ## 🎓 Resources & Support
 
 ### Documentation
+- [Docker Quick Start](QUICKSTART-DOCKER.md) - Get started with Docker in 2 minutes
+- [Docker Setup Guide](docker/README.md) - Detailed Docker configuration
 - [CLI Reference](USAGE.md) - Command line documentation  
 - [Technical Architecture](TECHNICAL.md) - How Pantheon works internally
 - [Examples](examples/) - Real-world project templates
+- [Claude Authentication](docs/CLAUDE_AUTH_DOCKER.md) - Docker authentication guide
 
 ### Community
 - [GitHub Discussions](https://github.com/bacoco/Pantheon/discussions) - Ask questions, share ideas
 - [Issue Tracker](https://github.com/bacoco/Pantheon/issues) - Report bugs, request features
 
 ### Getting Started
+- [Docker Quick Start](QUICKSTART-DOCKER.md) - Web UI setup
 - [Interactive Pantheon Guide](docs/interactive-pantheon-guide.md)
 - [Code Generation Guide](docs/code-generation-guide.md)
 
@@ -381,8 +429,14 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-## Documentation
+## 📚 Documentation
 
+### Setup Guides
+- [Docker Quick Start](QUICKSTART-DOCKER.md) - Web UI setup in 2 minutes
+- [Docker Details](docker/README.md) - Advanced Docker configuration
+- [Claude Authentication](docs/CLAUDE_AUTH_DOCKER.md) - Auth troubleshooting
+
+### Reference
 - [Usage Guide](USAGE.md) - Detailed command reference
 - [Technical Architecture](TECHNICAL.md) - Implementation details
 - [Examples](examples/) - Sample project definitions
@@ -394,8 +448,19 @@ Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines
 
 Ready to transform how you build software?
 
-1. **CLI**: Summon the gods with `/gods init` in Claude Code
-2. **Learn More**: Check out our [documentation](docs/)
+### Web UI (Recommended)
+```bash
+./start-docker.sh  # Full setup in one command
+```
+Then visit **http://localhost:8080** and use `gods init` in the terminal
+
+### CLI Mode
+In Claude Code (claude.ai/code), use slash commands like `/gods init`
+
+**Learn More**: 
+- [Docker Quick Start Guide](QUICKSTART-DOCKER.md)
+- [Full Documentation](docs/)
+- [Docker Setup Details](docker/README.md)
 
 Join the future of AI-powered development with Pantheon!
 

@@ -93,8 +93,11 @@ baco/
 - **Persistent Storage**: Your code and settings are saved
 
 ### Two Ways to Use Claude:
-1. **VS Code Extension** - Click the Claude icon in the sidebar
-2. **CLI Commands** - Use `claude` in the terminal
+1. **VS Code Extension** (Recommended) - Click the Claude icon in the sidebar
+2. **CLI Commands** - Use `claude` in the terminal after running `claude-auth-docker.sh`
+
+### Terminal vs README on Startup
+By default, VS Code opens with the README visible. To open with terminal instead, see [Terminal Startup Configuration](docker/README-TERMINAL-STARTUP.md).
 
 ## Troubleshooting
 
@@ -127,9 +130,11 @@ cat docs/CLAUDE_AUTH_DOCKER.md
 
 ## Next Steps
 
-1. Create a new project: `gods init`
+1. Create a new project: `gods init` (no slash in Docker!)
 2. Generate a plan: `gods plan "your idea"`
 3. Execute the plan: `gods execute`
+
+**Important**: In the Docker terminal, use `gods` without the slash. The `/gods` syntax only works in Claude Code (claude.ai/code).
 
 Happy coding! 🎉
 

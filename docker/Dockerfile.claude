@@ -113,6 +113,8 @@ RUN cat > /home/coder/.local/share/code-server/User/settings.json << 'EOF'
     }
   },
   "workbench.startupEditor": "readme",
+  "terminal.integrated.defaultProfile.linux": "pantheon",
+  "workbench.panel.defaultLocation": "bottom",
   "workbench.colorCustomizations": {
     "activityBar.background": "#1a1a2e",
     "activityBar.foreground": "#FFD700",
@@ -183,7 +185,7 @@ You have entered the realm of Pantheon, where AI-powered gods collaborate to tra
 
 | Deity | Domain | Summon With |
 |-------|--------|-------------|
-| **Zeus** 👑 | Supreme Orchestrator | `/gods init` |
+| **Zeus** 👑 | Supreme Orchestrator | `gods init` |
 | **Daedalus** 🏗️ | System Architecture | Through Zeus |
 | **Hephaestus** 🔨 | Code Implementation | Through Zeus |
 | **Athena** 🦉 | Product Strategy | Through Zeus |
@@ -193,9 +195,13 @@ You have entered the realm of Pantheon, where AI-powered gods collaborate to tra
 ## 🚀 Quick Start: Summon the Gods
 
 ### Begin Your Divine Journey:
+
+**In the VS Code Terminal:**
 ```bash
-/gods init
+gods init
 ```
+
+**Note:** In Docker, use `gods init` (without the slash). The `/gods` slash commands only work in Claude Code's web/desktop interface.
 
 This sacred command initiates a conversation with Zeus, who will:
 1. 🎯 Understand your vision
@@ -221,10 +227,10 @@ claude chat "Help me create a REST API"
 
 ## ⚡ Essential Commands
 
-### Pantheon Commands
-- `/gods init` - Start a new divine project
-- `/gods plan` - Receive architectural wisdom
-- `/gods execute` - Manifest your vision into code
+### Pantheon Commands (in VS Code Terminal)
+- `gods init` - Start a new divine project
+- `gods plan` - Receive architectural wisdom
+- `gods execute` - Manifest your vision into code
 
 ### Claude Commands
 - `claude-auth-docker.sh` - Authenticate Claude CLI
@@ -249,7 +255,7 @@ This environment has been blessed with:
 
 <div align="center">
   <p><strong>Ready to build something legendary?</strong></p>
-  <p>Type <code>/gods init</code> in any file to begin</p>
+  <p>Type <code>gods init</code> in the terminal to begin</p>
   <h2>⚡</h2>
 </div>
 
