@@ -18,6 +18,9 @@ RUN apt-get update && apt-get install -y \
     xvfb \
     x11vnc \
     xfonts-base \
+    xfonts-100dpi \
+    xfonts-75dpi \
+    xfonts-cyrillic \
     # Additional utilities
     jq \
     wget \
@@ -38,12 +41,11 @@ RUN npm install -g @anthropic-ai/claude-code 2>/dev/null || \
 COPY ./gods /usr/local/bin/gods
 RUN chmod +x /usr/local/bin/gods
 
-# Copy authentication and fix scripts
+# Copy authentication scripts
 COPY ./scripts/claude-auth-docker.sh /usr/local/bin/claude-auth-docker.sh
 COPY ./scripts/claude-auth-status.sh /usr/local/bin/claude-auth-status.sh
 COPY ./scripts/claude-auth-helper.sh /usr/local/bin/claude-auth-helper.sh
-COPY ./scripts/fix-claude-docker.sh /usr/local/bin/fix-claude-docker.sh
-RUN chmod +x /usr/local/bin/claude-auth-*.sh /usr/local/bin/fix-claude-docker.sh
+RUN chmod +x /usr/local/bin/claude-auth-*.sh
 
 # Copy Pantheon files to a location that won't be overwritten by volume mount
 # These will be symlinked or copied on startup

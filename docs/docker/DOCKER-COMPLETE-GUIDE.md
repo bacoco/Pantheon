@@ -401,7 +401,7 @@ baco/
 4. Manually install: `code-server --install-extension anthropic.claude-code`
 
 #### CLI Not Working
-1. Run `fix-claude-docker.sh` to fix common issues
+1. Restart container to trigger automatic installation
 2. Check if installed: `which claude`
 3. Try manual install: `npm install -g @anthropic-ai/claude-code`
 4. Use extension instead: Click Claude icon in sidebar
@@ -409,7 +409,7 @@ baco/
 #### Authentication Failed
 1. For extension: Sign out and sign in again
 2. For CLI: Run `claude-auth-docker.sh`
-3. If Xvfb error: Run `fix-claude-docker.sh` first
+3. If Xvfb error: Rebuild image with `make build`
 
 ### Common Issues
 
