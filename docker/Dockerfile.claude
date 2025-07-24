@@ -39,14 +39,11 @@ COPY ./scripts/claude-auth-status.sh /usr/local/bin/claude-auth-status.sh
 COPY ./scripts/claude-auth-helper.sh /usr/local/bin/claude-auth-helper.sh
 RUN chmod +x /usr/local/bin/claude-auth-*.sh
 
-# Copy the .claude directory with all Pantheon commands and agents
-COPY ./.claude /home/coder/projects/.claude
-
-# Copy example pantheon files
-COPY ./examples /home/coder/projects/examples
-
-# Copy CLAUDE.md for project context
-COPY ./CLAUDE.md /home/coder/projects/CLAUDE.md
+# Copy Pantheon files to a location that won't be overwritten by volume mount
+# These will be symlinked or copied on startup
+COPY ./.claude /home/coder/.pantheon-files/.claude
+COPY ./examples /home/coder/.pantheon-files/examples
+COPY ./CLAUDE.md /home/coder/.pantheon-files/CLAUDE.md
 
 # Copy VS Code extension
 COPY ./baco-vscode-extension /tmp/baco-vscode-extension/
@@ -325,9 +322,13 @@ ENV PASSWORD=${PASSWORD:-pantheon}
 # Add Claude configuration directory to PATH for any custom scripts
 ENV PATH="/home/coder/.claude/bin:${PATH}"
 
+# Copy entrypoint script
+COPY --chmod=755 ./scripts/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8080/healthz || exit 1
 
-# Start code-server
-CMD ["code-server", "--bind-addr", "0.0.0.0:8080", "--disable-telemetry", "/home/coder/projects"]
+# Use entrypoint script to ensure Pantheon files are available
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["--bind-addr", "0.0.0.0:8080", "--disable-telemetry", "/home/coder/projects"]
