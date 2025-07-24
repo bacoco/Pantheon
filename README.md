@@ -2,7 +2,7 @@
   <img src="docs/images/pantheon.jpeg" alt="Pantheon" width="300" style="border-radius: 8px;">
 </div>
 
-**Principled Agent Nexus for Team Harmonization and Engineering Orchestration Network**
+**P**rincipled **A**gent **N**exus for **T**eam **H**armonization and **E**ngineering **O**rchestration **N**etwork
 
 A central hub (Nexus) where specialized agents follow clear principles to work together in perfect harmony. This harmonized team is then orchestrated by the platform to manage and execute every facet of the software engineering lifecycle, from design to deployment.
 
