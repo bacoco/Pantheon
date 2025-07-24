@@ -389,6 +389,9 @@ RUN npm config set prefix '/home/coder/.npm-global'
 ENV PATH="/home/coder/.npm-global/bin:${PATH}"
 ENV NPM_CONFIG_PREFIX="/home/coder/.npm-global"
 
+# Copy Pantheon Claude Chat extension with correct ownership
+COPY --chown=coder:coder ./claude-code-chat-extension /tmp/pantheon-claude-chat/
+
 # Install VS Code extensions
 RUN code-server --install-extension Anthropic.claude-code || echo "Claude extension may not be available" && \
     code-server --install-extension esbenp.prettier-vscode && \
@@ -398,6 +401,16 @@ RUN code-server --install-extension Anthropic.claude-code || echo "Claude extens
     code-server --install-extension bradlc.vscode-tailwindcss && \
     code-server --install-extension ritwickdey.liveserver || \
     echo "Some extensions may not be available"
+
+# Build and install the Pantheon Claude Chat extension as coder user
+RUN su - coder -c "cd /tmp/pantheon-claude-chat && \
+    npm install && \
+    npm install -g @vscode/vsce && \
+    npm run compile && \
+    vsce package --no-dependencies" && \
+    code-server --install-extension /tmp/pantheon-claude-chat/*.vsix && \
+    rm -rf /tmp/pantheon-claude-chat && \
+    echo "Pantheon Claude Chat extension installed"
 
 # Expose port for code-server
 EXPOSE 8080
