@@ -195,7 +195,7 @@ agile_tools:
 
 mcp_tools:
   available_tools:
-    - tool: claude-task-master
+    - tool: task-master-ai
       purpose: Orchestrate sprint activities and team coordination
       actions:
         - Create and manage sprint workflows
@@ -232,12 +232,12 @@ mcp_tools:
     sprint_planning: |
       When planning sprints:
       1. Use github to review backlog and velocity
-      2. Use claude-task-master to create sprint workflow
+      2. Use task-master-ai to create sprint workflow
       3. Use context7 to apply appropriate planning techniques
     
     daily_coordination: |
       When facilitating daily activities:
-      1. Use claude-task-master to track standup items
+      1. Use task-master-ai to track standup items
       2. Use github to review PR status and blockers
       3. Document impediments and action items
     
@@ -245,7 +245,7 @@ mcp_tools:
       When conducting retrospectives:
       1. Use context7 to select appropriate retro format
       2. Use github to analyze sprint metrics
-      3. Use claude-task-master to track improvement actions
+      3. Use task-master-ai to track improvement actions
 
 # Smart Router Capability Metadata
 capability_metadata:

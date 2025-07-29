@@ -54,9 +54,15 @@ This summons the Divine Council where gods work together to understand your proj
 
 | Command | Description |
 |---------|-------------|
-| `/gods council` | Start collaborative planning session |
+| `/gods init` | Initialize a new project with git/GitHub |
+| `/gods plan` | Generate development plan from requirements |
+| `/gods execute` | Create implementation blueprint (and optionally build) |
+| `/gods validate` | Validate project quality and completeness |
+| `/gods resume` | Continue a previous project session |
+| `/gods council` | Start collaborative planning session (all-in-one) |
 | `/gods summon <name>` | Summon a specific god |
 | `/gods list` | See all available gods |
+| `/gods status` | Check current session status |
 | `/help` | Show all Pantheon commands |
 
 ## The Divine Council
@@ -144,16 +150,42 @@ Council: Based on our divine wisdom, here's your plan...
 
 ## Common Workflows
 
-### 1. Starting a New Project
+### 1. Starting a New Project (Step-by-Step)
 
 ```bash
-# Start with the council
+# Step 1: Initialize project
+/gods init
+> Project name: blog-api
+> Project type: 2 (REST API)
+> Initialize git? y
+> Create GitHub repo? private
+
+# Step 2: Generate development plan
+/gods plan
+# Creates PRD with architecture decisions
+
+# Step 3: Create implementation blueprint
+/gods execute
+# Generates PRP and offers to build
+> Implement now? y
+# Creates working application!
+```
+
+### 1b. Starting a New Project (All-in-One)
+
+```bash
+# Use the council for everything
 /gods council
+> Project name: blog-api
+> Project type: 2 (REST API)
+> Initialize git? y
+> Create GitHub repo? private
 
 # Describe your project
 "I need a REST API for managing blog posts with authentication"
 
-# Let the gods collaborate and create your plan
+# Gods collaborate and create everything
+# PRD, PRP, and optional implementation
 ```
 
 ### 2. Getting Architecture Help
@@ -221,11 +253,19 @@ Summon individual gods when you need:
 - Focused help on a particular aspect
 
 ### 3. Check the Chatrooms
-All council discussions are saved in `/chatrooms/`:
+All council discussions are saved in `/projects/[name]/chatrooms/`:
+- `council-progress.md` - Real-time progress tracking
 - `discovery-session.md` - Initial project exploration
 - `architecture-council.md` - Technical design discussions
+- `mcp-usage-log.md` - MCP tool usage and results
+- `clarifications-needed.md` - Questions from gods
 - `final-prd.md` - Complete requirements document
 - `final-prp.md` - Implementation blueprint
+
+**Monitor progress in real-time:**
+```bash
+tail -f /projects/[name]/chatrooms/council-progress.md
+```
 
 ### 4. Leverage MCP Tools
 The gods use MCP tools automatically:
@@ -279,6 +319,8 @@ This is normal - tools download once and are cached.
 
 - **In Claude Code**: `/help`
 - **Documentation**: Check `.claude/docs/`
+- **Resume Work**: `/gods resume` to see all projects
+- **Check Status**: `/gods status` for active sessions
 - **GitHub Issues**: Report bugs at [github.com/bacoco/Pantheon](https://github.com/bacoco/Pantheon/issues)
 
 ## Advanced Usage
@@ -287,9 +329,32 @@ This is normal - tools download once and are cached.
 
 Each god has specialized MCP tools:
 - **Zeus**: `claude-flow` for orchestration
-- **Apollo**: `browsermcp` for UI preview
+- **Apollo**: `playwright` for UI testing (browsermcp removed)
+- **Daedalus**: `web_search` and `github_repo_analyze`
 - **Themis**: `playwright` for testing
 - **All gods**: Access to relevant specialized tools
+
+### Project Organization
+
+Pantheon creates organized project structures:
+```
+/projects/
+├── my-web-app/
+│   ├── chatrooms/         # All documentation
+│   ├── src/              # Source code
+│   ├── pantheon.md       # Project definition
+│   └── .git/             # Git repository
+├── my-api/
+└── my-cli-tool/
+```
+
+### Git Integration
+
+Pantheon automatically:
+- Initializes git repositories
+- Creates GitHub repos (if requested)
+- Commits after each phase
+- Uses smart commit messages
 
 ### Workflow Automation
 
@@ -331,10 +396,18 @@ Start your divine development journey:
 **Quick Reference Card**
 
 ```bash
-# Essential Commands
-/gods council          # Start planning session
+# Project Commands
+/gods init             # Create new project with git/GitHub
+/gods plan             # Generate development plan
+/gods execute          # Create PRP and optionally build
+/gods validate         # Check project quality
+/gods resume           # Continue previous project
+
+# Council & Gods
+/gods council          # All-in-one planning session
 /gods summon <name>    # Summon specific god
 /gods list            # List all gods
+/gods status          # Check session status
 /help                 # Show all commands
 
 # Common Gods
@@ -346,8 +419,9 @@ themis     # Quality Assurance
 aegis      # Security
 
 # Pro Tips
-- Use council for planning
-- Check /chatrooms/ for docs
-- MCP tools auto-download
+- Projects go in /projects/[name]/
+- Monitor progress: tail -f chatrooms/council-progress.md
+- Git commits happen automatically
+- MCP tools are used for research
 - Everything is project-local
 ```

@@ -213,7 +213,7 @@ mcp_tools:
         Use for backlog refinement, story creation, and validating
         that implementations meet acceptance criteria.
     
-    - tool: browsermcp
+    - tool: mcp__playwright__navigate
       purpose: Validate user experience and gather feedback
       actions:
         - Test product features from user perspective
@@ -224,7 +224,7 @@ mcp_tools:
         Use for user testing, competitive analysis, and ensuring
         the product meets market expectations.
     
-    - tool: claude-task-master
+    - tool: task-master-ai
       purpose: Coordinate validation workflows and acceptance testing
       actions:
         - Create acceptance testing workflows
@@ -239,20 +239,20 @@ mcp_tools:
     backlog_refinement: |
       When refining the backlog:
       1. Use github to create detailed user stories
-      2. Use browsermcp to validate user needs and expectations
-      3. Use claude-task-master to ensure stories are actionable
+      2. Use mcp__playwright__navigate to validate user needs and expectations
+      3. Use task-master-ai to ensure stories are actionable
     
     acceptance_validation: |
       When validating features:
       1. Use github to review implementation against criteria
-      2. Use browsermcp to test from user perspective
-      3. Use claude-task-master to track validation status
+      2. Use mcp__playwright__screenshot to test from user perspective
+      3. Use task-master-ai to track validation status
     
     release_preparation: |
       When preparing releases:
       1. Use github to verify all stories meet definition of done
-      2. Use claude-task-master to coordinate release activities
-      3. Use browsermcp to validate market readiness
+      2. Use task-master-ai to coordinate release activities
+      3. Use web_search to validate market readiness
 
 # Smart Router Capability Metadata
 capability_metadata:

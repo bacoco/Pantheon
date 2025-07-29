@@ -367,7 +367,7 @@ mcp_tools:
         usage: |
           Use for capturing before/after states, recording animations,
           and measuring performance impact of interactions.
-    - browsermcp:
+    - mcp__playwright__navigate:
         purpose: Test interactions across browsers
         actions: ["test_animations", "check_performance", "validate_gestures"]
         usage: |
@@ -384,7 +384,7 @@ mcp_tools:
     interaction_analysis: |
       When analyzing for interactions:
       1. Use playwright to capture current states
-      2. Use browsermcp to test existing behaviors
+      2. Use mcp__playwright__navigate to test existing behaviors
       3. Document all enhancement opportunities
       4. Prioritize by user impact
     
@@ -392,7 +392,7 @@ mcp_tools:
       When implementing interactions:
       1. Use framer-motion-mcp to generate code
       2. Use playwright to capture implementations
-      3. Use browsermcp to test performance
+      3. Use mcp__playwright__navigate to test performance
       4. Measure against performance budget
 
 # Smart Router Capability Metadata

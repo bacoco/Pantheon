@@ -241,7 +241,7 @@ mcp_tools:
         usage: |
           Use for capturing visual inspiration, extracting computed styles,
           and analyzing existing implementations for token extraction.
-    - browsermcp:
+    - mcp__playwright__navigate:
         purpose: Analyze live sites for design patterns
         actions: ["inspect_styles", "extract_colors", "measure_spacing"]
         usage: |
@@ -258,20 +258,20 @@ mcp_tools:
     inspiration_analysis: |
       When analyzing visual inspiration:
       1. Use playwright to capture high-quality screenshots
-      2. Use browsermcp to inspect computed styles
+      2. Use mcp__playwright__navigate to inspect computed styles
       3. Use context7 to find similar design patterns
       4. Extract and document all findings
     
     token_extraction: |
       When extracting design tokens:
-      1. Use browsermcp to get exact color values
+      1. Use mcp__playwright__navigate to get exact color values
       2. Use playwright to measure spacing patterns
       3. Use context7 for naming conventions
       4. Generate comprehensive token set
     
     validation: |
       When validating tokens:
-      1. Use browsermcp to test contrast ratios
+      1. Use mcp__playwright__navigate to test contrast ratios
       2. Use playwright to verify visual consistency
       3. Use context7 for accessibility standards
       4. Document all validations

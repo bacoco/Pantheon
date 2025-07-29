@@ -4,20 +4,16 @@
       "command": "npx",
       "args": ["-y", "claude-flow"]
     },
-    "browsermcp": {
-      "command": "npx",
-      "args": ["-y", "browsermcp"]
-    },
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": ["-y", "@playwright/mcp@latest"]
     },
     "context7": {
       "url": "https://mcp.context7.com/mcp"
     },
-    "claude-task-master": {
+    "task-master-ai": {
       "command": "npx",
-      "args": ["-y", "claude-task-master"]
+      "args": ["-y", "task-master-ai"]
     },
     "shadcn-ui": {
       "command": "npx",

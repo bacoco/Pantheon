@@ -199,12 +199,16 @@ mcp_tools:
         usage: |
           Use for capturing UI states, comparing against baselines,
           detecting visual regressions, and analyzing layout issues.
-    - browsermcp:
-        purpose: Live UI inspection and testing
-        actions: ["inspect", "analyze_layout", "test_responsive"]
+    - mcp__playwright__navigate:
+        purpose: Navigate to pages for UI inspection
+        actions: ["navigate", "wait_for_load", "interact"]
         usage: |
-          Use for real-time UI inspection, testing responsive behavior,
-          and validating interactive states across browsers.
+          Use to navigate to different pages and states for testing.
+    - mcp__playwright__screenshot:
+        purpose: Capture UI screenshots
+        actions: ["capture", "compare", "analyze"]
+        usage: |
+          Use for capturing UI states and visual regression testing.
     - context7:
         purpose: Find UI patterns and fixes
         actions: ["find_ui_fixes", "search_patterns", "get_best_practices"]
@@ -216,7 +220,7 @@ mcp_tools:
     ui_analysis: |
       When analyzing UI:
       1. Use playwright to capture screenshots of all states
-      2. Use browsermcp to inspect live interactions
+      2. Use mcp__playwright__navigate to test live interactions
       3. Use context7 to find patterns for detected issues
       4. Compare against style guide baselines
     
@@ -224,14 +228,14 @@ mcp_tools:
       When testing visual changes:
       1. Use playwright to capture current state
       2. Use playwright visual_diff against baseline
-      3. Use browsermcp to verify across viewports
+      3. Use mcp__playwright__screenshot to verify across viewports
       4. Document significant changes
     
     ui_healing: |
       When fixing UI issues:
       1. Use playwright to identify specific problems
       2. Use context7 to find proven fix patterns
-      3. Use browsermcp to validate fixes in real-time
+      3. Use mcp__playwright__screenshot to validate fixes
       4. Use playwright to verify healing success
 
 healing_process:

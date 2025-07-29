@@ -277,7 +277,7 @@ collaboration:
 
 mcp_tools:
   available_tools:
-    - browsermcp:
+    - mcp__playwright__navigate:
         purpose: Research audience preferences and behaviors
         actions: ["research_competitors", "analyze_patterns", "test_variations"]
         usage: |
@@ -299,7 +299,7 @@ mcp_tools:
   tool_integration:
     audience_research: |
       When researching audience:
-      1. Use browsermcp to analyze competitor approaches
+      1. Use mcp__playwright__navigate to analyze competitor approaches
       2. Use context7 to find relevant psychology studies
       3. Use playwright to capture reference examples
       4. Document all findings with rationale
@@ -307,7 +307,7 @@ mcp_tools:
     optimization_validation: |
       When validating optimizations:
       1. Use playwright to create before/after comparisons
-      2. Use browsermcp to test with real users if possible
+      2. Use mcp__playwright__navigate to test with real users if possible
       3. Use context7 to verify against principles
       4. Generate comprehensive validation report
 

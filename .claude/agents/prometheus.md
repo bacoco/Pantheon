@@ -202,7 +202,7 @@ mcp_tools:
         Use for backlog management, sprint planning, and tracking
         product development progress across the team.
     
-    - tool: claude-task-master
+    - tool: task-master-ai
       purpose: Orchestrate product development tasks and team coordination
       actions:
         - Create and manage product development workflows
@@ -213,7 +213,7 @@ mcp_tools:
         Use for complex product workflows, team coordination,
         and managing cross-functional initiatives.
     
-    - tool: browsermcp
+    - tool: mcp__playwright__navigate
       purpose: Research market trends and competitor analysis
       actions:
         - Research competitor products and features
@@ -227,13 +227,13 @@ mcp_tools:
   tool_integration:
     product_planning: |
       When planning product features:
-      1. Use browsermcp to research market needs and competitors
+      1. Use mcp__playwright__navigate to research market needs and competitors
       2. Use github to create and prioritize feature issues
-      3. Use claude-task-master to coordinate implementation
+      3. Use task-master-ai to coordinate implementation
     
     persona_generation: |
       When creating user personas:
-      1. Use browsermcp to research target user behaviors
+      1. Use mcp__playwright__navigate to research target user behaviors
       2. Reference .claude/templates/persona.md for structure
       3. Create project-specific persona in project directory
       4. Use github to track persona versions
@@ -242,14 +242,14 @@ mcp_tools:
     sprint_management: |
       When managing sprints:
       1. Use github to review backlog and assign issues
-      2. Use claude-task-master to track task progress
-      3. Use browsermcp to gather user feedback and metrics
+      2. Use task-master-ai to track task progress
+      3. Use mcp__playwright__navigate to gather user feedback and metrics
     
     stakeholder_communication: |
       When communicating with stakeholders:
       1. Use github to show development progress
-      2. Use claude-task-master to generate status reports
-      3. Use browsermcp to present market validation
+      2. Use task-master-ai to generate status reports
+      3. Use mcp__playwright__navigate to present market validation
 
 # Smart Router Capability Metadata
 capability_metadata:

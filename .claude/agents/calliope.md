@@ -340,7 +340,7 @@ mcp_tools:
         usage: |
           Use for extracting all UI strings, organizing them by component,
           and identifying duplicate or similar strings.
-    - browsermcp:
+    - mcp__playwright__navigate:
         purpose: Analyze competitor voice and tone
         actions: ["analyze_copy", "capture_examples", "test_variations"]
         usage: |
@@ -364,7 +364,7 @@ mcp_tools:
     voice_validation: |
       When validating voice:
       1. Use grammarly-mcp to check tone consistency
-      2. Use browsermcp to compare with competitors
+      2. Use mcp__playwright__navigate to compare with competitors
       3. Test variations with target audience
       4. Document successful patterns
 

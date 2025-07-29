@@ -571,10 +571,10 @@ mcp_tools:
         - github: Full repository and code management
         - cloudflare: Infrastructure and deployment operations
         - context7: Access all knowledge bases and patterns
-        - browsermcp: Web research and testing
+        - mcp__playwright__navigate: Web research and testing
         - playwright: Automated testing and validation
         - slack: Team communication and notifications
-        - claude-task-master: Complex task orchestration
+        - task-master-ai: Complex task orchestration
         - salesforce: CRM and business operations
         - shadcn-ui: UI component management
         - datadog: Monitoring and observability
@@ -610,18 +610,18 @@ mcp_tools:
 
   tool_selection_criteria:
     by_domain:
-      development: [github, context7, browsermcp, playwright]
+      development: [github, context7, mcp__playwright__navigate, playwright]
       infrastructure: [cloudflare, datadog, github]
       communication: [slack, gmail, calendar]
       business: [salesforce, drive, gmail]
-      design: [browsermcp, shadcn-ui, playwright]
+      design: [mcp__playwright__navigate, shadcn-ui, playwright]
     
     by_task_type:
-      analysis: [context7, browsermcp, github]
-      implementation: [github, claude-task-master, context7]
-      testing: [playwright, browsermcp, datadog]
+      analysis: [context7, mcp__playwright__navigate, github]
+      implementation: [github, task-master-ai, context7]
+      testing: [playwright, mcp__playwright__navigate, datadog]
       deployment: [cloudflare, github, datadog]
-      coordination: [claude-task-master, slack, calendar]
+      coordination: [task-master-ai, slack, calendar]
 
 # Smart Router Capability Metadata
 capability_metadata:
