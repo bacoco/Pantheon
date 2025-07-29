@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "claude-flow": {
+      "command": "npx",
+      "args": ["-y", "claude-flow"]
+    },
+    "browsermcp": {
+      "command": "npx",
+      "args": ["-y", "browsermcp"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "claude-task-master": {
+      "command": "npx",
+      "args": ["-y", "claude-task-master"]
+    },
+    "shadcn-ui": {
+      "command": "npx",
+      "args": ["-y", "shadcn-ui-mcp-server"]
+    }
+  }
+}

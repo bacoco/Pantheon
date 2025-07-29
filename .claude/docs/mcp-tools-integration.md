@@ -2,6 +2,15 @@
 
 This document summarizes the MCP (Model Context Protocol) tools that have been integrated into each Pantheon god's capabilities.
 
+## Project-Local MCP Configuration
+
+Pantheon uses a `.mcp.json` file in the project root to define all required MCP servers, combined with `.claude/settings.json` for automatic approval. This means:
+- No global settings modification required
+- MCP servers are automatically enabled - no manual approval needed
+- Configuration is version-controlled with the project
+- All team members use the same MCP setup
+- Zero-friction onboarding for new developers
+
 ## Zeus - Orchestration Tools
 - `mcp__claude-flow__task_orchestrate` - Coordinate complex multi-agent workflows
 - `mcp__claude-flow__swarm_init` - Initialize collaborative agent swarms

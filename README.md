@@ -28,9 +28,13 @@ Imagine describing your app idea in plain English and watching as a pantheon of 
 4. **Watch It Build** → Real-time progress as your app takes shape
 5. **Preview & Iterate** → Instant live preview with hot-reload
 
-### Quick Start - No Setup Required!
+### Quick Start
 
 ```bash
+# 1. Open the Pantheon folder in Claude Code
+# 2. MCP servers are automatically enabled - no approval needed!
+# 3. Start using Pantheon immediately!
+
 # NEW: Start with collaborative divine council
 /gods council
 
@@ -39,6 +43,8 @@ Imagine describing your app idea in plain English and watching as a pantheon of 
 /gods summon daedalus   # Architecture guidance
 /gods list              # See all available gods
 ```
+
+> **Note**: Pantheon includes all required MCP tools in `.mcp.json` with automatic approval configured - no manual steps needed!
 
 ## 🖥️ Choose Your Interface
 
@@ -107,6 +113,14 @@ Council: *Summoning Zeus to orchestrate*
 - **Live Development**: See changes instantly with integrated preview server
 - **Production-Ready Output**: Clean, tested, documented code following best practices
 
+## 🔧 MCP (Model Context Protocol) Integration
+
+Pantheon uses MCP tools to enhance the gods' capabilities:
+
+- **Project-Local Configuration**: All MCP servers defined in `.mcp.json` - no global settings needed
+- **Automatic Approval**: MCP servers are automatically enabled via `.claude/settings.json` - no manual approval required
+- **Enhanced Capabilities**: Gods use specialized tools like claude-flow for orchestration, playwright for testing, and browsermcp for UI design
+- **First-Time Downloads**: MCP tools are downloaded automatically on first use (cached for future use)
 
 ## 🎯 Quick Start
 
@@ -170,6 +184,7 @@ Examples:
 ### For CLI Mode
 - Claude Code (claude.ai/code)
 - Git
+- Node.js 18+ (for MCP tools)
 
 ## 📝 How Pantheon Works
 
