@@ -15,6 +15,11 @@ A central hub (Nexus) where specialized agents follow clear principles to work t
 
 > Transform your ideas into production-ready applications with a pantheon of AI-powered development deities.
 
+## 📚 Quick Links
+- **[User Guide](USER-GUIDE.md)** - Complete guide for Claude Code users
+- **[One-Command Install](#quick-start---one-command-installation)** - Get started in seconds
+- **[Docker Setup](docs/docker/DOCKER-COMPLETE-GUIDE.md)** - Web UI with VS Code
+
 
 ## 🚀 From Idea to Implementation in Minutes
 
@@ -28,23 +33,19 @@ Imagine describing your app idea in plain English and watching as a pantheon of 
 4. **Watch It Build** → Real-time progress as your app takes shape
 5. **Preview & Iterate** → Instant live preview with hot-reload
 
-### Quick Start
+### Quick Start - One Command Installation
 
 ```bash
-# 1. Open the Pantheon folder in Claude Code
-# 2. MCP servers are automatically enabled - no approval needed!
-# 3. Start using Pantheon immediately!
+# In Claude Code, run this single command:
+curl -sSL https://raw.githubusercontent.com/bacoco/Pantheon/main/install-pantheon.sh | bash
 
-# NEW: Start with collaborative divine council
+# Then start with collaborative divine council
 /gods council
-
-# Or summon specific gods directly
-/gods summon apollo     # UI/UX design help
-/gods summon daedalus   # Architecture guidance
-/gods list              # See all available gods
 ```
 
-> **Note**: Pantheon includes all required MCP tools in `.mcp.json` with automatic approval configured - no manual steps needed!
+> **That's it!** No configuration needed. MCP tools are automatically enabled.
+
+📚 **[See the complete User Guide →](USER-GUIDE.md)**
 
 ## 🖥️ Choose Your Interface
 
@@ -151,27 +152,25 @@ Then open **http://localhost:8080** and start building immediately:
 
 **Note**: The `gods` command automatically integrates with Claude to provide the full Pantheon experience.
 
-### Option 2: CLI in Claude Code
+### Option 2: CLI in Claude Code (Recommended for Claude Users)
 
+**One-command installation:**
 ```bash
-git clone https://github.com/bacoco/Pantheon.git
-cd Pantheon
+curl -sSL https://raw.githubusercontent.com/bacoco/Pantheon/main/install-pantheon.sh | bash
 ```
 
-Then:
-- **In Claude Code (Web/Desktop)**: Use slash commands like `/gods council`
-- **In Terminal**: Start with `/gods council` for collaborative planning
-
-Examples:
+**Start using immediately:**
 ```bash
 # Start collaborative planning
 /gods council
 
-# Direct god invocation
-/gods summon zeus        # Orchestration
+# Or summon specific gods
 /gods summon apollo      # UI/UX design
-/gods summon hephaestus  # Code implementation
+/gods summon daedalus    # Architecture
+/gods summon hephaestus  # Implementation
 ```
+
+📖 **[Complete User Guide](USER-GUIDE.md)** - Everything you need to know
 
 ## 📦 Installation & Prerequisites
 

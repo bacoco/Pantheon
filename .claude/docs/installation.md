@@ -6,16 +6,22 @@ This guide will help you set up Pantheon with all required MCP (Model Context Pr
 
 - Claude Code (claude.ai/code) 
 - Node.js 18+ installed
-- npm or yarn package manager
+- npm package manager
+- git
 
-## Step 1: Clone Pantheon
+## One-Command Installation
 
 ```bash
-git clone https://github.com/bacoco/Pantheon.git
-cd Pantheon
+curl -sSL https://raw.githubusercontent.com/bacoco/Pantheon/main/install-pantheon.sh | bash
 ```
 
-## Step 2: MCP Servers Are Ready!
+This single command:
+- ✅ Checks all prerequisites
+- ✅ Clones the Pantheon repository
+- ✅ Verifies the installation
+- ✅ Shows you how to get started
+
+## MCP Servers Are Ready!
 
 Pantheon includes all required MCP server configurations in the `.mcp.json` file, and they are **automatically approved** via `.claude/settings.json`.
 
