@@ -9,15 +9,16 @@ This guide will help you set up Pantheon with all required MCP (Model Context Pr
 - npm package manager
 - git
 
-## One-Command Installation
+## Quick Installation
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/bacoco/Pantheon/main/install-pantheon.sh | bash
+git clone https://github.com/bacoco/Pantheon.git
+cd Pantheon
+./install-pantheon.sh
 ```
 
-This single command:
+The installation script:
 - ✅ Checks all prerequisites
-- ✅ Clones the Pantheon repository
 - ✅ Verifies the installation
 - ✅ Shows you how to get started
 

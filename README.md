@@ -17,7 +17,7 @@ A central hub (Nexus) where specialized agents follow clear principles to work t
 
 ## 📚 Quick Links
 - **[User Guide](USER-GUIDE.md)** - Complete guide for Claude Code users
-- **[One-Command Install](#quick-start---one-command-installation)** - Get started in seconds
+- **[Quick Start](#quick-start)** - Get started in minutes
 - **[Docker Setup](docs/docker/DOCKER-COMPLETE-GUIDE.md)** - Web UI with VS Code
 
 
@@ -33,11 +33,13 @@ Imagine describing your app idea in plain English and watching as a pantheon of 
 4. **Watch It Build** → Real-time progress as your app takes shape
 5. **Preview & Iterate** → Instant live preview with hot-reload
 
-### Quick Start - One Command Installation
+### Quick Start
 
 ```bash
-# In Claude Code, run this single command:
-curl -sSL https://raw.githubusercontent.com/bacoco/Pantheon/main/install-pantheon.sh | bash
+# Clone and install Pantheon:
+git clone https://github.com/bacoco/Pantheon.git
+cd Pantheon
+./install-pantheon.sh
 
 # Then start with collaborative divine council
 /gods council
@@ -154,9 +156,11 @@ Then open **http://localhost:8080** and start building immediately:
 
 ### Option 2: CLI in Claude Code (Recommended for Claude Users)
 
-**One-command installation:**
+**Quick installation:**
 ```bash
-curl -sSL https://raw.githubusercontent.com/bacoco/Pantheon/main/install-pantheon.sh | bash
+git clone https://github.com/bacoco/Pantheon.git
+cd Pantheon
+./install-pantheon.sh
 ```
 
 **Start using immediately:**

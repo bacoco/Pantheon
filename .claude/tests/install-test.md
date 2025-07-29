@@ -11,9 +11,11 @@ This document helps verify the one-command installation process works correctly.
 
 ## Installation Test
 
-1. **Run the installation command**:
+1. **Clone and run the installation script**:
    ```bash
-   curl -sSL https://raw.githubusercontent.com/bacoco/Pantheon/main/install-pantheon.sh | bash
+   git clone https://github.com/bacoco/Pantheon.git
+   cd Pantheon
+   ./install-pantheon.sh
    ```
 
 2. **Expected output**:

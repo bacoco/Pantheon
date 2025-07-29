@@ -13,17 +13,14 @@ Welcome to Pantheon - Where Gods Build Software Together! This guide will help y
 
 ## Installation
 
-### One-Command Setup
+### Quick Setup
 
 1. **Open Claude Code** (Web or Desktop)
 
-2. **Run the installation script**:
+2. **Clone and install Pantheon**:
    ```bash
-   curl -sSL https://raw.githubusercontent.com/bacoco/Pantheon/main/install-pantheon.sh | bash
-   ```
-
-   Or if you already cloned the repository:
-   ```bash
+   git clone https://github.com/bacoco/Pantheon.git
+   cd Pantheon
    ./install-pantheon.sh
    ```
 
