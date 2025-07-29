@@ -31,10 +31,13 @@ Imagine describing your app idea in plain English and watching as a pantheon of 
 ### Quick Start - No Setup Required!
 
 ```bash
-# Start building immediately - no init needed!
-gods create "todo app with React"
-gods generate "user authentication API"
-gods plan "e-commerce platform"
+# NEW: Start with collaborative divine council
+/gods council
+
+# Or summon specific gods directly
+/gods summon apollo     # UI/UX design help
+/gods summon daedalus   # Architecture guidance
+/gods list              # See all available gods
 ```
 
 ## 🖥️ Choose Your Interface
@@ -62,13 +65,42 @@ Access at **http://localhost:8080** - includes:
 For terminal enthusiasts and Claude Code users:
 
 ```bash
-# Summon the gods directly in Claude Code
-/gods init
+# Start a collaborative planning session
+/gods council
+
+# The divine council will guide you through project planning
+# with transparent collaboration between specialist gods
+```
+
+## 🏛️ NEW: Collaborative Divine Council System
+
+Pantheon now uses Anthropic's native sub-agent system for transparent, multi-perspective planning:
+
+- **Natural Collaboration**: Gods work together in council sessions, building on each other's ideas
+- **Transparent Process**: See when and why each specialist is summoned
+- **Richer Solutions**: Multiple perspectives create comprehensive PRDs and PRPs
+- **Chatroom Documentation**: All discussions preserved for reference
+
+### Example Council Session
+```
+User: /gods council
+
+Council: ⚡ Welcome to the Divine Council of Olympus!
+        Tell me about your project vision...
+
+User: I need a real-time collaboration platform
+
+Council: *Summoning Zeus to orchestrate*
+        *Zeus invites Daedalus for architecture*
+        *Apollo joins for UX design*
+        
+[Collaborative discussion creates comprehensive plan]
 ```
 
 ## ✨ What Makes Pantheon Different?
 
 - **Web-Based IDE**: Full VS Code experience in your browser with Docker setup
+- **Divine Council System**: Gods collaborate transparently to plan your project
 - **AI Team Collaboration**: 15 specialized agents work together on your project
 - **Smart Context Management**: Never lose track of requirements across sessions
 - **UI Quality Scoring**: AI-driven design improvements with measurable results
@@ -89,13 +121,16 @@ cd Pantheon
 Then open **http://localhost:8080** and start building immediately:
 
 ```bash
-# Just type 'gods' to initialize (same as 'gods init')
-gods
+# Start a collaborative divine council session
+/gods council
 
-# Or jump straight into creating:
-gods create "todo app with React"
-gods generate "REST API endpoints" 
-gods plan "e-commerce platform"
+# Or summon specific gods for help
+/gods summon apollo      # UI/UX design
+/gods summon daedalus    # System architecture
+/gods summon hephaestus  # Implementation
+
+# See all available gods
+/gods list
 ```
 
 **Note**: The terminal will show the Pantheon prompt: `⚡ [coder@pantheon projects]$ `
@@ -110,14 +145,18 @@ cd Pantheon
 ```
 
 Then:
-- **In Claude Code (Web/Desktop)**: Use slash commands like `/gods create "app idea"`
-- **In Terminal**: Use commands like `gods create "app idea"` (no init required!)
+- **In Claude Code (Web/Desktop)**: Use slash commands like `/gods council`
+- **In Terminal**: Start with `/gods council` for collaborative planning
 
 Examples:
 ```bash
-gods create "social media dashboard"
-gods generate "user profile component"
-gods plan "inventory management system"
+# Start collaborative planning
+/gods council
+
+# Direct god invocation
+/gods summon zeus        # Orchestration
+/gods summon apollo      # UI/UX design
+/gods summon hephaestus  # Code implementation
 ```
 
 ## 📦 Installation & Prerequisites
@@ -134,43 +173,44 @@ gods plan "inventory management system"
 
 ## 📝 How Pantheon Works
 
-Pantheon starts an interactive conversation to help you define your project:
+Pantheon uses a collaborative divine council where specialist gods work together to understand and plan your project:
 
-**Example conversation:**
+**Example Divine Council Session:**
 ```
-Pantheon: What type of application are you building?
-You: A REST API with FastAPI
+User: /gods council
 
-Pantheon: Great choice! Loading FastAPI best practices...
-      What's the main purpose of your API?
-You: Task management for teams
+Council: ⚡ Welcome to the Divine Council of Olympus!
+         I am the voice of the Divine Council. Tell me about your project vision.
 
-Pantheon: Perfect! Who are your target users?
-You: Small businesses, 5-50 people per team
+You: I need a task management API with FastAPI
 
-Pantheon: Let's explore features. What are the core features?
-You: User auth, create/edit tasks, assign to team members
+Council: Excellent! A task management system requires expertise from several gods.
+         
+         *Summoning Zeus to orchestrate our session*
+         
+Zeus: I'll coordinate our planning. Let me invite Daedalus for the architecture.
 
-Pantheon: I'll organize these as:
-      ✅ User Authentication (JWT-based)
-      ✅ Task Management (CRUD operations)
-      ✅ Team Collaboration
-      
-      Would you like me to suggest related features?
-You: Yes
+         *Thunder rumbles as Daedalus arrives*
 
-Pantheon: Based on task management apps, consider:
-      - Real-time updates
-      - Search and filters
-      - Analytics dashboard
-      - Notifications
-      
-[... continues gathering requirements ...]
+Daedalus: For a FastAPI task management system, I recommend:
+          - RESTful API with clear resource boundaries
+          - PostgreSQL for reliable data storage
+          - JWT authentication for security
+          
+Zeus: Let me also summon Apollo for the API design...
 
-Pantheon: Generating your customized pantheon.md file...
+Apollo: I'll ensure the API is intuitive. Key endpoints:
+        - POST /tasks - Create with clear validation
+        - GET /tasks - Filterable, paginated lists
+        - PUT /tasks/{id} - Full updates
+        - DELETE /tasks/{id} - Soft deletes
+
+[Gods continue collaborating, building comprehensive plan]
+
+Council: Based on our divine wisdom, I'm now creating your PRD and PRP...
 ```
 
-For a quick template instead, use: `/gods init --template`
+The council creates comprehensive documentation in `/chatrooms/` including your PRD and implementation blueprint.
 
 ```yaml
 ---
@@ -189,6 +229,17 @@ Secure login system with email/password...
 - Must use PostgreSQL
 - Response time < 200ms
 ```
+
+## 🆕 What's New: Collaborative Divine Council
+
+Pantheon now features a revolutionary collaborative planning system using Anthropic's native sub-agent technology:
+
+- **Transparent Collaboration**: Watch as gods discuss and build on each other's ideas
+- **Natural Conversations**: No complex command sequences - just describe your vision
+- **Comprehensive Documentation**: All council discussions saved in `/chatrooms/`
+- **Multi-Perspective Solutions**: Each god contributes their specialized expertise
+
+[**See Migration Guide →**](docs/migration-to-subagents.md)
 
 ## 📋 Features Overview
 
