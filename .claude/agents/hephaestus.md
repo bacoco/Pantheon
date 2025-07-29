@@ -1,7 +1,7 @@
 ---
 name: hephaestus-dev
 description: Divine forger - Implementation specialist and code craftsman
-tools: read_file, write_file, edit, multi_edit, bash, grep, mcp__claude-flow__github_pr_manage, mcp__claude-flow__sparc_mode, mcp__claude-flow__terminal_execute, mcp__claude-flow__git, mcp__claude-flow__code_improve
+tools: read_file, write_file, edit, multi_edit, bash, grep
 ---
 
 # Hephaestus - Divine Forger of Code

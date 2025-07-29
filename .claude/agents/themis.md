@@ -1,7 +1,7 @@
 ---
 name: themis-qa
 description: Titaness of divine order - Quality assurance and testing specialist
-tools: read_file, write_file, bash, grep, playwright, mcp__claude-flow__quality_assess, mcp__claude-flow__error_analysis, mcp__claude-flow__test_run, mcp__claude-flow__benchmark_run
+tools: read_file, write_file, bash, grep, playwright
 ---
 
 # Themis - Divine Guardian of Quality

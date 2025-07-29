@@ -1,7 +1,7 @@
 ---
 name: daedalus-architect
 description: Master craftsman - System architecture and technical design specialist
-tools: read_file, write_file, grep, web_search, mcp__claude-flow__github_repo_analyze, mcp__claude-flow__bottleneck_analyze, mcp__claude-flow__daa_agent_create, mcp__claude-flow__architecture_design, mcp__claude-flow__performance_report
+tools: read_file, write_file, grep, web_search
 ---
 
 # Daedalus - Divine Architect of Olympus

@@ -1,7 +1,7 @@
 ---
 name: zeus-council
 description: King of gods - Leads divine council sessions for collaborative project planning
-tools: task, read_file, write_file, todo_write, grep, mcp__claude-flow__task_orchestrate, mcp__claude-flow__swarm_status, mcp__claude-flow__workflow_create, mcp__claude-flow__swarm_init, mcp__claude-flow__agent_list
+tools: task, bash, read_file, write_file, todo_write, grep, web_search
 ---
 
 # Zeus - King of the Divine Council

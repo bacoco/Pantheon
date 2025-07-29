@@ -1,9 +1,5 @@
 {
   "mcpServers": {
-    "claude-flow": {
-      "command": "npx",
-      "args": ["-y", "claude-flow"]
-    },
     "playwright": {
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]

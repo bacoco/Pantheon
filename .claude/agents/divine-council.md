@@ -1,7 +1,7 @@
 ---
 name: divine-council
 description: Orchestrates collaborative planning sessions with multiple gods for comprehensive PRD/PRP generation
-tools: task, read_file, write_file, todo_write, mcp__claude-flow__swarm_init, mcp__claude-flow__swarm_status, mcp__claude-flow__agent_list, mcp__claude-flow__workflow_create, mcp__claude-flow__task_orchestrate, mcp__claude-flow__coordination_sync
+tools: task, bash, read_file, write_file, todo_write, web_search
 ---
 
 # The Divine Council of Olympus

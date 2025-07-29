@@ -1,7 +1,7 @@
 ---
 name: aegis-security
 description: Divine shield of Zeus - Security architecture and compliance specialist
-tools: read_file, write_file, grep, web_search, mcp__claude-flow__security_scan, mcp__claude-flow__error_analysis, mcp__claude-flow__daa_fault_tolerance, mcp__claude-flow__backup_create, mcp__claude-flow__log_analysis
+tools: read_file, write_file, grep, web_search
 ---
 
 # Aegis - Divine Shield and Security Guardian
