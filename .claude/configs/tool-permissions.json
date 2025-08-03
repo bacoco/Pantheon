@@ -1,0 +1,161 @@
+{
+  "version": "1.0.0",
+  "description": "Tool permissions configuration for Pantheon Multi-AI ecosystem",
+  "last_updated": "2025-01-01",
+  
+  "model_permissions": {
+    "claude": {
+      "allowed_tools": ["Edit", "Read", "Bash", "Grep", "Glob", "WebFetch", "Write", "MultiEdit"],
+      "restrictions": [],
+      "description": "Claude models have full tool access for creation tasks"
+    },
+    "gemini": {
+      "allowed_tools": ["Read", "Grep", "Glob", "WebFetch"],
+      "restrictions": ["no_edit", "no_write", "no_execute", "no_file_modification"],
+      "description": "Gemini models are restricted to read-only operations"
+    }
+  },
+  
+  "agent_category_permissions": {
+    "creation": {
+      "allowed_tools": ["Edit", "Read", "Bash", "Grep", "Glob", "Write", "MultiEdit"],
+      "restrictions": [],
+      "requires_validation": true,
+      "description": "Creation agents can modify code and execute commands"
+    },
+    "validation": {
+      "allowed_tools": ["Read", "Grep", "Glob"],
+      "restrictions": ["no_edit", "no_write", "no_execute", "no_create", "no_delete"],
+      "requires_validation": false,
+      "description": "Validation agents are strictly read-only"
+    },
+    "synthesis": {
+      "allowed_tools": ["Read", "Grep", "Glob", "WebFetch"],
+      "restrictions": ["no_edit", "no_write", "no_execute"],
+      "requires_validation": false,
+      "description": "Synthesis agents can read and research but not modify"
+    },
+    "ui-design": {
+      "allowed_tools": ["Read", "Glob"],
+      "restrictions": ["no_edit", "no_write", "no_execute", "no_bash"],
+      "requires_validation": false,
+      "description": "UI design agents focus on specifications, not implementation"
+    },
+    "management": {
+      "allowed_tools": ["Edit", "Read", "Bash", "Grep"],
+      "restrictions": ["limited_bash"],
+      "requires_validation": false,
+      "description": "Management agents can configure but with limited execution"
+    },
+    "analysis": {
+      "allowed_tools": ["Read", "Grep", "Glob"],
+      "restrictions": ["no_edit", "no_write", "no_execute"],
+      "requires_validation": false,
+      "description": "Analysis agents are read-only with pattern matching"
+    },
+    "specialized": {
+      "allowed_tools": ["Edit", "Read", "Bash", "Grep", "Glob"],
+      "restrictions": [],
+      "requires_validation": true,
+      "description": "Specialized agents have task-specific permissions"
+    }
+  },
+  
+  "specific_agent_overrides": {
+    "gemini-advisor": {
+      "allowed_tools": ["Read", "Grep", "Glob"],
+      "restrictions": ["no_edit", "no_write", "no_execute", "no_create", "no_delete", "no_modify"],
+      "enforced": true,
+      "description": "Primary validator with strictest restrictions"
+    },
+    "claude-architect": {
+      "allowed_tools": ["Edit", "Read", "Bash", "Grep", "Glob", "Write"],
+      "restrictions": [],
+      "enforced": false,
+      "description": "Primary architect with full permissions"
+    },
+    "model-manager": {
+      "allowed_tools": ["Edit", "Read", "Bash"],
+      "restrictions": ["config_only"],
+      "enforced": false,
+      "description": "Can modify configuration but not application code"
+    }
+  },
+  
+  "safety_rules": {
+    "gemini_never_edits": {
+      "enabled": true,
+      "enforcement": "strict",
+      "description": "Gemini models cannot edit or write files under any circumstances"
+    },
+    "validation_readonly": {
+      "enabled": true,
+      "enforcement": "strict",
+      "description": "All validation agents are strictly read-only"
+    },
+    "emergency_override": {
+      "enabled": false,
+      "requires_auth": true,
+      "description": "Emergency override requires explicit authentication"
+    },
+    "audit_all_writes": {
+      "enabled": true,
+      "log_level": "info",
+      "description": "All file modifications are logged for audit"
+    }
+  },
+  
+  "tool_specific_rules": {
+    "Bash": {
+      "allowed_commands": {
+        "gemini": [],
+        "claude": ["*"],
+        "validation_agents": [],
+        "creation_agents": ["*"]
+      },
+      "blocked_commands": {
+        "all": ["rm -rf /", "dd", "mkfs", "fdisk"],
+        "gemini": ["*"]
+      }
+    },
+    "Edit": {
+      "max_file_size_kb": 1000,
+      "allowed_extensions": {
+        "creation_agents": ["*"],
+        "validation_agents": []
+      }
+    },
+    "WebFetch": {
+      "allowed_domains": ["*"],
+      "blocked_domains": [],
+      "max_response_size_mb": 10
+    }
+  },
+  
+  "enforcement_levels": {
+    "development": {
+      "level": "moderate",
+      "allow_overrides": true,
+      "log_violations": true
+    },
+    "staging": {
+      "level": "strict",
+      "allow_overrides": false,
+      "log_violations": true
+    },
+    "production": {
+      "level": "strict",
+      "allow_overrides": false,
+      "log_violations": true,
+      "alert_on_violation": true
+    }
+  },
+  
+  "violation_handling": {
+    "log_all_violations": true,
+    "alert_threshold": 3,
+    "block_after_violations": 5,
+    "reset_period_hours": 24,
+    "notification_channels": ["logs", "console", "webhook"]
+  }
+}

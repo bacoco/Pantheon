@@ -1,269 +1,191 @@
-# /gods - Summon the Divine Development Council
+# /gods - Divine Council with Claude Code + Gemini CLI
 
-Harness the collaborative wisdom of Olympus through divine council sessions.
+Orchestrate divine collaboration using Claude Code (your max plan) and Gemini CLI (free tier).
 
-## ACTIVATION
-When the user runs `/gods` or any `/gods [subcommand]`, follow these instructions using the new sub-agent system.
+## How It Works
 
-## Command Overview
+1. **You work in Claude Code CLI** (this session - FREE with max plan)
+2. **Creation happens here** (Zeus, Athena, Hephaestus)  
+3. **Validation uses Gemini CLI** (Apollo, Themis, Argus - FREE tier)
+4. **Router tells you when to switch** (automatic routing)
 
-The `/gods` command orchestrates collaborative planning sessions where specialist gods contribute their expertise to create comprehensive PRDs and PRPs.
-
-## Available Subcommands
+## Available Commands
 
 ### `/gods` (no subcommand)
-Display available options:
+Shows this help and routing information.
+
+### `/gods plan <project>`
+Planning session with intelligent routing:
 ```
-⚡ **The Divine Council of Olympus**
+Claude Code: Zeus orchestrates, Athena designs
+Gemini CLI: Apollo validates
 
-Available commands:
-- `/gods init` - Initialize a new project with divine guidance
-- `/gods plan` - Generate development plan from requirements
-- `/gods execute` - Create implementation blueprint (and optionally build)
-- `/gods validate` - Validate project quality and completeness
-- `/gods resume` - Continue a previous project session
-- `/gods council` - Start a collaborative planning session
-- `/gods summon <god>` - Invoke a specific god directly
-- `/gods list` - Show available gods and their specialties
-- `/gods status` - Check current session status
-
-Which would you like to do?
+Example:
+You: /gods plan authentication system
+Claude: [Zeus and Athena work here]
+System: "For validation, run: gemini 'Validate auth design...'"
+You: [Run command in terminal, paste results]
 ```
-
-### `/gods init`
-Initialize a new project with interactive setup:
-
-```javascript
-// Execute the gods-init command
-executeCommand("/gods-init");
-```
-
-This will:
-1. Ask for project name and create directory
-2. Set up project type
-3. Initialize git repository
-4. Create GitHub repo (optional)
-5. Generate initial pantheon.md
-
-### `/gods plan`
-Generate development plan from requirements:
-
-```javascript
-// Execute the gods-plan command
-executeCommand("/gods-plan");
-```
-
-This will:
-1. Read project requirements from pantheon.md
-2. Summon planning gods
-3. Generate development phases
-4. Create architecture decisions
-5. Produce comprehensive PRD
 
 ### `/gods execute`
-Create implementation blueprint and optionally build:
-
-```javascript
-// Execute the gods-execute command
-executeCommand("/gods-execute");
+Implementation with mixed models:
 ```
+Claude Code: Hephaestus builds
+Gemini CLI: Apollo tests
 
-This will:
-1. Generate detailed PRP from plan
-2. Create code templates
-3. Define testing strategy
-4. Offer to implement immediately
-5. Launch preview if built
+The system will provide Gemini commands when validation is needed.
+```
 
 ### `/gods validate`
-Validate project quality:
-
-```javascript
-// Execute the gods-validate command
-executeCommand("/gods-validate");
+Pure validation workflow (100% Gemini CLI):
 ```
+System provides commands like:
+- gemini "Review code quality"
+- gemini "Check security"
+- gemini "Validate compliance"
 
-This will:
-1. Check project structure
-2. Validate code quality
-3. Assess test coverage
-4. Review documentation
-5. Generate improvement tasks
-
-### `/gods resume`
-Continue previous project:
-
-```javascript
-// Execute the gods-resume command
-executeCommand("/gods-resume");
-```
-
-This will:
-1. List available projects
-2. Load project state
-3. Show current progress
-4. Provide next steps
-5. Restore context
-
-### `/gods council`
-Invoke the divine-council sub-agent to start a collaborative planning session:
-
-```javascript
-Task(
-  description="Start divine council planning session",
-  prompt="Begin a collaborative planning session for the user's project",
-  subagent_type="divine-council"
-)
-```
-
-This will:
-1. Set up project directory and git
-2. Welcome the user to the Divine Council
-3. Understand their project vision
-4. Transparently summon appropriate gods
-5. Generate comprehensive PRD and PRP
-6. Create chatroom documentation with real-time progress
-
-### `/gods summon <god>`
-Directly invoke a specific god for focused assistance:
-
-```javascript
-// Parse the god name from the command
-const godName = extractGodName(command);
-
-// Map user-friendly names to sub-agent names
-const godMapping = {
-  'zeus': 'zeus-council',
-  'daedalus': 'daedalus-architect', 
-  'apollo': 'apollo-ux',
-  'hephaestus': 'hephaestus-dev',
-  'themis': 'themis-qa',
-  'aegis': 'aegis-security',
-  'prometheus': 'prometheus-pm',
-  'athena': 'athena-po',
-  'hermes': 'hermes-sm'
-};
-
-const subagentName = godMapping[godName.toLowerCase()];
-
-if (subagentName) {
-  Task(
-    description=`Summon ${godName} for assistance`,
-    prompt=`Help the user with ${context}`,
-    subagent_type=subagentName
-  );
-} else {
-  showError(`Unknown god: ${godName}. Use '/gods list' to see available gods.`);
-}
+All FREE using Gemini CLI!
 ```
 
 ### `/gods status`
-Check current divine council session status:
-
-```javascript
-// Execute the gods-status command
-executeCommand("/gods-status");
+Quick status check:
+```
+Run: gemini "Project status summary"
+Cost: FREE
+Response: <1 second
 ```
 
-This will:
-1. Check for active sessions
-2. Show last activity time
-3. Display current phase
-4. List summoned gods
-5. Provide file paths for monitoring
+## God Routing
 
-### `/gods list`
-Display the pantheon of available gods:
+| God | Provider | How to Use |
+|-----|----------|------------|
+| **Zeus** | Claude Code | Works directly in this session |
+| **Athena** | Claude Code | Architecture here in Claude |
+| **Hephaestus** | Claude Code | Builds in current session |
+| **Apollo** | Gemini CLI | Run: `gemini "Validate..."` |
+| **Themis** | Gemini CLI | Run: `gemini "Check compliance..."` |
+| **Argus** | Gemini CLI | Run: `gemini "Security audit..."` |
+| **Hermes** | Gemini CLI | Run: `gemini "Quick status..."` |
 
-```
-⚡ **The Pantheon of Olympus**
+## Workflow Examples
 
-**Council Orchestrators:**
-- 🌩️ **Zeus** - Supreme orchestrator, leads planning sessions
-- 🏛️ **Divine Council** - Multi-god collaborative sessions
+### Example 1: Full Planning Session
+```bash
+# In Claude Code CLI (this session)
+You: /gods plan "Build real-time chat"
 
-**Specialist Gods:**
-- 🏗️ **Daedalus** - System architecture and technical design
-- 🎨 **Apollo** - User experience and interface design
-- 💻 **Hephaestus** - Implementation and code craftsmanship
-- ⚖️ **Themis** - Quality assurance and testing
-- 🛡️ **Aegis** - Security and compliance
-- 📋 **Prometheus** - Product management and strategy
-- 🦉 **Athena** - Product ownership and validation
-- 🌍 **Hermes** - Agile processes and team coordination
+# Claude responds with Zeus + Athena working here
+Claude: ⚡ Zeus orchestrates...
+        🦉 Athena designs architecture...
+        
+# System suggests Gemini validation
+System: For validation, run:
+        gemini "Validate this chat architecture: [details]"
 
-Use `/gods summon <name>` to invoke a specific god, or `/gods council` for collaborative planning.
-```
+# You run in terminal
+$ gemini "Validate this chat architecture: ..."
 
-## Integration with Chatrooms
+# Paste results back
+You: [Paste Gemini's validation]
 
-When gods are summoned, they should:
-1. Create appropriate chatroom files in `/chatrooms/`
-2. Document their contributions
-3. Reference other gods' insights
-4. Build comprehensive artifacts
-
-## Key Differences from Old System
-
-### Old Approach (Prompt-Based)
-- Complex command parsing
-- File-based PRP generation
-- Manual orchestration logic
-- Single context window
-
-### New Approach (Sub-Agent Based)
-- Native sub-agent invocation
-- Separate contexts per god
-- Transparent collaboration
-- Cleaner architecture
-
-## Example Usage
-
-### Starting a Council Session
-```
-User: /gods council
-
-[System invokes divine-council sub-agent]
-
-Divine Council: ⚡ Welcome to the Divine Council of Olympus!
-
-I am the voice of the Divine Council, where gods collaborate to forge your vision into reality.
-
-Tell me about your project vision, and I'll convene the appropriate gods...
+# Claude integrates feedback
+Claude: Based on Apollo's validation...
 ```
 
-### Summoning a Specific God
+### Example 2: Quick Validation
+```bash
+# Need quick validation
+You: /gods validate
+
+# System provides Gemini commands
+System: Run these in your terminal:
+        gemini "Code review for quality"
+        gemini "Security vulnerability check"
+        gemini "Performance analysis"
+        
+# All FREE, all in Gemini CLI
 ```
-User: /gods summon apollo
 
-[System invokes apollo-ux sub-agent]
+### Example 3: Implementation
+```bash
+# In Claude Code
+You: /gods execute
 
-Apollo: *enters with artistic grace*
+# Hephaestus builds here
+Claude: 🔨 Forging implementation...
+        [Creates code in session]
 
-Greetings! I am Apollo, designer of divine experiences. How may I help you create interfaces that delight?
+# System suggests testing
+System: Test with: gemini "Test this code: [code]"
+
+# Run test, get results
+$ gemini "Test this code: ..."
 ```
 
-## Error Handling
+## Setting Up Gemini CLI
 
-If the user tries old commands:
-- `/gods init` → "The new council system starts with `/gods council`"
-- `/gods plan` → "Planning now happens collaboratively in `/gods council`"
-- `/gods execute` → "Execution planning is part of the council session"
+If you haven't already:
+```bash
+# Install Gemini CLI
+pip install -q google-generativeai
 
-## Benefits of the New System
+# Set up API key (free tier)
+export GEMINI_API_KEY="your-free-key"
 
-1. **Cleaner Separation**: Each god has their own context
-2. **Better Collaboration**: Natural handoffs between specialists
-3. **Transparent Process**: Users see when/why gods are summoned
-4. **Richer Outputs**: Multi-perspective PRDs and PRPs
-5. **Simpler Commands**: Less complex command structure
+# Test it works
+gemini "Hello, testing connection"
+```
 
-## Migration Notes
+## Cost Analysis
 
-Users familiar with the old system should know:
-- Project initialization is now part of the council session
-- No separate validation/plan/execute steps
-- Everything happens through collaborative discussion
-- Results in better, more comprehensive outputs
+| Operation | Claude Code | Gemini CLI | Total Cost |
+|-----------|------------|------------|------------|
+| Planning | FREE (max plan) | FREE | $0.00 |
+| Building | FREE (max plan) | FREE | $0.00 |
+| Validation | - | FREE | $0.00 |
+| **Total** | **FREE** | **FREE** | **$0.00** |
 
-Remember: The power of Olympus lies not in commands, but in divine collaboration!
+## Best Practices
+
+### When to Stay in Claude Code
+- Architecture design
+- Code implementation  
+- Complex reasoning
+- Creative solutions
+- Project orchestration
+
+### When to Use Gemini CLI
+- Code validation
+- Testing
+- Security checks
+- Quick summaries
+- Status updates
+- Compliance reviews
+
+## Integration Tips
+
+1. **Keep Claude Code as primary**: Most work happens here
+2. **Use Gemini for validation**: Perfect for review tasks
+3. **Copy-paste is fine**: Run Gemini command, paste results
+4. **Batch validations**: Run multiple Gemini commands at once
+5. **Save outputs**: `gemini "..." > validation.txt`
+
+## Router Intelligence
+
+The system automatically knows:
+- Creation tasks → Claude Code (here)
+- Validation tasks → Gemini CLI (terminal)
+- Support tasks → Gemini CLI (fast & free)
+
+No manual routing needed - just follow the suggestions!
+
+## Summary
+
+With `/gods` commands, you get:
+- **Claude's creativity** (in this session - FREE with max plan)
+- **Gemini's validation** (in terminal - FREE tier)
+- **Automatic routing** (system tells you what to use)
+- **Zero cost** (both are FREE for you)
+- **Best of both worlds** (quality + validation)
+
+The gods collaborate across platforms to deliver divine solutions!
