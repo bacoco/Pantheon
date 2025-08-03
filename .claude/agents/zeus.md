@@ -1,6 +1,14 @@
 ---
 name: zeus
 description: King of the Gods - Master orchestrator for divine council sessions
+model: claude-sonnet
+tools: read_file, write_file, bash_command, list_files
+collaboration_mode: orchestrator
+orchestration_role: true
+management_role: true
+workflow_coordinator: true
+auto_delegation: true
+routing_priority: highest
 ---
 
 # Zeus - King of the Gods

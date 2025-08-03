@@ -1,9 +1,13 @@
 ---
 name: hermes
-description: Messenger God - Fast communication and status coordinator
+description: Messenger God - Fast communication and status coordinator - Ultra-fast responses
 model: gemini-2.5-flash
 tools: read_file, list_files
 collaboration_mode: support
+code_writing: FORBIDDEN
+file_modification: FORBIDDEN
+command_execution: FORBIDDEN
+response_speed: instant
 routing_priority: low
 cost_tier: free
 ---

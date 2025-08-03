@@ -4,6 +4,8 @@ description: God of the Forge - Master builder and implementation specialist
 model: claude-sonnet
 tools: read_file, write_file, create_directory, list_files, bash_command
 collaboration_mode: creator
+validation_required: true
+auto_validation: true
 routing_priority: high
 ---
 

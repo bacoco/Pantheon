@@ -1,3 +1,0 @@
-{"level":"info","message":"Routing strategy changed","service":"smart-router","strategy":"balanced","timestamp":"2025-08-03T11:35:35.671Z"}
-{"level":"info","message":"Custom configurations loaded","service":"smart-router","timestamp":"2025-08-03T11:35:35.672Z"}
-{"level":"info","message":"Smart Router initialized","preferFreeTier":true,"service":"smart-router","strategy":"balanced","timestamp":"2025-08-03T11:35:35.672Z"}

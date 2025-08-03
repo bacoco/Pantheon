@@ -1,5 +1,0 @@
-{"level":"info","message":"Agent type registered","service":"agent-registry","timestamp":"2025-08-03T11:35:35.405Z","type":"claude-architect"}
-{"level":"info","message":"Agent type registered","service":"agent-registry","timestamp":"2025-08-03T11:35:35.411Z","type":"claude-builder"}
-{"level":"info","message":"Agent type registered","service":"agent-registry","timestamp":"2025-08-03T11:35:35.411Z","type":"gemini-advisor"}
-{"level":"info","message":"All agents terminated","service":"agent-registry","timestamp":"2025-08-03T11:35:35.417Z"}
-{"level":"info","message":"Agent Registry initialized","registeredTypes":["claude-architect","claude-builder","gemini-advisor"],"service":"agent-registry","timestamp":"2025-08-03T11:35:35.673Z"}
