@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🏛️ Divine Council Configuration
 
 ## Overview
