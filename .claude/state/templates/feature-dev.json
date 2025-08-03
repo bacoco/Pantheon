@@ -1,0 +1,66 @@
+{
+  "template_name": "feature-development",
+  "version": "1.0.0",
+  "workflow_phases": [
+    {
+      "phase": "planning",
+      "gods": ["zeus", "athena"],
+      "validation_required": true,
+      "validation_agent": "gemini-advisor",
+      "artifacts": ["requirements.md", "architecture.md"],
+      "success_criteria": ["requirements_validated", "architecture_approved"]
+    },
+    {
+      "phase": "creation",
+      "gods": ["hephaestus"],
+      "validation_required": true,
+      "validation_agent": "apollo-validator",
+      "artifacts": ["implementation_files"],
+      "success_criteria": ["code_complete", "tests_passing"]
+    },
+    {
+      "phase": "validation",
+      "gods": ["apollo", "themis", "argus"],
+      "validation_required": false,
+      "artifacts": ["validation_reports"],
+      "success_criteria": ["quality_approved", "security_verified", "compliance_checked"]
+    },
+    {
+      "phase": "refinement",
+      "gods": ["hephaestus", "athena"],
+      "validation_required": true,
+      "validation_agent": "gemini-advisor",
+      "artifacts": ["refined_implementation"],
+      "success_criteria": ["feedback_integrated", "final_tests_passing"]
+    },
+    {
+      "phase": "integration",
+      "gods": ["zeus", "hermes"],
+      "validation_required": false,
+      "artifacts": ["deployment_config", "documentation"],
+      "success_criteria": ["integrated", "documented", "deployed"]
+    }
+  ],
+  "context_template": {
+    "project_name": "",
+    "feature_name": "",
+    "requirements": [],
+    "constraints": [],
+    "dependencies": [],
+    "validation_history": [],
+    "decisions": [],
+    "artifacts": {}
+  },
+  "cost_limits": {
+    "claude_max_tokens": 50000,
+    "gemini_max_tokens": 100000,
+    "max_estimated_cost": 5.00,
+    "warning_threshold": 3.00
+  },
+  "automation_hints": {
+    "auto_validate": true,
+    "batch_validations": true,
+    "parallel_creation": false,
+    "require_confirmation": true
+  }
+}

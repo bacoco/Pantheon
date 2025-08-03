@@ -1,0 +1,279 @@
+{
+  "version": "1.0.0",
+  "pricing": {
+    "claude": {
+      "sonnet": {
+        "input_per_1k": 0.003,
+        "output_per_1k": 0.015,
+        "context_window": 200000,
+        "tier": "premium"
+      },
+      "haiku": {
+        "input_per_1k": 0.00025,
+        "output_per_1k": 0.00125,
+        "context_window": 200000,
+        "tier": "economy"
+      },
+      "opus": {
+        "input_per_1k": 0.015,
+        "output_per_1k": 0.075,
+        "context_window": 200000,
+        "tier": "premium_plus"
+      }
+    },
+    "gemini": {
+      "gemini-2.5-pro": {
+        "input_per_1k": 0.0,
+        "output_per_1k": 0.0,
+        "daily_limit": 1000,
+        "context_window": 2000000,
+        "tier": "free"
+      },
+      "gemini-2.5-flash": {
+        "input_per_1k": 0.0,
+        "output_per_1k": 0.0,
+        "daily_limit": 1500,
+        "context_window": 1000000,
+        "tier": "free"
+      },
+      "gemini-pro-paid": {
+        "input_per_1k": 0.00035,
+        "output_per_1k": 0.0014,
+        "context_window": 2000000,
+        "tier": "paid"
+      }
+    }
+  },
+  "tracking": {
+    "enabled": true,
+    "granularity": "per_request",
+    "storage": {
+      "type": "json",
+      "path": ".claude/state/analytics/",
+      "rotation": "daily",
+      "retention_days": 90
+    },
+    "metrics": {
+      "track_tokens": true,
+      "track_latency": true,
+      "track_errors": true,
+      "track_cache_hits": true,
+      "track_validations": true
+    }
+  },
+  "budgets": {
+    "daily": {
+      "soft_limit": 10.00,
+      "hard_limit": 15.00,
+      "warning_threshold": 0.75,
+      "action_on_soft": "warn",
+      "action_on_hard": "pause"
+    },
+    "weekly": {
+      "soft_limit": 50.00,
+      "hard_limit": 75.00,
+      "warning_threshold": 0.80
+    },
+    "monthly": {
+      "soft_limit": 150.00,
+      "hard_limit": 200.00,
+      "warning_threshold": 0.85
+    },
+    "per_session": {
+      "default": 5.00,
+      "feature_development": 8.00,
+      "bug_fix": 2.00,
+      "architecture_review": 10.00,
+      "research": 3.00
+    }
+  },
+  "optimization_rules": {
+    "auto_optimize": true,
+    "strategies": {
+      "prefer_free_tier": {
+        "enabled": true,
+        "priority": 1,
+        "conditions": {
+          "validation_tasks": "always",
+          "documentation_tasks": "when_possible",
+          "simple_queries": "always"
+        }
+      },
+      "batch_operations": {
+        "enabled": true,
+        "priority": 2,
+        "min_batch_size": 3,
+        "max_batch_size": 20,
+        "auto_batch_threshold": 5
+      },
+      "cache_results": {
+        "enabled": true,
+        "priority": 3,
+        "ttl_seconds": 3600,
+        "max_cache_size_mb": 100
+      },
+      "progressive_validation": {
+        "enabled": true,
+        "priority": 4,
+        "levels": [
+          {
+            "level": 1,
+            "name": "quick",
+            "max_cost": 0.10
+          },
+          {
+            "level": 2,
+            "name": "standard",
+            "max_cost": 0.50
+          },
+          {
+            "level": 3,
+            "name": "comprehensive",
+            "max_cost": 2.00
+          }
+        ]
+      }
+    }
+  },
+  "analytics": {
+    "dashboards": {
+      "default": {
+        "refresh_interval_seconds": 30,
+        "widgets": [
+          "cost_today",
+          "usage_metrics",
+          "efficiency_score",
+          "trending_graphs",
+          "recommendations"
+        ]
+      },
+      "detailed": {
+        "refresh_interval_seconds": 60,
+        "widgets": [
+          "cost_breakdown",
+          "token_usage",
+          "god_performance",
+          "workflow_analytics",
+          "pattern_detection"
+        ]
+      }
+    },
+    "reports": {
+      "daily": {
+        "enabled": true,
+        "time": "23:59",
+        "format": "json",
+        "destination": ".claude/state/analytics/daily/"
+      },
+      "weekly": {
+        "enabled": true,
+        "day": "sunday",
+        "format": "markdown",
+        "destination": ".claude/state/analytics/weekly/"
+      }
+    },
+    "alerts": {
+      "cost_spike": {
+        "enabled": true,
+        "threshold_multiplier": 2.0,
+        "window_minutes": 30,
+        "action": "notify"
+      },
+      "quota_approaching": {
+        "enabled": true,
+        "threshold_percent": 80,
+        "action": "warn"
+      },
+      "error_rate_high": {
+        "enabled": true,
+        "threshold_percent": 10,
+        "window_minutes": 60,
+        "action": "investigate"
+      },
+      "efficiency_low": {
+        "enabled": true,
+        "threshold_score": 60,
+        "action": "optimize"
+      }
+    }
+  },
+  "cost_allocation": {
+    "enabled": true,
+    "tags": {
+      "project": true,
+      "feature": true,
+      "team": false,
+      "environment": true
+    },
+    "categories": [
+      "planning",
+      "development",
+      "validation",
+      "documentation",
+      "debugging",
+      "optimization",
+      "research"
+    ]
+  },
+  "forecasting": {
+    "enabled": true,
+    "methods": {
+      "moving_average": {
+        "window_days": 7,
+        "weight": 0.4
+      },
+      "linear_regression": {
+        "training_days": 30,
+        "weight": 0.3
+      },
+      "pattern_matching": {
+        "history_days": 90,
+        "weight": 0.3
+      }
+    },
+    "confidence_intervals": [0.68, 0.95],
+    "update_frequency_hours": 6
+  },
+  "integrations": {
+    "prometheus": {
+      "enabled": false,
+      "port": 9090,
+      "metrics_path": "/metrics"
+    },
+    "datadog": {
+      "enabled": false,
+      "api_key": "",
+      "site": "datadoghq.com"
+    },
+    "slack": {
+      "enabled": false,
+      "webhook_url": "",
+      "alert_channel": "#pantheon-alerts"
+    },
+    "csv_export": {
+      "enabled": true,
+      "auto_export": "daily",
+      "path": ".claude/state/exports/"
+    }
+  },
+  "performance_benchmarks": {
+    "target_metrics": {
+      "batch_usage_percent": 80,
+      "cache_hit_rate_percent": 70,
+      "free_tier_usage_percent": 75,
+      "parallel_execution_percent": 50,
+      "validation_success_rate_percent": 95,
+      "average_response_time_seconds": 3.0
+    },
+    "scoring": {
+      "A_plus": 95,
+      "A": 90,
+      "A_minus": 85,
+      "B_plus": 80,
+      "B": 75,
+      "B_minus": 70,
+      "C": 60,
+      "F": 0
+    }
+  }
+}
