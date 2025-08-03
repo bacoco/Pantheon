@@ -1,0 +1,261 @@
+{
+  "version": "1.0.0",
+  "description": "Model routing configuration for Pantheon Multi-AI ecosystem",
+  
+  "routing_strategies": {
+    "cost_optimized": {
+      "name": "Cost Optimized",
+      "description": "Minimize costs while maintaining quality",
+      "routing_rules": {
+        "creation": "claude,sonnet",
+        "validation": "gemini,gemini-2.5-pro",
+        "quick_tasks": "gemini,gemini-2.5-flash",
+        "documentation": "claude,haiku",
+        "research": "gemini,gemini-2.5-pro",
+        "ui_design": "gemini,gemini-2.5-flash",
+        "analysis": "gemini,gemini-2.5-pro"
+      },
+      "fallback_order": [
+        "gemini,gemini-2.5-flash",
+        "claude,haiku",
+        "gemini,gemini-2.5-pro"
+      ]
+    },
+    
+    "quality_focused": {
+      "name": "Quality Focused",
+      "description": "Maximize output quality regardless of cost",
+      "routing_rules": {
+        "creation": "claude,sonnet",
+        "validation": "claude,sonnet",
+        "quick_tasks": "claude,haiku",
+        "documentation": "claude,sonnet",
+        "research": "gemini,gemini-2.5-pro",
+        "ui_design": "gemini,gemini-2.5-pro",
+        "analysis": "claude,sonnet"
+      },
+      "fallback_order": [
+        "claude,sonnet",
+        "gemini,gemini-2.5-pro",
+        "claude,haiku"
+      ]
+    },
+    
+    "speed_focused": {
+      "name": "Speed Focused",
+      "description": "Optimize for fastest response times",
+      "routing_rules": {
+        "creation": "gemini,gemini-2.5-flash",
+        "validation": "gemini,gemini-2.5-flash",
+        "quick_tasks": "gemini,gemini-2.5-flash",
+        "documentation": "gemini,gemini-2.5-flash",
+        "research": "gemini,gemini-2.5-flash",
+        "ui_design": "gemini,gemini-2.5-flash",
+        "analysis": "gemini,gemini-2.5-pro"
+      },
+      "fallback_order": [
+        "gemini,gemini-2.5-flash",
+        "claude,haiku",
+        "gemini,gemini-2.5-pro"
+      ]
+    },
+    
+    "balanced": {
+      "name": "Balanced",
+      "description": "Balance between cost, quality, and speed",
+      "routing_rules": {
+        "creation": "claude,sonnet",
+        "validation": "gemini,gemini-2.5-pro",
+        "quick_tasks": "gemini,gemini-2.5-flash",
+        "documentation": "claude,haiku",
+        "research": "gemini,gemini-2.5-pro",
+        "ui_design": "gemini,gemini-2.5-flash",
+        "analysis": "gemini,gemini-2.5-pro"
+      },
+      "fallback_order": [
+        "gemini,gemini-2.5-flash",
+        "claude,haiku",
+        "gemini,gemini-2.5-pro",
+        "claude,sonnet"
+      ]
+    },
+    
+    "development": {
+      "name": "Development Mode",
+      "description": "Optimized for development and prototyping",
+      "routing_rules": {
+        "creation": "claude,sonnet",
+        "validation": "gemini,gemini-2.5-flash",
+        "quick_tasks": "gemini,gemini-2.5-flash",
+        "documentation": "gemini,gemini-2.5-flash",
+        "research": "gemini,gemini-2.5-pro",
+        "ui_design": "gemini,gemini-2.5-flash",
+        "analysis": "gemini,gemini-2.5-flash"
+      },
+      "fallback_order": [
+        "gemini,gemini-2.5-flash",
+        "claude,haiku"
+      ]
+    }
+  },
+  
+  "task_patterns": {
+    "validation": {
+      "patterns": ["validate", "review", "check", "audit", "analyze.*code", "assess", "evaluate"],
+      "preferred_model": "gemini,gemini-2.5-pro",
+      "fallback": "gemini,gemini-2.5-flash"
+    },
+    "creation": {
+      "patterns": ["create", "build", "implement", "write.*code", "develop", "generate", "construct"],
+      "preferred_model": "claude,sonnet",
+      "fallback": "claude,haiku"
+    },
+    "architecture": {
+      "patterns": ["design", "architect", "plan", "structure", "blueprint", "system.*design"],
+      "preferred_model": "claude,sonnet",
+      "fallback": "gemini,gemini-2.5-pro"
+    },
+    "synthesis": {
+      "patterns": ["summarize", "synthesize", "research", "compile", "gather", "aggregate"],
+      "preferred_model": "gemini,gemini-2.5-pro",
+      "fallback": "gemini,gemini-2.5-flash"
+    },
+    "ui_design": {
+      "patterns": ["ui", "ux", "interface", "design.*user", "wireframe", "mockup"],
+      "preferred_model": "gemini,gemini-2.5-flash",
+      "fallback": "gemini,gemini-2.5-pro"
+    },
+    "documentation": {
+      "patterns": ["document", "readme", "comment", "explain", "describe", "annotate"],
+      "preferred_model": "claude,haiku",
+      "fallback": "gemini,gemini-2.5-flash"
+    },
+    "testing": {
+      "patterns": ["test", "spec", "verify", "assert", "validate.*functionality"],
+      "preferred_model": "claude,sonnet",
+      "fallback": "claude,haiku"
+    },
+    "analysis": {
+      "patterns": ["analyze", "investigate", "examine", "inspect", "profile", "diagnose"],
+      "preferred_model": "gemini,gemini-2.5-pro",
+      "fallback": "claude,haiku"
+    }
+  },
+  
+  "agent_specific_routing": {
+    "claude-architect": {
+      "model": "claude,sonnet",
+      "fallback": "claude,haiku",
+      "override_allowed": false
+    },
+    "claude-builder": {
+      "model": "claude,sonnet",
+      "fallback": "claude,haiku",
+      "override_allowed": true
+    },
+    "claude-documenter": {
+      "model": "claude,haiku",
+      "fallback": "gemini,gemini-2.5-flash",
+      "override_allowed": true
+    },
+    "gemini-advisor": {
+      "model": "gemini,gemini-2.5-pro",
+      "fallback": "gemini,gemini-2.5-flash",
+      "override_allowed": false
+    },
+    "gemini-synthesizer": {
+      "model": "gemini,gemini-2.5-pro",
+      "fallback": "gemini,gemini-2.5-flash",
+      "override_allowed": true
+    },
+    "gemini-ui-designer": {
+      "model": "gemini,gemini-2.5-flash",
+      "fallback": "gemini,gemini-2.5-pro",
+      "override_allowed": true
+    },
+    "model-manager": {
+      "model": "claude,sonnet",
+      "fallback": "claude,haiku",
+      "override_allowed": false
+    },
+    "testing-master": {
+      "model": "claude,sonnet",
+      "fallback": "claude,haiku",
+      "override_allowed": true
+    }
+  },
+  
+  "context_based_routing": {
+    "large_context": {
+      "threshold_tokens": 10000,
+      "preferred_model": "gemini,gemini-2.5-pro",
+      "reason": "Gemini Pro handles large contexts efficiently"
+    },
+    "small_context": {
+      "threshold_tokens": 1000,
+      "preferred_model": "gemini,gemini-2.5-flash",
+      "reason": "Flash is faster for small contexts"
+    },
+    "complex_reasoning": {
+      "indicators": ["algorithm", "optimization", "proof", "mathematical"],
+      "preferred_model": "claude,sonnet",
+      "reason": "Claude excels at complex reasoning"
+    },
+    "creative_tasks": {
+      "indicators": ["creative", "innovative", "novel", "unique"],
+      "preferred_model": "claude,sonnet",
+      "reason": "Claude is better for creative tasks"
+    }
+  },
+  
+  "cost_profiles": {
+    "claude-sonnet": {
+      "cost_per_1k_input": 0.003,
+      "cost_per_1k_output": 0.015,
+      "quality_score": 10,
+      "speed_score": 7,
+      "daily_limit": 1000
+    },
+    "claude-haiku": {
+      "cost_per_1k_input": 0.00025,
+      "cost_per_1k_output": 0.00125,
+      "quality_score": 7,
+      "speed_score": 9,
+      "daily_limit": 5000
+    },
+    "gemini-2.5-pro": {
+      "cost_per_1k_input": 0,
+      "cost_per_1k_output": 0,
+      "quality_score": 9,
+      "speed_score": 8,
+      "daily_limit": 1000
+    },
+    "gemini-2.5-flash": {
+      "cost_per_1k_input": 0,
+      "cost_per_1k_output": 0,
+      "quality_score": 7,
+      "speed_score": 10,
+      "daily_limit": 1500
+    }
+  },
+  
+  "emergency_overrides": {
+    "cost_emergency": {
+      "trigger": "daily_spend > 100",
+      "action": "route_to_free_tier",
+      "models": ["gemini,gemini-2.5-flash", "gemini,gemini-2.5-pro"]
+    },
+    "rate_limit": {
+      "trigger": "rate_limit_exceeded",
+      "action": "use_fallback",
+      "delay_ms": 5000
+    },
+    "model_unavailable": {
+      "trigger": "model_error",
+      "action": "use_next_in_fallback_chain"
+    }
+  },
+  
+  "global_overrides": {},
+  "active_strategy": "balanced"
+}

@@ -1,0 +1,45 @@
+{
+  "enableAllProjectMcpServers": true,
+  "routing": {
+    "enabled": true,
+    "strategy": "divine-council",
+    "costOptimization": true,
+    "validationProvider": "gemini",
+    "creationProvider": "claude",
+    "routerPath": "~/.claude-code-router/smart-router.js"
+  },
+  "divineCouncil": {
+    "enabled": true,
+    "autoSummon": true,
+    "parallelExecution": true,
+    "validationRequired": true,
+    "costTracking": true
+  },
+  "modelPreferences": {
+    "creation": {
+      "primary": "claude-sonnet",
+      "fallback": "claude-haiku"
+    },
+    "validation": {
+      "primary": "gemini-2.5-pro",
+      "fallback": "gemini-2.5-flash",
+      "cost": "free"
+    },
+    "support": {
+      "primary": "gemini-2.5-flash",
+      "fallback": "gemini-2.5-pro",
+      "cost": "free"
+    }
+  },
+  "gods": {
+    "zeus": { "model": "claude-sonnet", "type": "creation" },
+    "athena": { "model": "claude-sonnet", "type": "creation" },
+    "hephaestus": { "model": "claude-sonnet", "type": "creation" },
+    "apollo": { "model": "gemini-2.5-pro", "type": "validation" },
+    "themis": { "model": "gemini-2.5-pro", "type": "validation" },
+    "argus": { "model": "gemini-2.5-pro", "type": "validation" },
+    "hermes": { "model": "gemini-2.5-flash", "type": "support" },
+    "calliope": { "model": "gemini-2.5-flash", "type": "support" },
+    "iris": { "model": "gemini-2.5-flash", "type": "support" }
+  }
+}
