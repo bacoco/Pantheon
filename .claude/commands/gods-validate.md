@@ -275,7 +275,7 @@ Log MCP tool usage:
   Query: "Node.js security best practices 2024"
   Found: Rate limiting is critical for production APIs
 
-**[timestamp]** - Themis used mcp__claude-flow__test_analyze
+**[timestamp]** - Themis used Read and Grep to analyze tests
   Analyzed: Test coverage gaps
   Recommendation: Focus on service layer tests
 ```

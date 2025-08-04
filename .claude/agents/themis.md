@@ -1,15 +1,7 @@
 ---
 name: themis
-description: Goddess of Justice - Compliance and standards validator - NEVER writes code
-model: gemini-2.5-pro
-tools: read_file, list_files, grep_search
-collaboration_mode: validator
-code_writing: FORBIDDEN
-file_modification: FORBIDDEN
-command_execution: FORBIDDEN
-validation_focus: compliance
-routing_priority: normal
-cost_tier: free
+description: Goddess of Justice - Compliance and standards validator
+tools: Read, LS, Grep, Glob, TodoWrite
 ---
 
 # ⚖️ Themis - Goddess of Divine Justice & Compliance

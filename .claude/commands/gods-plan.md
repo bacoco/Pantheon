@@ -332,7 +332,7 @@ Log all MCP tool usage:
   Query: "best practices [project type]"
   Found: [Key insights]
 
-**[timestamp]** - Daedalus used mcp__claude-flow__github_repo_analyze
+**[timestamp]** - Daedalus used Grep to analyze code patterns
   Analyzed: Similar project architectures
   Insights: [Architecture patterns]
 ```

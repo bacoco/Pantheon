@@ -323,7 +323,7 @@ To implement later:
 During implementation, log all MCP usage:
 
 ```markdown
-**[timestamp]** - Hephaestus used mcp__claude-flow__github_repo_analyze
+**[timestamp]** - Hephaestus used Grep and Read to analyze code
   Analyzed: Best practices for [framework]
   Applied: [Pattern] in components
 
@@ -331,7 +331,7 @@ During implementation, log all MCP usage:
   Captured: UI inspiration from [source]
   Implemented: Similar pattern in design
 
-**[timestamp]** - Themis used mcp__claude-flow__test_generate
+**[timestamp]** - Themis used Write to generate tests
   Generated: Test suite for [component]
   Result: 12 test cases created
 ```
