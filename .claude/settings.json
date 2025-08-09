@@ -1,5 +1,10 @@
 {
   "enableAllProjectMcpServers": true,
+  "model_routing": {
+    "enabled": true,
+    "config_file": "configs/model-routing.json",
+    "cost_tracking": true
+  },
   "routing": {
     "enabled": true,
     "strategy": "divine-council",
@@ -35,6 +40,8 @@
     "zeus": { "model": "claude-sonnet", "type": "creation" },
     "athena": { "model": "claude-sonnet", "type": "creation" },
     "hephaestus": { "model": "claude-sonnet", "type": "creation" },
+    "daedalus-architect": { "model": "claude-sonnet", "type": "creation" },
+    "oracle": { "model": "gemini-2.5-pro", "type": "validation" },
     "apollo": { "model": "gemini-2.5-pro", "type": "validation" },
     "themis": { "model": "gemini-2.5-pro", "type": "validation" },
     "argus": { "model": "gemini-2.5-pro", "type": "validation" },

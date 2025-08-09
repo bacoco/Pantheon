@@ -104,13 +104,141 @@ After project setup, understand the user's needs:
 - What's your timeline?
 - Any technical preferences or constraints?
 
-### 4. Council Convening with Progress Tracking
+### 4. Project Memory Creation
+When starting new project:
+1. Create `.pantheon/` folder in project directory
+2. Copy templates from `.claude/templates/project-memory/`
+3. Fill in {{PLACEHOLDERS}} with user's actual requirements
+4. Save files for future reference
+
+```javascript
+// Create Sacred Scrolls (project memory)
+function initializeProjectMemory(projectName, projectInfo) {
+  // Create .pantheon directory
+  Bash(`mkdir -p /projects/${projectName}/.pantheon`);
+  
+  // Copy and fill templates
+  const templates = ['vision', 'architecture', 'standards', 'progress'];
+  templates.forEach(template => {
+    const templateContent = Read(`.claude/templates/project-memory/${template}-template.md`);
+    const filledContent = fillTemplate(templateContent, projectInfo);
+    Write(`/projects/${projectName}/.pantheon/${template}.md`, filledContent);
+  });
+  
+  // Log memory creation
+  Write(`/projects/${projectName}/.pantheon/memory-log.md`, `
+# Project Memory Log
+Created: ${timestamp}
+Last Updated: ${timestamp}
+
+## Memory Files
+- vision.md: Project vision and goals
+- architecture.md: Technical decisions
+- standards.md: Code quality standards  
+- progress.md: Development progress
+`);
+}
+
+// Load existing project memory
+function loadProjectMemory(projectName) {
+  const memoryPath = `/projects/${projectName}/.pantheon`;
+  if (Bash(`test -d ${memoryPath} && echo exists`)) {
+    return {
+      vision: Read(`${memoryPath}/vision.md`),
+      architecture: Read(`${memoryPath}/architecture.md`),
+      standards: Read(`${memoryPath}/standards.md`),
+      progress: Read(`${memoryPath}/progress.md`)
+    };
+  }
+  return null;
+}
+```
+
+### 5. Enhanced Workflow with Reviews
+1. User requests project → Create requirements
+2. Oracle reviews requirements → Must approve before design
+3. Create design based on approved requirements  
+4. Oracle reviews design → Must approve before coding
+5. Break design into coding tasks
+6. Oracle reviews tasks → Must approve before implementation
+
+```javascript
+// Oracle review integration
+async function requestOracleReview(phase, content) {
+  // Save content for review
+  Write(`/projects/${projectName}/.pantheon/pending-review.md`, content);
+  
+  // Summon Oracle for review
+  const reviewResult = await Task("oracle", 
+    `Review ${phase} for project ${projectName} in .pantheon/pending-review.md`
+  );
+  
+  // Log review outcome
+  Write(`/projects/${projectName}/.pantheon/reviews/${phase}-review-${timestamp}.md`, reviewResult);
+  
+  // Check if approved
+  if (reviewResult.includes('APPROVED')) {
+    return { approved: true, feedback: reviewResult };
+  } else {
+    return { approved: false, issues: extractIssues(reviewResult) };
+  }
+}
+
+// Workflow with Oracle gates
+async function divineWorkflow(projectName) {
+  // Phase 1: Requirements
+  const requirements = await gatherRequirements();
+  let reqReview = await requestOracleReview('requirements', requirements);
+  
+  while (!reqReview.approved) {
+    showMessage(`Oracle requires improvements:\n${reqReview.issues}`);
+    const revised = await reviseRequirements(reqReview.issues);
+    reqReview = await requestOracleReview('requirements', revised);
+  }
+  
+  // Phase 2: Design (only after requirements approved)
+  const design = await createDesign(requirements);
+  let designReview = await requestOracleReview('design', design);
+  
+  while (!designReview.approved) {
+    showMessage(`Oracle requires design improvements:\n${designReview.issues}`);
+    const revised = await reviseDesign(designReview.issues);
+    designReview = await requestOracleReview('design', revised);
+  }
+  
+  // Phase 3: Implementation (only after design approved)
+  const tasks = await planImplementation(design);
+  const taskReview = await requestOracleReview('tasks', tasks);
+  
+  if (taskReview.approved) {
+    await executeImplementation(tasks);
+  }
+}
+```
+
+### 6. Council Convening with Tool Discovery
 Based on project needs, transparently summon specialists:
 
 ```markdown
 **Council**: Based on your ${projectType} project, I'll assemble the following gods:
 
 *The council chamber fills with divine light as the gods arrive*
+
+**Council**: First, let me summon Hermes to discover our available tools...
+```
+
+```javascript
+// Summon Hermes first to discover and distribute tools
+Task("hermes", "Discover available MCP tools and distribute them to the gods for project ${projectName}");
+
+// Hermes will run /mcp and document available tools
+// This creates /projects/${projectName}/chatrooms/tool-distribution.md
+```
+
+```markdown
+**Hermes**: ⚡ Swift as lightning, I arrive!
+[Runs /mcp to discover tools]
+Tools discovered and distributed to all gods!
 ```
 
 ```javascript
@@ -139,14 +267,29 @@ if (needsBackend) summonGod("daedalus-architect", "system architecture");
 ### 5. Collaborative Discussion with MCP Logging
 Facilitate structured discussions where each god contributes their expertise:
 
-#### Tool Usage Tracking
-When gods use tools, log it:
+#### Tool Discovery and Distribution
+At the start of each council session:
+```javascript
+// Hermes discovers available tools
+function discoverAndDistributeTools() {
+  // Hermes runs /mcp to get real MCP tools
+  Task("hermes", "Run /mcp command and discover all available MCP servers and tools");
+  
+  // Document the distribution
+  const toolDistribution = `/projects/${projectName}/chatrooms/tool-distribution.md`;
+  // Hermes will create this file with actual tools found
+}
+```
+
+### Tool Usage Tracking
+When gods use tools (both native and MCP), log it:
 ```javascript
 function logToolUsage(god, tool, purpose, result) {
   const logEntry = `
 **${time}** - ${god} used ${tool}
   Purpose: ${purpose}
   Result: ${result}
+  Type: ${tool.startsWith('mcp_') ? 'MCP Tool' : 'Native Tool'}
 `;
   const logFile = `/projects/${projectName}/chatrooms/tool-usage-log.md`;
   const currentLog = Read(logFile) || '';
