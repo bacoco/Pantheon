@@ -4,21 +4,61 @@
     "enabled": true,
     "autoSummon": true,
     "parallelExecution": true,
-    "validationRequired": true
+    "validationRequired": true,
+    "mcpEnhanced": true
   },
   "gods": {
-    "zeus": { "type": "orchestration" },
-    "athena": { "type": "architecture" },
-    "hephaestus": { "type": "implementation" },
-    "daedalus-architect": { "type": "engineering" },
-    "oracle": { "type": "validation" },
-    "apollo": { "type": "testing" },
-    "themis": { "type": "compliance" },
-    "argus": { "type": "security" },
-    "hermes": { "type": "communication" },
-    "calliope": { "type": "documentation" },
-    "iris": { "type": "ui-ux" },
-    "aegis": { "type": "security-architecture" },
-    "divine-council": { "type": "orchestration" }
+    "zeus": { 
+      "type": "orchestration",
+      "mcpServers": ["task-master", "basic-memory", "sequential-thinking"]
+    },
+    "athena": { 
+      "type": "architecture",
+      "mcpServers": ["serena", "sequential-thinking", "filesystem"]
+    },
+    "hephaestus": { 
+      "type": "implementation",
+      "mcpServers": ["shadcn-ui", "filesystem", "github"]
+    },
+    "daedalus-architect": { 
+      "type": "engineering",
+      "mcpServers": ["serena", "filesystem"]
+    },
+    "oracle": { 
+      "type": "validation",
+      "mcpServers": ["serena", "sequential-thinking", "basic-memory"]
+    },
+    "apollo": { 
+      "type": "testing",
+      "mcpServers": ["serena", "sequential-thinking", "filesystem"]
+    },
+    "themis": { 
+      "type": "compliance",
+      "mcpServers": ["serena"]
+    },
+    "argus": { 
+      "type": "security",
+      "mcpServers": ["serena"]
+    },
+    "hermes": { 
+      "type": "communication",
+      "mcpServers": ["basic-memory", "web-search", "brave-search", "youtube-transcript"]
+    },
+    "calliope": { 
+      "type": "documentation",
+      "mcpServers": ["filesystem", "basic-memory"]
+    },
+    "iris": { 
+      "type": "ui-ux",
+      "mcpServers": ["shadcn-ui"]
+    },
+    "aegis": { 
+      "type": "security-architecture",
+      "mcpServers": ["serena", "sequential-thinking"]
+    },
+    "divine-council": { 
+      "type": "orchestration",
+      "mcpServers": ["task-master", "basic-memory"]
+    }
   }
 }

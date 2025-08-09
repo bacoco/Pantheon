@@ -1,12 +1,16 @@
-# 🏛️ Enhanced Pantheon Multi-AI System
+# 🏛️ Pantheon Multi-AI System with MCP Integration
 
-**Divine AI Orchestration with Project Memory & Quality Gates - NO API KEYS NEEDED!**
+**Divine AI Orchestration Enhanced with MCP (Model Context Protocol) Tools**
 
-## ✨ What's New in Enhanced Pantheon
-- 🧠 **Project Memory**: Zeus remembers your project between sessions
-- ⚖️ **Quality Reviews**: Oracle reviews work before moving to next step
-- 📋 **Structured Workflow**: Requirements → Design → Code (no more chaos!)
+## ✨ What's New: MCP-Enhanced Divine Powers
+- ⚡ **Task-Master**: Zeus orchestrates complex workflows intelligently
+- 🔮 **Serena**: Athena & Oracle perform deep code analysis
+- 🎨 **Shadcn-UI**: Hephaestus forges beautiful UI components instantly
+- 🧠 **Sequential-Thinking**: Strategic reasoning for all gods
+- 📜 **Basic-Memory**: Cross-session persistence beyond files
+- 🔍 **Web-Search**: Hermes gathers information from across the web
 - 🏛️ **Sacred Scrolls**: Persistent project state in .pantheon/ folders
+- ⚖️ **Quality Gates**: Oracle enforces standards with deep analysis
 
 ## 🚀 Quick Start
 
@@ -25,26 +29,27 @@ Just type these in Claude Code:
 ## 📖 Documentation
 
 - **[START-HERE.md](START-HERE.md)** - Simple examples to try right now
-- **[docs/usage-guide.md](docs/usage-guide.md)** - Natural language patterns
+- **[PANTHEON-MCP-INTEGRATION.md](PANTHEON-MCP-INTEGRATION.md)** - Complete MCP integration guide
+- **[PANTHEON-MCP-COMMANDS.md](PANTHEON-MCP-COMMANDS.md)** - MCP command reference
 - **[CLAUDE.md](CLAUDE.md)** - Claude Code configuration
+- **[install-divine-tools.sh](install-divine-tools.sh)** - MCP server installation script
 
-## 🏛️ The Gods
+## 🏛️ The Gods with MCP Powers
 
-All gods work natively in Claude Code using the Task() tool:
+All gods now wield powerful MCP servers as divine tools:
 
-| God | Purpose | Role | Say This |
-|-----|---------|------|----------|
-| **divine-council** | Full orchestration | Master coordinator | "Divine council, build a complete app" |
-| **zeus** | Project coordination | Strategic oversight | "Zeus, coordinate this project" |
-| **oracle** | Quality review | Standards enforcer | "Oracle, review requirements" |
-| **athena** | Architecture | System designer | "Athena, design the system" |
-| **hephaestus** | Building | Master builder | "Hephaestus, implement this feature" |
-| **apollo** | Quality testing | Test specialist | "Apollo, review the code" |
-| **argus** | Security | Security scanner | "Argus, scan for vulnerabilities" |
-| **themis** | Compliance | Standards checker | "Themis, check standards" |
-| **hermes** | Communication | Quick messenger | "Hermes, what tools are available?" |
-| **calliope** | Documentation | Documentation writer | "Calliope, write docs" |
-| **iris** | UI/UX | Interface designer | "Iris, improve the interface" |
+| God | Purpose | MCP Tools | Say This |
+|-----|---------|-----------|----------|
+| **zeus** | Project coordination | task-master, basic-memory, sequential-thinking | "Zeus, orchestrate with your divine tools" |
+| **athena** | Architecture | serena, sequential-thinking, filesystem | "Athena, analyze the architecture with Serena" |
+| **hephaestus** | Building | shadcn-ui, filesystem, github | "Hephaestus, forge a UI with shadcn" |
+| **apollo** | Quality testing | serena, sequential-thinking, filesystem | "Apollo, validate with deep analysis" |
+| **oracle** | Quality review | serena, sequential-thinking, basic-memory | "Oracle, perform quality gates" |
+| **hermes** | Communication | basic-memory, web-search, youtube-transcript | "Hermes, search for best practices" |
+| **argus** | Security | serena (security mode) | "Argus, scan with Serena" |
+| **themis** | Compliance | serena (compliance mode) | "Themis, check standards" |
+| **calliope** | Documentation | filesystem, basic-memory | "Calliope, organize docs" |
+| **iris** | UI/UX | shadcn-ui (design mode) | "Iris, design with shadcn" |
 
 ## 🔧 Special Features
 
@@ -61,18 +66,33 @@ The divine council provides interactive dialogue:
 - Generates chatrooms with progress tracking
 - Coordinates multiple gods automatically
 
-## ✅ What Works
+## ⚡ MCP-Enhanced Capabilities
 
+### New Powers with MCP
+- ⚡ **10x Faster Development**: Shadcn-ui generates complete UIs instantly
+- 🔮 **Deep Code Analysis**: Serena reveals patterns, smells, and vulnerabilities
+- 🧠 **Strategic Reasoning**: Sequential-thinking for complex decisions
+- 📜 **Perfect Memory**: Basic-memory persists across all sessions
+- 🔍 **Web Intelligence**: Search and extract knowledge from anywhere
+- 🔧 **GitHub Integration**: Automated workflows and PR management
+
+### Installation
+```bash
+# Install all MCP servers with one command
+./install-divine-tools.sh
+
+# Then restart Claude Code to activate divine tools
+```
+
+### What Works
 - ✅ All gods respond to natural language
-- ✅ Interactive dialogue with users
-- ✅ Project memory persists between sessions
-- ✅ Oracle reviews prevent bad decisions
-- ✅ Structured workflow (Requirements → Design → Code)
-- ✅ Multi-agent orchestration via Task() tool
-- ✅ Chatroom generation for tracking
-- ✅ Tool discovery and guidance
-- ✅ NO external APIs needed
-- ✅ NO configuration required
+- ✅ MCP tools extend god capabilities dramatically
+- ✅ Deep code analysis beyond basic grep
+- ✅ Instant UI generation with shadcn-ui
+- ✅ Cross-session memory with basic-memory
+- ✅ Parallel task orchestration with task-master
+- ✅ Web search and knowledge extraction
+- ✅ GitHub automation and workflows
 
 ## 🔄 Enhanced Workflow
 

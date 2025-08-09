@@ -1,0 +1,80 @@
+{
+  "mcpServers": {
+    "basic-memory": {
+      "command": "uvx",
+      "args": ["basic-memory", "mcp"],
+      "description": "Simple key-value memory storage for cross-session persistence",
+      "env": {},
+      "installation": "pip install basic-memory"
+    },
+    "task-master": {
+      "command": "npx",
+      "args": ["-y", "--package=task-master-ai", "task-master-ai"],
+      "description": "Task management and workflow orchestration",
+      "env": {},
+      "installation": "npm install -g task-master-ai"
+    },
+    "serena": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/oraios/serena", "serena-mcp-server"],
+      "description": "Code analysis and management server",
+      "env": {},
+      "installation": "pip install git+https://github.com/oraios/serena"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Enhanced reasoning and step-by-step problem solving",
+      "env": {},
+      "installation": "npm install -g @modelcontextprotocol/server-sequential-thinking"
+    },
+    "shadcn-ui": {
+      "command": "npx",
+      "args": ["@jpisnice/shadcn-ui-mcp-server"],
+      "description": "UI component generation with shadcn/ui",
+      "env": {},
+      "installation": "npm install -g @jpisnice/shadcn-ui-mcp-server"
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/Users/loic/develop/pantheon-multi-ai"],
+      "description": "Enhanced file system operations",
+      "env": {},
+      "installation": "npm install -g @modelcontextprotocol/server-filesystem"
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "description": "GitHub API integration",
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "installation": "npm install -g @modelcontextprotocol/server-github"
+    },
+    "youtube-transcript": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-youtube-transcript"],
+      "description": "YouTube video transcript extraction",
+      "env": {},
+      "installation": "npm install -g @modelcontextprotocol/server-youtube-transcript"
+    },
+    "web-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-exa"],
+      "description": "Web search capabilities via Exa API",
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      },
+      "installation": "npm install -g @modelcontextprotocol/server-exa"
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "description": "Brave search engine integration",
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      },
+      "installation": "npm install -g @modelcontextprotocol/server-brave-search"
+    }
+  }
+}
