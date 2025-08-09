@@ -1,52 +1,24 @@
 {
   "enableAllProjectMcpServers": true,
-  "model_routing": {
-    "enabled": true,
-    "config_file": "configs/model-routing.json",
-    "cost_tracking": true
-  },
-  "routing": {
-    "enabled": true,
-    "strategy": "divine-council",
-    "costOptimization": true,
-    "validationProvider": "gemini",
-    "creationProvider": "claude",
-    "routerPath": "~/.claude-code-router/smart-router.js"
-  },
   "divineCouncil": {
     "enabled": true,
     "autoSummon": true,
     "parallelExecution": true,
-    "validationRequired": true,
-    "costTracking": true
-  },
-  "modelPreferences": {
-    "creation": {
-      "primary": "claude-sonnet",
-      "fallback": "claude-haiku"
-    },
-    "validation": {
-      "primary": "gemini-2.5-pro",
-      "fallback": "gemini-2.5-flash",
-      "cost": "free"
-    },
-    "support": {
-      "primary": "gemini-2.5-flash",
-      "fallback": "gemini-2.5-pro",
-      "cost": "free"
-    }
+    "validationRequired": true
   },
   "gods": {
-    "zeus": { "model": "claude-sonnet", "type": "creation" },
-    "athena": { "model": "claude-sonnet", "type": "creation" },
-    "hephaestus": { "model": "claude-sonnet", "type": "creation" },
-    "daedalus-architect": { "model": "claude-sonnet", "type": "creation" },
-    "oracle": { "model": "gemini-2.5-pro", "type": "validation" },
-    "apollo": { "model": "gemini-2.5-pro", "type": "validation" },
-    "themis": { "model": "gemini-2.5-pro", "type": "validation" },
-    "argus": { "model": "gemini-2.5-pro", "type": "validation" },
-    "hermes": { "model": "gemini-2.5-flash", "type": "support" },
-    "calliope": { "model": "gemini-2.5-flash", "type": "support" },
-    "iris": { "model": "gemini-2.5-flash", "type": "support" }
+    "zeus": { "type": "orchestration" },
+    "athena": { "type": "architecture" },
+    "hephaestus": { "type": "implementation" },
+    "daedalus-architect": { "type": "engineering" },
+    "oracle": { "type": "validation" },
+    "apollo": { "type": "testing" },
+    "themis": { "type": "compliance" },
+    "argus": { "type": "security" },
+    "hermes": { "type": "communication" },
+    "calliope": { "type": "documentation" },
+    "iris": { "type": "ui-ux" },
+    "aegis": { "type": "security-architecture" },
+    "divine-council": { "type": "orchestration" }
   }
 }

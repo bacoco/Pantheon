@@ -5,8 +5,8 @@
 ## ✨ What's New in Enhanced Pantheon
 - 🧠 **Project Memory**: Zeus remembers your project between sessions
 - ⚖️ **Quality Reviews**: Oracle reviews work before moving to next step
-- 💰 **60% Cost Savings**: Smart model routing (Claude for creation, FREE Gemini for validation)
 - 📋 **Structured Workflow**: Requirements → Design → Code (no more chaos!)
+- 🏛️ **Sacred Scrolls**: Persistent project state in .pantheon/ folders
 
 ## 🚀 Quick Start
 
@@ -30,21 +30,21 @@ Just type these in Claude Code:
 
 ## 🏛️ The Gods
 
-All gods work natively in Claude Code with smart model routing:
+All gods work natively in Claude Code using the Task() tool:
 
-| God | Purpose | Model | Cost | Say This |
-|-----|---------|-------|------|----------|
-| **divine-council** | Full orchestration | Claude | $$ | "Divine council, build a complete app" |
-| **zeus** | Master coordinator | Claude | $$ | "Zeus, coordinate this project" |
-| **oracle** | Quality review | Gemini | FREE | "Oracle, review requirements" |
-| **athena** | Architecture | Claude | $$ | "Athena, design the system" |
-| **hephaestus** | Building | Claude | $$ | "Hephaestus, implement this feature" |
-| **apollo** | Quality testing | Gemini | FREE | "Apollo, review the code" |
-| **argus** | Security | Gemini | FREE | "Argus, scan for vulnerabilities" |
-| **themis** | Compliance | Gemini | FREE | "Themis, check standards" |
-| **hermes** | Fast updates | Gemini Flash | FREE | "Hermes, what tools are available?" |
-| **calliope** | Documentation | Gemini Flash | FREE | "Calliope, write docs" |
-| **iris** | UI/UX | Gemini Flash | FREE | "Iris, improve the interface" |
+| God | Purpose | Role | Say This |
+|-----|---------|------|----------|
+| **divine-council** | Full orchestration | Master coordinator | "Divine council, build a complete app" |
+| **zeus** | Project coordination | Strategic oversight | "Zeus, coordinate this project" |
+| **oracle** | Quality review | Standards enforcer | "Oracle, review requirements" |
+| **athena** | Architecture | System designer | "Athena, design the system" |
+| **hephaestus** | Building | Master builder | "Hephaestus, implement this feature" |
+| **apollo** | Quality testing | Test specialist | "Apollo, review the code" |
+| **argus** | Security | Security scanner | "Argus, scan for vulnerabilities" |
+| **themis** | Compliance | Standards checker | "Themis, check standards" |
+| **hermes** | Communication | Quick messenger | "Hermes, what tools are available?" |
+| **calliope** | Documentation | Documentation writer | "Calliope, write docs" |
+| **iris** | UI/UX | Interface designer | "Iris, improve the interface" |
 
 ## 🔧 Special Features
 
@@ -68,7 +68,7 @@ The divine council provides interactive dialogue:
 - ✅ Project memory persists between sessions
 - ✅ Oracle reviews prevent bad decisions
 - ✅ Structured workflow (Requirements → Design → Code)
-- ✅ 60% cost reduction through smart routing
+- ✅ Multi-agent orchestration via Task() tool
 - ✅ Chatroom generation for tracking
 - ✅ Tool discovery and guidance
 - ✅ NO external APIs needed
