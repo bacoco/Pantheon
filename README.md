@@ -40,17 +40,20 @@ All gods now wield powerful MCP servers as divine tools:
 
 | God | Purpose | MCP Tools | Say This |
 |-----|---------|-----------|----------|
-| **zeus** | Project coordination | task-master, basic-memory, sequential-thinking | "Zeus, orchestrate with your divine tools" |
-| **athena** | Architecture | serena, sequential-thinking, filesystem | "Athena, analyze the architecture with Serena" |
-| **hephaestus** | Building | shadcn-ui, filesystem, github | "Hephaestus, forge a UI with shadcn" |
+| **divine-council** | Full orchestration | task-master, basic-memory | "/gods" or "Divine council, build my app" |
+| **zeus** ⚡ | Project coordination | task-master, basic-memory, sequential-thinking | "Zeus, orchestrate with your divine tools" |
+| **athena** 🦉 | Architecture | serena, sequential-thinking, filesystem | "Athena, analyze the architecture with Serena" |
+| **hephaestus** 🔨 | Building | shadcn-ui, filesystem, github | "Hephaestus, forge a UI with shadcn" |
+| **daedalus** 🏗️ | Master engineering | serena, filesystem | "Daedalus, engineer the solution" |
 | **githeus** 🔱 | Version Control | github (automatic) | AUTO - commits after each god task |
-| **apollo** | Quality testing | serena, sequential-thinking, filesystem | "Apollo, validate with deep analysis" |
-| **oracle** | Quality review | serena, sequential-thinking, basic-memory | "Oracle, perform quality gates" |
-| **hermes** | Communication | basic-memory, web-search, youtube-transcript | "Hermes, search for best practices" |
-| **argus** | Security | serena (security mode) | "Argus, scan with Serena" |
-| **themis** | Compliance | serena (compliance mode) | "Themis, check standards" |
-| **calliope** | Documentation | filesystem, basic-memory | "Calliope, organize docs" |
-| **iris** | UI/UX | shadcn-ui (design mode) | "Iris, design with shadcn" |
+| **apollo** ☀️ | Quality testing | serena, sequential-thinking, filesystem | "Apollo, validate with deep analysis" |
+| **oracle** 🔮 | Quality gates | serena, sequential-thinking, basic-memory | "Oracle, perform quality gates" |
+| **hermes** 👟 | Communication | basic-memory, web-search, youtube-transcript | "Hermes, search for best practices" |
+| **argus** 👁️ | Security scanning | serena (security mode) | "Argus, scan with Serena" |
+| **aegis** 🛡️ | Security architecture | serena, sequential-thinking | "Aegis, design security architecture" |
+| **themis** ⚖️ | Compliance | serena (compliance mode) | "Themis, check standards" |
+| **calliope** 📜 | Documentation | filesystem, basic-memory | "Calliope, organize docs" |
+| **iris** 🌈 | UI/UX design | shadcn-ui (design mode) | "Iris, design with shadcn" |
 
 ## 🔧 Special Features
 

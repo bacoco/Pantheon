@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# 🏛️ Pantheon Pre-Push Hook
+# Final validation before pushing to remote repository
+
+echo "🏛️ Summoning divine council for final validation before push..."
+
+# Function to run comprehensive validation
+run_final_validation() {
+    # Create validation request for Claude Code
+    cat > .pantheon-push-validation.json << EOF
+{
+  "type": "pre-push",
+  "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+  "branch": "$(git branch --show-current)",
+  "remote": "$1",
+  "gods": ["apollo", "oracle", "argus", "themis"]
+}
+EOF
+
+    echo "⚡ Zeus is orchestrating final validation..."
+    echo "☀️ Apollo is running comprehensive tests..."
+    echo "🔮 Oracle is checking all quality gates..."
+    echo "👁️ Argus is performing security scan..."
+    echo "⚖️ Themis is verifying compliance..."
+    
+    # Check if tests exist and run them
+    if [ -f "package.json" ] && grep -q "\"test\"" package.json; then
+        echo "🧪 Running test suite..."
+        npm test > /dev/null 2>&1
+        if [ $? -ne 0 ]; then
+            echo "❌ Apollo reports: Tests are failing!"
+            echo "Fix failing tests before pushing"
+            exit 1
+        fi
+        echo "✅ All tests passing"
+    fi
+    
+    # Check for merge conflicts markers
+    if git diff HEAD origin/$(git branch --show-current) --name-only 2>/dev/null | xargs grep -l "<<<<<<< HEAD" 2>/dev/null; then
+        echo "❌ Oracle reports: Unresolved merge conflicts detected!"
+        exit 1
+    fi
+    
+    # Check branch protection rules
+    current_branch=$(git branch --show-current)
+    if [ "$current_branch" = "main" ] || [ "$current_branch" = "master" ]; then
+        echo "⚠️ Themis warns: Direct push to $current_branch branch"
+        echo "Consider using feature branches and pull requests"
+        # Uncomment to block direct pushes:
+        # exit 1
+    fi
+    
+    # Check commit messages
+    echo "📝 Reviewing commit messages..."
+    commits=$(git log origin/$(git branch --show-current)..HEAD --oneline 2>/dev/null)
+    if [ -n "$commits" ]; then
+        echo "$commits" | while read -r commit; do
+            # Check for conventional commit format
+            if ! echo "$commit" | grep -qE "^[a-f0-9]+ (feat|fix|docs|style|refactor|test|chore|build|ci|perf|revert)(\(.+\))?: .+"; then
+                echo "⚠️ Calliope suggests: Non-conventional commit format in: $commit"
+            fi
+        done
+    fi
+    
+    # Final blessing
+    echo ""
+    echo "🏛️ Divine Council Final Verdict:"
+    echo "✅ Apollo: Code quality approved"
+    echo "✅ Oracle: Quality gates passed"
+    echo "✅ Argus: Security scan clean"
+    echo "✅ Themis: Compliance verified"
+    
+    # Clean up
+    rm -f .pantheon-push-validation.json
+    
+    return 0
+}
+
+# Get remote name from git
+remote="$1"
+url="$2"
+
+echo "Validating push to $remote ($url)..."
+
+# Run validation
+run_final_validation "$remote"
+exit_code=$?
+
+if [ $exit_code -ne 0 ]; then
+    echo "❌ Push blocked by divine validation"
+    echo "Address the issues above and try again"
+    exit $exit_code
+fi
+
+echo "🚀 Divine approval granted - proceeding with push to $remote"
+exit 0

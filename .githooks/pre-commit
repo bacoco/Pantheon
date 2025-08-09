@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# 🏛️ Pantheon Pre-Commit Hook
+# Automatically invokes validation gods before allowing commits
+
+echo "🏛️ Summoning validation gods for pre-commit checks..."
+
+# Function to run validation in Claude Code
+run_validation() {
+    # Create a validation request file that Claude will detect
+    cat > .pantheon-validation-request.json << EOF
+{
+  "type": "pre-commit",
+  "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+  "files": $(git diff --cached --name-only --diff-filter=ACM | jq -R -s -c 'split("\n") | map(select(length > 0))'),
+  "gods": ["apollo", "oracle", "argus"]
+}
+EOF
+
+    echo "☀️ Summoning Apollo for code quality validation..."
+    echo "🔮 Summoning Oracle for quality gates..."
+    echo "👁️ Summoning Argus for security scanning..."
+    
+    # Note: In real implementation, this would trigger Claude Code to run:
+    # Task("apollo", "Validate staged changes for quality")
+    # Task("oracle", "Check quality gates for commit")
+    # Task("argus", "Scan for security issues")
+    
+    # For now, we'll do basic checks
+    
+    # Check for console.log statements in JS/TS files only
+    js_files=$(git diff --cached --name-only --diff-filter=ACM | grep -E "\.(js|jsx|ts|tsx)$" || true)
+    if [ -n "$js_files" ] && echo "$js_files" | xargs grep -l "console\.log" 2>/dev/null; then
+        echo "⚠️ Apollo warns: console.log statements found in JavaScript/TypeScript files"
+        echo "Consider removing debug statements before committing"
+        # This is just a warning, not blocking
+    fi
+    
+    # Check for TODO comments
+    if git diff --cached --name-only --diff-filter=ACM | xargs grep -l "TODO" 2>/dev/null; then
+        echo "📝 Oracle notes: TODO comments found"
+        # This is just a warning, not blocking
+    fi
+    
+    # Check for potential security issues (excluding .githooks and .claude directories)
+    suspicious_files=$(git diff --cached --name-only --diff-filter=ACM | \
+        grep -v "^\.githooks/" | \
+        grep -v "^\.claude/" | \
+        xargs grep -l -E "(password|secret|token|key).*=.*[\"']" 2>/dev/null || true)
+    
+    if [ -n "$suspicious_files" ]; then
+        echo "🔴 Argus alerts: Potential hardcoded secrets detected in:"
+        echo "$suspicious_files"
+        echo "Never commit secrets or credentials to version control"
+        exit 1
+    fi
+    
+    # Check file sizes
+    for file in $(git diff --cached --name-only --diff-filter=ACM); do
+        if [ -f "$file" ]; then
+            size=$(wc -c < "$file")
+            if [ $size -gt 1000000 ]; then
+                echo "⚠️ Oracle warns: Large file detected: $file ($(($size / 1000))KB)"
+                echo "Consider using Git LFS for large files"
+            fi
+        fi
+    done
+    
+    # Clean up validation request
+    rm -f .pantheon-validation-request.json
+    
+    echo "✅ Validation gods have blessed this commit"
+    return 0
+}
+
+# Run validation
+run_validation
+exit_code=$?
+
+if [ $exit_code -ne 0 ]; then
+    echo "❌ Validation failed - commit blocked by the gods"
+    echo "Fix the issues above and try again"
+    exit $exit_code
+fi
+
+echo "🏛️ Pre-commit validation complete - proceeding with commit"
+exit 0

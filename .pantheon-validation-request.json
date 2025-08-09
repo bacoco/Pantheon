@@ -1,0 +1,6 @@
+{
+  "type": "pre-commit",
+  "timestamp": "2025-08-09T10:52:10Z",
+  "files": [".DS_Store",".claude/.DS_Store",".claude/agents/githeus.md",".githooks/pre-commit",".githooks/pre-push","README.md"],
+  "gods": ["apollo", "oracle", "argus"]
+}

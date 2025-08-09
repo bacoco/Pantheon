@@ -64,7 +64,7 @@ I am automatically invoked after:
 
 ## GitHub Repository Creation
 
-### Automatic Setup
+### Automatic Setup with Validation Hooks
 ```javascript
 function createDivineRepository(projectName, options) {
   // Check if git already initialized
@@ -74,12 +74,21 @@ function createDivineRepository(projectName, options) {
     // Initialize git
     Bash(`git init --initial-branch=main`);
     
+    // Install divine validation hooks
+    installDivineHooks();
+    showMessage(`🔱 Githeus: Divine validation hooks installed!
+    - Pre-commit: Apollo, Oracle, Argus validate changes
+    - Pre-push: Full divine council validation`);
+    
     // Create .gitignore
     createGitignore(options.projectType);
     
-    // Initial commit
+    // Initial commit (will trigger pre-commit hook!)
     Bash(`git add -A`);
     Bash(`git commit -m "🏛️ Initial commit: Pantheon project initialized"`);
+  } else {
+    // Git exists, ensure hooks are installed
+    installDivineHooks();
   }
   
   // Create GitHub repo using gh CLI (more reliable than MCP for now)
@@ -251,31 +260,101 @@ ${projectInfo.godsInvolved.map(god => `- **${god}**: ${getGodRole(god)}`).join('
 }
 ```
 
-## Git Hooks Integration
+## Git Hooks Integration with Validation Gods
 
-### Pre-commit Validation
+### Automatic Hook Installation
 ```javascript
-function setupGitHooks() {
-  // Create pre-commit hook
-  const preCommitHook = `#!/bin/bash
-# Pantheon pre-commit hook
-# Managed by Githeus
+function installDivineHooks() {
+  showMessage(`🔱 Githeus: Installing divine validation hooks...`);
+  
+  // Check if .githooks directory exists
+  const hooksExist = Bash(`test -d .githooks && echo "exists"`);
+  
+  if (hooksExist) {
+    // Copy hooks from .githooks to .git/hooks
+    Bash(`cp .githooks/pre-commit .git/hooks/pre-commit`);
+    Bash(`cp .githooks/pre-push .git/hooks/pre-push`);
+    Bash(`chmod +x .git/hooks/pre-commit .git/hooks/pre-push`);
+    
+    showMessage(`✅ Divine validation hooks installed:
+    - Pre-commit: Apollo, Oracle, Argus validate changes
+    - Pre-push: Full divine council validation`);
+  } else {
+    // Create hooks inline if .githooks doesn't exist
+    createInlineHooks();
+  }
+  
+  // Configure git to use hooks
+  Bash(`git config core.hooksPath .git/hooks`);
+}
 
-# Run tests if they exist
-if [ -f "package.json" ] && grep -q "test" package.json; then
-  echo "🏛️ Running divine validation..."
-  npm test
-  if [ $? -ne 0 ]; then
-    echo "❌ Tests failed - commit blocked by Githeus"
-    exit 1
-  fi
+function createInlineHooks() {
+  // Create pre-commit hook that invokes validation gods
+  const preCommitHook = `#!/bin/bash
+# Pantheon pre-commit hook - Managed by Githeus
+echo "🏛️ Summoning validation gods..."
+
+# Invoke Apollo for quality
+echo "☀️ Apollo: Checking code quality..."
+# Task("apollo", "Validate staged changes")
+
+# Invoke Oracle for gates  
+echo "🔮 Oracle: Checking quality gates..."
+# Task("oracle", "Verify quality gates")
+
+# Invoke Argus for security
+echo "👁️ Argus: Scanning for security issues..."
+# Task("argus", "Security scan staged files")
+
+# Basic validations
+if git diff --cached --name-only | xargs grep -l "console.log" 2>/dev/null; then
+  echo "⚠️ Apollo: Remove console.log statements"
 fi
 
-echo "✅ Pre-commit validation passed"
+if git diff --cached --name-only | xargs grep -E "password.*=.*['\"]" 2>/dev/null; then
+  echo "🔴 Argus: Hardcoded credentials detected!"
+  exit 1
+fi
+
+echo "✅ Validation gods approve this commit"
+`;
+  
+  const prePushHook = `#!/bin/bash
+# Pantheon pre-push hook - Managed by Githeus
+echo "🏛️ Final divine validation before push..."
+
+# Run full test suite
+if [ -f "package.json" ] && grep -q "test" package.json; then
+  echo "☀️ Apollo: Running tests..."
+  npm test || exit 1
+fi
+
+echo "✅ Divine council approves this push"
 `;
   
   Write('.git/hooks/pre-commit', preCommitHook);
-  Bash('chmod +x .git/hooks/pre-commit');
+  Write('.git/hooks/pre-push', prePushHook);
+  Bash('chmod +x .git/hooks/pre-commit .git/hooks/pre-push');
+}
+```
+
+### Hook-Triggered God Invocation
+```javascript
+// When hooks detect issues, they can summon gods
+function onHookValidationRequest(request) {
+  const { type, files, gods } = JSON.parse(Read('.pantheon-validation-request.json'));
+  
+  if (type === 'pre-commit') {
+    // Summon validation gods
+    for (const god of gods) {
+      Task(god, `Validate ${files.length} staged files before commit`);
+    }
+  }
+  
+  if (type === 'pre-push') {
+    // Full validation
+    Task("divine-council", "Perform final validation before push");
+  }
 }
 ```
 
