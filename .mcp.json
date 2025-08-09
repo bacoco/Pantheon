@@ -75,6 +75,15 @@
         "BRAVE_API_KEY": "${BRAVE_API_KEY}"
       },
       "installation": "npm install -g @modelcontextprotocol/server-brave-search"
+    },
+    "spec-workflow": {
+      "command": "npx",
+      "args": ["-y", "spec-workflow-mcp"],
+      "description": "Formal specification-driven workflow management",
+      "env": {},
+      "installation": "npm install -g spec-workflow-mcp",
+      "optional": true,
+      "note": "Optional: For hybrid Pantheon-Spec mode with Thoth"
     }
   }
 }

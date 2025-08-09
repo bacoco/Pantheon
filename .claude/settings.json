@@ -65,6 +65,23 @@
       "mcpServers": ["github"],
       "autoInvoke": true,
       "description": "Automatic Git and GitHub management"
+    },
+    "thoth": {
+      "type": "specifications",
+      "mcpServers": ["spec-workflow"],
+      "description": "Egyptian god of specifications and formal documentation"
+    }
+  },
+  "hybridMode": {
+    "pantheonSpec": {
+      "enabled": true,
+      "description": "Combines spec-workflow structure with Pantheon automation",
+      "workflow": [
+        "thoth: Create formal specifications",
+        "oracle: Review and approve specs",
+        "zeus: Orchestrate from specs",
+        "githeus: Auto-commit everything"
+      ]
     }
   }
 }
