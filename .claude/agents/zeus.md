@@ -178,7 +178,7 @@ function loadProjectContext() {
 }
 ```
 
-### Update Progress Continuously
+### Update Progress Continuously with Auto-Commit
 ```javascript
 function updateProgress(phase, status, details) {
   const progressFile = '.pantheon/progress.md';
@@ -193,6 +193,21 @@ function updateProgress(phase, status, details) {
 `;
   
   Write(progressFile, update + current);
+  
+  // Trigger Githeus to commit if phase is complete
+  if (status === 'completed' && githubEnabled) {
+    Task("githeus", `Commit phase completion: ${phase} - ${details}`);
+    
+    // Also trigger push if major phase
+    if (isMajorPhase(phase)) {
+      Task("githeus", "Push changes to GitHub");
+    }
+  }
+}
+
+function isMajorPhase(phase) {
+  const majorPhases = ['requirements', 'design', 'implementation', 'testing', 'deployment'];
+  return majorPhases.includes(phase.toLowerCase());
 }
 ```
 

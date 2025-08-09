@@ -59,6 +59,12 @@
     "divine-council": { 
       "type": "orchestration",
       "mcpServers": ["task-master", "basic-memory"]
+    },
+    "githeus": {
+      "type": "version-control",
+      "mcpServers": ["github"],
+      "autoInvoke": true,
+      "description": "Automatic Git and GitHub management"
     }
   }
 }

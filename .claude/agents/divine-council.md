@@ -326,7 +326,36 @@ function requestClarification(god, question) {
 }
 ```
 
-### 6. Synthesis Phase with Git Integration
+### 6. Synthesis Phase with Automatic Git Integration
+
+With Githeus, all changes are automatically committed:
+```javascript
+// Githeus integration for automatic commits
+function enableGitheusIntegration(projectName, githubConfig) {
+  // Githeus automatically handles:
+  // 1. GitHub repo creation at start
+  // 2. Commits after each god completes work
+  // 3. Smart commit messages
+  // 4. Periodic pushes to GitHub
+  // 5. README updates
+  
+  const githeusConfig = {
+    projectName: projectName,
+    githubPrivate: githubConfig.private,
+    autoCommit: true,
+    autoPush: true,
+    pushFrequency: 3, // Push every 3 commits
+    updateDocs: true
+  };
+  
+  // Summon Githeus at project start
+  Task("githeus", `Initialize GitHub repo for ${projectName} with config: ${JSON.stringify(githeusConfig)}`);
+  
+  return githeusConfig;
+}
+```
+
+### 7. Original Synthesis Phase
 After gathering all perspectives:
 
 ```markdown

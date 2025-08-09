@@ -1,30 +1,38 @@
-# /gods - Divine Council with Claude Code + Gemini CLI
+# /gods - Divine Council with Automatic GitHub Integration
 
-Orchestrate divine collaboration using Claude Code (your max plan) and Gemini CLI (free tier).
+Orchestrate divine collaboration with automatic version control, GitHub repository creation, and continuous commits.
 
 ## How It Works
 
-1. **You work in Claude Code CLI** (this session - FREE with max plan)
-2. **Creation happens here** (Zeus, Athena, Hephaestus)  
-3. **Validation uses Gemini CLI** (Apollo, Themis, Argus - FREE tier)
-4. **Router tells you when to switch** (automatic routing)
+1. **Interactive dialogue** to define your project goals and requirements
+2. **Automatic GitHub repo creation** with Githeus
+3. **Gods automatically select their MCP tools** (no specification needed)
+4. **Automatic commits** after each god completes their task
+5. **Continuous documentation updates** and pushing to GitHub
 
 ## Available Commands
 
 ### `/gods` (no subcommand)
-Shows this help and routing information.
+Starts interactive dialogue to:
+- Define project name and goals
+- Create GitHub repository automatically
+- Build PRD through conversation
+- Summon gods with their MCP tools
 
-### `/gods plan <project>`
-Planning session with intelligent routing:
+### `/gods plan <project>` or just `/gods`
+Interactive planning with automatic GitHub:
 ```
-Claude Code: Zeus orchestrates, Athena designs
-Gemini CLI: Apollo validates
+You: /gods
+Council: Welcome! What would you like to create?
+You: A task management app
+Council: Should I create a GitHub repository?
+You: Yes, private
+Githeus: 🔱 Creating GitHub repo...
+Githeus: ✅ Repo created: https://github.com/you/task-manager
 
-Example:
-You: /gods plan authentication system
-Claude: [Zeus and Athena work here]
-System: "For validation, run: gemini 'Validate auth design...'"
-You: [Run command in terminal, paste results]
+Zeus: *automatically uses task-master*
+Athena: *automatically uses serena*
+Githeus: 📝 Auto-committing progress...
 ```
 
 ### `/gods execute`
@@ -55,41 +63,57 @@ Cost: FREE
 Response: <1 second
 ```
 
-## God Routing
+## Gods with Automatic MCP Tools
 
-| God | Provider | How to Use |
-|-----|----------|------------|
-| **Zeus** | Claude Code | Works directly in this session |
-| **Athena** | Claude Code | Architecture here in Claude |
-| **Hephaestus** | Claude Code | Builds in current session |
-| **Apollo** | Gemini CLI | Run: `gemini "Validate..."` |
-| **Themis** | Gemini CLI | Run: `gemini "Check compliance..."` |
-| **Argus** | Gemini CLI | Run: `gemini "Security audit..."` |
-| **Hermes** | Gemini CLI | Run: `gemini "Quick status..."` |
+| God | Purpose | Auto-Selected Tools |
+|-----|---------|--------------------|
+| **Zeus** | Orchestration | task-master, basic-memory |
+| **Athena** | Architecture | serena, sequential-thinking |
+| **Hephaestus** | Building | shadcn-ui, filesystem |
+| **Apollo** | Validation | serena quality checks |
+| **Githeus** 🆕 | Version Control | github, auto-commits |
+| **Hermes** | Communication | web-search, memory |
+| **Oracle** | Quality Gates | serena deep analysis |
 
-## Workflow Examples
+## Automatic GitHub Workflow
 
-### Example 1: Full Planning Session
+### New Feature: Githeus Integration
+```javascript
+// Githeus automatically:
+1. Creates GitHub repository at start
+2. Commits after EVERY god task
+3. Generates smart commit messages
+4. Pushes every 3 commits
+5. Updates README continuously
+```
+
+### Example: Complete Project with Auto-Git
 ```bash
-# In Claude Code CLI (this session)
-You: /gods plan "Build real-time chat"
+You: /gods
+Council: Welcome! Project name?
+You: awesome-app
+Council: Create GitHub repo? (yes/no)
+You: yes
 
-# Claude responds with Zeus + Athena working here
-Claude: ⚡ Zeus orchestrates...
-        🦉 Athena designs architecture...
-        
-# System suggests Gemini validation
-System: For validation, run:
-        gemini "Validate this chat architecture: [details]"
+# Githeus creates repo
+Githeus: 🔱 Creating GitHub repository...
+Githeus: ✅ https://github.com/you/awesome-app
 
-# You run in terminal
-$ gemini "Validate this chat architecture: ..."
+# Zeus plans (auto-uses task-master)
+Zeus: ⚡ Orchestrating with task-master...
+[completes planning]
+Githeus: 📝 Committed: "feat: Initialize project structure"
 
-# Paste results back
-You: [Paste Gemini's validation]
+# Athena designs (auto-uses serena)
+Athena: 🦉 Analyzing with serena...
+[completes architecture]
+Githeus: 📝 Committed: "docs: Add system architecture"
 
-# Claude integrates feedback
-Claude: Based on Apollo's validation...
+# Hephaestus builds (auto-uses shadcn-ui)
+Hephaestus: 🔨 Forging UI with shadcn...
+[creates components]
+Githeus: 📝 Committed: "feat: Implement user interface"
+Githeus: 🚀 Pushed 3 commits to GitHub!
 ```
 
 ### Example 2: Quick Validation

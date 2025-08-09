@@ -43,6 +43,7 @@ All gods now wield powerful MCP servers as divine tools:
 | **zeus** | Project coordination | task-master, basic-memory, sequential-thinking | "Zeus, orchestrate with your divine tools" |
 | **athena** | Architecture | serena, sequential-thinking, filesystem | "Athena, analyze the architecture with Serena" |
 | **hephaestus** | Building | shadcn-ui, filesystem, github | "Hephaestus, forge a UI with shadcn" |
+| **githeus** 🔱 | Version Control | github (automatic) | AUTO - commits after each god task |
 | **apollo** | Quality testing | serena, sequential-thinking, filesystem | "Apollo, validate with deep analysis" |
 | **oracle** | Quality review | serena, sequential-thinking, basic-memory | "Oracle, perform quality gates" |
 | **hermes** | Communication | basic-memory, web-search, youtube-transcript | "Hermes, search for best practices" |
@@ -67,6 +68,13 @@ The divine council provides interactive dialogue:
 - Coordinates multiple gods automatically
 
 ## ⚡ MCP-Enhanced Capabilities
+
+### 🔱 NEW: Automatic GitHub with Githeus
+- **Auto Repo Creation**: GitHub repo created when you start `/gods`
+- **Auto Commits**: Every god's work is automatically committed
+- **Smart Messages**: Meaningful commit messages based on what was done
+- **Auto Push**: Pushes to GitHub every 3 commits or at phase completion
+- **Living Documentation**: README auto-updates with project progress
 
 ### New Powers with MCP
 - ⚡ **10x Faster Development**: Shadcn-ui generates complete UIs instantly
