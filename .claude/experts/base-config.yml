@@ -1,0 +1,70 @@
+# Base Configuration for All Claude Code Agents
+# This file defines shared tools and configuration files that all agents inherit
+# Modify this file once instead of updating 45+ individual agents
+
+# Universal MCP Tools Available to All Agents
+universal_tools:
+  # Core Tools
+  - Write
+  - Read
+  - MultiEdit
+  - Bash
+  - Grep
+  - Glob
+  - WebSearch
+  - WebFetch
+  
+  # MCP Server Tools
+  - mcp__git__
+  - mcp__context7__
+  - mcp__sequential-thinking__
+  - mcp__puppeteer__
+  - mcp__supabase__
+  - mcp__gmail__
+  - mcp__vercel__
+  - mcp__sentry__
+  - mcp__readwise__
+  - mcp__playwright__
+  - mcp__serena__
+  - mcp__ide__
+
+# Configuration Files All Agents Should Reference
+universal_config_files:
+  - path: "/home/arn/.claude/CONTEXT.md"
+    description: "Environment setup, project structure, development workflow"
+    words: 618
+  - path: "/home/arn/.claude/PRINCIPLES.md" 
+    description: "Development philosophy, SOLID principles, senior mindset"
+    words: 757
+  - path: "/home/arn/.claude/RULES.md"
+    description: "Operational safety, validation sequences, quality gates"
+    words: 505
+  - path: "/home/arn/.claude/MCP.md"
+    description: "Tool selection, server coordination, performance optimization"
+    words: 2918
+  - path: "/home/arn/.claude/AGENTS.md"
+    description: "Agent selection guide, specializations, orchestration patterns"
+    words: 1575
+
+# Total Context Cost: 6,373 words (~13,153 tokens)
+# Value: Expert-level context for every agent without conversation setup
+# Updated: 2025-08-08 with current accurate word counts
+
+# Usage Instructions:
+# 1. Agents reference this file with "@base-config.yml" in their description
+# 2. Agents inherit ALL tools automatically - no need to list individual tools
+# 3. Agent YAML frontmatter only needs: name, description, color
+# 4. Tools field can be omitted entirely (inherits universal_tools)
+# 5. Configuration files are auto-loaded via description reference
+
+# Example Agent Structure:
+# ---
+# name: my-agent
+# description: |
+#   What this agent does.
+#   @base-config.yml
+# color: blue  
+# ---
+# (no tools field needed - inherits all universal_tools)
+
+# This enables true DRY principle: modify base-config.yml once, update everywhere

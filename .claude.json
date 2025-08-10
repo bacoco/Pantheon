@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "ui-design-analyzer": {
+      "type": "stdio",
+      "command": "node",
+      "args": [".claude/mcp-servers/ui-design-analyzer/dist/server.js"],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "LOG_LEVEL": "info",
+        "CACHE_TTL": "3600",
+        "ENABLE_CACHE": "true",
+        "ENABLE_RATE_LIMITING": "true"
+      }
+    },
+    "divine-assembly": {
+      "type": "stdio",
+      "command": "node",
+      "args": [".claude/mcp-servers/divine-assembly/dist/server.js"],
+      "env": {
+        "DIVINE_ASSEMBLY_PATH": ".claude/experts",
+        "LOG_LEVEL": "info",
+        "MAX_CONCURRENT_EXPERTS": "5",
+        "SESSION_TIMEOUT": "60000"
+      }
+    }
+  },
+  "customInstructions": {
+    "pantheonMode": "ultimate",
+    "features": {
+      "uiDesignAnalysis": true,
+      "divineAssembly": true,
+      "websiteCloning": true
+    },
+    "experts": {
+      "path": ".claude/experts",
+      "departments": ["engineering", "product", "design", "marketing", "testing", "utilities", "bonus"]
+    }
+  }
+}

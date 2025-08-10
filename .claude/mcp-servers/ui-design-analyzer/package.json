@@ -1,0 +1,57 @@
+{
+  "name": "ui-design-analyzer-mcp",
+  "version": "2.0.0",
+  "description": "Enhanced MCP server for divine UI design analysis with caching, rate limiting, and error recovery",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx watch server.ts",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .ts",
+    "clean": "rm -rf dist coverage"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "@mendable/firecrawl-js": "^1.0.0",
+    "puppeteer": "^22.0.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "sharp": "^0.33.0",
+    "css-tree": "^2.3.0",
+    "colorthief": "^2.4.0",
+    "openai": "^4.0.0",
+    "@anthropic-ai/sdk": "^0.27.0",
+    "cheerio": "^1.0.0",
+    "postcss": "^8.4.0",
+    "postcss-value-parser": "^4.2.0",
+    "node-cache": "^5.1.2",
+    "bottleneck": "^2.19.5",
+    "joi": "^17.11.0",
+    "winston": "^3.11.0",
+    "dotenv": "^16.3.1",
+    "p-retry": "^6.2.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/cheerio": "^0.22.35",
+    "@types/css-tree": "^2.3.0",
+    "@types/jest": "^29.5.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.55.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "tsx": "^4.6.0",
+    "typescript": "^5.3.0"
+  },
+  "keywords": ["mcp", "ui", "design", "analysis", "pantheon", "gods", "cache", "rate-limit"],
+  "author": "Pantheon Gods Development Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
