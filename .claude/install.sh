@@ -90,23 +90,23 @@ check_experts() {
     EXPERT_COUNT=$(find "$CLAUDE_DIR/experts" -name "*.md" -type f 2>/dev/null | wc -l)
     
     if [ "$EXPERT_COUNT" -eq 0 ]; then
-        echo -e "${YELLOW}No expert agents found. Cloning Claude Code Studio...${NC}"
+        echo -e "${YELLOW}No expert agents found. Creating local experts...${NC}"
         
-        # Clone to temp directory
-        TEMP_DIR=$(mktemp -d)
-        git clone https://github.com/arnaldo-delisio/claude-code-studio.git "$TEMP_DIR/claude-code-studio" --quiet
-        
-        if [ $? -eq 0 ]; then
-            # Copy agents to experts directory
-            cp -r "$TEMP_DIR/claude-code-studio/agents/"* "$CLAUDE_DIR/experts/" 2>/dev/null
-            rm -rf "$TEMP_DIR"
-            
-            EXPERT_COUNT=$(find "$CLAUDE_DIR/experts" -name "*.md" -type f | wc -l)
-            echo -e "${GREEN}✓ Imported $EXPERT_COUNT expert agents${NC}"
-        else
-            echo -e "${RED}❌ Failed to clone Claude Code Studio${NC}"
-            rm -rf "$TEMP_DIR"
-        fi
+        # Create sample expert template
+        cat > "$CLAUDE_DIR/experts/sample-expert.md.template" << 'EOF'
+---
+name: expert-name
+description: Expert description
+tools: Read, Write, Edit, Bash
+---
+
+# Expert Agent Template
+
+This is a template for creating expert agents locally.
+Copy this file and customize for your specific needs.
+EOF
+        echo -e "${GREEN}✓ Created expert template in $CLAUDE_DIR/experts/${NC}"
+        echo -e "${BLUE}Create your own experts based on the template${NC}"
     else
         echo -e "${GREEN}✓ Found $EXPERT_COUNT expert agents${NC}"
     fi

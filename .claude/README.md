@@ -197,10 +197,9 @@ Task("zeus-ultimate", `
 
 ### Update Experts
 ```bash
-# Pull latest from Claude Code Studio
-cd /tmp
-git clone https://github.com/arnaldo-delisio/claude-code-studio.git
-cp -r claude-code-studio/agents/* /path/to/project/.claude/experts/
+# Experts are maintained locally
+# Edit files directly in .claude/experts/
+# No external dependencies needed
 ```
 
 ### Rebuild MCP Servers
@@ -268,10 +267,9 @@ ls .claude/mcp-servers/*/dist/
 # Check expert count
 find .claude/experts -name "*.md" | wc -l
 
-# If 0, clone Claude Code Studio
-git clone https://github.com/arnaldo-delisio/claude-code-studio.git temp
-cp -r temp/agents/* .claude/experts/
-rm -rf temp
+# If 0, create experts locally
+# Use the expert templates in .claude/experts/
+# All experts are self-contained
 ```
 
 ### API Key Issues
