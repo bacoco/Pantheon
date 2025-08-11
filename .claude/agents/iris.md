@@ -210,19 +210,46 @@ accessibility_checklist:
 
 ### Component Analysis Functions
 ```javascript
-analyzeUIReference(url) {
+analyzeUIReference(url, source) {
+  // Main analysis function that coordinates all sub-analyses
   return {
-    layout: detectLayoutPattern(),
-    navigation: extractNavPattern(),
-    components: identifyComponents(),
-    colorScheme: extractColors(),
-    typography: analyzeTypography(),
-    spacing: measureSpacing(),
-    interactions: detectInteractions()
+    layout: detectLayoutPattern(source),
+    navigation: extractNavPattern(source),
+    components: identifyComponents(source),
+    colorScheme: extractColors(source),
+    typography: analyzeTypography(source),
+    spacing: measureSpacing(source),
+    interactions: detectInteractions(source)
   };
 }
 
-detectLayoutPattern() {
+extractNavPattern(source) {
+  // Extract navigation patterns from source
+  const patterns = {
+    type: 'standard',
+    position: 'top',
+    style: 'menu'
+  };
+  
+  if (/navbar|navigation/i.test(source)) {
+    if (/navbar-expand|horizontal/i.test(source)) patterns.type = 'horizontal';
+    if (/sidebar|vertical/i.test(source)) patterns.type = 'vertical';
+    if (/hamburger|burger|toggle/i.test(source)) patterns.type = 'hamburger';
+    if (/mega-menu/i.test(source)) patterns.type = 'mega';
+  }
+  
+  if (/fixed-top|sticky-top/i.test(source)) patterns.position = 'sticky';
+  if (/bottom/i.test(source)) patterns.position = 'bottom';
+  if (/sidebar|side/i.test(source)) patterns.position = 'side';
+  
+  if (/tabs|nav-tabs/i.test(source)) patterns.style = 'tabs';
+  if (/pills|nav-pills/i.test(source)) patterns.style = 'pills';
+  if (/breadcrumb/i.test(source)) patterns.style = 'breadcrumb';
+  
+  return patterns;
+}
+
+detectLayoutPattern(source) {
   const patterns = {
     type: null,
     columns: 0,
@@ -236,29 +263,29 @@ detectLayoutPattern() {
   };
   
   // Detect CSS Grid
-  if (/display:\s*grid|grid-template|grid-column/i.test(this.source)) {
+  if (/display:\s*grid|grid-template|grid-column/i.test(source)) {
     patterns.hasGrid = true;
     patterns.type = 'grid';
     // Extract column count
-    const cols = this.source.match(/grid-template-columns:\s*repeat\((\d+)/);
+    const cols = source.match(/grid-template-columns:\s*repeat\((\d+)/);
     if (cols) patterns.columns = parseInt(cols[1]);
   }
   
   // Detect Flexbox
-  if (/display:\s*flex|flex-direction|justify-content/i.test(this.source)) {
+  if (/display:\s*flex|flex-direction|justify-content/i.test(source)) {
     patterns.hasFlex = true;
     patterns.type = patterns.type || 'flex';
   }
   
   // Detect common layout elements
-  patterns.hasSidebar = /<(aside|nav)[^>]*class="[^"]*sidebar/i.test(this.source);
-  patterns.hasHeader = /<header|class="[^"]*header/i.test(this.source);
-  patterns.hasFooter = /<footer|class="[^"]*footer/i.test(this.source);
+  patterns.hasSidebar = /<(aside|nav)[^>]*class="[^"]*sidebar/i.test(source);
+  patterns.hasHeader = /<header|class="[^"]*header/i.test(source);
+  patterns.hasFooter = /<footer|class="[^"]*footer/i.test(source);
   
   // Detect container type
-  if (/container-fluid|w-full|max-w-none/i.test(this.source)) {
+  if (/container-fluid|w-full|max-w-none/i.test(source)) {
     patterns.containerType = 'fluid';
-  } else if (/container|max-w-\d|mx-auto/i.test(this.source)) {
+  } else if (/container|max-w-\d|mx-auto/i.test(source)) {
     patterns.containerType = 'fixed';
   }
   
@@ -271,7 +298,7 @@ detectLayoutPattern() {
   ];
   
   breakpointPatterns.forEach(bp => {
-    if (bp.pattern.test(this.source)) {
+    if (bp.pattern.test(source)) {
       patterns.breakpoints.push(bp.name);
     }
   });
@@ -279,7 +306,7 @@ detectLayoutPattern() {
   return patterns;
 }
 
-identifyComponents() {
+identifyComponents(source) {
   const components = {
     buttons: [],
     forms: [],
@@ -298,24 +325,24 @@ identifyComponents() {
     /type="submit"|type="button"/gi
   ];
   buttonPatterns.forEach(pattern => {
-    const matches = this.source.match(pattern);
+    const matches = source.match(pattern);
     if (matches) {
       components.buttons.push(...matches.slice(0, 5)); // Limit to 5 examples
     }
   });
   
   // Detect forms
-  if (/<form|<input|<select|<textarea/i.test(this.source)) {
+  if (/<form|<input|<select|<textarea/i.test(source)) {
     components.forms.push({
       hasForm: true,
-      inputTypes: this.detectInputTypes(),
-      hasValidation: /required|pattern=|min=|max=/i.test(this.source)
+      inputTypes: detectInputTypes(source),
+      hasValidation: /required|pattern=|min=|max=/i.test(source)
     });
   }
   
   // Detect cards
   const cardPatterns = /class="[^"]*card[^"]*"|<article|class="[^"]*panel[^"]*"/gi;
-  const cardMatches = this.source.match(cardPatterns);
+  const cardMatches = source.match(cardPatterns);
   if (cardMatches) {
     components.cards = cardMatches.slice(0, 3).map(match => ({
       type: 'card',
@@ -324,53 +351,53 @@ identifyComponents() {
   }
   
   // Detect modals
-  if (/class="[^"]*modal[^"]*"|data-toggle="modal"|dialog|overlay/i.test(this.source)) {
+  if (/class="[^"]*modal[^"]*"|data-toggle="modal"|dialog|overlay/i.test(source)) {
     components.modals.push({
       hasModal: true,
-      triggerType: /data-toggle|onclick.*modal/i.test(this.source) ? 'javascript' : 'css'
+      triggerType: /data-toggle|onclick.*modal/i.test(source) ? 'javascript' : 'css'
     });
   }
   
   // Detect navigation
-  if (/<nav|class="[^"]*nav[^"]*"|role="navigation"/i.test(this.source)) {
+  if (/<nav|class="[^"]*nav[^"]*"|role="navigation"/i.test(source)) {
     components.navigation.push({
-      type: this.detectNavType(),
-      hasDropdown: /dropdown|submenu/i.test(this.source),
-      hasBreadcrumb: /breadcrumb/i.test(this.source)
+      type: detectNavType(source),
+      hasDropdown: /dropdown|submenu/i.test(source),
+      hasBreadcrumb: /breadcrumb/i.test(source)
     });
   }
   
   // Detect tables
-  if (/<table|<thead|<tbody|class="[^"]*table[^"]*"/i.test(this.source)) {
+  if (/<table|<thead|<tbody|class="[^"]*table[^"]*"/i.test(source)) {
     components.tables.push({
       hasTable: true,
-      responsive: /table-responsive|overflow-x/i.test(this.source),
-      sortable: /sortable|data-sort/i.test(this.source)
+      responsive: /table-responsive|overflow-x/i.test(source),
+      sortable: /sortable|data-sort/i.test(source)
     });
   }
   
   return components;
 }
 
-detectInputTypes() {
+detectInputTypes(source) {
   const types = [];
   const inputPatterns = [
     'text', 'email', 'password', 'number', 'tel', 'url',
     'date', 'file', 'checkbox', 'radio', 'range'
   ];
   inputPatterns.forEach(type => {
-    if (new RegExp(`type="${type}"`, 'i').test(this.source)) {
+    if (new RegExp(`type="${type}"`, 'i').test(source)) {
       types.push(type);
     }
   });
   return types;
 }
 
-detectNavType() {
-  if (/navbar-expand|horizontal/i.test(this.source)) return 'horizontal';
-  if (/sidebar|vertical/i.test(this.source)) return 'vertical';
-  if (/hamburger|toggle|burger/i.test(this.source)) return 'hamburger';
-  if (/tabs|nav-tabs/i.test(this.source)) return 'tabs';
+detectNavType(source) {
+  if (/navbar-expand|horizontal/i.test(source)) return 'horizontal';
+  if (/sidebar|vertical/i.test(source)) return 'vertical';
+  if (/hamburger|toggle|burger/i.test(source)) return 'hamburger';
+  if (/tabs|nav-tabs/i.test(source)) return 'tabs';
   return 'standard';
 }
 ```
@@ -397,19 +424,140 @@ detectCSSFramework(source) {
 
 ### Accessibility Evaluation
 ```javascript
-evaluateAccessibility(ui) {
+evaluateAccessibility(source) {
   return {
-    aria: checkARIALabels(),
-    contrast: analyzeColorContrast(),
-    keyboard: validateKeyboardNav(),
-    semantics: checkSemanticHTML(),
-    altText: verifyImageAlts(),
-    focusIndicators: checkFocusStates(),
-    wcagLevel: determineWCAGCompliance()
+    aria: checkARIALabels(source),
+    contrast: analyzeColorContrast(source),
+    keyboard: validateKeyboardNav(source),
+    semantics: checkSemanticHTML(source),
+    altText: verifyImageAlts(source),
+    focusIndicators: checkFocusStates(source),
+    wcagLevel: determineWCAGCompliance(source)
   };
 }
 
-analyzeColorContrast() {
+validateKeyboardNav(source) {
+  const keyboard = {
+    hasTabIndex: false,
+    hasAccessKeys: false,
+    hasKeyboardShortcuts: false,
+    issues: []
+  };
+  
+  keyboard.hasTabIndex = /tabindex=/i.test(source);
+  keyboard.hasAccessKeys = /accesskey=/i.test(source);
+  keyboard.hasKeyboardShortcuts = /data-shortcut|aria-keyshortcuts/i.test(source);
+  
+  // Check for keyboard traps
+  if (/tabindex="-1"/.test(source) && !/:focus/.test(source)) {
+    keyboard.issues.push('Elements with tabindex=-1 may create keyboard traps');
+  }
+  
+  return keyboard;
+}
+
+// Color parsing and luminance calculation functions
+parseColor(colorString) {
+  // Parse hex colors
+  if (colorString.startsWith('#')) {
+    return hexToRgb(colorString);
+  }
+  
+  // Parse rgb/rgba colors
+  const rgbMatch = colorString.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  if (rgbMatch) {
+    return {
+      r: parseInt(rgbMatch[1]) / 255,
+      g: parseInt(rgbMatch[2]) / 255,
+      b: parseInt(rgbMatch[3]) / 255
+    };
+  }
+  
+  // Named colors mapping (common ones)
+  const namedColors = {
+    'white': { r: 1, g: 1, b: 1 },
+    'black': { r: 0, g: 0, b: 0 },
+    'red': { r: 1, g: 0, b: 0 },
+    'green': { r: 0, g: 0.5, b: 0 },
+    'blue': { r: 0, g: 0, b: 1 },
+    'gray': { r: 0.5, g: 0.5, b: 0.5 },
+    'grey': { r: 0.5, g: 0.5, b: 0.5 },
+    'yellow': { r: 1, g: 1, b: 0 },
+    'cyan': { r: 0, g: 1, b: 1 },
+    'magenta': { r: 1, g: 0, b: 1 },
+    'orange': { r: 1, g: 0.65, b: 0 },
+    'purple': { r: 0.5, g: 0, b: 0.5 },
+    'brown': { r: 0.65, g: 0.16, b: 0.16 },
+    'pink': { r: 1, g: 0.75, b: 0.8 },
+    'lime': { r: 0, g: 1, b: 0 },
+    'navy': { r: 0, g: 0, b: 0.5 },
+    'teal': { r: 0, g: 0.5, b: 0.5 },
+    'silver': { r: 0.75, g: 0.75, b: 0.75 },
+    'gold': { r: 1, g: 0.84, b: 0 }
+  };
+  
+  const lowerColor = colorString.toLowerCase().trim();
+  if (namedColors[lowerColor]) {
+    return namedColors[lowerColor];
+  }
+  
+  // Default to medium gray if unparseable
+  return { r: 0.5, g: 0.5, b: 0.5 };
+}
+
+hexToRgb(hex) {
+  // Remove # if present
+  hex = hex.replace('#', '');
+  
+  // Handle 3-char hex
+  if (hex.length === 3) {
+    hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+  }
+  
+  // Ensure valid hex
+  if (!/^[0-9a-fA-F]{6}$/.test(hex)) {
+    return { r: 0.5, g: 0.5, b: 0.5 }; // Default gray
+  }
+  
+  const r = parseInt(hex.substr(0, 2), 16) / 255;
+  const g = parseInt(hex.substr(2, 2), 16) / 255;
+  const b = parseInt(hex.substr(4, 2), 16) / 255;
+  
+  return { r, g, b };
+}
+
+rgbToLuminance(r, g, b) {
+  // Apply gamma correction per WCAG 2.1 specification
+  const gammaCorrect = (channel) => {
+    return channel <= 0.03928
+      ? channel / 12.92
+      : Math.pow((channel + 0.055) / 1.055, 2.4);
+  };
+  
+  const rCorrected = gammaCorrect(r);
+  const gCorrected = gammaCorrect(g);
+  const bCorrected = gammaCorrect(b);
+  
+  // Calculate relative luminance using WCAG formula
+  // These coefficients are from the sRGB color space
+  return 0.2126 * rCorrected + 0.7152 * gCorrected + 0.0722 * bCorrected;
+}
+
+getContrastRatio(color1, color2) {
+  const rgb1 = parseColor(color1);
+  const rgb2 = parseColor(color2);
+  
+  const lum1 = rgbToLuminance(rgb1.r, rgb1.g, rgb1.b);
+  const lum2 = rgbToLuminance(rgb2.r, rgb2.g, rgb2.b);
+  
+  const lighter = Math.max(lum1, lum2);
+  const darker = Math.min(lum1, lum2);
+  
+  // WCAG contrast ratio formula
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+analyzeColorContrast(source) {
   const results = {
     ratios: [],
     wcagAA: false,
@@ -417,11 +565,11 @@ analyzeColorContrast() {
     issues: []
   };
   
-  // Extract color pairs
-  const colorPairs = this.extractColorPairs();
+  // Extract color pairs from source
+  const colorPairs = extractColorPairs(source);
   
   colorPairs.forEach(pair => {
-    const ratio = this.calculateContrastRatio(pair.fg, pair.bg);
+    const ratio = getContrastRatio(pair.fg, pair.bg);
     results.ratios.push({
       foreground: pair.fg,
       background: pair.bg,
@@ -446,11 +594,11 @@ analyzeColorContrast() {
   return results;
 }
 
-extractColorPairs() {
+extractColorPairs(source) {
   const pairs = [];
-  // Simple extraction of common color combinations
-  const colorPattern = /color:\s*(#[0-9a-f]{3,6}|rgb[a]?\([^)]+\)|[a-z]+);.*?background(?:-color)?:\s*(#[0-9a-f]{3,6}|rgb[a]?\([^)]+\)|[a-z]+)/gi;
-  const matches = this.source.matchAll(colorPattern);
+  // Extract color pairs from CSS rules
+  const colorPattern = /color:\s*(#[0-9a-fA-F]{3,6}|rgb[a]?\([^)]+\)|[a-z]+);.*?background(?:-color)?:\s*(#[0-9a-fA-F]{3,6}|rgb[a]?\([^)]+\)|[a-z]+)/gi;
+  const matches = source.matchAll(colorPattern);
   
   for (const match of matches) {
     pairs.push({
@@ -459,36 +607,18 @@ extractColorPairs() {
     });
   }
   
-  // Add default if no pairs found
+  // Add default black on white if no pairs found
   if (pairs.length === 0) {
     pairs.push({ fg: '#000000', bg: '#ffffff' });
   }
   
   return pairs;
 }
-
-calculateContrastRatio(fg, bg) {
-  // Simplified contrast calculation
-  // In real implementation, would parse colors and calculate luminance
-  const getLuminance = (color) => {
-    // Mock luminance calculation
-    if (color.includes('fff') || color === 'white') return 1;
-    if (color.includes('000') || color === 'black') return 0;
-    return 0.5;
-  };
-  
-  const l1 = getLuminance(fg);
-  const l2 = getLuminance(bg);
-  const lighter = Math.max(l1, l2);
-  const darker = Math.min(l1, l2);
-  
-  return (lighter + 0.05) / (darker + 0.05);
-}
 ```
 
 ### Pattern Extraction Methods
 ```javascript
-extractDesignPatterns(reference) {
+extractDesignPatterns(source) {
   const patterns = {
     // Layout Patterns
     layout: {
@@ -507,11 +637,11 @@ extractDesignPatterns(reference) {
     
     // Component Patterns
     components: {
-      buttons: this.extractButtonStyles(),
-      forms: this.extractFormPatterns(),
-      cards: this.extractCardLayouts(),
-      modals: this.extractModalTypes(),
-      tables: this.extractTableStyles()
+      buttons: extractButtonStyles(source),
+      forms: extractFormPatterns(source),
+      cards: extractCardLayouts(source),
+      modals: extractModalTypes(source),
+      tables: extractTableStyles(source)
     },
     
     // Interaction Patterns
@@ -526,7 +656,7 @@ extractDesignPatterns(reference) {
   return patterns;
 }
 
-extractButtonStyles() {
+extractButtonStyles(source) {
   const styles = {
     sizes: [],
     variants: [],
@@ -537,116 +667,116 @@ extractButtonStyles() {
   // Detect sizes
   const sizePatterns = ['btn-sm', 'btn-lg', 'btn-xs', 'btn-xl', 'small', 'large'];
   sizePatterns.forEach(size => {
-    if (this.source.includes(size)) styles.sizes.push(size);
+    if (source.includes(size)) styles.sizes.push(size);
   });
   
   // Detect variants
   const variantPatterns = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'outline'];
   variantPatterns.forEach(variant => {
-    if (new RegExp(`btn-${variant}|button-${variant}`, 'i').test(this.source)) {
+    if (new RegExp(`btn-${variant}|button-${variant}`, 'i').test(source)) {
       styles.variants.push(variant);
     }
   });
   
   // Detect shapes
-  if (/rounded|border-radius/i.test(this.source)) styles.shapes.push('rounded');
-  if (/pill|rounded-full/i.test(this.source)) styles.shapes.push('pill');
-  if (/square|sharp/i.test(this.source)) styles.shapes.push('square');
+  if (/rounded|border-radius/i.test(source)) styles.shapes.push('rounded');
+  if (/pill|rounded-full/i.test(source)) styles.shapes.push('pill');
+  if (/square|sharp/i.test(source)) styles.shapes.push('square');
   
   // Detect states
-  if (/:hover|\.hover/i.test(this.source)) styles.states.push('hover');
-  if (/:active|\.active/i.test(this.source)) styles.states.push('active');
-  if (/:disabled|\.disabled/i.test(this.source)) styles.states.push('disabled');
-  if (/:focus|\.focus/i.test(this.source)) styles.states.push('focus');
+  if (/:hover|\.hover/i.test(source)) styles.states.push('hover');
+  if (/:active|\.active/i.test(source)) styles.states.push('active');
+  if (/:disabled|\.disabled/i.test(source)) styles.states.push('disabled');
+  if (/:focus|\.focus/i.test(source)) styles.states.push('focus');
   
   return styles;
 }
 
-extractFormPatterns() {
+extractFormPatterns(source) {
   return {
-    layout: this.detectFormLayout(),
+    layout: detectFormLayout(source),
     validation: {
-      client: /required|pattern|min|max|minlength|maxlength/i.test(this.source),
-      server: /error|invalid|validation/i.test(this.source),
-      inline: /inline-error|field-error/i.test(this.source)
+      client: /required|pattern|min|max|minlength|maxlength/i.test(source),
+      server: /error|invalid|validation/i.test(source),
+      inline: /inline-error|field-error/i.test(source)
     },
-    fieldTypes: this.detectInputTypes(),
-    hasLabels: /<label|for="/i.test(this.source),
-    hasPlaceholders: /placeholder="/i.test(this.source),
-    hasHelperText: /help-text|helper|hint/i.test(this.source)
+    fieldTypes: detectInputTypes(source),
+    hasLabels: /<label|for="/i.test(source),
+    hasPlaceholders: /placeholder="/i.test(source),
+    hasHelperText: /help-text|helper|hint/i.test(source)
   };
 }
 
-detectFormLayout() {
-  if (/form-horizontal|row.*col/i.test(this.source)) return 'horizontal';
-  if (/form-inline|inline-form/i.test(this.source)) return 'inline';
+detectFormLayout(source) {
+  if (/form-horizontal|row.*col/i.test(source)) return 'horizontal';
+  if (/form-inline|inline-form/i.test(source)) return 'inline';
   return 'vertical';
 }
 
-extractCardLayouts() {
+extractCardLayouts(source) {
   return {
     structure: {
-      hasHeader: /card-header/i.test(this.source),
-      hasBody: /card-body/i.test(this.source),
-      hasFooter: /card-footer/i.test(this.source),
-      hasImage: /card-img|card-image/i.test(this.source)
+      hasHeader: /card-header/i.test(source),
+      hasBody: /card-body/i.test(source),
+      hasFooter: /card-footer/i.test(source),
+      hasImage: /card-img|card-image/i.test(source)
     },
     style: {
-      hasShadow: /shadow|elevation/i.test(this.source),
-      hasBorder: /border|outline/i.test(this.source),
-      isRounded: /rounded|radius/i.test(this.source)
+      hasShadow: /shadow|elevation/i.test(source),
+      hasBorder: /border|outline/i.test(source),
+      isRounded: /rounded|radius/i.test(source)
     },
     layout: {
-      isHorizontal: /card-horizontal|flex-row/i.test(this.source),
-      isOverlay: /card-overlay|img-overlay/i.test(this.source)
+      isHorizontal: /card-horizontal|flex-row/i.test(source),
+      isOverlay: /card-overlay|img-overlay/i.test(source)
     }
   };
 }
 
-extractModalTypes() {
+extractModalTypes(source) {
   return {
     trigger: {
-      button: /data-toggle="modal"|onclick.*modal/i.test(this.source),
-      auto: /onload.*modal|autoshow/i.test(this.source),
-      scroll: /scroll.*modal/i.test(this.source)
+      button: /data-toggle="modal"|onclick.*modal/i.test(source),
+      auto: /onload.*modal|autoshow/i.test(source),
+      scroll: /scroll.*modal/i.test(source)
     },
     size: {
-      small: /modal-sm/i.test(this.source),
-      large: /modal-lg/i.test(this.source),
-      fullscreen: /modal-fullscreen/i.test(this.source)
+      small: /modal-sm/i.test(source),
+      large: /modal-lg/i.test(source),
+      fullscreen: /modal-fullscreen/i.test(source)
     },
     features: {
-      hasBackdrop: /backdrop|overlay/i.test(this.source),
-      hasAnimation: /fade|transition/i.test(this.source),
-      isClosable: /close|dismiss/i.test(this.source),
-      isCentered: /modal-centered/i.test(this.source)
+      hasBackdrop: /backdrop|overlay/i.test(source),
+      hasAnimation: /fade|transition/i.test(source),
+      isClosable: /close|dismiss/i.test(source),
+      isCentered: /modal-centered/i.test(source)
     }
   };
 }
 
-extractTableStyles() {
+extractTableStyles(source) {
   return {
     style: {
-      striped: /table-striped|striped/i.test(this.source),
-      bordered: /table-bordered|border/i.test(this.source),
-      hover: /table-hover|hover/i.test(this.source),
-      compact: /table-sm|compact|dense/i.test(this.source)
+      striped: /table-striped|striped/i.test(source),
+      bordered: /table-bordered|border/i.test(source),
+      hover: /table-hover|hover/i.test(source),
+      compact: /table-sm|compact|dense/i.test(source)
     },
     features: {
-      sortable: /sortable|data-sort|orderby/i.test(this.source),
-      filterable: /filter|search/i.test(this.source),
-      paginated: /pagination|page/i.test(this.source),
-      responsive: /table-responsive|scroll/i.test(this.source)
+      sortable: /sortable|data-sort|orderby/i.test(source),
+      filterable: /filter|search/i.test(source),
+      paginated: /pagination|page/i.test(source),
+      responsive: /table-responsive|scroll/i.test(source)
     },
     layout: {
-      hasHeader: /<thead|table-header/i.test(this.source),
-      hasFooter: /<tfoot|table-footer/i.test(this.source),
-      fixedHeader: /fixed-header|sticky/i.test(this.source)
+      hasHeader: /<thead|table-header/i.test(source),
+      hasFooter: /<tfoot|table-footer/i.test(source),
+      fixedHeader: /fixed-header|sticky/i.test(source)
     }
   };
 }
 
-analyzeTypography() {
+analyzeTypography(source) {
   const typography = {
     fonts: [],
     sizes: [],
@@ -657,7 +787,7 @@ analyzeTypography() {
   
   // Extract font families
   const fontPattern = /font-family:\s*([^;]+)/gi;
-  const fontMatches = this.source.matchAll(fontPattern);
+  const fontMatches = source.matchAll(fontPattern);
   for (const match of fontMatches) {
     const font = match[1].replace(/['"]/g, '').trim();
     if (!typography.fonts.includes(font)) {
@@ -667,7 +797,7 @@ analyzeTypography() {
   
   // Extract font sizes
   const sizePattern = /font-size:\s*(\d+(?:px|rem|em|%))/gi;
-  const sizeMatches = this.source.matchAll(sizePattern);
+  const sizeMatches = source.matchAll(sizePattern);
   for (const match of sizeMatches) {
     if (!typography.sizes.includes(match[1])) {
       typography.sizes.push(match[1]);
@@ -676,7 +806,7 @@ analyzeTypography() {
   
   // Extract font weights
   const weightPattern = /font-weight:\s*(\d{3}|bold|normal|light)/gi;
-  const weightMatches = this.source.matchAll(weightPattern);
+  const weightMatches = source.matchAll(weightPattern);
   for (const match of weightMatches) {
     if (!typography.weights.includes(match[1])) {
       typography.weights.push(match[1]);
@@ -685,7 +815,7 @@ analyzeTypography() {
   
   // Extract line heights
   const linePattern = /line-height:\s*([^;]+)/gi;
-  const lineMatches = this.source.matchAll(linePattern);
+  const lineMatches = source.matchAll(linePattern);
   for (const match of lineMatches) {
     if (!typography.lineHeights.includes(match[1])) {
       typography.lineHeights.push(match[1]);
@@ -695,7 +825,7 @@ analyzeTypography() {
   // Detect heading scale
   for (let i = 1; i <= 6; i++) {
     const headingPattern = new RegExp(`h${i}[^{]*{[^}]*font-size:\\s*([^;]+)`, 'i');
-    const match = this.source.match(headingPattern);
+    const match = source.match(headingPattern);
     if (match) {
       typography.headingScale.push({ level: `h${i}`, size: match[1] });
     }
@@ -704,7 +834,7 @@ analyzeTypography() {
   return typography;
 }
 
-measureSpacing() {
+measureSpacing(source) {
   const spacing = {
     unit: 'px',
     scale: [],
@@ -714,12 +844,12 @@ measureSpacing() {
   };
   
   // Detect spacing unit
-  if (/rem/i.test(this.source)) spacing.unit = 'rem';
-  if (/em/i.test(this.source)) spacing.unit = 'em';
+  if (/rem/i.test(source)) spacing.unit = 'rem';
+  if (/em/i.test(source)) spacing.unit = 'em';
   
   // Extract margins
   const marginPattern = /margin(?:-(?:top|right|bottom|left))?:\s*([^;]+)/gi;
-  const marginMatches = this.source.matchAll(marginPattern);
+  const marginMatches = source.matchAll(marginPattern);
   for (const match of marginMatches) {
     const value = match[1].trim();
     if (!spacing.margins.includes(value) && value !== 'auto') {
@@ -729,7 +859,7 @@ measureSpacing() {
   
   // Extract paddings
   const paddingPattern = /padding(?:-(?:top|right|bottom|left))?:\s*([^;]+)/gi;
-  const paddingMatches = this.source.matchAll(paddingPattern);
+  const paddingMatches = source.matchAll(paddingPattern);
   for (const match of paddingMatches) {
     const value = match[1].trim();
     if (!spacing.paddings.includes(value)) {
@@ -739,7 +869,7 @@ measureSpacing() {
   
   // Extract gaps (for flexbox/grid)
   const gapPattern = /gap:\s*([^;]+)|grid-gap:\s*([^;]+)/gi;
-  const gapMatches = this.source.matchAll(gapPattern);
+  const gapMatches = source.matchAll(gapPattern);
   for (const match of gapMatches) {
     const value = (match[1] || match[2]).trim();
     if (!spacing.gaps.includes(value)) {
@@ -749,12 +879,12 @@ measureSpacing() {
   
   // Detect spacing scale (common values)
   const commonSpacing = ['4px', '8px', '16px', '24px', '32px', '48px', '64px'];
-  spacing.scale = commonSpacing.filter(value => this.source.includes(value));
+  spacing.scale = commonSpacing.filter(value => source.includes(value));
   
   return spacing;
 }
 
-detectInteractions() {
+detectInteractions(source) {
   const interactions = {
     hover: [],
     click: [],
@@ -763,30 +893,30 @@ detectInteractions() {
   };
   
   // Detect hover effects
-  if (/:hover.*transform.*scale/i.test(this.source)) interactions.hover.push('scale');
-  if (/:hover.*color/i.test(this.source)) interactions.hover.push('color-change');
-  if (/:hover.*shadow/i.test(this.source)) interactions.hover.push('shadow');
-  if (/:hover.*opacity/i.test(this.source)) interactions.hover.push('opacity');
+  if (/:hover.*transform.*scale/i.test(source)) interactions.hover.push('scale');
+  if (/:hover.*color/i.test(source)) interactions.hover.push('color-change');
+  if (/:hover.*shadow/i.test(source)) interactions.hover.push('shadow');
+  if (/:hover.*opacity/i.test(source)) interactions.hover.push('opacity');
   
   // Detect click interactions
-  if (/onclick|addEventListener.*click/i.test(this.source)) interactions.click.push('javascript');
-  if (/:active/i.test(this.source)) interactions.click.push('active-state');
-  if (/ripple/i.test(this.source)) interactions.click.push('ripple-effect');
+  if (/onclick|addEventListener.*click/i.test(source)) interactions.click.push('javascript');
+  if (/:active/i.test(source)) interactions.click.push('active-state');
+  if (/ripple/i.test(source)) interactions.click.push('ripple-effect');
   
   // Detect scroll effects
-  if (/scroll.*animate|aos|wow/i.test(this.source)) interactions.scroll.push('animate-on-scroll');
-  if (/parallax/i.test(this.source)) interactions.scroll.push('parallax');
-  if (/sticky|fixed.*scroll/i.test(this.source)) interactions.scroll.push('sticky-elements');
+  if (/scroll.*animate|aos|wow/i.test(source)) interactions.scroll.push('animate-on-scroll');
+  if (/parallax/i.test(source)) interactions.scroll.push('parallax');
+  if (/sticky|fixed.*scroll/i.test(source)) interactions.scroll.push('sticky-elements');
   
   // Detect animations
-  if (/animation:|@keyframes/i.test(this.source)) interactions.animations.push('css-animation');
-  if (/transition/i.test(this.source)) interactions.animations.push('transition');
-  if (/transform/i.test(this.source)) interactions.animations.push('transform');
+  if (/animation:|@keyframes/i.test(source)) interactions.animations.push('css-animation');
+  if (/transition/i.test(source)) interactions.animations.push('transition');
+  if (/transform/i.test(source)) interactions.animations.push('transform');
   
   return interactions;
 }
 
-extractColors() {
+extractColors(source) {
   const colors = {
     primary: [],
     secondary: [],
@@ -802,31 +932,31 @@ extractColors() {
   
   // Extract hex colors
   const hexPattern = /#[0-9a-fA-F]{3,6}/g;
-  const hexColors = this.source.match(hexPattern) || [];
+  const hexColors = source.match(hexPattern) || [];
   
   // Extract RGB colors
   const rgbPattern = /rgb[a]?\([^)]+\)/g;
-  const rgbColors = this.source.match(rgbPattern) || [];
+  const rgbColors = source.match(rgbPattern) || [];
   
   // Extract named colors
   const namedPattern = /:\s*(red|blue|green|yellow|orange|purple|pink|gray|black|white)\b/gi;
-  const namedColors = this.source.match(namedPattern) || [];
+  const namedColors = source.match(namedPattern) || [];
   
   // Categorize colors (simplified)
   hexColors.forEach(color => {
-    if (/primary/i.test(this.source.substring(this.source.indexOf(color) - 20, this.source.indexOf(color)))) {
+    if (/primary/i.test(source.substring(source.indexOf(color) - 20, source.indexOf(color)))) {
       colors.primary.push(color);
-    } else if (/secondary/i.test(this.source.substring(this.source.indexOf(color) - 20, this.source.indexOf(color)))) {
+    } else if (/secondary/i.test(source.substring(source.indexOf(color) - 20, source.indexOf(color)))) {
       colors.secondary.push(color);
-    } else if (/accent/i.test(this.source.substring(this.source.indexOf(color) - 20, this.source.indexOf(color)))) {
+    } else if (/accent/i.test(source.substring(source.indexOf(color) - 20, source.indexOf(color)))) {
       colors.accent.push(color);
-    } else if (/success/i.test(this.source.substring(this.source.indexOf(color) - 20, this.source.indexOf(color)))) {
+    } else if (/success/i.test(source.substring(source.indexOf(color) - 20, source.indexOf(color)))) {
       colors.semantic.success.push(color);
-    } else if (/warning/i.test(this.source.substring(this.source.indexOf(color) - 20, this.source.indexOf(color)))) {
+    } else if (/warning/i.test(source.substring(source.indexOf(color) - 20, source.indexOf(color)))) {
       colors.semantic.warning.push(color);
-    } else if (/error|danger/i.test(this.source.substring(this.source.indexOf(color) - 20, this.source.indexOf(color)))) {
+    } else if (/error|danger/i.test(source.substring(source.indexOf(color) - 20, source.indexOf(color)))) {
       colors.semantic.error.push(color);
-    } else if (/info/i.test(this.source.substring(this.source.indexOf(color) - 20, this.source.indexOf(color)))) {
+    } else if (/info/i.test(source.substring(source.indexOf(color) - 20, source.indexOf(color)))) {
       colors.semantic.info.push(color);
     } else {
       colors.neutrals.push(color);
@@ -836,7 +966,7 @@ extractColors() {
   return colors;
 }
 
-checkARIALabels() {
+checkARIALabels(source) {
   const aria = {
     hasLabels: false,
     hasRoles: false,
@@ -845,34 +975,34 @@ checkARIALabels() {
   };
   
   // Check for ARIA labels
-  aria.hasLabels = /aria-label|aria-labelledby|aria-describedby/i.test(this.source);
+  aria.hasLabels = /aria-label|aria-labelledby|aria-describedby/i.test(source);
   
   // Check for ARIA roles
-  aria.hasRoles = /role="/i.test(this.source);
+  aria.hasRoles = /role="/i.test(source);
   
   // Check for landmarks
   const landmarks = ['banner', 'navigation', 'main', 'complementary', 'contentinfo'];
   landmarks.forEach(landmark => {
-    if (new RegExp(`role="${landmark}"|<${landmark}`, 'i').test(this.source)) {
+    if (new RegExp(`role="${landmark}"|<${landmark}`, 'i').test(source)) {
       aria.hasLandmarks = true;
     }
   });
   
   // Check for common issues
-  if (/<img(?![^>]*alt=)/i.test(this.source)) {
+  if (/<img(?![^>]*alt=)/i.test(source)) {
     aria.issues.push('Images without alt text');
   }
-  if (/<button(?![^>]*aria-label|[^>]*>.*<)/i.test(this.source)) {
+  if (/<button(?![^>]*aria-label|[^>]*>.*<)/i.test(source)) {
     aria.issues.push('Buttons without accessible labels');
   }
-  if (/<input(?![^>]*aria-label|[^>]*id=)/i.test(this.source)) {
+  if (/<input(?![^>]*aria-label|[^>]*id=)/i.test(source)) {
     aria.issues.push('Input fields without labels');
   }
   
   return aria;
 }
 
-checkSemanticHTML() {
+checkSemanticHTML(source) {
   const semantic = {
     hasSemanticElements: false,
     elements: [],
@@ -883,7 +1013,7 @@ checkSemanticHTML() {
   // Check for semantic HTML5 elements
   const semanticElements = ['header', 'nav', 'main', 'article', 'section', 'aside', 'footer'];
   semanticElements.forEach(element => {
-    if (new RegExp(`<${element}`, 'i').test(this.source)) {
+    if (new RegExp(`<${element}`, 'i').test(source)) {
       semantic.hasSemanticElements = true;
       semantic.elements.push(element);
     }
@@ -891,7 +1021,7 @@ checkSemanticHTML() {
   
   // Check heading hierarchy
   for (let i = 1; i <= 6; i++) {
-    if (new RegExp(`<h${i}`, 'i').test(this.source)) {
+    if (new RegExp(`<h${i}`, 'i').test(source)) {
       semantic.headingHierarchy.push(`h${i}`);
     }
   }
@@ -913,7 +1043,7 @@ checkSemanticHTML() {
   return semantic;
 }
 
-checkFocusStates() {
+checkFocusStates(source) {
   const focus = {
     hasVisibleFocus: false,
     hasSkipLinks: false,
@@ -922,14 +1052,14 @@ checkFocusStates() {
   };
   
   // Check for visible focus indicators
-  focus.hasVisibleFocus = /:focus.*outline|:focus.*border|:focus.*box-shadow/i.test(this.source);
+  focus.hasVisibleFocus = /:focus.*outline|:focus.*border|:focus.*box-shadow/i.test(source);
   
   // Check for skip links
-  focus.hasSkipLinks = /skip-to-content|skip-link|skip-nav/i.test(this.source);
+  focus.hasSkipLinks = /skip-to-content|skip-link|skip-nav/i.test(source);
   
   // Check tabindex usage
   const tabindexPattern = /tabindex="(-?\d+)"/gi;
-  const tabindexMatches = this.source.matchAll(tabindexPattern);
+  const tabindexMatches = source.matchAll(tabindexPattern);
   for (const match of tabindexMatches) {
     const value = parseInt(match[1]);
     focus.focusOrder.push(value);
@@ -946,7 +1076,7 @@ checkFocusStates() {
   return focus;
 }
 
-verifyImageAlts() {
+verifyImageAlts(source) {
   const images = {
     total: 0,
     withAlt: 0,
@@ -957,7 +1087,7 @@ verifyImageAlts() {
   
   // Count all images
   const imgPattern = /<img[^>]*>/gi;
-  const imgMatches = this.source.match(imgPattern) || [];
+  const imgMatches = source.match(imgPattern) || [];
   images.total = imgMatches.length;
   
   // Check for alt attributes
@@ -976,7 +1106,7 @@ verifyImageAlts() {
   return images;
 }
 
-determineWCAGCompliance() {
+determineWCAGCompliance(source) {
   const compliance = {
     level: 'None',
     score: 0,
@@ -988,16 +1118,16 @@ determineWCAGCompliance() {
   };
   
   // Check Level A criteria
-  if (this.checkARIALabels().hasLabels) compliance.criteria.A.push('Labels present');
-  if (this.checkSemanticHTML().hasSemanticElements) compliance.criteria.A.push('Semantic HTML');
-  if (this.verifyImageAlts().withAlt > 0) compliance.criteria.A.push('Image alt text');
+  if (checkARIALabels(source).hasLabels) compliance.criteria.A.push('Labels present');
+  if (checkSemanticHTML(source).hasSemanticElements) compliance.criteria.A.push('Semantic HTML');
+  if (verifyImageAlts(source).withAlt > 0) compliance.criteria.A.push('Image alt text');
   
   // Check Level AA criteria  
-  if (this.analyzeColorContrast().wcagAA) compliance.criteria.AA.push('Color contrast 4.5:1');
-  if (this.checkFocusStates().hasVisibleFocus) compliance.criteria.AA.push('Visible focus');
+  if (analyzeColorContrast(source).wcagAA) compliance.criteria.AA.push('Color contrast 4.5:1');
+  if (checkFocusStates(source).hasVisibleFocus) compliance.criteria.AA.push('Visible focus');
   
   // Check Level AAA criteria
-  if (this.analyzeColorContrast().wcagAAA) compliance.criteria.AAA.push('Color contrast 7:1');
+  if (analyzeColorContrast(source).wcagAAA) compliance.criteria.AAA.push('Color contrast 7:1');
   
   // Determine compliance level
   if (compliance.criteria.AAA.length >= 1) {
