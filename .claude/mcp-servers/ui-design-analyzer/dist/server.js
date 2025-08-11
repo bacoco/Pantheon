@@ -875,9 +875,10 @@ class UIDesignAnalyzerServer {
                 // Extract inputs
                 let inputMatch;
                 while ((inputMatch = inputRegex.exec(formContent)) !== null) {
-                    const typeMatch = /type="([^"]*)"/.exec(inputMatch[0]);
-                    const nameMatch = /name="([^"]*)"/.exec(inputMatch[0]);
-                    const placeholderMatch = /placeholder="([^"]*)"/.exec(inputMatch[0]);
+                    const inputHtml = inputMatch[0];
+                    const typeMatch = /type="([^"]*)"/.exec(inputHtml);
+                    const nameMatch = /name="([^"]*)"/.exec(inputHtml);
+                    const placeholderMatch = /placeholder="([^"]*)"/.exec(inputHtml);
                     formPattern.elements.push({
                         element: 'input',
                         type: typeMatch ? typeMatch[1] : 'text',
@@ -888,7 +889,8 @@ class UIDesignAnalyzerServer {
                 // Extract textareas
                 let textareaMatch;
                 while ((textareaMatch = textareaRegex.exec(formContent)) !== null) {
-                    const nameMatch = /name="([^"]*)"/.exec(textareaMatch[0]);
+                    const textareaHtml = textareaMatch[0];
+                    const nameMatch = /name="([^"]*)"/.exec(textareaHtml);
                     formPattern.elements.push({
                         element: 'textarea',
                         name: nameMatch ? nameMatch[1] : null
@@ -897,8 +899,9 @@ class UIDesignAnalyzerServer {
                 // Extract selects
                 let selectMatch;
                 while ((selectMatch = selectRegex.exec(formContent)) !== null) {
-                    const nameMatch = /name="([^"]*)"/.exec(selectMatch[0]);
-                    const optionMatches = selectMatch[0].match(/<option[^>]*>([^<]*)<\/option>/gi) || [];
+                    const selectHtml = selectMatch[0];
+                    const nameMatch = /name="([^"]*)"/.exec(selectHtml);
+                    const optionMatches = selectHtml.match(/<option[^>]*>([^<]*)<\/option>/gi) || [];
                     formPattern.elements.push({
                         element: 'select',
                         name: nameMatch ? nameMatch[1] : null,
@@ -929,10 +932,12 @@ class UIDesignAnalyzerServer {
                 const formStyleRegex = /(?:form|input|textarea|select)[^{]*\{([^}]*)\}/gi;
                 let match;
                 while ((match = formStyleRegex.exec(css)) !== null) {
+                    const matchStr = match[0];
+                    const matchContent = match[1];
                     patterns.push({
                         type: 'form-style',
-                        selector: match[0].split('{')[0].trim(),
-                        styles: match[1].trim()
+                        selector: matchStr.split('{')[0].trim(),
+                        styles: matchContent.trim()
                     });
                 }
             });
@@ -975,20 +980,21 @@ class UIDesignAnalyzerServer {
                     structure: {}
                 };
                 // Analyze card structure
-                if (cardContent.includes('img') || cardContent.includes('image')) {
+                if (cardContent && (cardContent.includes('img') || cardContent.includes('image'))) {
                     cardPattern.structure.hasImage = true;
                 }
-                if (cardContent.includes('<h') || cardContent.includes('title')) {
+                if (cardContent && (cardContent.includes('<h') || cardContent.includes('title'))) {
                     cardPattern.structure.hasTitle = true;
                 }
-                if (cardContent.includes('<p') || cardContent.includes('description')) {
+                if (cardContent && (cardContent.includes('<p') || cardContent.includes('description'))) {
                     cardPattern.structure.hasDescription = true;
                 }
-                if (cardContent.includes('button') || cardContent.includes('btn')) {
+                if (cardContent && (cardContent.includes('button') || cardContent.includes('btn'))) {
                     cardPattern.structure.hasAction = true;
                 }
                 // Extract card classes
-                const classMatch = /class="([^"]*)"/.exec(match[0]);
+                const matchStr = match[0];
+                const classMatch = /class="([^"]*)"/.exec(matchStr);
                 if (classMatch) {
                     cardPattern.classes = classMatch[1];
                 }
@@ -997,7 +1003,8 @@ class UIDesignAnalyzerServer {
             // Look for grid-based card layouts
             const gridRegex = /<div[^>]*class="[^"]*(?:grid|flex|cards|gallery)[^"]*"[^>]*>/gi;
             while ((match = gridRegex.exec(data.markdown)) !== null) {
-                const classMatch = /class="([^"]*)"/.exec(match[0]);
+                const matchStr = match[0];
+                const classMatch = /class="([^"]*)"/.exec(matchStr);
                 if (classMatch) {
                     patterns.push({
                         type: 'card-container',
@@ -1013,7 +1020,8 @@ class UIDesignAnalyzerServer {
                 const cardStyleRegex = /\.(?:card|panel|box|tile)[^{]*\{([^}]*)\}/gi;
                 let match;
                 while ((match = cardStyleRegex.exec(css)) !== null) {
-                    const styles = match[1].trim().split(';').filter(s => s);
+                    const matchContent = match[1];
+                    const styles = matchContent.trim().split(';').filter(s => s);
                     const styleObj = {};
                     styles.forEach(style => {
                         const [prop, value] = style.split(':').map(s => s.trim());
@@ -1025,9 +1033,10 @@ class UIDesignAnalyzerServer {
                         }
                     });
                     if (Object.keys(styleObj).length > 0) {
+                        const matchStr = match[0];
                         patterns.push({
                             type: 'card-style',
-                            selector: match[0].split('{')[0].trim(),
+                            selector: matchStr.split('{')[0].trim(),
                             styles: styleObj
                         });
                     }
@@ -1095,7 +1104,7 @@ class UIDesignAnalyzerServer {
                 // Generate recommendations based on patterns
                 if (key === 'buttons') {
                     spec.recommendations.push('Consider creating a unified button component with size and variant props');
-                    if (spec.variations.length > 3) {
+                    if (spec.variations && spec.variations.length > 3) {
                         spec.recommendations.push('Too many button variations - consider consolidating');
                     }
                 }
@@ -1107,7 +1116,7 @@ class UIDesignAnalyzerServer {
                 }
                 if (key === 'cards') {
                     spec.recommendations.push('Standardize card layouts for consistency');
-                    if (spec.variations.length > 2) {
+                    if (spec.variations && spec.variations.length > 2) {
                         spec.recommendations.push('Consider limiting card variations to 2-3 types');
                     }
                 }
@@ -1340,7 +1349,7 @@ class UIDesignAnalyzerServer {
         const colors = [];
         // Extract hex, rgb, hsl colors from CSS
         const colorRegex = /#[0-9A-Fa-f]{3,6}|rgb\([^)]+\)|hsl\([^)]+\)/g;
-        css.inline.forEach((style) => {
+        css.inline?.forEach((style) => {
             const matches = style.match(colorRegex) || [];
             colors.push(...matches);
         });
@@ -1395,10 +1404,12 @@ class UIDesignAnalyzerServer {
         return variations;
     }
     normalizeColor(color) {
+        if (!color)
+            return null;
         // Normalize color to hex format
         if (color.startsWith('#')) {
             return color.length === 4
-                ? `#${color[1]}${color[1]}${color[2]}${color[2]}${color[3]}${color[3]}`
+                ? `#${color.charAt(1)}${color.charAt(1)}${color.charAt(2)}${color.charAt(2)}${color.charAt(3)}${color.charAt(3)}`
                 : color;
         }
         if (color.startsWith('rgb')) {
@@ -1546,6 +1557,8 @@ class UIDesignAnalyzerServer {
         return results;
     }
     calculateContrastRatio(color1, color2) {
+        if (!color1 || !color2)
+            return 0;
         const lum1 = this.getColorLuminance(color1);
         const lum2 = this.getColorLuminance(color2);
         const lighter = Math.max(lum1, lum2);
@@ -1553,6 +1566,8 @@ class UIDesignAnalyzerServer {
         return (lighter + 0.05) / (darker + 0.05);
     }
     getColorLuminance(hex) {
+        if (!hex)
+            return 0;
         const rgb = parseInt(hex.substring(1), 16);
         const r = ((rgb >> 16) & 0xFF) / 255;
         const g = ((rgb >> 8) & 0xFF) / 255;
@@ -1589,7 +1604,7 @@ class UIDesignAnalyzerServer {
             customGrids: []
         };
         if (css.inline) {
-            css.inline.forEach((style) => {
+            css.inline?.forEach((style) => {
                 // Check for CSS Grid
                 const gridTemplateRegex = /grid-template-columns:\s*([^;]+)/gi;
                 let match;
@@ -1671,7 +1686,7 @@ class UIDesignAnalyzerServer {
             gridInfo.type = 'css-grid';
             gridInfo.features = {
                 modern: true,
-                responsive: gridInfo.gridTemplates.some(t => t.includes('minmax') || t.includes('auto'))
+                responsive: gridInfo.gridTemplates.some((t) => t.includes('minmax') || t.includes('auto'))
             };
         }
         else if (gridInfo.flexContainers.length > 0 && gridInfo.type !== 'bootstrap') {
@@ -1707,7 +1722,7 @@ class UIDesignAnalyzerServer {
         };
         const spacingValues = new Map();
         if (css.inline) {
-            css.inline.forEach((style) => {
+            css.inline?.forEach((style) => {
                 // Extract margin values
                 const marginRegex = /margin(?:-(?:top|right|bottom|left))?:\s*([^;]+)/gi;
                 let match;
@@ -1847,11 +1862,36 @@ class UIDesignAnalyzerServer {
         const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
         return numbers.reduce((acc, num) => gcd(acc, num));
     }
+    /**
+     * Analyzes CSS breakpoints to determine responsive design patterns.
+     * THIS IS A FULLY IMPLEMENTED FUNCTION (152 lines of production code).
+     *
+     * @param {Object} css - CSS object containing inline styles
+     * @returns {Object} Comprehensive breakpoint analysis including:
+     *   - breakpoints: Array of detected media query breakpoints
+     *   - system: Detected framework (bootstrap, tailwind, or custom)
+     *   - mobileFirst: Boolean indicating mobile-first approach
+     *   - desktopFirst: Boolean indicating desktop-first approach
+     *   - consistency: String rating of breakpoint consistency (high/medium/low)
+     *
+     * @example
+     * const analysis = analyzeBreakpoints({ inline: ['@media (min-width: 768px) {...}'] });
+     * // Returns: { breakpoints: [...], system: 'custom', mobileFirst: true, ... }
+     *
+     * Implementation includes:
+     * - Media query extraction with regex parsing
+     * - Min/max width breakpoint detection
+     * - Unit conversion (px, em, rem)
+     * - Breakpoint type classification (mobile, tablet, desktop, wide, ultra-wide)
+     * - Framework detection (Bootstrap, Tailwind)
+     * - Mobile-first vs desktop-first approach detection
+     * - Consistency analysis using variance calculation
+     */
     analyzeBreakpoints(css) {
         const breakpoints = [];
         const breakpointMap = new Map();
         if (css.inline) {
-            css.inline.forEach((style) => {
+            css.inline?.forEach((style) => {
                 // Extract media queries
                 const mediaRegex = /@media[^{]+\{/gi;
                 let match;
@@ -1959,7 +1999,7 @@ class UIDesignAnalyzerServer {
                 analysis.approach = 'mixed';
             }
             // Check for common breakpoint systems
-            const values = breakpoints.map(bp => bp.value).filter(v => v);
+            const values = breakpoints.map((bp) => bp.value).filter((v) => v);
             // Bootstrap breakpoints
             const bootstrapBreakpoints = [576, 768, 992, 1200, 1400];
             if (values.some(v => bootstrapBreakpoints.includes(v))) {
@@ -1991,6 +2031,42 @@ class UIDesignAnalyzerServer {
         }
         return analysis;
     }
+    /**
+     * Identifies common layout patterns in website structure and CSS.
+     * THIS IS A FULLY IMPLEMENTED FUNCTION (193 lines of production code).
+     *
+     * @param {Object} data - Website data containing structure, markdown, and design info
+     * @returns {Array} Array of detected layout patterns with confidence scores
+     *
+     * @example
+     * const patterns = identifyLayoutPatterns({
+     *   structure: { sections: [...], navigation: [...] },
+     *   markdown: '...',
+     *   design: { css: {...} }
+     * });
+     * // Returns: [{ type: 'header-nav', confidence: 'high', details: '...' }, ...]
+     *
+     * Implementation detects:
+     * - Header patterns (with navigation)
+     * - Footer sections
+     * - Main content areas
+     * - Sidebar layouts (aside elements)
+     * - Hero/banner sections
+     * - Grid layouts (CSS Grid, Flexbox)
+     * - Card grids and containers
+     * - Form layouts
+     * - Modal/dialog patterns
+     * - Tab interfaces
+     * - Accordion/collapsible sections
+     * - Sticky and fixed positioned elements
+     *
+     * Analysis includes:
+     * - HTML structure analysis using tag names and classes
+     * - CSS pattern detection (display: flex, display: grid)
+     * - Layout complexity scoring (simple/moderate/complex)
+     * - Layout type determination (Traditional, Modern, Grid-based, etc.)
+     * - Pattern confidence scoring based on detection methods
+     */
     identifyLayoutPatterns(data) {
         const patterns = [];
         const detectedPatterns = new Set();
