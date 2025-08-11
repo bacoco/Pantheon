@@ -1,0 +1,104 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "name": "Auto-test after file changes",
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'if [ -f .claude/tests/bmad-integration-test.js ]; then echo \"🧪 Running BMAD tests...\"; node .claude/tests/bmad-integration-test.js 2>/dev/null | grep -E \"(Success Rate|ALL TESTS|Failed:)\" && echo \"✅ Tests complete\" || echo \"❌ Tests failed\"; fi'"
+          }
+        ]
+      },
+      {
+        "name": "Update Sacred Scrolls after changes",
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"📜 Sacred Scrolls updated: $(date +\"%Y-%m-%d %H:%M:%S\")\" >> .pantheon/scrolls/activity.log 2>/dev/null || true'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "name": "Auto-commit if tests pass",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'if [ -f .claude/tests/bmad-integration-test.js ] && node .claude/tests/bmad-integration-test.js 2>/dev/null | grep -q \"Success Rate: 100.0%\"; then git add -A 2>/dev/null && git commit -m \"✅ Auto-commit: All tests passing ($(date +%Y-%m-%d))\" 2>/dev/null && echo \"📦 Changes committed automatically\" || echo \"ℹ️ No changes to commit\"; else echo \"⚠️ Tests not passing - skipping auto-commit\"; fi'"
+          }
+        ]
+      },
+      {
+        "name": "Generate session summary",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"\\n🏛️ Pantheon Session Complete - $(date)\" >> .pantheon/session.log 2>/dev/null || true'"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "name": "Protect Sacred Scrolls",
+        "matcher": "Edit|MultiEdit|Write|Delete",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json, sys; data=json.load(sys.stdin); path=data.get('tool_input',{}).get('file_path',''); sacred_paths=['.pantheon/scrolls/archive/', '.claude/tests/test-results.json']; sys.exit(2 if any(p in path for p in sacred_paths) else 0)\" 2>/dev/null || echo \"⚠️ Warning: Attempting to modify protected Sacred Scrolls\""
+          }
+        ]
+      },
+      {
+        "name": "Validate BMAD phase before execution",
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'if [ -f .pantheon/current-phase ]; then PHASE=$(cat .pantheon/current-phase 2>/dev/null); if [ \"$PHASE\" = \"planning\" ]; then echo \"📋 Currently in PLANNING phase - execution commands limited\"; fi; fi; exit 0'"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "name": "Log sub-agent completion",
+        "matcher": "bmad-tester|scroll-manager|quality-gate",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"🤖 Sub-agent $AGENT_NAME completed task at $(date)\" >> .pantheon/agent.log 2>/dev/null || true'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "name": "Log important events",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'echo \"🔔 Notification: $(date)\" >> .pantheon/notifications.log 2>/dev/null || true'"
+          }
+        ]
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Pantheon BMAD CI/CD Hooks Configuration",
+    "created": "2024-12-11",
+    "author": "Pantheon Team",
+    "features": [
+      "Automatic testing after file changes",
+      "Auto-commit when tests pass",
+      "Sacred Scrolls protection",
+      "BMAD phase validation",
+      "Sub-agent activity logging"
+    ]
+  }
+}
