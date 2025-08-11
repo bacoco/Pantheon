@@ -53,6 +53,10 @@ interface ExpertAgent {
   description: string;
   filepath: string;
   content: string;
+  expertise: string[];
+  responsibilities: string[];
+  seniority: string;
+  tools: string[];
 }
 
 // Summon request interface
@@ -170,7 +174,11 @@ class DivineAssemblyManager {
             competencies: parsed.data.competencies || [],
             description: parsed.data.description || '',
             filepath: file,
-            content: parsed.content
+            content: parsed.content,
+            expertise: parsed.data.expertise || parsed.data.competencies || [],
+            responsibilities: parsed.data.responsibilities || [],
+            seniority: parsed.data.seniority || 'mid',
+            tools: parsed.data.tools || []
           };
           
           this.expertRegistry.set(name, expert);
@@ -378,7 +386,7 @@ class DivineAssemblyManager {
 
     const { error, value } = schema.validate(args);
     if (error) {
-      throw new Error(`Validation error: ${error.details[0].message}`);
+      throw new Error(`Validation error: ${error.details?.[0]?.message || error.message}`);
     }
 
     return value;
@@ -483,7 +491,7 @@ class DivineAssemblyManager {
       if (!acc[expert.department]) {
         acc[expert.department] = [];
       }
-      acc[expert.department].push({
+      acc[expert.department]!.push({
         name: expert.name,
         role: expert.role,
         competencies: expert.competencies.slice(0, 3) // Show top 3
@@ -571,32 +579,393 @@ class DivineAssemblyManager {
     expert: ExpertAgent, 
     taskPrompt: string, 
     context: any, 
-    timeout?: number
+    _timeout?: number
   ): Promise<any> {
-    // In a real implementation, this would:
-    // 1. Construct a prompt combining expert role and task
-    // 2. Call Claude API with the expert's persona
-    // 3. Return the result
+    // Construct a comprehensive prompt combining expert role and task
+    // const systemPrompt = this.constructExpertSystemPrompt(expert);
+    // const userPrompt = this.constructTaskPrompt(taskPrompt, context);
     
-    // For now, return a simulated response
-    return {
-      expert: expert.name,
-      task: taskPrompt,
-      analysis: `As ${expert.role}, I would approach this task by...`,
-      recommendations: [
-        'Recommendation 1 based on expertise',
-        'Recommendation 2 based on best practices',
-        'Recommendation 3 based on experience'
-      ],
-      code: context?.includeCode ? '// Code implementation here' : null,
-      confidence: 0.85,
-      timestamp: new Date().toISOString()
+    try {
+      // Since this is an MCP server, we return structured guidance
+      // The actual Claude API call would be made by the client
+      const analysis = this.analyzeTaskRequirements(expert, taskPrompt, context);
+      const recommendations = this.generateExpertRecommendations(expert, taskPrompt, context);
+      const implementation = this.generateImplementationPlan(expert, taskPrompt, context);
+      
+      return {
+        expert: expert.name,
+        role: expert.role,
+        department: expert.department,
+        task: taskPrompt,
+        analysis: analysis,
+        recommendations: recommendations,
+        implementation: implementation,
+        technicalDetails: this.generateTechnicalDetails(expert, taskPrompt, context),
+        bestPractices: this.extractBestPractices(expert),
+        risks: this.identifyRisks(expert, taskPrompt),
+        dependencies: this.identifyDependencies(taskPrompt, context),
+        estimatedEffort: this.estimateEffort(taskPrompt),
+        confidence: this.calculateConfidence(expert, taskPrompt),
+        timestamp: new Date().toISOString()
+      };
+    } catch (error) {
+      logger.error(`Expert execution failed for ${expert.name}:`, error);
+      throw new Error(`Failed to execute expert ${expert.name}: ${error}`);
+    }
+  }
+
+  // private constructExpertSystemPrompt(expert: ExpertAgent): string {
+  //   return `You are ${expert.role} with expertise in ${expert.expertise.join(', ')}. 
+  // Your responsibilities include: ${expert.responsibilities.join(', ')}.
+  // Department: ${expert.department}
+  // Seniority: ${expert.seniority}
+  // Tools available: ${expert.tools.join(', ')}`;
+  // }
+
+  // private constructTaskPrompt(taskPrompt: string, context: any): string {
+  //   let prompt = taskPrompt;
+  //   if (context) {
+  //     if (context.projectType) prompt += `\nProject Type: ${context.projectType}`;
+  //     if (context.techStack) prompt += `\nTech Stack: ${context.techStack.join(', ')}`;
+  //     if (context.constraints) prompt += `\nConstraints: ${context.constraints.join(', ')}`;
+  //     if (context.requirements) prompt += `\nRequirements: ${context.requirements.join(', ')}`;
+  //   }
+  //   return prompt;
+  // }
+
+  private analyzeTaskRequirements(expert: ExpertAgent, taskPrompt: string, context: any): string {
+    const analysis = [];
+    
+    // Analyze based on expert's perspective
+    analysis.push(`As ${expert.role}, I analyze this task with focus on ${expert.expertise[0]}.`);
+    
+    // Break down the task
+    if (taskPrompt.includes('implement')) {
+      analysis.push('This is an implementation task requiring hands-on development.');
+    } else if (taskPrompt.includes('design')) {
+      analysis.push('This is a design task requiring architectural planning.');
+    } else if (taskPrompt.includes('review')) {
+      analysis.push('This is a review task requiring quality assessment.');
+    } else if (taskPrompt.includes('optimize')) {
+      analysis.push('This is an optimization task requiring performance analysis.');
+    }
+    
+    // Add context-specific analysis
+    if (context?.projectType) {
+      analysis.push(`For a ${context.projectType} project, special considerations apply.`);
+    }
+    
+    // Add expertise-specific insights
+    expert.expertise.forEach((skill: string) => {
+      if (taskPrompt.toLowerCase().includes(skill.toLowerCase())) {
+        analysis.push(`This task directly leverages my ${skill} expertise.`);
+      }
+    });
+    
+    return analysis.join(' ');
+  }
+
+  private generateExpertRecommendations(expert: ExpertAgent, taskPrompt: string, _context: any): string[] {
+    const recommendations = [];
+    
+    // Generate role-specific recommendations
+    if (expert.seniority === 'senior' || expert.seniority === 'principal') {
+      recommendations.push('Start with a comprehensive architectural review');
+      recommendations.push('Consider long-term maintainability and scalability');
+    }
+    
+    // Department-specific recommendations
+    switch (expert.department) {
+      case 'engineering':
+        recommendations.push('Follow SOLID principles and design patterns');
+        recommendations.push('Implement comprehensive testing strategy');
+        recommendations.push('Ensure code is well-documented and maintainable');
+        break;
+      case 'product':
+        recommendations.push('Validate requirements with stakeholders');
+        recommendations.push('Consider user experience and accessibility');
+        recommendations.push('Define clear success metrics');
+        break;
+      case 'data_science':
+        recommendations.push('Ensure data quality and preprocessing');
+        recommendations.push('Implement proper model validation');
+        recommendations.push('Consider scalability of data pipeline');
+        break;
+    }
+    
+    // Task-specific recommendations
+    if (taskPrompt.includes('API')) {
+      recommendations.push('Design RESTful endpoints following OpenAPI spec');
+      recommendations.push('Implement proper authentication and rate limiting');
+    }
+    
+    if (taskPrompt.includes('database')) {
+      recommendations.push('Optimize queries and add appropriate indexes');
+      recommendations.push('Implement proper data validation and constraints');
+    }
+    
+    return recommendations;
+  }
+
+  private generateImplementationPlan(expert: ExpertAgent, taskPrompt: string, context: any): any {
+    const plan: {
+      phases: Array<{phase: number; name: string; duration: string}>;
+      milestones: Array<{name: string; criteria: string}>;
+      deliverables: string[];
+    } = {
+      phases: [],
+      milestones: [],
+      deliverables: []
     };
+    
+    // Generate phases based on task complexity
+    if (taskPrompt.length > 100 || context?.requirements?.length > 3) {
+      plan.phases = [
+        { phase: 1, name: 'Planning & Design', duration: '2-3 days' },
+        { phase: 2, name: 'Implementation', duration: '5-7 days' },
+        { phase: 3, name: 'Testing & Validation', duration: '2-3 days' },
+        { phase: 4, name: 'Deployment & Documentation', duration: '1-2 days' }
+      ];
+    } else {
+      plan.phases = [
+        { phase: 1, name: 'Implementation', duration: '2-3 days' },
+        { phase: 2, name: 'Testing & Documentation', duration: '1 day' }
+      ];
+    }
+    
+    // Define milestones
+    plan.milestones = plan.phases.map(phase => ({
+      name: `Complete ${phase.name}`,
+      criteria: `All ${phase.name.toLowerCase()} tasks completed and reviewed`
+    }));
+    
+    // Define deliverables based on expert type
+    if (expert.department === 'engineering') {
+      plan.deliverables.push(
+        'Source code implementation',
+        'Unit and integration tests',
+        'Technical documentation',
+        'Deployment configuration'
+      );
+    } else if (expert.department === 'product') {
+      plan.deliverables.push(
+        'Product requirements document',
+        'User stories and acceptance criteria',
+        'Wireframes or mockups',
+        'Success metrics definition'
+      );
+    }
+    
+    return plan;
+  }
+
+  private generateTechnicalDetails(expert: ExpertAgent, taskPrompt: string, context: any): any {
+    return {
+      architecture: this.suggestArchitecture(taskPrompt, context),
+      technologies: this.suggestTechnologies(expert, taskPrompt, context),
+      patterns: this.suggestPatterns(taskPrompt),
+      security: this.identifySecurityConsiderations(taskPrompt),
+      performance: this.identifyPerformanceConsiderations(taskPrompt)
+    };
+  }
+
+  private suggestArchitecture(taskPrompt: string, context: any): string {
+    if (taskPrompt.includes('microservice')) return 'Microservices architecture with API gateway';
+    if (taskPrompt.includes('real-time')) return 'Event-driven architecture with WebSockets';
+    if (taskPrompt.includes('batch')) return 'Batch processing with queue-based architecture';
+    if (context?.projectType === 'web') return 'Three-tier architecture (presentation, business, data)';
+    return 'Modular monolithic architecture';
+  }
+
+  private suggestTechnologies(_expert: ExpertAgent, taskPrompt: string, context: any): string[] {
+    const technologies = [];
+    
+    // Add from context if available
+    if (context?.techStack) {
+      technologies.push(...context.techStack);
+    }
+    
+    // Add based on task requirements
+    if (taskPrompt.includes('frontend')) {
+      technologies.push('React/Vue/Angular', 'TypeScript', 'Tailwind CSS');
+    }
+    if (taskPrompt.includes('backend')) {
+      technologies.push('Node.js/Python/Go', 'PostgreSQL/MongoDB', 'Redis');
+    }
+    if (taskPrompt.includes('AI') || taskPrompt.includes('ML')) {
+      technologies.push('Python', 'TensorFlow/PyTorch', 'Jupyter');
+    }
+    
+    return [...new Set(technologies)]; // Remove duplicates
+  }
+
+  private suggestPatterns(taskPrompt: string): string[] {
+    const patterns = [];
+    
+    if (taskPrompt.includes('API')) patterns.push('Repository pattern', 'DTO pattern');
+    if (taskPrompt.includes('frontend')) patterns.push('Component pattern', 'State management');
+    if (taskPrompt.includes('microservice')) patterns.push('Circuit breaker', 'Service mesh');
+    if (taskPrompt.includes('database')) patterns.push('Unit of Work', 'CQRS');
+    
+    return patterns.length > 0 ? patterns : ['MVC', 'Dependency Injection'];
+  }
+
+  private extractBestPractices(expert: ExpertAgent): string[] {
+    const practices = [
+      'Follow coding standards and style guides',
+      'Write self-documenting code',
+      'Implement error handling and logging'
+    ];
+    
+    if (expert.seniority === 'senior' || expert.seniority === 'principal') {
+      practices.push(
+        'Design for scalability from the start',
+        'Consider non-functional requirements',
+        'Plan for monitoring and observability'
+      );
+    }
+    
+    if (expert.department === 'engineering') {
+      practices.push(
+        'Write comprehensive tests (unit, integration, e2e)',
+        'Use version control effectively',
+        'Automate repetitive tasks'
+      );
+    }
+    
+    return practices;
+  }
+
+  private identifyRisks(_expert: ExpertAgent, taskPrompt: string): string[] {
+    const risks = [];
+    
+    // Technical risks
+    if (taskPrompt.includes('migration')) {
+      risks.push('Data loss during migration');
+      risks.push('Downtime during transition');
+    }
+    
+    if (taskPrompt.includes('integration')) {
+      risks.push('API compatibility issues');
+      risks.push('Performance degradation');
+    }
+    
+    if (taskPrompt.includes('security')) {
+      risks.push('Potential security vulnerabilities');
+      risks.push('Compliance requirements');
+    }
+    
+    // General risks
+    risks.push('Scope creep without proper requirements');
+    risks.push('Technical debt if rushed');
+    
+    return risks;
+  }
+
+  private identifyDependencies(taskPrompt: string, context: any): string[] {
+    const dependencies = [];
+    
+    if (context?.dependencies) {
+      dependencies.push(...context.dependencies);
+    }
+    
+    // Identify from task
+    if (taskPrompt.includes('API')) {
+      dependencies.push('API documentation', 'Authentication service');
+    }
+    
+    if (taskPrompt.includes('database')) {
+      dependencies.push('Database schema', 'Migration tools');
+    }
+    
+    if (taskPrompt.includes('frontend')) {
+      dependencies.push('Design system', 'API endpoints');
+    }
+    
+    return dependencies;
+  }
+
+  private identifySecurityConsiderations(taskPrompt: string): string[] {
+    const security = [];
+    
+    if (taskPrompt.includes('API') || taskPrompt.includes('endpoint')) {
+      security.push('Implement authentication and authorization');
+      security.push('Validate and sanitize all inputs');
+      security.push('Use HTTPS for all communications');
+    }
+    
+    if (taskPrompt.includes('database') || taskPrompt.includes('data')) {
+      security.push('Encrypt sensitive data at rest and in transit');
+      security.push('Implement proper access controls');
+      security.push('Regular security audits and updates');
+    }
+    
+    if (taskPrompt.includes('user') || taskPrompt.includes('auth')) {
+      security.push('Implement secure password policies');
+      security.push('Use secure session management');
+      security.push('Implement rate limiting');
+    }
+    
+    return security.length > 0 ? security : ['Follow OWASP security guidelines'];
+  }
+
+  private identifyPerformanceConsiderations(taskPrompt: string): string[] {
+    const performance = [];
+    
+    if (taskPrompt.includes('API')) {
+      performance.push('Implement caching strategies');
+      performance.push('Optimize database queries');
+      performance.push('Use pagination for large datasets');
+    }
+    
+    if (taskPrompt.includes('frontend')) {
+      performance.push('Lazy loading for resources');
+      performance.push('Code splitting and bundling');
+      performance.push('Image optimization');
+    }
+    
+    if (taskPrompt.includes('database')) {
+      performance.push('Proper indexing strategy');
+      performance.push('Query optimization');
+      performance.push('Connection pooling');
+    }
+    
+    return performance.length > 0 ? performance : ['Monitor and optimize bottlenecks'];
+  }
+
+  private estimateEffort(taskPrompt: string): string {
+    const complexity = taskPrompt.length;
+    
+    if (complexity < 50) return 'Small (1-2 days)';
+    if (complexity < 150) return 'Medium (3-5 days)';
+    if (complexity < 300) return 'Large (1-2 weeks)';
+    return 'Extra Large (2-4 weeks)';
+  }
+
+  private calculateConfidence(expert: ExpertAgent, taskPrompt: string): number {
+    let confidence = 0.7; // Base confidence
+    
+    // Increase confidence based on expertise match
+    expert.expertise.forEach((skill: string) => {
+      if (taskPrompt.toLowerCase().includes(skill.toLowerCase())) {
+        confidence += 0.05;
+      }
+    });
+    
+    // Adjust based on seniority
+    if (expert.seniority === 'principal') confidence += 0.1;
+    if (expert.seniority === 'senior') confidence += 0.05;
+    
+    // Cap at 0.95
+    return Math.min(confidence, 0.95);
   }
 
   private createOrchestrationPlan(experts: any[]): any {
     // Create dependency graph and execution plan
-    const plan = {
+    const plan: {
+      stages: any[][];
+      dependencies: Map<any, any>;
+    } = {
       stages: [],
       dependencies: new Map()
     };

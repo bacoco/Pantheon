@@ -24,7 +24,7 @@
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "lib": ["ES2022"],
-    "types": ["node", "jest"]
+    "types": ["node"]
   },
   "include": [
     "*.ts",

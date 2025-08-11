@@ -186,9 +186,9 @@ class SacredScrollsManager {
     if (section) {
       const [phase, subsection] = section.split('.');
       if (phase === 'planning' && scroll.planning_phase) {
-        scroll.planning_phase[subsection] = content;
+        (scroll.planning_phase as any)[subsection] = content;
       } else if (phase === 'execution' && scroll.execution_phase) {
-        scroll.execution_phase[subsection] = content;
+        (scroll.execution_phase as any)[subsection] = content;
       }
     }
 
@@ -394,17 +394,516 @@ class SacredScrollsManager {
   }
 
   private generateStories(planningPhase: any): any {
-    // Transform planning artifacts into execution stories
-    return {
-      authentication: {
-        title: 'User Authentication Implementation',
-        context: planningPhase.requirements,
-        architecture: planningPhase.architecture,
-        decisions: planningPhase.decisions,
-        scope: planningPhase.scope,
-        implementation_guide: 'Generated from planning phase artifacts'
+    const stories: any = {};
+    
+    // Extract requirements and create stories for each major feature
+    if (planningPhase.requirements) {
+      const requirements = this.parseRequirements(planningPhase.requirements);
+      
+      requirements.forEach((req: any, index: number) => {
+        const storyKey = this.generateStoryKey(req);
+        stories[storyKey] = {
+          id: `story-${index + 1}`,
+          title: req.title || this.generateStoryTitle(req),
+          priority: req.priority || this.determinePriority(req),
+          context: {
+            requirement: req,
+            original_text: req.description || req.text || JSON.stringify(req)
+          },
+          architecture: this.extractRelevantArchitecture(planningPhase.architecture, req),
+          decisions: this.extractRelevantDecisions(planningPhase.decisions, req),
+          scope: this.extractRelevantScope(planningPhase.scope, req),
+          implementation_guide: this.generateImplementationGuide(req, planningPhase),
+          acceptance_criteria: this.generateAcceptanceCriteria(req),
+          technical_notes: this.generateTechnicalNotes(req, planningPhase),
+          dependencies: this.identifyDependencies(req, requirements),
+          estimated_effort: this.estimateEffort(req)
+        };
+      });
+    }
+    
+    // If no requirements parsed, create stories from architecture components
+    if (Object.keys(stories).length === 0 && planningPhase.architecture) {
+      const components = this.parseArchitectureComponents(planningPhase.architecture);
+      
+      components.forEach((comp: any, index: number) => {
+        const storyKey = this.generateComponentKey(comp);
+        stories[storyKey] = {
+          id: `component-story-${index + 1}`,
+          title: `Implement ${comp.name || comp.type || 'Component'}`,
+          priority: comp.priority || 'medium',
+          context: {
+            component: comp,
+            type: 'architecture-driven'
+          },
+          architecture: comp,
+          decisions: planningPhase.decisions || {},
+          scope: planningPhase.scope || {},
+          implementation_guide: this.generateComponentImplementationGuide(comp),
+          acceptance_criteria: this.generateComponentAcceptanceCriteria(comp),
+          technical_notes: this.generateComponentTechnicalNotes(comp),
+          dependencies: comp.dependencies || [],
+          estimated_effort: this.estimateComponentEffort(comp)
+        };
+      });
+    }
+    
+    // Add metadata story for tracking
+    stories._metadata = {
+      generated_at: new Date().toISOString(),
+      total_stories: Object.keys(stories).length - 1,
+      source: 'planning_phase_transformation',
+      planning_summary: {
+        has_requirements: !!planningPhase.requirements,
+        has_architecture: !!planningPhase.architecture,
+        has_decisions: !!planningPhase.decisions,
+        has_scope: !!planningPhase.scope
       }
     };
+    
+    return stories;
+  }
+  
+  private parseRequirements(requirements: any): any[] {
+    if (Array.isArray(requirements)) {
+      return requirements;
+    }
+    
+    if (typeof requirements === 'object') {
+      // Handle nested requirement objects
+      const parsed: any[] = [];
+      
+      Object.keys(requirements).forEach(key => {
+        const req = requirements[key];
+        if (typeof req === 'object') {
+          parsed.push({
+            key,
+            title: req.title || key,
+            ...req
+          });
+        } else {
+          parsed.push({
+            key,
+            title: key,
+            description: req
+          });
+        }
+      });
+      
+      return parsed;
+    }
+    
+    // Handle string requirements
+    if (typeof requirements === 'string') {
+      const lines = requirements.split('\n').filter(line => line.trim());
+      return lines.map((line, index) => ({
+        key: `req-${index}`,
+        title: line.substring(0, 50),
+        description: line
+      }));
+    }
+    
+    return [];
+  }
+  
+  private generateStoryKey(req: any): string {
+    if (req.key) return req.key;
+    if (req.id) return req.id;
+    if (req.title) return req.title.toLowerCase().replace(/\s+/g, '_').substring(0, 30);
+    return `story_${Date.now()}_${Math.random().toString(36).substring(7)}`;
+  }
+  
+  private generateStoryTitle(req: any): string {
+    if (req.title) return req.title;
+    if (req.name) return `Implement ${req.name}`;
+    if (req.feature) return `${req.feature} Feature`;
+    if (req.description) {
+      const desc = req.description.toString();
+      return desc.length > 50 ? desc.substring(0, 47) + '...' : desc;
+    }
+    return 'User Story';
+  }
+  
+  private determinePriority(req: any): string {
+    if (req.priority) return req.priority;
+    
+    const urgentKeywords = ['critical', 'urgent', 'immediate', 'blocker', 'security'];
+    const highKeywords = ['important', 'core', 'essential', 'primary', 'main'];
+    const lowKeywords = ['optional', 'nice-to-have', 'future', 'enhancement'];
+    
+    const text = JSON.stringify(req).toLowerCase();
+    
+    if (urgentKeywords.some(keyword => text.includes(keyword))) return 'critical';
+    if (highKeywords.some(keyword => text.includes(keyword))) return 'high';
+    if (lowKeywords.some(keyword => text.includes(keyword))) return 'low';
+    
+    return 'medium';
+  }
+  
+  private extractRelevantArchitecture(architecture: any, req: any): any {
+    if (!architecture) return {};
+    
+    const relevant: any = {};
+    const reqText = JSON.stringify(req).toLowerCase();
+    
+    Object.keys(architecture).forEach(key => {
+      const archText = JSON.stringify(architecture[key]).toLowerCase();
+      
+      // Check if architecture component is relevant to requirement
+      if (reqText.includes(key.toLowerCase()) || 
+          this.hasCommonKeywords(reqText, archText)) {
+        relevant[key] = architecture[key];
+      }
+    });
+    
+    return Object.keys(relevant).length > 0 ? relevant : architecture;
+  }
+  
+  private extractRelevantDecisions(decisions: any, req: any): any {
+    if (!decisions) return {};
+    
+    const relevant: any = {};
+    const reqText = JSON.stringify(req).toLowerCase();
+    
+    if (Array.isArray(decisions)) {
+      return decisions.filter((decision: any) => {
+        const decText = JSON.stringify(decision).toLowerCase();
+        return this.hasCommonKeywords(reqText, decText);
+      });
+    }
+    
+    Object.keys(decisions).forEach(key => {
+      const decText = JSON.stringify(decisions[key]).toLowerCase();
+      if (this.hasCommonKeywords(reqText, decText)) {
+        relevant[key] = decisions[key];
+      }
+    });
+    
+    return Object.keys(relevant).length > 0 ? relevant : decisions;
+  }
+  
+  private extractRelevantScope(scope: any, req: any): any {
+    if (!scope) return {};
+    
+    // For scope, usually return all as it defines boundaries
+    return scope;
+  }
+  
+  private generateImplementationGuide(req: any, planningPhase: any): string {
+    const guides: string[] = [];
+    
+    guides.push('Implementation Steps:');
+    guides.push('1. Review the requirement and acceptance criteria');
+    
+    if (planningPhase.architecture) {
+      guides.push('2. Follow the architectural patterns defined in the planning phase');
+    }
+    
+    if (planningPhase.decisions) {
+      guides.push('3. Adhere to technical decisions and constraints');
+    }
+    
+    // Add specific guidance based on requirement type
+    const reqText = JSON.stringify(req).toLowerCase();
+    
+    if (reqText.includes('api')) {
+      guides.push('4. Implement RESTful endpoints following OpenAPI specification');
+      guides.push('5. Add proper error handling and validation');
+    }
+    
+    if (reqText.includes('database') || reqText.includes('data')) {
+      guides.push('4. Design database schema with proper constraints');
+      guides.push('5. Implement data access layer with repository pattern');
+    }
+    
+    if (reqText.includes('ui') || reqText.includes('interface')) {
+      guides.push('4. Create responsive UI components');
+      guides.push('5. Ensure accessibility standards are met');
+    }
+    
+    if (reqText.includes('auth') || reqText.includes('security')) {
+      guides.push('4. Implement secure authentication flow');
+      guides.push('5. Add proper authorization checks');
+      guides.push('6. Follow OWASP security guidelines');
+    }
+    
+    guides.push(`${guides.length + 1}. Write comprehensive tests`);
+    guides.push(`${guides.length + 2}. Update documentation`);
+    
+    return guides.join('\n');
+  }
+  
+  private generateAcceptanceCriteria(req: any): string[] {
+    const criteria: string[] = [];
+    
+    if (req.acceptance_criteria) {
+      if (Array.isArray(req.acceptance_criteria)) {
+        return req.acceptance_criteria;
+      }
+      if (typeof req.acceptance_criteria === 'string') {
+        return req.acceptance_criteria.split('\n').filter((c: string) => c.trim());
+      }
+    }
+    
+    // Generate based on requirement type
+    const reqText = JSON.stringify(req).toLowerCase();
+    
+    criteria.push('GIVEN the feature is implemented');
+    
+    if (reqText.includes('user')) {
+      criteria.push('WHEN a user interacts with the feature');
+      criteria.push('THEN the expected behavior occurs');
+    }
+    
+    if (reqText.includes('api')) {
+      criteria.push('WHEN API endpoint is called with valid data');
+      criteria.push('THEN appropriate response is returned');
+      criteria.push('AND status codes are correct');
+    }
+    
+    if (reqText.includes('performance')) {
+      criteria.push('WHEN system is under normal load');
+      criteria.push('THEN response time is under 200ms');
+      criteria.push('AND system remains stable');
+    }
+    
+    criteria.push('AND all tests pass');
+    criteria.push('AND documentation is updated');
+    
+    return criteria;
+  }
+  
+  private generateTechnicalNotes(req: any, planningPhase: any): string {
+    const notes: string[] = [];
+    
+    if (planningPhase.decisions) {
+      notes.push('Technical Decisions:');
+      if (typeof planningPhase.decisions === 'object') {
+        Object.keys(planningPhase.decisions).forEach(key => {
+          notes.push(`- ${key}: ${JSON.stringify(planningPhase.decisions[key]).substring(0, 100)}`);
+        });
+      }
+    }
+    
+    // Add requirement-specific notes
+    const reqText = JSON.stringify(req).toLowerCase();
+    
+    if (reqText.includes('performance')) {
+      notes.push('Performance Considerations:');
+      notes.push('- Implement caching where appropriate');
+      notes.push('- Use pagination for large datasets');
+      notes.push('- Optimize database queries');
+    }
+    
+    if (reqText.includes('scale') || reqText.includes('scalab')) {
+      notes.push('Scalability Considerations:');
+      notes.push('- Design for horizontal scaling');
+      notes.push('- Use stateless components');
+      notes.push('- Consider load balancing needs');
+    }
+    
+    return notes.join('\n');
+  }
+  
+  private identifyDependencies(req: any, allRequirements: any[]): string[] {
+    const dependencies: string[] = [];
+    const reqText = JSON.stringify(req).toLowerCase();
+    
+    allRequirements.forEach(otherReq => {
+      if (otherReq === req) return;
+      
+      const otherText = JSON.stringify(otherReq).toLowerCase();
+      
+      // Check for explicit dependencies
+      if (req.dependencies && Array.isArray(req.dependencies)) {
+        dependencies.push(...req.dependencies);
+      }
+      
+      // Identify implicit dependencies
+      if (reqText.includes('authentication') && otherText.includes('user')) {
+        dependencies.push(otherReq.key || otherReq.title || 'User Management');
+      }
+      
+      if (reqText.includes('api') && otherText.includes('database')) {
+        dependencies.push(otherReq.key || otherReq.title || 'Database Setup');
+      }
+    });
+    
+    return [...new Set(dependencies)]; // Remove duplicates
+  }
+  
+  private estimateEffort(req: any): string {
+    const reqText = JSON.stringify(req).toLowerCase();
+    let points = 3; // Base effort
+    
+    // Adjust based on complexity indicators
+    if (reqText.includes('complex') || reqText.includes('complicated')) points += 5;
+    if (reqText.includes('simple') || reqText.includes('basic')) points -= 1;
+    if (reqText.includes('integration')) points += 3;
+    if (reqText.includes('migration')) points += 5;
+    if (reqText.includes('refactor')) points += 3;
+    if (reqText.includes('ui') || reqText.includes('frontend')) points += 2;
+    if (reqText.includes('api')) points += 2;
+    if (reqText.includes('database')) points += 3;
+    if (reqText.includes('security')) points += 3;
+    if (reqText.includes('performance')) points += 3;
+    
+    // Cap the points
+    points = Math.max(1, Math.min(13, points));
+    
+    // Convert to time estimate
+    if (points <= 2) return 'Small (0.5-1 day)';
+    if (points <= 5) return 'Medium (2-3 days)';
+    if (points <= 8) return 'Large (3-5 days)';
+    return 'Extra Large (1-2 weeks)';
+  }
+  
+  private hasCommonKeywords(text1: string, text2: string): boolean {
+    const keywords1 = this.extractKeywords(text1);
+    const keywords2 = this.extractKeywords(text2);
+    
+    const commonCount = keywords1.filter(k => keywords2.includes(k)).length;
+    return commonCount >= 2; // At least 2 common keywords
+  }
+  
+  private extractKeywords(text: string): string[] {
+    const stopWords = ['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for'];
+    const words = text.toLowerCase()
+      .replace(/[^a-z0-9\s]/g, ' ')
+      .split(/\s+/)
+      .filter(word => word.length > 3 && !stopWords.includes(word));
+    
+    return [...new Set(words)];
+  }
+  
+  private parseArchitectureComponents(architecture: any): any[] {
+    if (Array.isArray(architecture)) {
+      return architecture;
+    }
+    
+    if (typeof architecture === 'object') {
+      const components: any[] = [];
+      
+      Object.keys(architecture).forEach(key => {
+        const comp = architecture[key];
+        if (typeof comp === 'object') {
+          components.push({
+            key,
+            name: comp.name || key,
+            type: comp.type || 'component',
+            ...comp
+          });
+        } else {
+          components.push({
+            key,
+            name: key,
+            description: comp
+          });
+        }
+      });
+      
+      return components;
+    }
+    
+    return [];
+  }
+  
+  private generateComponentKey(comp: any): string {
+    if (comp.key) return comp.key;
+    if (comp.id) return comp.id;
+    if (comp.name) return comp.name.toLowerCase().replace(/\s+/g, '_');
+    return `component_${Date.now()}`;
+  }
+  
+  private generateComponentImplementationGuide(comp: any): string {
+    const guides: string[] = [];
+    
+    guides.push(`Implementation Guide for ${comp.name || 'Component'}:`);
+    guides.push('1. Create component structure');
+    guides.push('2. Implement core functionality');
+    guides.push('3. Add error handling');
+    guides.push('4. Write unit tests');
+    guides.push('5. Integration with other components');
+    guides.push('6. Document API/interface');
+    
+    if (comp.type === 'service') {
+      guides.push('7. Implement service interface');
+      guides.push('8. Add dependency injection');
+    }
+    
+    if (comp.type === 'controller' || comp.type === 'api') {
+      guides.push('7. Define routes/endpoints');
+      guides.push('8. Add request validation');
+    }
+    
+    return guides.join('\n');
+  }
+  
+  private generateComponentAcceptanceCriteria(comp: any): string[] {
+    return [
+      `GIVEN the ${comp.name || 'component'} is implemented`,
+      'WHEN the component is integrated',
+      'THEN it functions as specified',
+      'AND all interfaces are properly exposed',
+      'AND error handling is in place',
+      'AND tests provide adequate coverage',
+      'AND documentation is complete'
+    ];
+  }
+  
+  private generateComponentTechnicalNotes(comp: any): string {
+    const notes: string[] = [];
+    
+    notes.push(`Component: ${comp.name || 'Unknown'}`);
+    notes.push(`Type: ${comp.type || 'standard'}`);
+    
+    if (comp.technology) {
+      notes.push(`Technology: ${comp.technology}`);
+    }
+    
+    if (comp.dependencies) {
+      notes.push('Dependencies:');
+      if (Array.isArray(comp.dependencies)) {
+        comp.dependencies.forEach((dep: any) => {
+          notes.push(`- ${dep}`);
+        });
+      }
+    }
+    
+    if (comp.interfaces) {
+      notes.push('Interfaces:');
+      if (Array.isArray(comp.interfaces)) {
+        comp.interfaces.forEach((intf: any) => {
+          notes.push(`- ${intf}`);
+        });
+      }
+    }
+    
+    return notes.join('\n');
+  }
+  
+  private estimateComponentEffort(comp: any): string {
+    const compText = JSON.stringify(comp).toLowerCase();
+    let complexity = 3; // Base complexity
+    
+    if (comp.type === 'service') complexity += 2;
+    if (comp.type === 'controller') complexity += 1;
+    if (comp.type === 'repository') complexity += 2;
+    if (comp.type === 'middleware') complexity += 1;
+    
+    if (compText.includes('complex')) complexity += 3;
+    if (compText.includes('simple')) complexity -= 1;
+    
+    if (comp.dependencies && Array.isArray(comp.dependencies)) {
+      complexity += comp.dependencies.length;
+    }
+    
+    complexity = Math.max(1, Math.min(13, complexity));
+    
+    if (complexity <= 3) return 'Small (1-2 days)';
+    if (complexity <= 6) return 'Medium (3-4 days)';
+    if (complexity <= 9) return 'Large (5-7 days)';
+    return 'Extra Large (1-2 weeks)';
   }
 }
 
@@ -593,7 +1092,7 @@ class SacredScrollsServer {
         logger.error('Tool execution error:', error);
         throw new McpError(
           ErrorCode.InternalError,
-          `Tool execution failed: ${error.message}`
+          `Tool execution failed: ${(error as Error).message}`
         );
       }
     });
@@ -722,6 +1221,6 @@ class SacredScrollsServer {
 // Main execution
 const server = new SacredScrollsServer();
 server.run().catch((error) => {
-  logger.error('Failed to start Sacred Scrolls server:', error);
+  logger.error('Failed to start Sacred Scrolls server:', error as Error);
   process.exit(1);
 });
