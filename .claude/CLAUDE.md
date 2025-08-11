@@ -1,249 +1,146 @@
-<<<<<<< HEAD
-# 🏛️ Divine Council Configuration
+# 🏛️ Pantheon God Configuration
 
-## Overview
+## Core Architecture
 
-The Divine Council is an intelligent multi-agent system that combines the creative power of Claude with the analytical efficiency of Gemini, optimizing for both quality and cost.
+### BMAD-METHOD Integration
+The Pantheon system uses the BMAD methodology for structured development:
 
-## Model Routing Strategy
+- **Two-Phase Workflow**: Planning → Execution
+- **Sacred Scrolls**: XML-based context preservation
+- **Quality Gates**: Oracle enforces standards at checkpoints
+- **Context Management**: Automatic scroll creation and archival
 
-### Creation Tasks (Claude Sonnet)
-**Gods:** Zeus, Athena, Hephaestus, Prometheus, Daedalus
-**Purpose:** Complex creation, architecture, and implementation
-**Cost:** $0.003/1K input, $0.015/1K output
-**Why Claude:** Superior at creative tasks, code generation, and complex reasoning
+### God Registry
+All gods are defined in `.claude/agents/` with:
+- YAML header configuration
+- Tools and capabilities
+- Integration patterns
+- Command examples
 
-### Validation Tasks (Gemini Pro FREE)
-**Gods:** Apollo, Themis, Argus
-**Purpose:** Code review, testing, security validation
-**Cost:** $0.00 (FREE tier)
-**Why Gemini:** Excellent validation capabilities at zero cost
+## Available Gods
 
-### Support Tasks (Gemini Flash FREE)
-**Gods:** Hermes, Calliope, Iris, Harmonia
-**Purpose:** Quick updates, documentation, status reports
-**Cost:** $0.00 (FREE tier)
-**Why Gemini Flash:** Ultra-fast responses for simple tasks
+### Core Gods
+- **zeus**: Master orchestrator and project planning
+- **athena**: System architecture and strategic design
+- **hephaestus**: Implementation and construction
+- **apollo**: Quality validation and testing
+- **hermes**: Communication and coordination
+- **oracle**: Quality gates and standards enforcement
 
-## Cost Optimization
+### BMAD Specialist Gods
+- **mnemosyne**: Memory goddess - Sacred Scrolls custodian
+- **chronos**: Time god - Two-phase workflow enforcement
+- **moirai**: Three Fates - Phase transition management
+- **hypergraphia**: Hyper-detailed documentation specialist
+- **zeus-bmad**: BMAD-enhanced orchestrator
 
-### Traditional Approach (All Claude)
-- 10 god invocations × $0.003 = $0.030 per session
-- Monthly cost (100 sessions): $3.00
+### CI/CD Gods
+- **githeus-ci**: Version control with CI/CD powers
+- **bmad-tester**: Automated testing specialist
+- **scroll-manager**: Sacred Scrolls maintenance
+- **quality-gate**: Phase transition validation
 
-### Optimized Approach (Mixed)
-- 4 Claude invocations: $0.012
-- 6 Gemini invocations: $0.000
-- Total: $0.012 per session (60% reduction)
-- Monthly cost (100 sessions): $1.20
-- **Monthly savings: $1.80**
+## Usage Patterns
 
-## Command Routing
-
-### `/gods` - Main Council Command
-Orchestrates collaborative sessions with intelligent model selection.
-
-### `/gods plan` 
-- **Zeus** (Claude): Orchestration
-- **Athena** (Claude): Architecture
-- **Apollo** (Gemini FREE): Validation
-
-### `/gods execute`
-- **Hephaestus** (Claude): Implementation
-- **Apollo** (Gemini FREE): Testing
-- **Hermes** (Gemini Flash FREE): Progress
-
-### `/gods validate`
-- **Apollo** (Gemini FREE): Quality
-- **Themis** (Gemini FREE): Compliance
-- **Argus** (Gemini FREE): Security
-- **Cost: $0.00**
-
-### `/gods status`
-- **Hermes** (Gemini Flash FREE): Instant updates
-- **Response: <1 second**
-- **Cost: $0.00**
-
-## Divine Council Gods
-
-### Creation Pantheon (Claude)
-
-#### ⚡ Zeus - King of the Gods
-- **Role:** Master orchestrator
-- **Model:** Claude Sonnet
-- **Responsibilities:** Project leadership, coordination, decisions
-
-#### 🦉 Athena - Goddess of Wisdom
-- **Role:** Strategic architect
-- **Model:** Claude Sonnet
-- **Responsibilities:** System design, architecture, planning
-
-#### 🔨 Hephaestus - God of the Forge
-- **Role:** Master builder
-- **Model:** Claude Sonnet
-- **Responsibilities:** Implementation, coding, construction
-
-### Validation Pantheon (Gemini FREE)
-
-#### ☀️ Apollo - God of Light
-- **Role:** Quality validator
-- **Model:** Gemini 2.5 Pro (FREE)
-- **Responsibilities:** Testing, quality assurance, code review
-
-#### ⚖️ Themis - Goddess of Justice
-- **Role:** Compliance checker
-- **Model:** Gemini 2.5 Pro (FREE)
-- **Responsibilities:** Standards, compliance, best practices
-
-#### 👁️ Argus - The All-Seeing
-- **Role:** Security watchdog
-- **Model:** Gemini 2.5 Pro (FREE)
-- **Responsibilities:** Security review, vulnerability scanning
-
-### Support Pantheon (Gemini Flash FREE)
-
-#### 👟 Hermes - Messenger God
-- **Role:** Fast coordinator
-- **Model:** Gemini 2.5 Flash (FREE)
-- **Responsibilities:** Status updates, quick messages, coordination
-
-#### 📜 Calliope - Muse of Poetry
-- **Role:** Documentation writer
-- **Model:** Gemini 2.5 Flash (FREE)
-- **Responsibilities:** Documentation, comments, README files
-
-## Configuration Files
-
-### Router Configuration
-**Location:** `~/.claude-code-router/config.json`
-- God registry with model assignments
-- Routing strategies
-- Cost tracking settings
-
-### Smart Router
-**Location:** `~/.claude-code-router/smart-router.js`
-- Intelligent routing logic
-- Cost optimization
-- Performance tracking
-
-### Project Settings
-**Location:** `.claude/settings.json`
-- Divine council enablement
-- Model preferences
-- Routing strategy selection
-
-## Usage Examples
-
-### Simple Planning Session
-```bash
-$ /gods plan "Build authentication system"
-
-⚡ Zeus (Claude): Orchestrating divine collaboration...
-🦉 Athena (Claude): Designing strategic architecture...
-☀️ Apollo (Gemini FREE): Validating design quality...
-Cost: $0.006 (saved $0.003 using Gemini)
+### Basic Invocation
+```javascript
+Task("zeus", "Plan authentication system");
+Task("athena", "Design microservices architecture");
+Task("hephaestus", "Build user service");
 ```
 
-### Full Implementation
-```bash
-$ /gods execute
+### BMAD Workflow
+```javascript
+// Phase 1: Planning
+Task("zeus-bmad", "Start Phase 1 planning for e-commerce");
+Task("mnemosyne", "Create Sacred Scroll for project");
 
-🔨 Hephaestus (Claude): Forging implementation...
-☀️ Apollo (Gemini FREE): Testing quality...
-👟 Hermes (Gemini Flash FREE): Progress: 100% complete!
-Cost: $0.003 (saved $0.006 using Gemini)
+// Phase 2: Execution  
+Task("chronos", "Validate phase transition");
+Task("hephaestus", "Execute from Sacred Scroll");
 ```
 
-### Quick Status Check
-```bash
-$ /gods status
-
-👟 Hermes (Gemini Flash FREE): 
-  Project: 80% complete
-  Active: Hephaestus building
-  Next: Apollo validation
-Cost: $0.00 (FREE)
+### CI/CD Automation
+```javascript
+Task("githeus-ci", "Setup automated workflows");
+Task("bmad-tester", "Run comprehensive tests");
+Task("quality-gate", "Validate deployment readiness");
 ```
 
-## Integration with Claude Code
+## Sacred Scrolls System
 
-The Divine Council integrates seamlessly with Claude Code:
+### Directory Structure
+```
+.pantheon/
+├── scrolls/          # Active Sacred Scrolls
+├── archives/         # Historical scrolls
+├── ci-reports/       # CI/CD reports
+└── metrics/          # Performance metrics
+```
 
-1. **Commands:** Use `/gods` commands in Claude interface
-2. **Agents:** Each god is a properly configured agent
-3. **Routing:** Automatic model selection based on task
-4. **Cost Tracking:** Real-time cost optimization
-5. **Quality:** Claude for creation, Gemini for validation
+### Scroll Format
+```xml
+<sacred-scroll>
+  <metadata>
+    <project>Name</project>
+    <phase>1|2</phase>
+    <timestamp>ISO-8601</timestamp>
+  </metadata>
+  <planning>...</planning>
+  <execution>...</execution>
+</sacred-scroll>
+```
+
+## Hooks Integration
+
+Claude Code hooks provide automation:
+- **PostToolUse**: Auto-test after file changes
+- **Stop**: Auto-commit when tests pass
+- **PreToolUse**: Protect Sacred Scrolls
+- **SubagentStop**: Track god completion
+
+## Interactive Requirements Gathering
+
+Gods interactively collect project requirements:
+- App name and description
+- UI reference URLs for analysis
+- CSS frameworks and styling preferences
+- Image assets and design resources
+- Technical stack preferences
+- Deployment targets
 
 ## Best Practices
 
-### When to Use Claude
-- Complex architecture design
-- Code implementation
-- Creative problem solving
-- Strategic planning
+### Phase Management
+1. Always start with Phase 1 planning
+2. Use Chronos to validate transitions
+3. Create Sacred Scrolls for context
+4. Use Oracle for quality gates
 
-### When to Use Gemini
-- Code validation and review
-- Testing and quality checks
-- Security audits
-- Quick status updates
-- Documentation
+### Collaboration
+1. Use TodoWrite for task tracking
+2. Launch parallel gods for independent work
+3. Use Memory for cross-god coordination
+4. Monitor with Hermes for progress
 
-### Parallel Execution
-The divine council supports parallel execution:
-- Multiple gods can work simultaneously
-- Validation happens in parallel with creation
-- Status updates don't block progress
+### Quality Assurance
+1. Auto-test with hooks
+2. Use Oracle at checkpoints
+3. Run bmad-tester before releases
+4. Validate with quality-gate
 
-## Troubleshooting
+## Configuration Files
 
-### God Not Responding
-- Check `.claude/agents/[god].md` exists
-- Verify model configuration in `settings.json`
-- Ensure router is properly configured
+### Essential Files
+- `.claude/agents/`: God definitions
+- `.claude/hooks.json`: Automation hooks
+- `.claude/scripts/pantheon-ci.sh`: CI/CD orchestration
+- `.pantheon/`: Sacred Scrolls and state
 
-### High Costs
-- Review routing strategy in config
-- Ensure validation gods use Gemini
-- Check for unnecessary Claude invocations
-
-### Slow Responses
-- Use Hermes (Gemini Flash) for quick tasks
-- Enable parallel execution
-- Check network connectivity
-
-## Performance Metrics
-
-### Response Times
-- **Claude Sonnet:** 2-5 seconds
-- **Gemini Pro:** 1-3 seconds  
-- **Gemini Flash:** <1 second
-
-### Quality Scores
-- **Creation Quality:** 95% (Claude)
-- **Validation Coverage:** 90% (Gemini)
-- **Documentation:** 85% (Gemini Flash)
-
-### Cost Efficiency
-- **Average saving per session:** 60%
-- **Free tier usage:** 60% of requests
-- **ROI:** 150% improvement
-
-## Future Enhancements
-
-### Planned Gods
-- **Prometheus:** Innovation and forward thinking
-- **Daedalus:** Master engineering
-- **Artemis:** Performance optimization
-- **Dionysus:** User experience
-
-### Advanced Features
-- Auto-scaling based on load
-- Predictive god summoning
-- Learning from validation feedback
-- Cross-project knowledge sharing
+### Settings
+- `CLAUDE.md`: Project configuration
+- `.claude/README.md`: Technical documentation
 
 ---
 
-*Divine Council v1.0 - Where gods collaborate with mortals through intelligent model routing*
+*Pantheon v2.0 - BMAD-Enhanced Multi-AI Orchestration*
