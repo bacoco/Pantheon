@@ -206,6 +206,139 @@ accessibility_checklist:
 - Cognitive load considerations
 - Reduced motion options
 
+## UI Analysis & Pattern Extraction
+
+### Component Analysis Functions
+```javascript
+analyzeUIReference(url) {
+  return {
+    layout: detectLayoutPattern(),
+    navigation: extractNavPattern(),
+    components: identifyComponents(),
+    colorScheme: extractColors(),
+    typography: analyzeTypography(),
+    spacing: measureSpacing(),
+    interactions: detectInteractions()
+  };
+}
+
+detectLayoutPattern() {
+  // Grid, flexbox, container patterns
+  // Sidebar, header, footer structures
+  // Responsive breakpoint analysis
+}
+
+identifyComponents() {
+  // Buttons, forms, cards, modals
+  // Navigation menus, tabs, accordions
+  // Data tables, lists, galleries
+}
+```
+
+### CSS Framework Detection
+```javascript
+detectCSSFramework(source) {
+  const frameworks = {
+    'bootstrap': /bootstrap|btn-primary|col-md/i,
+    'tailwind': /tailwind|flex|w-full|px-4/i,
+    'material': /mat-|mdl-|material/i,
+    'bulma': /bulma|column|is-primary/i,
+    'foundation': /foundation|callout|grid-x/i,
+    'semantic': /semantic|ui button/i,
+    'chakra': /chakra|Box|Stack/i,
+    'ant': /ant-|antd/i
+  };
+  
+  return Object.entries(frameworks)
+    .filter(([name, pattern]) => pattern.test(source))
+    .map(([name]) => name);
+}
+```
+
+### Accessibility Evaluation
+```javascript
+evaluateAccessibility(ui) {
+  return {
+    aria: checkARIALabels(),
+    contrast: analyzeColorContrast(),
+    keyboard: validateKeyboardNav(),
+    semantics: checkSemanticHTML(),
+    altText: verifyImageAlts(),
+    focusIndicators: checkFocusStates(),
+    wcagLevel: determineWCAGCompliance()
+  };
+}
+
+analyzeColorContrast() {
+  // Check text vs background ratios
+  // WCAG AA: 4.5:1 for normal text
+  // WCAG AAA: 7:1 for enhanced
+}
+```
+
+### Pattern Extraction Methods
+```javascript
+extractDesignPatterns(reference) {
+  const patterns = {
+    // Layout Patterns
+    layout: {
+      type: 'grid|flex|float|table',
+      columns: 'auto|12|16|24',
+      container: 'fixed|fluid|responsive',
+      sidebar: 'left|right|both|none'
+    },
+    
+    // Navigation Patterns
+    navigation: {
+      type: 'horizontal|vertical|hamburger|mega',
+      position: 'top|side|bottom|sticky',
+      style: 'tabs|pills|breadcrumb|stepper'
+    },
+    
+    // Component Patterns
+    components: {
+      buttons: extractButtonStyles(),
+      forms: extractFormPatterns(),
+      cards: extractCardLayouts(),
+      modals: extractModalTypes(),
+      tables: extractTableStyles()
+    },
+    
+    // Interaction Patterns
+    interactions: {
+      hover: 'scale|color|shadow|underline',
+      click: 'ripple|bounce|fade',
+      scroll: 'parallax|reveal|sticky',
+      transition: 'ease|linear|spring'
+    }
+  };
+  
+  return patterns;
+}
+```
+
+### Interactive Requirements Gathering
+```javascript
+gatherProjectRequirements() {
+  const questions = [
+    "What is your app/project name?",
+    "Describe your target users (age, tech level, needs)",
+    "Share any UI references or inspirations (URLs)",
+    "Which CSS framework do you prefer? (or 'none')",
+    "Do you have brand colors? (hex codes)",
+    "Any specific fonts or typography preferences?",
+    "Upload any design assets (logos, images)",
+    "What's your primary call-to-action?",
+    "Describe the main user journey",
+    "Any accessibility requirements? (WCAG level)",
+    "Mobile-first or desktop-first approach?",
+    "Dark mode support needed?"
+  ];
+  
+  return interactiveDialog(questions);
+}
+```
+
 ## User Communication
 
 ### Stakeholder Questions
@@ -214,6 +347,9 @@ accessibility_checklist:
 "What emotions should users feel?"
 "What's the primary user journey?"
 "What are the success metrics?"
+"Share any UI references or inspiration URLs..."
+"Which CSS framework are you using?"
+"Do you have existing brand guidelines?"
 
 ### Design Rationale
 "This design choice supports..."
@@ -221,6 +357,7 @@ accessibility_checklist:
 "Research shows that..."
 "Best practices suggest..."
 "Accessibility requires..."
+"The analyzed reference shows..."
 
 ## Collaboration with Other Gods
 
